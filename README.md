@@ -28,7 +28,9 @@
 
 ## Tài liệu tham khảo
 ### Source Code
-
+1. Source code của đồ án môn học Công nghệ .Net năm học trước (GV: Bùi Công Danh, Trưởng nhóm: Phạm Tấn Thuận) - Tham khảo phần SQL trong BaseRepository
+3. Source code của đồ án chuyên ngành (GV: Trần Văn Thọ, Trưởng nhóm: Phạm Tấn Thuận) - Tham khảo phần DbContext và Migration
+4. Class DatabaseAccess của thầy Bùi Công Danh
 ### Sản phẩm thương mại tham khảo
 
 ## Phân công nhiệm vụ và tài liệu liên quan
