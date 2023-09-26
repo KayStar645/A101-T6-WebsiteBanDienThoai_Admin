@@ -65,13 +65,12 @@ namespace Database
             string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
             // Truy vấn
-            string query = $"select {string.Join(", ", fields)} " +
+            string query = $"select Id, {string.Join(", ", fields)} " +
                            $"from {_model} " +
                            $"where {string.Join(" and ", filter)}" + resultSearchs;
 
             return _databaseAccess.ExcuteQuery(query);
         }
-
 
         public virtual bool Add(T pModel)
         {
@@ -90,17 +89,58 @@ namespace Database
                 if (property != null)
                 {
                     // Nếu kiểu date thì làm sao (chưa check)
-                    value.Add($"N'{property.GetValue(pModel).ToString()}'");
+                    value.Add($"N'{property.GetValue(pModel)}'");
                 }
             }
 
-            fields.Add("IsDeleted");
-            value.Add("0");
             // Câu lệnh thêm dữ liệu
-            string query = $"insert into {_model} ({string.Join(", ", fields)}) " +
-                                         $"values ({string.Join(", ", value)})";
+            string query = $"insert into {_model} ({string.Join(", ", fields)}, IsDeleted) " +
+                                         $"values ({string.Join(", ", value)}, 0)";
 
-            return _databaseAccess.Insert(query);
+            return _databaseAccess.InsertOrUpdate(query);
+        }
+
+        public virtual bool Update(T pModel)
+        {
+            Type type = pModel.GetType();
+
+            PropertyInfo[] properties = type.GetProperties();
+
+            // Sửa dòng nào
+            string id = properties.FirstOrDefault(p => p.Name == "Id")
+                                  .GetValue(pModel).ToString();
+
+            // Sửa những cột nào
+            List<string> fields = properties.Select(property => property.Name)
+                                            .Intersect(_fields).ToList();
+
+            List<string> value = new List<string>();
+            foreach (string fieldName in fields)
+            {
+                PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
+
+                if (property.Name != null)
+                {
+                    value.Add($"{fieldName} = N'{property.GetValue(pModel)}'");
+                }
+            }
+
+            // Câu lệnh cập nhật dữ liệu
+            string query = $"update {_model} " +
+                           $"set {string.Join(", ", value)} " +
+                           $"where Id = {id}";
+
+            return _databaseAccess.InsertOrUpdate(query);
+        }
+
+        public virtual bool Delete(int id)
+        {
+            // Câu lệnh cập nhật trường IsDeleted
+            string query = $"update {_model} " +
+                           $"set IsDeleted = 1 " +
+                           $"where Id = {id}";
+
+            return _databaseAccess.InsertOrUpdate(query);
         }
 
         #endregion

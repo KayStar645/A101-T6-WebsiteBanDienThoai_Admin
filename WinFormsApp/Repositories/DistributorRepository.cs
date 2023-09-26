@@ -15,7 +15,6 @@ namespace WinFormsApp.Repositories
 
         protected override List<string> _fields { get; } = new List<string>()
         {
-            "Id",
             "InternalCode",
             "Name",
             "Address",
@@ -24,7 +23,6 @@ namespace WinFormsApp.Repositories
 
         protected override List<string> _seachers { get; } = new List<string>()
         {
-            "Id",
             "InternalCode",
             "Name",
             "Address",

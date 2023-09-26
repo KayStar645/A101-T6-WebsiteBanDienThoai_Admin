@@ -25,9 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Database">
-      <HintPath>..\Database\bin\Debug\net7.0-windows\Database.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Database\Database.csproj" />
   </ItemGroup>
 
 </Project>
