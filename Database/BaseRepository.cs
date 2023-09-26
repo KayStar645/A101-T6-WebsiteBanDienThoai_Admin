@@ -67,7 +67,7 @@ namespace Database
             // Truy vấn
             string query = $"select {string.Join(", ", fields)} " +
                            $"from {_model} " +
-                           $"where {string.Join(", ", filter)}" + resultSearchs;
+                           $"where {string.Join(" and ", filter)}" + resultSearchs;
 
             return _databaseAccess.ExcuteQuery(query);
         }

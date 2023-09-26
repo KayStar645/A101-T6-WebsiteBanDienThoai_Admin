@@ -21,25 +21,25 @@ namespace WinFormsApp.View.Test
         private void testData()
         {
 
-            DistributorModel distributor = new DistributorModel()
-            {
-                InternalCode = Guid.NewGuid().ToString(),
-                Name = "Phương Nam",
-                Address = "Tân Phú",
-                Phone = "0381921212"
-            };
+            //DistributorModel distributor = new DistributorModel()
+            //{
+            //    InternalCode = Guid.NewGuid().ToString(),
+            //    Name = "Phương Nam",
+            //    Address = "Tân Phú",
+            //    Phone = "0381921212"
+            //};
 
-            bool isAdd = _distributorRepo.Add(distributor);
-            if(isAdd )
-            {
-                MessageBox.Show("Thêm thành công!");
-            }
-            else
-            {
-                MessageBox.Show("Thêm thất bại!");
-            }    
+            //bool isAdd = _distributorRepo.Add(distributor);
+            //if(isAdd )
+            //{
+            //    MessageBox.Show("Thêm thành công!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Thêm thất bại!");
+            //}    
 
-            DataTable dataTable = _distributorRepo.Get();
+            DataTable dataTable = _distributorRepo.Get(null, "", 13);
 
             dataGridView1.DataSource = dataTable;
         }
