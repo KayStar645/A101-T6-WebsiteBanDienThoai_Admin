@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WinFormsApp.Infrastructure.Entities;
+using WinFormsApp.Entities;
 
-namespace WinFormsApp.Infrastructure
+namespace WinFormsApp
 {
     public class SmartPhoneDbContext : DbContext
     {
@@ -16,6 +16,6 @@ namespace WinFormsApp.Infrastructure
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(SmartPhoneDbContext).Assembly);
         }
 
-        public DbSet<Distributor> Distributors { get; set; }
+        public DbSet<Distributor> Distributor { get; set; }
     }
 }

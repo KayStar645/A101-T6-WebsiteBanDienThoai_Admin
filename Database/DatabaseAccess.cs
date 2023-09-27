@@ -85,9 +85,10 @@ namespace Database
 
                 return dt;
             }
-            catch { }
-
-            return null;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public object ExcuteQuery(string pQuery, out DataTable pDataTable)
@@ -111,12 +112,13 @@ namespace Database
 
                 return dataAdapter;
             }
-            catch { }
-
-            return null;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public bool Insert(string pQuery)
+        public bool InsertOrUpdate(string pQuery)
         {
             try
             {

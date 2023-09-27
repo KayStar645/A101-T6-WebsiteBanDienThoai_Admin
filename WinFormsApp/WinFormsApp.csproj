@@ -29,14 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Controls\Controls.csproj" />
-    <ProjectReference Include="..\Services\Services.csproj" />
+    <ProjectReference Include="..\Database\Database.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Database">
-      <HintPath>..\Database\bin\Debug\net7.0-windows\Database.dll</HintPath>
-    </Reference>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
