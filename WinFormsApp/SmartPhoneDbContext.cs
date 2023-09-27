@@ -17,5 +17,8 @@ namespace WinFormsApp
         }
 
         public DbSet<Distributor> Distributor { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+
     }
 }
