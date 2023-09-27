@@ -2,7 +2,7 @@
 
 namespace Services
 {
-    public static class Common
+    public static class Util
     {
         public static void LoadControl(Control pBody, Control pControl)
         {
