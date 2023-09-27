@@ -37,7 +37,8 @@ namespace Database
 
         #region FUNCTION
 
-        public virtual DataTable Get(List<string> pFields = null, string? pKeyword = "", int? pId = null)
+        public virtual DataTable Get(out int totalCount, List<string> pFields = null, string? pKeyword = "", int? pId = null,
+            string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10)
         {
             // Lấy những cột nào
             List<string> fields = pFields == null ? _fields.ToList() : 
@@ -65,9 +66,17 @@ namespace Database
             string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
             // Truy vấn
+
             string query = $"select Id, {string.Join(", ", fields)} " +
                            $"from {_model} " +
-                           $"where {string.Join(" and ", filter)}" + resultSearchs;
+                           $"where {string.Join(" and ", filter)} {resultSearchs} " +
+                           $"order by {pSort} " +
+                           $"offset {(pPageNumber - 1) * pPageSize} rows " +
+                           $"fetch next {pPageSize} rows only";
+
+            string subQuery = $"select count(Id) from {_model}";
+
+            totalCount = int.Parse(_databaseAccess.ExecuteScalar(subQuery).ToString());
 
             return _databaseAccess.ExcuteQuery(query);
         }
