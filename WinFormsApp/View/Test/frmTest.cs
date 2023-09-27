@@ -1,21 +1,18 @@
 ﻿using System.Data;
+using WinFormsApp.Common;
 using WinFormsApp.Models;
 using WinFormsApp.Repositories;
-using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Test
 {
     public partial class frmTest : Form
     {
-        private DistributorRepository _distributorRepo = new DistributorRepository(StaticService.databaseAccess);
+        private DistributorRepository _distributorRepo = new DistributorRepository(StaticCommon.DatabaseAccess);
 
         public frmTest()
         {
             InitializeComponent();
             testData();
-
-
-
         }
 
         private void testData()

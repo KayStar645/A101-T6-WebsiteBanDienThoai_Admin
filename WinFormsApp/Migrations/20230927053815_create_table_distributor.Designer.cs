@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WinFormsApp.Infrastructure;
+using WinFormsApp;
 
 #nullable disable
 
 namespace WinFormsApp.Migrations
 {
     [DbContext(typeof(SmartPhoneDbContext))]
-    [Migration("20230925165622_create_table_distributor")]
+    [Migration("20230927053815_create_table_distributor")]
     partial class create_table_distributor
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace WinFormsApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WinFormsApp.Infrastructure.Entities.Distributor", b =>
+            modelBuilder.Entity("WinFormsApp.Entities.Distributor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace WinFormsApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Distributors");
+                    b.ToTable("Distributor");
                 });
 #pragma warning restore 612, 618
         }

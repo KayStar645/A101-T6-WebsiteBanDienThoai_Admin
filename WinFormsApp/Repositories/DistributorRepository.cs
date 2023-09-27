@@ -1,4 +1,5 @@
 ﻿using Database;
+using WinFormsApp.Entities;
 using WinFormsApp.Models;
 
 namespace WinFormsApp.Repositories
@@ -11,7 +12,7 @@ namespace WinFormsApp.Repositories
 
         #region PROPERTIES
 
-        protected override string _model { get; } = "Distributors";
+        protected override string _model { get; } = nameof(Distributor);
 
         protected override List<string> _fields { get; } = new List<string>()
         {
