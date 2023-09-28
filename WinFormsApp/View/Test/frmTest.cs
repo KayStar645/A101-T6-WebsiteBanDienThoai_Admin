@@ -2,6 +2,7 @@
 using WinFormsApp.Common;
 using WinFormsApp.Models;
 using WinFormsApp.Repositories;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Test
 {
@@ -62,10 +63,10 @@ namespace WinFormsApp.View.Test
 
             _customerRepo.Delete(1);
 
-            DataTable dataTable = _distributorRepo.Get();
+            //DataTable dataTable = _distributorRepo.Get();
 
 
-            dataGridView1.DataSource = dataTable;
+            //dataGridView1.DataSource = dataTable;
         }
 
 
@@ -112,33 +113,33 @@ namespace WinFormsApp.View.Test
 
             _employeeRepo.Delete(1);
 
-            DataTable dataTable = _distributorRepo.Get();
+            //DataTable dataTable = _distributorRepo.Get();
 
 
-            dataGridView1.DataSource = dataTable;
+            //dataGridView1.DataSource = dataTable;
         }
 
 
         private void testData()
         {
 
-            DistributorModel distributor = new DistributorModel()
-            {
-                InternalCode = Guid.NewGuid().ToString(),
-                Name = "Phương Nam",
-                Address = "Tân Phú",
-                Phone = "0381921212",
-            };
+            //DistributorModel distributor = new DistributorModel()
+            //{
+            //    InternalCode = Guid.NewGuid().ToString(),
+            //    Name = "Phương Nam",
+            //    Address = "Tân Phú",
+            //    Phone = "0381921212",
+            //};
 
-            bool isAdd = _distributorRepo.Add(distributor);
-            if (isAdd)
-            {
-                MessageBox.Show("Thêm thành công!");
-            }
-            else
-            {
-                MessageBox.Show("Thêm thất bại!");
-            }
+            //bool isAdd = _distributorRepo.Add(distributor);
+            //if (isAdd)
+            //{
+            //    MessageBox.Show("Thêm thành công!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Thêm thất bại!");
+            //}
 
             DistributorModel distributor1 = new DistributorModel()
             {
@@ -149,22 +150,40 @@ namespace WinFormsApp.View.Test
                 Phone = "0999999999",
             };
 
-            bool isUpdate = _distributorRepo.Update(distributor1);
-            if (isUpdate)
-            {
-                MessageBox.Show("Cập nhật thành công!");
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật thất bại!");
-            }
+            //DistributorModel distributor1 = new DistributorModel()
+            //{
+            //    Id = 13,
+            //    InternalCode = Guid.NewGuid().ToString(),
+            //    Name = "Đất trời",
+            //    Address = "Bình Châu",
+            //    Phone = "0999999999",
+            //};
+
+
+            //bool isUpdate = _distributorRepo.Update(distributor1);
+            //if (isUpdate)
+            //{
+            //    MessageBox.Show("Cập nhật thành công!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Cập nhật thất bại!");
+            //}
+
 
             _distributorRepo.Delete(2);
 
-            DataTable dataTable = _distributorRepo.Get();
+            //DataTable dataTable = _distributorRepo.Get();
+
+            //_distributorRepo.Delete(15);
 
 
-            dataGridView1.DataSource = dataTable;
+            int totalCout;
+
+            DataTable dataTable1 = _distributorRepo.Get(out totalCout, null, "", null, "Id", 1, 5);
+
+            dataGridView1.DataSource = dataTable1;
+            MessageBox.Show($"Có {totalCout} phần tử!");
         }
     }
 }
