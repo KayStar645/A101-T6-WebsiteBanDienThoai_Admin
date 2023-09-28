@@ -25,5 +25,10 @@ namespace Services
                 container.Size = container.MinimumSize;
             }
         }
+
+        public static void LoadForm(Form form)
+        {
+            form.Show();
+        }
     }
 }
