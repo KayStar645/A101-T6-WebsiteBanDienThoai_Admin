@@ -1,15 +1,10 @@
 ﻿using Services;
-using System.Data;
-using WinFormsApp.Repositories;
 using WinFormsApp.Resources.Controls.Module.Distributor;
-using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
 {
     public partial class Admin : Form
     {
-        private DistributorRepository _distributorRepo = new DistributorRepository(StaticService.databaseAccess);
-
         public Admin()
         {
             InitializeComponent();
@@ -19,9 +14,8 @@ namespace WinFormsApp.View.Screen
 
         private void OnInit()
         {
-            DataTable dataTable = _distributorRepo.Get(out int total);
 
-            Util.LoadControl(Panel_Body, new DistributorControl(dataTable));
+            Util.LoadControl(Panel_Body, new DistributorControl());
         }
 
         private void Btn_MasterData_Click(object sender, EventArgs e)
@@ -43,9 +37,8 @@ namespace WinFormsApp.View.Screen
         {
             Label_Heading.Text = "Danh sách nhà cung cấp";
 
-            DataTable dataTable = _distributorRepo.Get(out int total, null, "", null, "id", 1, 10);
 
-            Util.LoadControl(Panel_Body, new DistributorControl(dataTable));
+            Util.LoadControl(Panel_Body, new DistributorControl());
         }
 
         private void Btn_Promotion_Click(object sender, EventArgs e)
