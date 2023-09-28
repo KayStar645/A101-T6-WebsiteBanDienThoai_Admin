@@ -16,13 +16,25 @@ namespace Services
         public static void Scroll(bool isScroll, Guna2Panel container)
         {
 
-            if (!isScroll)
+            if (isScroll)
             {
                 container.Size = container.MaximumSize;
             }
             else
             {
                 container.Size = container.MinimumSize;
+            }
+        }
+
+        public static void LoadForm(Form form, bool isDialog = false)
+        {
+            if(isDialog)
+            {
+                form.ShowDialog();
+            }
+            else
+            {
+                form.Show();
             }
         }
     }

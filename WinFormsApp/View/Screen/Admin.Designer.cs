@@ -72,10 +72,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             button8 = new Button();
             TableLayoutPanel_Main = new TableLayoutPanel();
             Panel_Menu = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -105,15 +101,9 @@
             guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             Button_Drag = new Guna.UI2.WinForms.Guna2Button();
             Panel_Body = new Panel();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            internal_code = new DataGridViewTextBoxColumn();
-            name = new DataGridViewTextBoxColumn();
-            address = new DataGridViewTextBoxColumn();
-            phone_number = new DataGridViewTextBoxColumn();
-            is_deleted = new DataGridViewCheckBoxColumn();
-            guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(components);
-            guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(components);
-            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            Resize_Admin = new Guna.UI2.WinForms.Guna2ResizeForm(components);
+            DragControl_Admin = new Guna.UI2.WinForms.Guna2DragControl(components);
+            BorderLess_Admin = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             TableLayoutPanel_Main.SuspendLayout();
             Panel_Menu.SuspendLayout();
             Panel_System.SuspendLayout();
@@ -121,8 +111,6 @@
             Panel_MaterData.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            Panel_Body.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             SuspendLayout();
             // 
             // button8
@@ -295,9 +283,8 @@
             Btn_System.Animated = true;
             Btn_System.AnimatedGIF = true;
             Btn_System.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
-            Btn_System.Checked = true;
             Btn_System.CheckedState.FillColor = Color.Transparent;
-            Btn_System.CheckedState.Image = Properties.Resources.arrow_up;
+            Btn_System.CheckedState.Image = Properties.Resources.arrow_down;
             Btn_System.CustomizableEdges = customizableEdges7;
             Btn_System.DisabledState.BorderColor = Color.Transparent;
             Btn_System.DisabledState.CustomBorderColor = Color.Transparent;
@@ -308,7 +295,7 @@
             Btn_System.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             Btn_System.ForeColor = Color.DodgerBlue;
             Btn_System.HoverState.FillColor = Color.Transparent;
-            Btn_System.Image = Properties.Resources.arrow_down;
+            Btn_System.Image = Properties.Resources.arrow_right;
             Btn_System.ImageAlign = HorizontalAlignment.Left;
             Btn_System.ImageSize = new Size(10, 10);
             Btn_System.Location = new Point(0, 0);
@@ -478,9 +465,9 @@
             Btn_Product.Animated = true;
             Btn_Product.AnimatedGIF = true;
             Btn_Product.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
-            Btn_Product.Checked = true;
+            Btn_Product.CausesValidation = false;
             Btn_Product.CheckedState.FillColor = Color.Transparent;
-            Btn_Product.CheckedState.Image = Properties.Resources.arrow_up;
+            Btn_Product.CheckedState.Image = Properties.Resources.arrow_down;
             Btn_Product.CustomizableEdges = customizableEdges19;
             Btn_Product.DisabledState.BorderColor = Color.Transparent;
             Btn_Product.DisabledState.CustomBorderColor = Color.Transparent;
@@ -491,7 +478,7 @@
             Btn_Product.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             Btn_Product.ForeColor = Color.DodgerBlue;
             Btn_Product.HoverState.FillColor = Color.Transparent;
-            Btn_Product.Image = Properties.Resources.arrow_down;
+            Btn_Product.Image = Properties.Resources.arrow_right;
             Btn_Product.ImageAlign = HorizontalAlignment.Left;
             Btn_Product.ImageSize = new Size(10, 10);
             Btn_Product.Location = new Point(0, 0);
@@ -662,8 +649,9 @@
             Btn_MasterData.Animated = true;
             Btn_MasterData.AnimatedGIF = true;
             Btn_MasterData.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            Btn_MasterData.Checked = true;
             Btn_MasterData.CheckedState.FillColor = Color.Transparent;
-            Btn_MasterData.CheckedState.Image = Properties.Resources.arrow_up;
+            Btn_MasterData.CheckedState.Image = Properties.Resources.arrow_down;
             Btn_MasterData.CustomizableEdges = customizableEdges31;
             Btn_MasterData.DisabledState.BorderColor = Color.Transparent;
             Btn_MasterData.DisabledState.CustomBorderColor = Color.Transparent;
@@ -674,7 +662,7 @@
             Btn_MasterData.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             Btn_MasterData.ForeColor = Color.DodgerBlue;
             Btn_MasterData.HoverState.FillColor = Color.Transparent;
-            Btn_MasterData.Image = Properties.Resources.arrow_down;
+            Btn_MasterData.Image = Properties.Resources.arrow_right;
             Btn_MasterData.ImageAlign = HorizontalAlignment.Left;
             Btn_MasterData.ImageSize = new Size(10, 10);
             Btn_MasterData.Location = new Point(0, 0);
@@ -700,8 +688,9 @@
             guna2ImageButton1.ImageRotate = 0F;
             guna2ImageButton1.ImageSize = new Size(150, 50);
             guna2ImageButton1.Location = new Point(0, 0);
-            guna2ImageButton1.Margin = new Padding(0);
+            guna2ImageButton1.Margin = new Padding(0, 0, 12, 0);
             guna2ImageButton1.Name = "guna2ImageButton1";
+            guna2ImageButton1.Padding = new Padding(0, 0, 12, 0);
             guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges35;
             guna2ImageButton1.Size = new Size(252, 60);
@@ -727,10 +716,10 @@
             // 
             Label_Heading.Anchor = AnchorStyles.Left;
             Label_Heading.AutoSize = true;
-            Label_Heading.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Heading.Location = new Point(3, 11);
+            Label_Heading.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_Heading.Location = new Point(3, 15);
             Label_Heading.Name = "Label_Heading";
-            Label_Heading.Size = new Size(315, 37);
+            Label_Heading.Size = new Size(253, 30);
             Label_Heading.TabIndex = 3;
             Label_Heading.Text = "Danh sách nhà cung cấp";
             // 
@@ -818,133 +807,33 @@
             // 
             // Panel_Body
             // 
-            Panel_Body.Controls.Add(guna2DataGridView1);
             Panel_Body.Dock = DockStyle.Fill;
-            Panel_Body.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             Panel_Body.Location = new Point(252, 60);
             Panel_Body.Margin = new Padding(0);
             Panel_Body.Name = "Panel_Body";
+            Panel_Body.Padding = new Padding(5, 0, 5, 0);
             Panel_Body.Size = new Size(815, 603);
-            Panel_Body.TabIndex = 1;
+            Panel_Body.TabIndex = 5;
             // 
-            // guna2DataGridView1
+            // Resize_Admin
             // 
-            guna2DataGridView1.AllowUserToAddRows = false;
-            guna2DataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            guna2DataGridView1.ColumnHeadersHeight = 52;
-            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { internal_code, name, address, phone_number, is_deleted });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            guna2DataGridView1.Dock = DockStyle.Fill;
-            guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.Location = new Point(0, 0);
-            guna2DataGridView1.Name = "guna2DataGridView1";
-            guna2DataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            guna2DataGridView1.RowHeadersVisible = false;
-            guna2DataGridView1.RowTemplate.Height = 25;
-            guna2DataGridView1.Size = new Size(815, 603);
-            guna2DataGridView1.TabIndex = 0;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 52;
-            guna2DataGridView1.ThemeStyle.ReadOnly = true;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            Resize_Admin.TargetForm = this;
             // 
-            // internal_code
+            // DragControl_Admin
             // 
-            internal_code.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            internal_code.HeaderText = "Mã nhà cung cấp";
-            internal_code.Name = "internal_code";
-            internal_code.ReadOnly = true;
+            DragControl_Admin.DockForm = true;
+            DragControl_Admin.DockIndicatorTransparencyValue = 0.6D;
+            DragControl_Admin.TargetControl = Button_Drag;
+            DragControl_Admin.UseTransparentDrag = true;
             // 
-            // name
+            // BorderLess_Admin
             // 
-            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            name.HeaderText = "Tên nhà cung cấp";
-            name.Name = "name";
-            name.ReadOnly = true;
-            // 
-            // address
-            // 
-            address.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            address.HeaderText = "Địa chỉ";
-            address.Name = "address";
-            address.ReadOnly = true;
-            // 
-            // phone_number
-            // 
-            phone_number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            phone_number.HeaderText = "Số điện thoại";
-            phone_number.Name = "phone_number";
-            phone_number.ReadOnly = true;
-            // 
-            // is_deleted
-            // 
-            is_deleted.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            is_deleted.HeaderText = "Trạng thái";
-            is_deleted.Name = "is_deleted";
-            is_deleted.ReadOnly = true;
-            // 
-            // guna2ResizeForm1
-            // 
-            guna2ResizeForm1.TargetForm = this;
-            // 
-            // guna2DragControl1
-            // 
-            guna2DragControl1.DockForm = true;
-            guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            guna2DragControl1.TargetControl = Button_Drag;
-            guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // guna2BorderlessForm1
-            // 
-            guna2BorderlessForm1.AnimationType = Guna.UI2.WinForms.Guna2BorderlessForm.AnimateWindowType.AW_HOR_POSITIVE;
-            guna2BorderlessForm1.BorderRadius = 10;
-            guna2BorderlessForm1.ContainerControl = this;
-            guna2BorderlessForm1.DockIndicatorColor = Color.IndianRed;
-            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            guna2BorderlessForm1.TransparentWhileDrag = true;
+            BorderLess_Admin.AnimationType = Guna.UI2.WinForms.Guna2BorderlessForm.AnimateWindowType.AW_HOR_POSITIVE;
+            BorderLess_Admin.BorderRadius = 10;
+            BorderLess_Admin.ContainerControl = this;
+            BorderLess_Admin.DockIndicatorColor = Color.IndianRed;
+            BorderLess_Admin.DockIndicatorTransparencyValue = 0.6D;
+            BorderLess_Admin.TransparentWhileDrag = true;
             // 
             // Admin
             // 
@@ -969,8 +858,6 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
-            Panel_Body.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -978,7 +865,6 @@
         private Button button8;
         private TableLayoutPanel TableLayoutPanel_Main;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
-        private Panel Panel_Body;
         private Guna.UI2.WinForms.Guna2Panel Panel_MaterData;
         private Guna.UI2.WinForms.Guna2Button Btn_CouponEnter;
         private Guna.UI2.WinForms.Guna2Button Btn_Order;
@@ -998,20 +884,15 @@
         private Guna.UI2.WinForms.Guna2Button Btn_EarPhone;
         private Guna.UI2.WinForms.Guna2Button Btn_Phone;
         private Guna.UI2.WinForms.Guna2Button Btn_Product;
-        private Guna.UI2.WinForms.Guna2ResizeForm guna2ResizeForm1;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2ResizeForm Resize_Admin;
+        private Guna.UI2.WinForms.Guna2DragControl DragControl_Admin;
+        private Guna.UI2.WinForms.Guna2BorderlessForm BorderLess_Admin;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2Button Button_Drag;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private DataGridViewTextBoxColumn internal_code;
-        private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn address;
-        private DataGridViewTextBoxColumn phone_number;
-        private DataGridViewCheckBoxColumn is_deleted;
+        private Panel Panel_Body;
     }
 }

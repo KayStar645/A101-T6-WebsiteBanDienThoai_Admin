@@ -46,6 +46,33 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Controls\Module\CouponEnterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\CustomerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\Distributor\DistributorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\Distributor\DistributorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\EmployeeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\OrderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\PriceHistoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\ProductControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Resources\Controls\Module\PromotionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

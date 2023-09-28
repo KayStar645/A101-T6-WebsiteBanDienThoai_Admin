@@ -1,5 +1,5 @@
-﻿using Controls.Module;
-using Services;
+﻿using Services;
+using WinFormsApp.Resources.Controls.Module.Distributor;
 
 namespace WinFormsApp.View.Screen
 {
@@ -9,6 +9,13 @@ namespace WinFormsApp.View.Screen
         {
             InitializeComponent();
 
+            OnInit();
+        }
+
+        private void OnInit()
+        {
+
+            Util.LoadControl(Panel_Body, new DistributorControl());
         }
 
         private void Btn_MasterData_Click(object sender, EventArgs e)
@@ -29,6 +36,9 @@ namespace WinFormsApp.View.Screen
         private void Btn_Distributor_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Danh sách nhà cung cấp";
+
+
+            Util.LoadControl(Panel_Body, new DistributorControl());
         }
 
         private void Btn_Promotion_Click(object sender, EventArgs e)
