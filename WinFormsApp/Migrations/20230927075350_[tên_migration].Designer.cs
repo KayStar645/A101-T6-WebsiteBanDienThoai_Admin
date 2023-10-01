@@ -12,8 +12,8 @@ using WinFormsApp;
 namespace WinFormsApp.Migrations
 {
     [DbContext(typeof(SmartPhoneDbContext))]
-    [Migration("20230927053815_create_table_distributor")]
-    partial class create_table_distributor
+    [Migration("20230927075350_[tên_migration]")]
+    partial class tên_migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,6 +51,37 @@ namespace WinFormsApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Distributor");
+                });
+
+            modelBuilder.Entity("WinFormsApp.Entities.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("Birthday")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InternalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sex")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employee");
                 });
 #pragma warning restore 612, 618
         }
