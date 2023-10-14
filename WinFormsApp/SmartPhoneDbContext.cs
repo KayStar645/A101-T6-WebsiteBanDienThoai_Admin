@@ -16,9 +16,9 @@ namespace WinFormsApp
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(SmartPhoneDbContext).Assembly);
         }
 
-        public DbSet<Distributor> Distributor { get; set; }
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<Distributor> Distributor { get; set; }
 
     }
 }

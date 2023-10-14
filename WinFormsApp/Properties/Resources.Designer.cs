@@ -65,7 +65,7 @@ namespace WinFormsApp.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap arrow_down {
             get {
-                object obj = ResourceManager.GetObject("arrow-down", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace WinFormsApp.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap arrow_right {
             get {
-                object obj = ResourceManager.GetObject("arrow-right", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
