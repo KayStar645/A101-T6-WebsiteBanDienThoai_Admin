@@ -1,15 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Database.Common;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using WinFormsApp.Common;
 
-namespace WinFormsApp
+namespace Database
 {
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<SmartPhoneDbContext>
     {
         public SmartPhoneDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<SmartPhoneDbContext>();
-            optionsBuilder.UseSqlServer(StaticCommon.ConnectionString);
+            optionsBuilder.UseMySql(DatabaseCommon.ConnectionString,
+                                    new MySqlServerVersion(new Version(8, 0, 31)),
+                                    builder => builder.EnableRetryOnFailure());
 
             return new SmartPhoneDbContext(optionsBuilder.Options);
         }

@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WinFormsApp.Entities;
+﻿using Database.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace WinFormsApp
+namespace Database
 {
     public class SmartPhoneDbContext : DbContext
     {
@@ -17,7 +17,9 @@ namespace WinFormsApp
         }
 
         public DbSet<Employee> Employee { get; set; }
+
         public DbSet<Customer> Customer { get; set; }
+
         public DbSet<Distributor> Distributor { get; set; }
 
     }

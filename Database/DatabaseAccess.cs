@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using MySql.Data.MySqlClient;
+using System.Data;
 
 
 namespace Database
@@ -8,7 +8,7 @@ namespace Database
     {
         #region Declare Variables
 
-        private SqlConnection _connection;
+        private MySqlConnection _connection;
 
         #endregion  
 
@@ -16,13 +16,14 @@ namespace Database
 
         public DatabaseAccess(string pConnectionString)
         {
-            _connection = new SqlConnection(pConnectionString);
+            _connection = new MySqlConnection(pConnectionString);
         }
 
         public DatabaseAccess(string pDataSource, string pDatabase, string? pUserId = null, string? pPassword = null)
         {
             string connectionString = "";
 
+            // Chưa sửa
             if(pUserId != null && pPassword != null)
             {
                 connectionString = "Data Source=" + pDataSource + ";Initial Catalog=" + pDatabase +
@@ -34,7 +35,7 @@ namespace Database
                 ";Integrated Security=True";
             }    
 
-            _connection = new SqlConnection(connectionString);
+            _connection = new MySqlConnection(connectionString);
         }
 
         public object ExecuteScalar(string pQuery)
@@ -44,7 +45,7 @@ namespace Database
             try
             {
                 // Create new command and set query
-                SqlCommand command = _connection.CreateCommand();
+                MySqlCommand command = _connection.CreateCommand();;
                 command.CommandText = pQuery;
 
                 // Open connect
@@ -72,7 +73,7 @@ namespace Database
                 DataTable dt = new DataTable();
 
                 // Create new data adapter
-                SqlDataAdapter adapter = new SqlDataAdapter(pQuery, _connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(pQuery, _connection);
 
                 // Begin load data
                 dt.BeginLoadData();
@@ -99,7 +100,7 @@ namespace Database
             try
             {
                 // Create new data adapter
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(pQuery, _connection);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(pQuery, _connection);
 
                 // Begin load data
                 pDataTable.BeginLoadData();
@@ -123,7 +124,7 @@ namespace Database
             try
             {
                 // Create a new SqlCommand with the INSERT INTO query
-                SqlCommand command = _connection.CreateCommand();
+                MySqlCommand command = _connection.CreateCommand();
                 command.CommandText = pQuery;
 
                 // Open connect
@@ -155,10 +156,10 @@ namespace Database
         {
             try
             {
-                SqlDataAdapter dataAdapter = (SqlDataAdapter)pDataAdapter;
+                MySqlDataAdapter dataAdapter = (MySqlDataAdapter)pDataAdapter;
 
                 // Create new sqlcommand builder
-                SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
+                MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
 
                 // Set update command for data adapter
                 dataAdapter.UpdateCommand = builder.GetUpdateCommand();
@@ -177,10 +178,10 @@ namespace Database
         {
             try
             {
-                SqlDataAdapter dataAdapter = (SqlDataAdapter)pDataAdapter;
+                MySqlDataAdapter dataAdapter = (MySqlDataAdapter)pDataAdapter;
 
                 // Create new sqlcommand builder
-                SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
+                MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
 
                 // Set update command for data adapter
                 dataAdapter.UpdateCommand = builder.GetUpdateCommand();
@@ -199,10 +200,10 @@ namespace Database
         {
             try
             {
-                SqlDataAdapter dataAdapter = (SqlDataAdapter)pDataAdapter;
+                MySqlDataAdapter dataAdapter = (MySqlDataAdapter)pDataAdapter;
 
                 // Create new sqlcommand builder
-                SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
+                MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
 
                 // Set update command for data adapter
                 dataAdapter.UpdateCommand = builder.GetUpdateCommand();

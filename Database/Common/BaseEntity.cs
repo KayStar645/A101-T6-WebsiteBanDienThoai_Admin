@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp.Common
+﻿namespace Database.Common
 {
     public class BaseEntity
     {

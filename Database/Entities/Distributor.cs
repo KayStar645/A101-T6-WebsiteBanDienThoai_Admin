@@ -1,6 +1,6 @@
-﻿using WinFormsApp.Common;
+﻿using Database.Common;
 
-namespace WinFormsApp.Entities
+namespace Database.Entities
 {
     public class Distributor : BaseEntity
     {

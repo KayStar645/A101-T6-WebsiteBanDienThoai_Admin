@@ -1,10 +1,10 @@
 ﻿using Database;
-using WinFormsApp.Common;
+using Database.Common;
 
 namespace WinFormsApp.Services
 {
     public static class StaticService
     {
-        public static DatabaseAccess databaseAccess = new DatabaseAccess(StaticCommon.ConnectionString);
+        public static DatabaseAccess databaseAccess = new DatabaseAccess(DatabaseCommon.ConnectionString);
     }
 }

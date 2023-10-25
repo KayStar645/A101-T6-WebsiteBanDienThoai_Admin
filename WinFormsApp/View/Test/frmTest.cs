@@ -1,16 +1,15 @@
-﻿using System.Data;
-using WinFormsApp.Common;
+﻿using Database.Common;
+using System.Data;
 using WinFormsApp.Models;
 using WinFormsApp.Repositories;
-using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Test
 {
     public partial class frmTest : Form
     {
-        private DistributorRepository _distributorRepo = new DistributorRepository(StaticCommon.DatabaseAccess);
-        private EmployeeRepository _employeeRepo = new EmployeeRepository(StaticCommon.DatabaseAccess);
-        private CustomerRepository _customerRepo = new CustomerRepository(StaticCommon.DatabaseAccess);
+        private DistributorRepository _distributorRepo = new DistributorRepository(DatabaseCommon.DatabaseAccess);
+        private EmployeeRepository _employeeRepo = new EmployeeRepository(DatabaseCommon.DatabaseAccess);
+        private CustomerRepository _customerRepo = new CustomerRepository(DatabaseCommon.DatabaseAccess);
 
         public frmTest()
         {

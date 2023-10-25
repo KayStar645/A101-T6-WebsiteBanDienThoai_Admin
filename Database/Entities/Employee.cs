@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WinFormsApp.Common;
+﻿using Database.Common;
 
-namespace WinFormsApp.Entities
+namespace Database.Entities
 {
     public class Employee : BaseEntity
     {

@@ -1,9 +1,8 @@
-﻿using Database;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
-namespace WinFormsApp.Common
+namespace Database.Common
 {
-    public static class StaticCommon
+    public class DatabaseCommon
     {
         public static string ConnectionString
         {
