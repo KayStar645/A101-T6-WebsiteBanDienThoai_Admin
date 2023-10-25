@@ -67,12 +67,13 @@ namespace Database
 
             // Truy vấn
 
-            string query = $"select Id, {string.Join(", ", fields)} " +
-                           $"from {_model} " +
-                           $"where {string.Join(" and ", filter)} {resultSearchs} " +
-                           $"order by {pSort} " +
-                           $"offset {(pPageNumber - 1) * pPageSize} rows " +
-                           $"fetch next {pPageSize} rows only";
+            string query = $"SELECT Id, {string.Join(", ", fields)} " +
+                           $"FROM {_model} " +
+                           $"WHERE {string.Join(" AND ", filter)} {resultSearchs} " +
+                           $"ORDER BY {pSort} " +
+                           $"LIMIT {pPageSize} " +
+                           $"OFFSET {(pPageNumber - 1) * pPageSize}";
+
 
             string subQuery = $"select count(Id) from {_model}";
 

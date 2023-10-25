@@ -1,5 +1,5 @@
 ﻿using Database;
-using WinFormsApp.Entities;
+using Database.Entities;
 using WinFormsApp.Models;
 
 namespace WinFormsApp.Repositories

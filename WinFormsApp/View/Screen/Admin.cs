@@ -1,4 +1,5 @@
 ﻿using Services;
+using WinFormsApp.Resources.Controls.Module;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 
 namespace WinFormsApp.View.Screen
@@ -89,6 +90,13 @@ namespace WinFormsApp.View.Screen
         private void Btn_PriceHistory_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Danh sách lịch sử giá";
+        }
+
+        private void Btn_Configuration_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Cấu hình chung";
+
+            Util.LoadControl(Panel_Body, new ConfigurationControl());
         }
     }
 }
