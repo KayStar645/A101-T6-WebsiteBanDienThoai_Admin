@@ -54,6 +54,6 @@
 7. Tạo giao diện trong WinFormsApp/View
 ### Bổ sung
 1. Project Controls: Nơi sẽ viết những Controls chung do lập trình viên tự custom
-2. Project Database: Nơi sẽ viết base để xử lý dữ liệu
-3. Project Services: Nơi sẽ viết những hàm xử lý hỗ trợ chung do lập trình viên tự custom
-4. Project WinFormsApp: Nơi sẽ khai báo, xử lý tất cả nghiệp vụ liên quan tới phần mềm
+2. Project Database: Tương tác CSDL
+3. Project Services: Xử lý nghiệp vụ
+4. Project WinFormsApp: Giao diện
