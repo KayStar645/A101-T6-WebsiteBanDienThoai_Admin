@@ -1,15 +1,13 @@
-﻿using Guna.UI2.WinForms;
-using Services;
-using System.Data;
-using WinFormsApp.Models;
-using WinFormsApp.Repositories;
+﻿using Domain.DTOs;
+using Guna.UI2.WinForms;
+using Services.Interfaces;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Distributor
 {
     public partial class DistributorControl : UserControl
     {
-        private DistributorRepository _distributorRepo = new DistributorRepository(StaticService.databaseAccess);
+        private readonly IDistributorService _distributorService;
 
         public static Guna2Button refreshButton = new Guna2Button();
 
@@ -17,23 +15,23 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
         {
             InitializeComponent();
 
-            DataGridView_Listing.DataSource = _distributorRepo.Get(out int total);
+            DataGridView_Listing.DataSource = _distributorService.GetList();
 
             refreshButton = Button_Refresh;
         }
 
-        public DistributorControl(DataTable distributorTable)
+        public DistributorControl(List<DistributorDto> distributors)
         {
             InitializeComponent();
 
-            LoadData(distributorTable);
+            LoadData(distributors);
 
             refreshButton = Button_Refresh;
         }
 
-        public void LoadData(DataTable distributorTable)
+        public void LoadData(List<DistributorDto> distributors)
         {
-            DataGridView_Listing.DataSource = distributorTable;
+            DataGridView_Listing.DataSource = distributors;
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
@@ -44,7 +42,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
-            DistributorModel formData = new()
+            DistributorDto formData = new()
             {
                 Id = int.Parse(selected["Id"].FormattedValue.ToString()),
                 InternalCode = selected["InternalCode"].FormattedValue.ToString(),
@@ -66,14 +64,15 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
                     return;
                 }
 
-                _distributorRepo.Delete(formData.Id);
+                _distributorService.Delete(formData.Id);
                 Button_Refresh.PerformClick();
             }
         }
 
-        private void Button_Refresh_Click(object sender, EventArgs e)
+        private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            LoadData(_distributorRepo.Get(out int total));
+            var result = await _distributorService.GetList();
+            LoadData(result.list);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Services;
-using WinFormsApp.Resources.Controls.Module;
+﻿using WinFormsApp.Resources.Controls.Module;
 using WinFormsApp.Resources.Controls.Module.Distributor;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
 {

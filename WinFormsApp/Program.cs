@@ -1,5 +1,4 @@
 using WinFormsApp.View.Screen;
-using WinFormsApp.View.Test;
 
 namespace WinFormsApp
 {

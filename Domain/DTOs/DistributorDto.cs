@@ -1,6 +1,6 @@
-﻿namespace WinFormsApp.Models
+﻿namespace Domain.DTOs
 {
-    public class DistributorModel
+    public class DistributorDto
     {
         public int Id { get; set; }
 

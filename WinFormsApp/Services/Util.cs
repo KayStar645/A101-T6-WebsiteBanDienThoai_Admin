@@ -1,6 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 
-namespace Services
+namespace WinFormsApp.Services
 {
     public static class Util
     {

@@ -1,15 +1,15 @@
-﻿using Database.Common;
-
-namespace Database.Entities
+﻿namespace Domain.DTOs
 {
-    public class Distributor : BaseEntity
+    public class CustomerDto
     {
+        public int Id { get; set; }
+
         public string? InternalCode { get; set; }
+
+        public string? Phone { get; set; }
 
         public string? Name { get; set; }
 
         public string? Address { get; set; }
-
-        public string? Phone { get; set; }
     }
 }

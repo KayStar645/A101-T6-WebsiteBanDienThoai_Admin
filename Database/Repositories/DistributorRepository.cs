@@ -1,10 +1,9 @@
-﻿using Database;
-using Database.Entities;
-using WinFormsApp.Models;
+﻿using Database.Interfaces;
+using Domain.Entities;
 
-namespace WinFormsApp.Repositories
+namespace Database.Repositories
 {
-    public class DistributorRepository : BaseRepository<DistributorModel>
+    public class DistributorRepository : BaseRepository<Distributor>, IDistributorRepository
     {
         #region CONST AND STATIC
         #endregion
@@ -34,9 +33,7 @@ namespace WinFormsApp.Repositories
 
         #region CONSTRUCTER
 
-        public DistributorRepository(DatabaseAccess databaseAccess) : base(databaseAccess)
-        {
-        }
+        public DistributorRepository() { }
 
         #endregion
 
