@@ -1,10 +1,9 @@
-﻿using Database;
-using Database.Entities;
-using WinFormsApp.Models;
+﻿using Database.Interfaces;
+using Domain.Entities;
 
-namespace WinFormsApp.Repositories
+namespace Database.Repositories
 {
-    public class EmployeeRepository : BaseRepository<EmployeeModel>
+    public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         #region CONST AND STATIC
         #endregion
@@ -36,9 +35,7 @@ namespace WinFormsApp.Repositories
 
         #region CONSTRUCTER
 
-        public EmployeeRepository(DatabaseAccess databaseAccess) : base(databaseAccess)
-        {
-        }
+        public EmployeeRepository() { }
 
         #endregion
 

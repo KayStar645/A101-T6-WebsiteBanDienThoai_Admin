@@ -1,50 +1,65 @@
-﻿using Guna.UI2.WinForms;
-using Services;
-using System.Data;
-using WinFormsApp.Models;
-using WinFormsApp.Repositories;
+﻿using Domain.DTOs;
+using Guna.UI2.WinForms;
+using Services.Interfaces;
+using SimpleInjector;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Distributor
 {
     public partial class DistributorControl : UserControl
     {
-        private DistributorRepository _distributorRepo = new DistributorRepository(StaticService.databaseAccess);
+        private readonly Container _container;
+        private readonly IDistributorService _distributorService;
 
         public static Guna2Button refreshButton = new Guna2Button();
 
-        public DistributorControl()
+        public DistributorControl(Container container)
         {
+            _container = container;
+
             InitializeComponent();
 
-            DataGridView_Listing.DataSource = _distributorRepo.Get(out int total);
+            _distributorService = _container.GetInstance<IDistributorService>();
+
+            InitializeAsync();
+        }
+
+        private async void InitializeAsync()
+        {
+            var result = await _distributorService.GetList();
+
+            DataGridView_Listing.DataSource = result.list;
 
             refreshButton = Button_Refresh;
         }
 
-        public DistributorControl(DataTable distributorTable)
+        public DistributorControl(Container container, List<DistributorDto> distributors)
         {
+            _container = container;
+
             InitializeComponent();
 
-            LoadData(distributorTable);
+            _distributorService = _container.GetInstance<IDistributorService>();
+
+            LoadData(distributors);
 
             refreshButton = Button_Refresh;
         }
 
-        public void LoadData(DataTable distributorTable)
+        public void LoadData(List<DistributorDto> distributors)
         {
-            DataGridView_Listing.DataSource = distributorTable;
+            DataGridView_Listing.DataSource = distributors;
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
         {
-            Util.LoadForm(new DistributorForm());
+            Util.LoadForm(new DistributorForm(_container));
         }
 
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
-            DistributorModel formData = new()
+            DistributorDto formData = new()
             {
                 Id = int.Parse(selected["Id"].FormattedValue.ToString()),
                 InternalCode = selected["InternalCode"].FormattedValue.ToString(),
@@ -55,7 +70,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
             if (e.ColumnIndex == 0)
             {
-                Util.LoadForm(new DistributorForm(formData), true);
+                Util.LoadForm(new DistributorForm(_container, formData), true);
             }
             else if (e.ColumnIndex == 1)
             {
@@ -66,14 +81,15 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
                     return;
                 }
 
-                _distributorRepo.Delete(formData.Id);
+                _distributorService.Delete(formData.Id);
                 Button_Refresh.PerformClick();
             }
         }
 
-        private void Button_Refresh_Click(object sender, EventArgs e)
+        private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            LoadData(_distributorRepo.Get(out int total));
+            var result = await _distributorService.GetList();
+            LoadData(result.list);
         }
     }
 }

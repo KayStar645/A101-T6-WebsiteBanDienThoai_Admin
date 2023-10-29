@@ -1,6 +1,4 @@
-﻿using Database.Common;
-
-namespace Database.Entities
+﻿namespace Domain.Entities
 {
     public class Employee : BaseEntity
     {

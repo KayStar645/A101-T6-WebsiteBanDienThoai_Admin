@@ -1,23 +1,32 @@
-﻿using WinFormsApp.Models;
-using WinFormsApp.Repositories;
-using WinFormsApp.Services;
+﻿using Domain.DTOs;
+using Services.Interfaces;
+using SimpleInjector;
 
 namespace WinFormsApp.Resources.Controls.Module.Distributor
 {
     public partial class DistributorForm : Form
-    { 
-        DistributorModel formData = new DistributorModel();
+    {
+        private readonly Container _container;
+        private readonly IDistributorService _distributorService;
 
-        private DistributorRepository _distributorRepo = new DistributorRepository(StaticService.databaseAccess);
+        DistributorDto formData = new DistributorDto();
 
-        public DistributorForm()
+        public DistributorForm(Container container)
         {
+            _container = container;
+
             InitializeComponent();
+
+            _distributorService = _container.GetInstance<IDistributorService>();
         }
 
-        public DistributorForm(DistributorModel formData)
+        public DistributorForm(Container container, DistributorDto formData)
         {
+            _container = container;
+
             InitializeComponent();
+
+            _distributorService = _container.GetInstance<IDistributorService>();
 
             this.formData = formData;
 
@@ -46,11 +55,11 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
         {
             if (formData.Id != 0)
             {
-                _distributorRepo.Update(formData);
+                _distributorService.Update(formData);
             }
             else
             {
-                _distributorRepo.Add(formData);
+                _distributorService.Create(formData);
             }
 
             DistributorControl.refreshButton.PerformClick();

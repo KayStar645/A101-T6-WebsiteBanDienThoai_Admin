@@ -16,14 +16,5 @@ namespace Database.Common
                 return configuration.GetConnectionString("SmartPhoneConnectionString");
             }
         }
-
-        public static DatabaseAccess DatabaseAccess
-        {
-            // Set: ...
-            get
-            {
-                return new DatabaseAccess(ConnectionString);
-            }
-        }
     }
 }

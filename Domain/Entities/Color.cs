@@ -1,8 +1,6 @@
-﻿using Database.Common;
-
-namespace Database.Entities
+﻿namespace Domain.Entities
 {
-    public class Capacity : BaseEntity
+    public class Color : BaseEntity
     {
         public string? InternalCode { get; set; }
 
