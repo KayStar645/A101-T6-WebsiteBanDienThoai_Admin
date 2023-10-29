@@ -4,6 +4,7 @@ using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(SmartPhoneDbContext))]
-    partial class SmartPhoneDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231029165731_create_table_category")]
+    partial class create_table_category
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,33 +116,6 @@ namespace Database.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("Domain.Entities.DetailSpecifications", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SpecificationsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SpecificationsId");
-
-                    b.ToTable("DetailSpecifications");
-                });
-
             modelBuilder.Entity("Domain.Entities.Distributor", b =>
                 {
                     b.Property<int>("Id")
@@ -197,145 +173,6 @@ namespace Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employee");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CapacityId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ColorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Evaluate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Images")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InternalCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("Price")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CapacityId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ColorId");
-
-                    b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("Domain.Entities.ProductSpecifications", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SpecificationsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SpecificationsId");
-
-                    b.ToTable("ProductSpecifications");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Specifications", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Specifications");
-                });
-
-            modelBuilder.Entity("Domain.Entities.DetailSpecifications", b =>
-                {
-                    b.HasOne("Domain.Entities.Specifications", "Specifications")
-                        .WithMany()
-                        .HasForeignKey("SpecificationsId");
-
-                    b.Navigation("Specifications");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Product", b =>
-                {
-                    b.HasOne("Domain.Entities.Capacity", "Capacity")
-                        .WithMany()
-                        .HasForeignKey("CapacityId");
-
-                    b.HasOne("Domain.Entities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("Domain.Entities.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId");
-
-                    b.Navigation("Capacity");
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Color");
-                });
-
-            modelBuilder.Entity("Domain.Entities.ProductSpecifications", b =>
-                {
-                    b.HasOne("Domain.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("Domain.Entities.Specifications", "Specifications")
-                        .WithMany()
-                        .HasForeignKey("SpecificationsId");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Specifications");
                 });
 #pragma warning restore 612, 618
         }
