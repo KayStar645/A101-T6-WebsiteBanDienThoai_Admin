@@ -2,7 +2,7 @@
 
 namespace Services.Interfaces
 {
-    public interface IImployeeService
+    public interface IEmployeeService
     {
         Task<(List<EmployeeDto> list, int totalCount)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "");
 

@@ -28,6 +28,8 @@ namespace WinFormsApp
 
             // Đăng ký Repository
             container.Register<IDistributorRepository, DistributorRepository>();
+            container.Register<ICustomerRepository, CustomerRepository>();
+            container.Register<IEmployeeRepository, EmployeeRepository>();
 
             // Đăng ký mapper
             container.Register<IMapper>(() =>
@@ -41,6 +43,8 @@ namespace WinFormsApp
 
             // Đăng ký dịch vụ Service
             container.Register<IDistributorService, DistributorService>();
+            container.Register<ICustomerService, CustomerService>();
+            container.Register<IEmployeeService, EmployeeService>();
 
             admin = new Admin();
 

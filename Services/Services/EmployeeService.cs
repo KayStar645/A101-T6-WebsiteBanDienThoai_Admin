@@ -6,12 +6,12 @@ using Services.Interfaces;
 
 namespace Services.Services
 {
-    public class ImployeeService : IImployeeService
+    public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepo;
         private readonly IMapper _mapper;
 
-        public ImployeeService(IEmployeeRepository employeeRepository, IMapper mapper)
+        public EmployeeService(IEmployeeRepository employeeRepository, IMapper mapper)
         {
             _employeeRepo = employeeRepository;
             _mapper = mapper;
