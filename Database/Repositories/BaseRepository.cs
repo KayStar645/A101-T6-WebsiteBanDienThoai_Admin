@@ -1,8 +1,8 @@
 ﻿using Dapper;
 using Database.Common;
 using Database.Interfaces;
-using MySql.Data.MySqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Reflection;
 
 namespace Database.Repositories
@@ -56,19 +56,19 @@ namespace Database.Repositories
             }
             string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
-            string query = $"SELECT Id, {string.Join(", ", fields)} " +
-                           $"FROM {_model} " +
-                           $"WHERE {string.Join(" AND ", filter)} {resultSearchs} " +
-                           $"ORDER BY {pSort} " +
-                           $"LIMIT {pPageSize} " +
-                           $"OFFSET {(pPageNumber - 1) * pPageSize};";
+            string query = $"select Id, {string.Join(", ", fields)} " +
+                           $"from {_model} " +
+                           $"where {string.Join(" and ", filter)} {resultSearchs} " +
+                           $"order by {pSort} " +
+                           $"offset {(pPageNumber - 1) * pPageSize} rows " +
+                           $"fetch next {pPageSize} rows only";
 
             string subQuery = $"SELECT COUNT(Id) FROM {_model};";
-            int totalCount = await new MySqlConnection(DatabaseCommon.ConnectionString)
+            int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
                                     .ExecuteScalarAsync<int>(subQuery)
                                     .ConfigureAwait(false);
 
-            using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+            using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
             {
                 var result = await connection.QueryAsync<T>(query).ConfigureAwait(false);
                 return (result.AsList(), totalCount);
@@ -87,7 +87,7 @@ namespace Database.Repositories
                 string query = $"SELECT Id, {string.Join(", ", fields)} " +
                                $"FROM {_model} " +
                                $"WHERE id = {pId}";
-                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
                     var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
                     return result;
@@ -130,7 +130,7 @@ namespace Database.Repositories
                                $"VALUES ({string.Join(", ", values)}, 0);";
                 string subQuery = "SELECT LAST_INSERT_ID();";
 
-                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
                     var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
 
@@ -176,7 +176,7 @@ namespace Database.Repositories
                                    $"SET {string.Join(", ", value)} " +
                                    $"WHERE Id = @Id";
 
-                    using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                    using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                     {
                         var rowsAffected = await connection.ExecuteAsync(query, new { Id = id, pModel }).ConfigureAwait(false);
                         return rowsAffected > 0;
@@ -197,7 +197,7 @@ namespace Database.Repositories
                            $"SET IsDeleted = 1 " +
                            $"WHERE Id = @Id";
 
-                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
                     var parameters = new { Id = pId };
                     var rowsAffected = await connection.ExecuteAsync(query, parameters).ConfigureAwait(false);

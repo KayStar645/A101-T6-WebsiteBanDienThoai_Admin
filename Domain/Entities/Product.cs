@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json;
 
 namespace Domain.Entities
 {
@@ -11,7 +10,6 @@ namespace Domain.Entities
 
         public string? Evaluate { get; set; }
 
-        [Column(TypeName = "json")]
         public string? Images { get; set; }
 
         public int? Quantity { get; set; }
