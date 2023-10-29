@@ -64,7 +64,7 @@ namespace Database.Repositories
                            $"OFFSET {(pPageNumber - 1) * pPageSize};";
 
             string subQuery = $"SELECT COUNT(Id) FROM {_model};";
-            int  totalCount = await new MySqlConnection(DatabaseCommon.ConnectionString)
+            int totalCount = await new MySqlConnection(DatabaseCommon.ConnectionString)
                                     .ExecuteScalarAsync<int>(subQuery)
                                     .ConfigureAwait(false);
 
@@ -78,17 +78,24 @@ namespace Database.Repositories
 
         public virtual async Task<T> GetDetailAsync(int pId, List<string> pFields = null)
         {
-            // Lấy những cột nào
-            List<string> fields = pFields == null ? _fields.ToList() :
-                                                    pFields.Intersect(_fields).ToList();
-
-            string query = $"SELECT Id, {string.Join(", ", fields)} " +
-                           $"FROM {_model} " +
-                           $"WHERE id = {pId}";
-            using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+            try
             {
-                var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
-                return result;
+                // Lấy những cột nào
+                List<string> fields = pFields == null ? _fields.ToList() :
+                                                        pFields.Intersect(_fields).ToList();
+
+                string query = $"SELECT Id, {string.Join(", ", fields)} " +
+                               $"FROM {_model} " +
+                               $"WHERE id = {pId}";
+                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
+                    return result;
+                }
+            }
+            catch
+            {
+                return default(T);
             }
         }
 
@@ -97,93 +104,108 @@ namespace Database.Repositories
 
         public virtual async Task<bool> AddAsync(T pModel)
         {
-            Type type = pModel.GetType();
-            PropertyInfo[] properties = type.GetProperties();
-
-            List<string> fields = properties
-                .Where(property => property.Name != "Id")
-                .Select(property => property.Name)
-                .Intersect(_fields)
-                .ToList();
-
-            List<string> values = new List<string>();
-            foreach (string fieldName in fields)
+            try
             {
-                PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
-                if (property != null)
-                {
-                    values.Add($"@{property.Name}");
-                }
-            }
+                Type type = pModel.GetType();
+                PropertyInfo[] properties = type.GetProperties();
 
-            // Câu lệnh thêm dữ liệu
-            string query = $"INSERT INTO {_model} ({string.Join(", ", fields)}, IsDeleted) " +
-                           $"VALUES ({string.Join(", ", values)}, 0); SELECT LAST_INSERT_ID();";
-
-            using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
-            {
-                var insertedId = await connection.QueryFirstOrDefaultAsync<int>(query).ConfigureAwait(false);
-                return insertedId > 0;
-            }
-        }
-
-
-
-        public virtual async Task<bool> UpdateAsync(T pModel)
-        {
-            Type type = pModel.GetType();
-            PropertyInfo[] properties = type.GetProperties();
-
-            string id = properties.FirstOrDefault(p => p.Name == "Id")?.GetValue(pModel)?.ToString();
-
-            if (id != null)
-            {
                 List<string> fields = properties
                     .Where(property => property.Name != "Id")
                     .Select(property => property.Name)
                     .Intersect(_fields)
                     .ToList();
 
-                List<string> value = new List<string>();
+                List<string> values = new List<string>();
                 foreach (string fieldName in fields)
                 {
                     PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
-
                     if (property != null)
                     {
-                        value.Add($"{fieldName} = @{fieldName}");
+                        values.Add($"N'{property.GetValue(pModel)}'");
                     }
                 }
 
-                // Câu lệnh cập nhật dữ liệu
-                string query = $"UPDATE {_model} " +
-                               $"SET {string.Join(", ", value)} " +
-                               $"WHERE Id = @Id";
+                // Câu lệnh thêm dữ liệu
+                string query = $"INSERT INTO {_model} ({string.Join(", ", fields)}, IsDeleted) " +
+                               $"VALUES ({string.Join(", ", values)}, 0);";
+                string subQuery = "SELECT LAST_INSERT_ID();";
 
                 using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
                 {
-                    var rowsAffected = await connection.ExecuteAsync(query, new { Id = id, pModel }).ConfigureAwait(false);
-                    return rowsAffected > 0;
-                }
-            }
+                    var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
 
-            return false;
+                    var insertedId = await connection.ExecuteScalarAsync<int>(subQuery).ConfigureAwait(false);
+                    return insertedId > 0;
+                }                
+            }
+            catch { return false; }
+        }
+
+
+
+        public virtual async Task<bool> UpdateAsync(T pModel)
+        {
+            try
+            {
+                Type type = pModel.GetType();
+                PropertyInfo[] properties = type.GetProperties();
+
+                string id = properties.FirstOrDefault(p => p.Name == "Id")?.GetValue(pModel)?.ToString();
+
+                if (id != null)
+                {
+                    List<string> fields = properties
+                        .Where(property => property.Name != "Id")
+                        .Select(property => property.Name)
+                        .Intersect(_fields)
+                        .ToList();
+
+                    List<string> value = new List<string>();
+                    foreach (string fieldName in fields)
+                    {
+                        PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
+
+                        if (property.Name != null)
+                        {
+                            value.Add($"{fieldName} = N'{property.GetValue(pModel)}'");
+                        }
+                    }
+
+                    // Câu lệnh cập nhật dữ liệu
+                    string query = $"UPDATE {_model} " +
+                                   $"SET {string.Join(", ", value)} " +
+                                   $"WHERE Id = @Id";
+
+                    using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                    {
+                        var rowsAffected = await connection.ExecuteAsync(query, new { Id = id, pModel }).ConfigureAwait(false);
+                        return rowsAffected > 0;
+                    }
+                }
+
+                return false;
+            }
+            catch { return false; }
         }
 
 
         public virtual async Task<bool> DeleteAsync(int pId)
         {
-            string query = $"UPDATE {_model} " +
+            try
+            {
+                string query = $"UPDATE {_model} " +
                            $"SET IsDeleted = 1 " +
                            $"WHERE Id = @Id";
 
-            using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
-            {
-                var parameters = new { Id = pId };
-                var rowsAffected = await connection.ExecuteAsync(query, parameters).ConfigureAwait(false);
+                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    var parameters = new { Id = pId };
+                    var rowsAffected = await connection.ExecuteAsync(query, parameters).ConfigureAwait(false);
 
-                return rowsAffected > 0;
+                    return rowsAffected > 0;
+                }
             }
+            catch { return false; }
         }
 
 

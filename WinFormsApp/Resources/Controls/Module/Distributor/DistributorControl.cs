@@ -1,28 +1,45 @@
 ﻿using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
+using SimpleInjector;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Distributor
 {
     public partial class DistributorControl : UserControl
     {
+        private readonly Container _container;
         private readonly IDistributorService _distributorService;
 
         public static Guna2Button refreshButton = new Guna2Button();
 
-        public DistributorControl()
+        public DistributorControl(Container container)
         {
+            _container = container;
+
             InitializeComponent();
 
-            DataGridView_Listing.DataSource = _distributorService.GetList();
+            _distributorService = _container.GetInstance<IDistributorService>();
+
+            InitializeAsync();
+        }
+
+        private async void InitializeAsync()
+        {
+            var result = await _distributorService.GetList();
+
+            DataGridView_Listing.DataSource = result.list;
 
             refreshButton = Button_Refresh;
         }
 
-        public DistributorControl(List<DistributorDto> distributors)
+        public DistributorControl(Container container, List<DistributorDto> distributors)
         {
+            _container = container;
+
             InitializeComponent();
+
+            _distributorService = _container.GetInstance<IDistributorService>();
 
             LoadData(distributors);
 
@@ -36,7 +53,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
         private void Button_Create_Click(object sender, EventArgs e)
         {
-            Util.LoadForm(new DistributorForm());
+            Util.LoadForm(new DistributorForm(_container));
         }
 
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -53,7 +70,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
             if (e.ColumnIndex == 0)
             {
-                Util.LoadForm(new DistributorForm(formData), true);
+                Util.LoadForm(new DistributorForm(_container, formData), true);
             }
             else if (e.ColumnIndex == 1)
             {

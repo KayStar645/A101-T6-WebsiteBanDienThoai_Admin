@@ -1,4 +1,10 @@
-﻿using WinFormsApp.Resources.Controls.Module;
+﻿using AutoMapper;
+using Database.Interfaces;
+using Database.Repositories;
+using Services.Interfaces;
+using Services.Profiles;
+using Services.Services;
+using WinFormsApp.Resources.Controls.Module;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Services;
 
@@ -16,7 +22,7 @@ namespace WinFormsApp.View.Screen
         private void OnInit()
         {
 
-            Util.LoadControl(Panel_Body, new DistributorControl());
+            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
         }
 
         private void Btn_MasterData_Click(object sender, EventArgs e)
@@ -37,9 +43,7 @@ namespace WinFormsApp.View.Screen
         private void Btn_Distributor_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Danh sách nhà cung cấp";
-
-
-            Util.LoadControl(Panel_Body, new DistributorControl());
+            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
         }
 
         private void Btn_Promotion_Click(object sender, EventArgs e)

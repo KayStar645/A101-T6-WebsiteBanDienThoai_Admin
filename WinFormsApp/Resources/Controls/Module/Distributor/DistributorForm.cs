@@ -1,22 +1,32 @@
 ﻿using Domain.DTOs;
-using Services.Services;
+using Services.Interfaces;
+using SimpleInjector;
 
 namespace WinFormsApp.Resources.Controls.Module.Distributor
 {
     public partial class DistributorForm : Form
-    { 
+    {
+        private readonly Container _container;
+        private readonly IDistributorService _distributorService;
+
         DistributorDto formData = new DistributorDto();
 
-        private readonly DistributorService _distributorService;
-
-        public DistributorForm()
+        public DistributorForm(Container container)
         {
+            _container = container;
+
             InitializeComponent();
+
+            _distributorService = _container.GetInstance<IDistributorService>();
         }
 
-        public DistributorForm(DistributorDto formData)
+        public DistributorForm(Container container, DistributorDto formData)
         {
+            _container = container;
+
             InitializeComponent();
+
+            _distributorService = _container.GetInstance<IDistributorService>();
 
             this.formData = formData;
 
