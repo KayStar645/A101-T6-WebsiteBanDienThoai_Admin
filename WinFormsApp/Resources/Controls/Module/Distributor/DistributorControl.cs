@@ -53,7 +53,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
         private void Button_Create_Click(object sender, EventArgs e)
         {
-            Util.LoadForm(new DistributorForm(_container));
+            Util.LoadForm(new DistributorForm(_container), true);
         }
 
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)

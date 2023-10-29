@@ -5,6 +5,7 @@ using Services.Interfaces;
 using Services.Profiles;
 using Services.Services;
 using SimpleInjector;
+using WinFormsApp.View.Auth;
 using WinFormsApp.View.Screen;
 
 namespace WinFormsApp
@@ -12,6 +13,7 @@ namespace WinFormsApp
     internal static class Program
     {
         public static Admin? admin = null;
+        public static Login? login = null;
         public static Container container;
 
         [STAThread]
@@ -47,8 +49,9 @@ namespace WinFormsApp
             container.Register<IEmployeeService, EmployeeService>();
 
             admin = new Admin();
+            login = new Login();
 
-            Application.Run(admin);
+            Application.Run(login);
         }
     }
 

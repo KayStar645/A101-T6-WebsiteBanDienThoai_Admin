@@ -86,5 +86,10 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
         {
             formData.Phone = Text_Phone.Text;
         }
+
+        private void Button_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
