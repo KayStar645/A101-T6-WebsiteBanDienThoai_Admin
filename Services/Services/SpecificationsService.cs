@@ -17,13 +17,13 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<(List<SpecificationsDto> list, int totalCount)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<(List<SpecificationsDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _specificationsRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<SpecificationsDto>>(result.list);
 
-            return (list, result.totalCount);
+            return (list, result.totalCount, result.pageNumber);
         }
 
         public async Task<SpecificationsDto> GetDetail(int pId)
@@ -35,18 +35,18 @@ namespace Services.Services
             return specificationsDto;
         }
 
-        public async Task<bool> Create(SpecificationsDto pCreateSpecifications)
+        public async Task<bool> Create(SpecificationsDto pCreate)
         {
-            var specifications = _mapper.Map<Specifications>(pCreateSpecifications);
+            var specifications = _mapper.Map<Specifications>(pCreate);
 
             var result = await _specificationsRepo.AddAsync(specifications);
 
-            return result;
+            return result > 0;
         }
 
-        public async Task<bool> Update(SpecificationsDto pUpdateSpecifications)
+        public async Task<bool> Update(SpecificationsDto pUpdate)
         {
-            var specifications = _mapper.Map<Specifications>(pUpdateSpecifications);
+            var specifications = _mapper.Map<Specifications>(pUpdate);
 
             var result = await _specificationsRepo.UpdateAsync(specifications);
 

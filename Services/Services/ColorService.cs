@@ -16,13 +16,13 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<(List<ColorDto> list, int totalCount)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<(List<ColorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _colorRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<ColorDto>>(result.list);
 
-            return (list, result.totalCount);
+            return (list, result.totalCount, result.pageNumber);
         }
 
         public async Task<ColorDto> GetDetail(int pId)
@@ -34,18 +34,18 @@ namespace Services.Services
             return ColorDto;
         }
 
-        public async Task<bool> Create(ColorDto pCreatecolor)
+        public async Task<bool> Create(ColorDto pCreate)
         {
-            var color = _mapper.Map<Domain.Entities.Color>(pCreatecolor);
+            var color = _mapper.Map<Domain.Entities.Color>(pCreate);
 
             var result = await _colorRepo.AddAsync(color);
 
             return result > 0;
         }
 
-        public async Task<bool> Update(ColorDto pUpdatecolor)
+        public async Task<bool> Update(ColorDto pCreate)
         {
-            var color = _mapper.Map<Domain.Entities.Color>(pUpdatecolor);
+            var color = _mapper.Map<Domain.Entities.Color>(pCreate);
 
             var result = await _colorRepo.UpdateAsync(color);
 

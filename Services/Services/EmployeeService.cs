@@ -38,7 +38,7 @@ namespace Services.Services
             return employeeDto;
         }
 
-        public async Task<bool> Create(EmployeeDto pCreateEmployee)
+        public async Task<bool> Create(EmployeeDto pCreate)
         {
             using (var transaction = new TransactionScope())
             {
@@ -46,14 +46,14 @@ namespace Services.Services
                 {
                     var resultAccount = await _authService.CreateAccount(new UserDto
                     {
-                        UserName = pCreateEmployee.InternalCode,
-                        Password = pCreateEmployee.InternalCode
+                        UserName = pCreate.InternalCode,
+                        Password = pCreate.InternalCode
                     });
 
                     if (resultAccount > 0)
                     {
-                        pCreateEmployee.UserId = resultAccount;
-                        Employee employee = _mapper.Map<Employee>(pCreateEmployee);
+                        pCreate.UserId = resultAccount;
+                        Employee employee = _mapper.Map<Employee>(pCreate);
                         var resultEmployee = await _employeeRepo.AddAsync(employee);
 
                         if (resultEmployee > 0)
@@ -75,9 +75,9 @@ namespace Services.Services
         }
 
 
-        public async Task<bool> Update(EmployeeDto pUpdateEmployee)
+        public async Task<bool> Update(EmployeeDto pUpdate)
         {
-            Employee employee = _mapper.Map<Employee>(pUpdateEmployee);
+            Employee employee = _mapper.Map<Employee>(pUpdate);
 
             var result = await _employeeRepo.UpdateAsync(employee);
 

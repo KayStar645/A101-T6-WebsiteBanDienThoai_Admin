@@ -8,9 +8,9 @@ namespace Services.Interfaces
 
         Task<EmployeeDto> GetDetail(int pId);
 
-        Task<bool> Create(EmployeeDto pCreateEmployee);
+        Task<bool> Create(EmployeeDto pCreate);
 
-        Task<bool> Update(EmployeeDto pUpdateEmployee);
+        Task<bool> Update(EmployeeDto pUpdate);
 
         Task<bool> Delete(int pId);
     }

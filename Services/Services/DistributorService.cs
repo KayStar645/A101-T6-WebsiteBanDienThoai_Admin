@@ -36,18 +36,18 @@ namespace Services.Services
             return distributorDto;
         }
 
-        public async Task<bool> Create(DistributorDto pCreateDistributor)
+        public async Task<bool> Create(DistributorDto pCreate)
         {
-            Distributor distributor = _mapper.Map<Distributor>(pCreateDistributor);
+            Distributor distributor = _mapper.Map<Distributor>(pCreate);
 
             var result = await _distributorRepo.AddAsync(distributor);
             
             return result > 0;
         }
 
-        public async Task<bool> Update(DistributorDto pUpdateDistributor)
+        public async Task<bool> Update(DistributorDto pCreate)
         {
-            Distributor distributor = _mapper.Map<Distributor>(pUpdateDistributor);
+            Distributor distributor = _mapper.Map<Distributor>(pCreate);
 
             var result = await _distributorRepo.UpdateAsync(distributor);
 
