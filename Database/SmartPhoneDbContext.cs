@@ -34,7 +34,7 @@ namespace Database
 
         public DbSet<Product> Product { get; set; }
 
-        public DbSet<ProductSpecifications> ProductSpecifications { get; set; }
+        public DbSet<ProductParameters> ProductSpecifications { get; set; }
 
         public DbSet<User> User { get; set; }
 

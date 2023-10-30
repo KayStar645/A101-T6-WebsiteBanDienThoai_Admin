@@ -31,11 +31,11 @@ namespace Services.Services
 
         public async Task<EmployeeDto> GetDetail(int pId)
         {
-            var Employee = await _employeeRepo.GetDetailAsync(pId);
+            var employee = await _employeeRepo.GetDetailAsync(pId);
 
-            var EmployeeDto = _mapper.Map<EmployeeDto>(Employee);
+            var employeeDto = _mapper.Map<EmployeeDto>(employee);
 
-            return EmployeeDto;
+            return employeeDto;
         }
 
         public async Task<bool> Create(EmployeeDto pCreateEmployee)

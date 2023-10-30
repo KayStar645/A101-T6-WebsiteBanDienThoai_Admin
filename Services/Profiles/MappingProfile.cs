@@ -12,6 +12,9 @@ namespace Services.Profiles
             CreateMap<Distributor, DistributorDto>().ReverseMap();
             CreateMap<Employee, EmployeeDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<Domain.Entities.Color, ColorDto>().ReverseMap();
+            CreateMap<Capacity, CapacityDto>().ReverseMap();
+            CreateMap<Category, CategoryDto>().ReverseMap();
         }
     }
 }
