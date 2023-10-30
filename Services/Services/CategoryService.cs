@@ -30,9 +30,9 @@ namespace Services.Services
         {
             var category = await _categoryRepo.GetDetailAsync(pId);
 
-            var CategoryDto = _mapper.Map<CategoryDto>(category);
+            var categoryDto = _mapper.Map<CategoryDto>(category);
 
-            return CategoryDto;
+            return categoryDto;
         }
 
         public async Task<bool> Create(CategoryDto pCreatecategory)

@@ -30,9 +30,9 @@ namespace Services.Services
         {
             var capacity = await _capacityRepo.GetDetailAsync(pId);
 
-            var CapacityDto = _mapper.Map<CapacityDto>(capacity);
+            var capacityDto = _mapper.Map<CapacityDto>(capacity);
 
-            return CapacityDto;
+            return capacityDto;
         }
 
         public async Task<bool> Create(CapacityDto pCreatecapacity)

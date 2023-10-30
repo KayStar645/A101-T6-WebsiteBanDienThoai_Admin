@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Database.Repositories
 {
-    public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
+    public class SpecificationsRepository : BaseRepository<Specifications>, ISpecificationsRepository
     {
         #region CONST AND STATIC
         #endregion
@@ -11,31 +11,23 @@ namespace Database.Repositories
 
         #region PROPERTIES
 
-        protected override string _model { get; } = nameof(Employee);
+        protected override string _model { get; } = nameof(Specifications);
 
         protected override List<string> _fields { get; } = new List<string>()
         {
-            "InternalCode",
             "Name",
-            "Sex",
-            "Birthday",
-            "Phone"
         };
 
         protected override List<string> _seachers { get; } = new List<string>()
         {
-            "InternalCode",
             "Name",
-            "Sex",
-            "Birthday",
-            "Phone"
         };
 
         #endregion
 
         #region CONSTRUCTER
 
-        public EmployeeRepository() { }
+        public SpecificationsRepository() { }
 
         #endregion
 
