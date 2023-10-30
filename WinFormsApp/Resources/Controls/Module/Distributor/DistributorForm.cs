@@ -62,7 +62,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
                 _distributorService.Create(formData);
             }
 
-            DistributorControl.refreshButton.PerformClick();
+            DistributorControl._refreshButton.PerformClick();
 
             Close();
         }
@@ -85,6 +85,11 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
         private void Text_Phone_TextChanged(object sender, EventArgs e)
         {
             formData.Phone = Text_Phone.Text;
+        }
+
+        private void Button_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

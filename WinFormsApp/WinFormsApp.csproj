@@ -85,7 +85,6 @@
 
   <ItemGroup>
     <Folder Include="ModelViews\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
