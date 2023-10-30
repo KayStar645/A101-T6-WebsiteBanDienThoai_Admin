@@ -80,6 +80,14 @@ namespace Services.Services
             catch { return false; }
         }
 
+        public void Logout()
+        {
+            LibrarySettings.Default.UserId = 0;
+            LibrarySettings.Default.UserName = string.Empty;
+            LibrarySettings.Default.Token = string.Empty;
+
+        }
+
         private async Task<JwtSecurityToken> GenerateToken(Domain.Entities.User user)
         {
             //var roles = await _userRepo.GetRolesAsync(user);

@@ -7,5 +7,7 @@ namespace Services.Interfaces
         Task<int> CreateAccount(UserDto pUser);
 
         Task<bool> Login(UserDto pUser);
+
+        void Logout();
     }
 }
