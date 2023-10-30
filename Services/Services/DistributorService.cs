@@ -42,7 +42,7 @@ namespace Services.Services
 
             var result = await _distributorRepo.AddAsync(distributor);
             
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Update(DistributorDto pUpdateDistributor)

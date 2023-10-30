@@ -86,7 +86,7 @@ namespace Database.Repositories
 
                 string query = $"SELECT Id, {string.Join(", ", fields)} " +
                                $"FROM {_model} " +
-                               $"WHERE id = {pId}";
+                               $"WHERE id = {pId} and IsDeleted = 0";
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
                     var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
@@ -102,7 +102,7 @@ namespace Database.Repositories
 
 
 
-        public virtual async Task<bool> AddAsync(T pModel)
+        public virtual async Task<int> AddAsync(T pModel)
         {
             try
             {
@@ -126,19 +126,16 @@ namespace Database.Repositories
                 }
 
                 // Câu lệnh thêm dữ liệu
-                string query = $"INSERT INTO {_model} ({string.Join(", ", fields)}, IsDeleted) " +
-                               $"VALUES ({string.Join(", ", values)}, 0);";
-                string subQuery = "SELECT LAST_INSERT_ID();";
+                string query = $"INSERT INTO \"{_model}\" ({string.Join(", ", fields)}, IsDeleted) " +
+                               $"OUTPUT INSERTED.Id VALUES ({string.Join(", ", values)}, 0);";
 
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
-                    var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
-
-                    var insertedId = await connection.ExecuteScalarAsync<int>(subQuery).ConfigureAwait(false);
-                    return insertedId > 0;
+                    var insertedId = await connection.ExecuteScalarAsync<int>(query, null).ConfigureAwait(false);
+                    return insertedId;
                 }                
             }
-            catch { return false; }
+            catch { return 0; }
         }
 
 
@@ -212,3 +209,31 @@ namespace Database.Repositories
         #endregion
     }
 }
+
+
+/* Test Transaction
+
+using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+{
+    await connection.OpenAsync().ConfigureAwait(false);
+
+    using (var transaction = connection.BeginTransaction())
+    {
+        try
+        {
+            // Thực hiện câu lệnh INSERT với OUTPUT clause và lấy giá trị ID
+            var insertedId = await connection.ExecuteScalarAsync<int>(query, null, transaction).ConfigureAwait(false);
+
+            transaction.Commit(); // Thực hiện commit transaction nếu thành công
+            return insertedId > 0;
+        }
+        catch (Exception)
+        {
+            transaction.Rollback(); // Rollback transaction nếu xảy ra lỗi
+            throw; // Rethrow exception để xử lý ở lớp gọi
+        }
+    }
+}
+
+ 
+ */

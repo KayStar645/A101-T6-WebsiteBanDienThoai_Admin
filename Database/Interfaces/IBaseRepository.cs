@@ -7,7 +7,7 @@
 
         Task<T> GetDetailAsync(int pId, List<string> pFields = null);
 
-        Task<bool> AddAsync(T pModel);
+        Task<int> AddAsync(T pModel);
 
         Task<bool> UpdateAsync(T pModel);
 
