@@ -11,6 +11,7 @@ namespace Services.Profiles
             CreateMap<Customer, CustomerDto>().ReverseMap();
             CreateMap<Distributor, DistributorDto>().ReverseMap();
             CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

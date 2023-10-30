@@ -4,6 +4,7 @@ using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(SmartPhoneDbContext))]
-    partial class SmartPhoneDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231029171350_create_table_product")]
+    partial class create_table_product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,12 +197,7 @@ namespace Database.Migrations
                     b.Property<string>("Sex")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Employee");
                 });
@@ -253,32 +251,6 @@ namespace Database.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ProductSpecifications", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SpecificationsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SpecificationsId");
-
-                    b.ToTable("ProductSpecifications");
-                });
-
             modelBuilder.Entity("Domain.Entities.Specifications", b =>
                 {
                     b.Property<int>("Id")
@@ -298,28 +270,6 @@ namespace Database.Migrations
                     b.ToTable("Specifications");
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
-                });
-
             modelBuilder.Entity("Domain.Entities.DetailSpecifications", b =>
                 {
                     b.HasOne("Domain.Entities.Specifications", "Specifications")
@@ -327,15 +277,6 @@ namespace Database.Migrations
                         .HasForeignKey("SpecificationsId");
 
                     b.Navigation("Specifications");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Employee", b =>
-                {
-                    b.HasOne("Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
@@ -357,21 +298,6 @@ namespace Database.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Color");
-                });
-
-            modelBuilder.Entity("Domain.Entities.ProductSpecifications", b =>
-                {
-                    b.HasOne("Domain.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("Domain.Entities.Specifications", "Specifications")
-                        .WithMany()
-                        .HasForeignKey("SpecificationsId");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Specifications");
                 });
 #pragma warning restore 612, 618
         }

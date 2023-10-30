@@ -1,5 +1,8 @@
-﻿using Database.Interfaces;
+﻿using Dapper;
+using Database.Common;
+using Database.Interfaces;
 using Domain.Entities;
+using System.Data.SqlClient;
 
 namespace Database.Repositories
 {
@@ -19,7 +22,8 @@ namespace Database.Repositories
             "Name",
             "Sex",
             "Birthday",
-            "Phone"
+            "Phone",
+            "UserId"
         };
 
         protected override List<string> _seachers { get; } = new List<string>()
@@ -28,7 +32,8 @@ namespace Database.Repositories
             "Name",
             "Sex",
             "Birthday",
-            "Phone"
+            "Phone",
+            "UserId"
         };
 
         #endregion
@@ -37,7 +42,26 @@ namespace Database.Repositories
 
         public EmployeeRepository() { }
 
+
         #endregion
+        public async Task<Employee> FindByInternalCodesync(string pInternalCode)
+        {
+            try
+            {
+                string query = $"SELECT Id, InternalCode, Name, Sex, Phone " +
+                               $"FROM \"Employee\" " +
+                               $"WHERE InternalCode = N'{pInternalCode}' and IsDeleted = 0";
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    var result = await connection.QueryFirstOrDefaultAsync<Employee>(query).ConfigureAwait(false);
+                    return result;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
 
         #region FUNCTION

@@ -1,8 +1,8 @@
 ﻿using Dapper;
 using Database.Common;
 using Database.Interfaces;
-using MySql.Data.MySqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Reflection;
 
 namespace Database.Repositories
@@ -56,19 +56,19 @@ namespace Database.Repositories
             }
             string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
-            string query = $"SELECT Id, {string.Join(", ", fields)} " +
-                           $"FROM {_model} " +
-                           $"WHERE {string.Join(" AND ", filter)} {resultSearchs} " +
-                           $"ORDER BY {pSort} " +
-                           $"LIMIT {pPageSize} " +
-                           $"OFFSET {(pPageNumber - 1) * pPageSize};";
+            string query = $"select Id, {string.Join(", ", fields)} " +
+                           $"from {_model} " +
+                           $"where {string.Join(" and ", filter)} {resultSearchs} " +
+                           $"order by {pSort} " +
+                           $"offset {(pPageNumber - 1) * pPageSize} rows " +
+                           $"fetch next {pPageSize} rows only";
 
             string subQuery = $"SELECT COUNT(Id) FROM {_model};";
-            int totalCount = await new MySqlConnection(DatabaseCommon.ConnectionString)
+            int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
                                     .ExecuteScalarAsync<int>(subQuery)
                                     .ConfigureAwait(false);
 
-            using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+            using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
             {
                 var result = await connection.QueryAsync<T>(query).ConfigureAwait(false);
                 return (result.AsList(), totalCount);
@@ -86,8 +86,8 @@ namespace Database.Repositories
 
                 string query = $"SELECT Id, {string.Join(", ", fields)} " +
                                $"FROM {_model} " +
-                               $"WHERE id = {pId}";
-                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                               $"WHERE id = {pId} and IsDeleted = 0";
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
                     var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
                     return result;
@@ -102,7 +102,7 @@ namespace Database.Repositories
 
 
 
-        public virtual async Task<bool> AddAsync(T pModel)
+        public virtual async Task<int> AddAsync(T pModel)
         {
             try
             {
@@ -126,19 +126,16 @@ namespace Database.Repositories
                 }
 
                 // Câu lệnh thêm dữ liệu
-                string query = $"INSERT INTO {_model} ({string.Join(", ", fields)}, IsDeleted) " +
-                               $"VALUES ({string.Join(", ", values)}, 0);";
-                string subQuery = "SELECT LAST_INSERT_ID();";
+                string query = $"INSERT INTO \"{_model}\" ({string.Join(", ", fields)}, IsDeleted) " +
+                               $"OUTPUT INSERTED.Id VALUES ({string.Join(", ", values)}, 0);";
 
-                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
-                    var result = await connection.QueryFirstOrDefaultAsync<T>(query).ConfigureAwait(false);
-
-                    var insertedId = await connection.ExecuteScalarAsync<int>(subQuery).ConfigureAwait(false);
-                    return insertedId > 0;
+                    var insertedId = await connection.ExecuteScalarAsync<int>(query, null).ConfigureAwait(false);
+                    return insertedId;
                 }                
             }
-            catch { return false; }
+            catch { return 0; }
         }
 
 
@@ -176,7 +173,7 @@ namespace Database.Repositories
                                    $"SET {string.Join(", ", value)} " +
                                    $"WHERE Id = @Id";
 
-                    using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                    using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                     {
                         var rowsAffected = await connection.ExecuteAsync(query, new { Id = id, pModel }).ConfigureAwait(false);
                         return rowsAffected > 0;
@@ -197,7 +194,7 @@ namespace Database.Repositories
                            $"SET IsDeleted = 1 " +
                            $"WHERE Id = @Id";
 
-                using (var connection = new MySqlConnection(DatabaseCommon.ConnectionString))
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
                     var parameters = new { Id = pId };
                     var rowsAffected = await connection.ExecuteAsync(query, parameters).ConfigureAwait(false);
@@ -212,3 +209,31 @@ namespace Database.Repositories
         #endregion
     }
 }
+
+
+/* Test Transaction
+
+using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+{
+    await connection.OpenAsync().ConfigureAwait(false);
+
+    using (var transaction = connection.BeginTransaction())
+    {
+        try
+        {
+            // Thực hiện câu lệnh INSERT với OUTPUT clause và lấy giá trị ID
+            var insertedId = await connection.ExecuteScalarAsync<int>(query, null, transaction).ConfigureAwait(false);
+
+            transaction.Commit(); // Thực hiện commit transaction nếu thành công
+            return insertedId > 0;
+        }
+        catch (Exception)
+        {
+            transaction.Rollback(); // Rollback transaction nếu xảy ra lỗi
+            throw; // Rethrow exception để xử lý ở lớp gọi
+        }
+    }
+}
+
+ 
+ */
