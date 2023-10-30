@@ -8,9 +8,9 @@ namespace Services.Interfaces
 
         Task<DistributorDto> GetDetail(int pId);
 
-        Task<bool> Create(DistributorDto pCreateDistributor);
+        Task<bool> Create(DistributorDto pCreate);
 
-        Task<bool> Update(DistributorDto pUpdateDistributor);
+        Task<bool> Update(DistributorDto pUpdate);
 
         Task<bool> Delete(int pId);
     }

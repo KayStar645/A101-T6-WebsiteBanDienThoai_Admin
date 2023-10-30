@@ -17,36 +17,36 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<(List<CapacityDto> list, int totalCount)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<(List<CapacityDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _capacityRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<CapacityDto>>(result.list);
 
-            return (list, result.totalCount);
+            return (list, result.totalCount, result.pageNumber);
         }
 
         public async Task<CapacityDto> GetDetail(int pId)
         {
             var capacity = await _capacityRepo.GetDetailAsync(pId);
 
-            var CapacityDto = _mapper.Map<CapacityDto>(capacity);
+            var capacityDto = _mapper.Map<CapacityDto>(capacity);
 
-            return CapacityDto;
+            return capacityDto;
         }
 
-        public async Task<bool> Create(CapacityDto pCreatecapacity)
+        public async Task<bool> Create(CapacityDto pCreate)
         {
-            var capacity = _mapper.Map<Capacity>(pCreatecapacity);
+            var capacity = _mapper.Map<Capacity>(pCreate);
 
             var result = await _capacityRepo.AddAsync(capacity);
 
             return result > 0;
         }
 
-        public async Task<bool> Update(CapacityDto pUpdatecapacity)
+        public async Task<bool> Update(CapacityDto pUpdate)
         {
-            var capacity = _mapper.Map<Capacity>(pUpdatecapacity);
+            var capacity = _mapper.Map<Capacity>(pUpdate);
 
             var result = await _capacityRepo.UpdateAsync(capacity);
 

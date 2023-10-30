@@ -4,7 +4,7 @@ namespace Services.Interfaces
 {
     public interface IColorService
     {
-        Task<(List<ColorDto> list, int totalCount)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "");
+        Task<(List<ColorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "");
 
         Task<ColorDto> GetDetail(int pId);
 
