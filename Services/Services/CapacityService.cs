@@ -41,7 +41,7 @@ namespace Services.Services
 
             var result = await _capacityRepo.AddAsync(capacity);
 
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Update(CapacityDto pUpdatecapacity)

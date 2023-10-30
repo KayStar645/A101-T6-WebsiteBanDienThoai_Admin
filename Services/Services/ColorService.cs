@@ -40,7 +40,7 @@ namespace Services.Services
 
             var result = await _colorRepo.AddAsync(color);
 
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Update(ColorDto pUpdatecolor)

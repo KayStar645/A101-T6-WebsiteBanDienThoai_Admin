@@ -61,8 +61,11 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
                 FlowLayoutPanel_Paginator.Controls.Add(button);
             }
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
+            if(_result.pageNumber > 0)
+            {
+                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
+                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
+            }    
         }
 
         private async void Button_Paginator_Click(object sender, EventArgs e)
