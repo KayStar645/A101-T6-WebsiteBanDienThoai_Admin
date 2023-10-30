@@ -30,6 +30,9 @@ namespace WinFormsApp
             container.Register<IDistributorRepository, DistributorRepository>();
             container.Register<ICustomerRepository, CustomerRepository>();
             container.Register<IEmployeeRepository, EmployeeRepository>();
+            container.Register<ICategoryRepository, CategoryRepository>();
+            container.Register<ICapacityRepository, CapacityRepository>();
+            container.Register<IColorRepository, ColorRepository>();
 
             // Đăng ký mapper
             container.Register<IMapper>(() =>
@@ -45,6 +48,9 @@ namespace WinFormsApp
             container.Register<IDistributorService, DistributorService>();
             container.Register<ICustomerService, CustomerService>();
             container.Register<IEmployeeService, EmployeeService>();
+            container.Register<ICategoryService, CategoryService>();
+            container.Register<ICapacityService, CapacityService>();
+            container.Register<IColorService, ColorService>();
 
             admin = new Admin();
 
