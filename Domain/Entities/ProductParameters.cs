@@ -2,16 +2,16 @@
 
 namespace Domain.Entities
 {
-    public class ProductSpecifications : BaseEntity
+    public class ProductParameters : BaseEntity
     {
-        public int? SpecificationsId { get; set; }
+        public int? DetailSpecificationsId { get; set; }
         public int? ProductId { get; set; }
 
 
         // Ràng buộc
 
-        [ForeignKey("SpecificationsId")]
-        public Specifications? Specifications { get; set; }
+        [ForeignKey("DetailSpecificationsId")]
+        public DetailSpecifications? DetailSpecifications { get; set; }
 
 
         [ForeignKey("ProductId")]
