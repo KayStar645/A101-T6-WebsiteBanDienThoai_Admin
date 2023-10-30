@@ -1,17 +1,24 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Database.Interfaces;
 using Database.Repositories;
+using Domain.DTOs;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Services.Interfaces;
 using Services.Profiles;
 using Services.Services;
 using SimpleInjector;
+using WinFormsApp.View.Auth;
 using WinFormsApp.View.Screen;
+using WinFormsApp.View.Test;
 
 namespace WinFormsApp
 {
     internal static class Program
     {
         public static Admin? admin = null;
+        public static Login? login = null;
         public static Container container;
 
         [STAThread]
@@ -26,10 +33,21 @@ namespace WinFormsApp
 
             // Đăng ký dịch vụ phụ thuộc vào container
 
+            // Đăng ký IConfiguration
+            container.Register<IConfiguration>(() =>
+            {
+                var builder = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+                return builder.Build();
+            });
+
             // Đăng ký Repository
             container.Register<IDistributorRepository, DistributorRepository>();
             container.Register<ICustomerRepository, CustomerRepository>();
             container.Register<IEmployeeRepository, EmployeeRepository>();
+            container.Register<IUserRepository, UserRepository>();
             container.Register<ICategoryRepository, CategoryRepository>();
             container.Register<ICapacityRepository, CapacityRepository>();
             container.Register<IColorRepository, ColorRepository>();
@@ -45,16 +63,32 @@ namespace WinFormsApp
             });
 
             // Đăng ký dịch vụ Service
+            container.Register<IPasswordHasher<UserDto>, PasswordHasher<UserDto>>();
+            container.Register<IOptions<PasswordHasherOptions>>(() =>
+            {
+                var options = new PasswordHasherOptions
+                {
+                    CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2,
+                    // Các cài đặt khác
+                };
+
+                return Options.Create(options);
+            });
+
             container.Register<IDistributorService, DistributorService>();
             container.Register<ICustomerService, CustomerService>();
             container.Register<IEmployeeService, EmployeeService>();
+            container.Register<IAuthService, AuthService>();
             container.Register<ICategoryService, CategoryService>();
             container.Register<ICapacityService, CapacityService>();
             container.Register<IColorService, ColorService>();
 
-            admin = new Admin();
+            admin = new Admin(container);
+            login = new Login(container);
 
             Application.Run(admin);
+            //Application.Run(login);
+            //Application.Run(new frmTest(container));
         }
     }
 
