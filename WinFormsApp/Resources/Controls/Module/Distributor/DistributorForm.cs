@@ -62,7 +62,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
                 _distributorService.Create(formData);
             }
 
-            DistributorControl.refreshButton.PerformClick();
+            DistributorControl._refreshButton.PerformClick();
 
             Close();
         }

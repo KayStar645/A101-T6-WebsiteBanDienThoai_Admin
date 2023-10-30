@@ -18,13 +18,13 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<(List<DistributorDto> list, int totalCount)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<(List<DistributorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _distributorRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<DistributorDto>>(result.list);
 
-            return (list, result.totalCount);
+            return (list, result.totalCount, result.pageNumber);
         }
 
         public async Task<DistributorDto> GetDetail(int pId)

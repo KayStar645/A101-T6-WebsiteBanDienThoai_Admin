@@ -89,11 +89,6 @@ namespace WinFormsApp.View.Screen
             Label_Heading.Text = "Danh sách khách hàng";
         }
 
-        private void Btn_PriceHistory_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách lịch sử giá";
-        }
-
         private void Btn_Configuration_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Cấu hình chung";

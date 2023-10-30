@@ -36,7 +36,7 @@ namespace Database.Repositories
 
         #region FUNCTION
 
-        public virtual async Task<(List<T> list, int totalCount)> GetAllAsync(List<string> pFields = null, string? pKeyword = "",
+        public virtual async Task<(List<T> list, int totalCount, int pageNumber)> GetAllAsync(List<string> pFields = null, string? pKeyword = "",
                                             string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10)
         {
             // Lấy những cột nào
@@ -71,7 +71,10 @@ namespace Database.Repositories
             using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
             {
                 var result = await connection.QueryAsync<T>(query).ConfigureAwait(false);
-                return (result.AsList(), totalCount);
+
+                decimal pageNumber = Math.Ceiling((decimal)totalCount / (decimal)pPageSize);
+
+                return (result.AsList(), totalCount, (int)pageNumber);
             }
         }
 

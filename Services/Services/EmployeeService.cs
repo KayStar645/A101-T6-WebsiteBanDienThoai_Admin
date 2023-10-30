@@ -2,7 +2,6 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Guna.UI2.AnimatorNS;
 using Services.Interfaces;
 using System.Transactions;
 
@@ -21,13 +20,13 @@ namespace Services.Services
             _authService = authService;
         }
 
-        public async Task<(List<EmployeeDto> list, int totalCount)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<(List<EmployeeDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _employeeRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<EmployeeDto>>(result.list);
 
-            return (list, result.totalCount);
+            return (list, result.totalCount, result.pageNumber);
         }
 
         public async Task<EmployeeDto> GetDetail(int pId)
