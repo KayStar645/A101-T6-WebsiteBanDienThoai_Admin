@@ -77,11 +77,11 @@ namespace WinFormsApp
             container.Register<IEmployeeService, EmployeeService>();
             container.Register<IAuthService, AuthService>();
 
-            admin = new Admin();
-            login = new Login();
+            admin = new Admin(container);
+            login = new Login(container);
 
             Application.Run(login);
-            Application.Run(new frmTest(container));
+            //Application.Run(new frmTest(container));
         }
     }
 

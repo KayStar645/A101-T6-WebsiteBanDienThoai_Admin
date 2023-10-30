@@ -1,25 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Domain.DTOs;
+using Services.Interfaces;
+using SimpleInjector;
+using WinFormsApp.Services;
+using WinFormsApp.View.Screen;
 
 namespace WinFormsApp.View.Auth
 {
     public partial class Login : Form
     {
-        public Login()
+        private readonly Container _container;
+        private readonly IAuthService _authService;
+
+        public Login(Container container)
         {
             InitializeComponent();
+
+            _container = container;
+            _authService = _container.GetInstance<IAuthService>();
         }
 
-        private void Btn_Login_Click(object sender, EventArgs e)
+        private async void Btn_Login_Click(object sender, EventArgs e)
         {
+            bool login = await _authService.Login(new UserDto
+            {
+                UserName = Txt_Account.Text,
+                Password = Txt_Password.Text,
+            });
 
+            if (login)
+            {
+                MyThread thread = new();
+
+                thread.CloseThisOpenThat(this, new Admin(_container));
+            }
+            else
+            {
+                Dialog_ThongBao.Show();
+            }
         }
     }
 }

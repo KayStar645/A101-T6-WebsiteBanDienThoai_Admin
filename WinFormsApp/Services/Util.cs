@@ -103,36 +103,13 @@ namespace WinFormsApp.Services
 
         public static void AddCommasOnKeyUp(object sender)
         {
-            Guna2TextBox control = sender as Guna2TextBox;
-            if (control.Text != string.Empty)
+            Guna2TextBox? control = sender as Guna2TextBox;
+            if (control?.Text != string.Empty)
             {
                 int number = int.Parse(DeleteCommas(control.Text), NumberStyles.AllowThousands);
-                control.Text = String.Format(new CultureInfo("en-US"), "{0:N0}", number);
+                control.Text = string.Format(new CultureInfo("en-US"), "{0:N0}", number);
                 control.Select(control.Text.Length, 0);
             }
         }
-
-        //public void CloseThisOpenThat(Form pOldForm, Form pNewForm, TiemNet pInFo = null)
-        //{
-        //    pOldForm.Close();
-        //    th = new Thread(delegate (object obj)
-        //    {
-        //        if (pNewForm is Form_DangNhap)
-        //        {
-        //            pNewForm = new Form_DangNhap();
-        //        }
-        //        else if (pNewForm is Form_NguoiDung)
-        //        {
-        //            pNewForm = new Form_NguoiDung(pInFo);
-        //        }
-        //        else if (pNewForm is Form_QuanLy)
-        //        {
-        //            pNewForm = new Form_QuanLy(pInFo);
-        //        }
-        //        Application.Run(pNewForm);
-        //    });
-        //    th.SetApartmentState(ApartmentState.STA);
-        //    th.Start();
-        //}
     }
 }

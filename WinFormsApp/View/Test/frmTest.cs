@@ -28,13 +28,13 @@ namespace WinFormsApp.View.Test
         {
             EmployeeDto abc = new EmployeeDto()
             {
-                InternalCode = "123",
-                Name = "Name",
+                InternalCode = "NVQT1",
+                Name = "Ngô Văn Sơn",
             };
 
             var reuslt = await _employeeService.Create(abc);
 
-            var login = await _authService.Login(new UserDto { Password = "123", UserName = "123"});
+            var login = await _authService.Login(new UserDto { Password = "NVQT1", UserName = "NVQT1" });
 
             AuthRespone x = ServiceCommon.AuthRespone;
 
