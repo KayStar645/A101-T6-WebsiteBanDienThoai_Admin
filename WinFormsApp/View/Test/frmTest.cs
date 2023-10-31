@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs;
+using Domain.ViewModels;
 using Services.Common;
 using Services.Interfaces;
 using SimpleInjector;
@@ -36,7 +37,7 @@ namespace WinFormsApp.View.Test
 
             var login = await _authService.Login(new UserDto { Password = "NVQT1", UserName = "NVQT1" });
 
-            AuthRespone x = ServiceCommon.AuthRespone;
+            AuthVM x = ServiceCommon.AuthRespone;
 
             int a = 1;
 

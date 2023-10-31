@@ -24,6 +24,12 @@ namespace Database.Repositories
 
         protected abstract List<string> _seachers { get; }
 
+        //protected abstract List<string> _ranges { get; }
+
+        //protected abstract List<string> _join { get; }
+
+        //protected abstract List<string> _fieldsJoin { get; }
+
         #endregion
 
 

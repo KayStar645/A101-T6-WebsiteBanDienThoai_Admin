@@ -8,7 +8,7 @@ namespace Domain.Entities
 
         public string? Name { get; set; }
 
-        public string? Evaluate { get; set; }
+        public string? Evaluate { get; set; }   // Làm sau, có thể thay đổi
 
         public string? Images { get; set; }
 
