@@ -276,7 +276,7 @@ namespace Database.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductSpecifications");
+                    b.ToTable("ProductParameters");
                 });
 
             modelBuilder.Entity("Domain.Entities.Specifications", b =>
