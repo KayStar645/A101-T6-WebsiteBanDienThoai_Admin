@@ -125,7 +125,7 @@
             guna2ControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ControlBox1.BackColor = Color.Transparent;
             guna2ControlBox1.CustomizableEdges = customizableEdges1;
-            guna2ControlBox1.FillColor = Color.LightSteelBlue;
+            guna2ControlBox1.FillColor = Color.Transparent;
             guna2ControlBox1.IconColor = Color.White;
             guna2ControlBox1.Location = new Point(534, 0);
             guna2ControlBox1.Margin = new Padding(0);

@@ -1,26 +1,23 @@
 ﻿using SimpleInjector;
-using WinFormsApp.Resources.Controls.Module;
+using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
+using WinFormsApp.Resources.Controls.Module.Product;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
 {
     public partial class Admin : Form
     {
-        private readonly Container _container;
-
-        public Admin(Container container)
+        public Admin()
         {
             InitializeComponent();
-
-            _container = container;
 
             OnInit();
         }
 
         private void OnInit()
         {
-            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
+            Util.LoadControl(Panel_Body, new DistributorControl());
         }
 
         private void Btn_MasterData_Click(object sender, EventArgs e)
@@ -31,7 +28,7 @@ namespace WinFormsApp.View.Screen
         private void Btn_Distributor_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Danh sách nhà cung cấp";
-            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
+            Util.LoadControl(Panel_Body, new DistributorControl());
         }
 
         private void Btn_Product_Click(object sender, EventArgs e)
@@ -62,6 +59,8 @@ namespace WinFormsApp.View.Screen
         private void Btn_Phone_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Danh sách điện thoại";
+
+            Util.LoadControl(Panel_Body, new ProductControl());
         }
 
         private void Btn_EarPhone_Click(object sender, EventArgs e)
