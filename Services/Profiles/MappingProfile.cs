@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.ViewModels;
 
 namespace Services.Profiles
 {
@@ -20,6 +21,7 @@ namespace Services.Profiles
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<ProductParameters, ProductParametersDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<ProductPropertiesDto, ProductVM>().ReverseMap();
         }
 
         private class StringToListTypeConverter : ITypeConverter<string, List<string>>

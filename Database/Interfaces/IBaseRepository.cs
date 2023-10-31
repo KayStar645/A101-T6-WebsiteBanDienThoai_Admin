@@ -12,5 +12,9 @@
         Task<bool> UpdateAsync(T pModel);
 
         Task<bool> DeleteAsync(int pId);
+
+        Task<(List<ModelVM> list, int totalCount, int pageNumber)> GetAllJoinAsync<ModelVM>(
+                                                    List<string> pFields = null, string? pKeyword = "",
+                                                    string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10);
     }
 }

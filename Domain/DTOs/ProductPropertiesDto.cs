@@ -1,6 +1,6 @@
-﻿namespace Domain.ViewModels
+﻿namespace Domain.DTOs
 {
-    public class ProductVM
+    public class ProductPropertiesDto
     {
         public int Id { get; set; }
 
@@ -8,7 +8,7 @@
 
         public string? Name { get; set; }
 
-        public List<string>? Images { get; set; }
+        public string? Images { get; set; }
 
         public int? Quantity { get; set; }
 

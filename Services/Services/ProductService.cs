@@ -2,6 +2,7 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.ViewModels;
 using Services.Interfaces;
 
 namespace Services.Services
@@ -17,11 +18,11 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<(List<ProductDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
-            var result = await _productRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
+            var result = await _productRepo.GetAllPropertiesAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
-            var list = _mapper.Map<List<ProductDto>>(result.list);
+            var list = _mapper.Map<List<ProductVM>>(result.list);
 
             return (list, result.totalCount, result.pageNumber);
         }
