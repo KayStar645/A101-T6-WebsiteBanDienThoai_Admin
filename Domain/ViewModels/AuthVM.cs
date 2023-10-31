@@ -1,6 +1,6 @@
-﻿namespace Domain.DTOs
+﻿namespace Domain.ViewModels
 {
-    public class AuthRespone
+    public class AuthVM
     {
         public int Id { get; set; }
 

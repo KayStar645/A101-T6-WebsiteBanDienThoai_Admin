@@ -8,7 +8,6 @@ namespace Services.Services
 {
     public class DistributorService : IDistributorService
     {
-
         private readonly IDistributorRepository _distributorRepo;
         private readonly IMapper _mapper;
 

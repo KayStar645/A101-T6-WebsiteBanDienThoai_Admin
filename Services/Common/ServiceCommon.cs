@@ -1,14 +1,14 @@
-﻿using Domain.DTOs;
+﻿using Domain.ViewModels;
 
 namespace Services.Common
 {
     public class ServiceCommon
     {
-        public static AuthRespone AuthRespone
+        public static AuthVM AuthRespone
         {
             get
             {
-                return new AuthRespone()
+                return new AuthVM()
                 {
                     Id = LibrarySettings.Default.UserId,
                     UserName = LibrarySettings.Default.UserName,

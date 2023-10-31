@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs;
+using Domain.ViewModels;
 using Services.Common;
 using Services.Interfaces;
 using SimpleInjector;
@@ -11,6 +12,9 @@ namespace WinFormsApp.View.Test
         private readonly Container _container;
         private readonly IAuthService _authService;
         private readonly IEmployeeService _employeeService;
+        private readonly IProductService _productService;
+
+
         public frmTest(Container container)
         {
 
@@ -20,9 +24,20 @@ namespace WinFormsApp.View.Test
 
             _authService = _container.GetInstance<IAuthService>();
             _employeeService = _container.GetInstance<IEmployeeService>();
+            _productService = _container.GetInstance<IProductService>();
 
-            Test();
+            //Test();
+
+            Test2();
         }
+
+        private async Task Test2()
+        {
+            var result = await _productService.GetList();
+
+            int a = 1;
+
+        }    
 
         private async Task Test()
         {
@@ -36,7 +51,7 @@ namespace WinFormsApp.View.Test
 
             var login = await _authService.Login(new UserDto { Password = "NVQT1", UserName = "NVQT1" });
 
-            AuthRespone x = ServiceCommon.AuthRespone;
+            AuthVM x = ServiceCommon.AuthRespone;
 
             int a = 1;
 

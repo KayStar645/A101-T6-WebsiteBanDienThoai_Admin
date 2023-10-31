@@ -24,6 +24,17 @@ namespace Database.Repositories
 
         protected abstract List<string> _seachers { get; }
 
+        // Chưa làm được
+        // Số, thời gian
+        // Cận trên, cận dưới
+        // "column:min:max"
+        protected virtual List<string> _ranges { get; }
+
+        // Chưa làm được: join với các bảng khác
+        // 1. Thuộc tính tham chiếu ở model hiện tại
+        // 2. Thuộc tính tham chiếu ở model muốn join tới
+        protected virtual List<string> _join { get; }
+
         #endregion
 
 
@@ -63,7 +74,7 @@ namespace Database.Repositories
                            $"offset {(pPageNumber - 1) * pPageSize} rows " +
                            $"fetch next {pPageSize} rows only";
 
-            string subQuery = $"SELECT COUNT(Id) FROM {_model};";
+            string subQuery = $"SELECT COUNT(Id) FROM {_model} where {string.Join(" and ", filter)} {resultSearchs};";
             int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
                                     .ExecuteScalarAsync<int>(subQuery)
                                     .ConfigureAwait(false);
@@ -103,8 +114,6 @@ namespace Database.Repositories
         }
 
 
-
-
         public virtual async Task<int> AddAsync(T pModel)
         {
             try
@@ -140,7 +149,6 @@ namespace Database.Repositories
             }
             catch { return 0; }
         }
-
 
 
         public virtual async Task<bool> UpdateAsync(T pModel)
@@ -206,6 +214,75 @@ namespace Database.Repositories
                 }
             }
             catch { return false; }
+        }
+
+        // Không sài được: rối qué
+        public virtual async Task<(List<ModelVM> list, int totalCount, int pageNumber)> GetAllJoinAsync<ModelVM>(
+                                                List<string> pFields = null, string? pKeyword = "",
+                                                string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10)
+        {
+            List<string> joinTables = new List<string>();
+
+            List<string> fields = pFields == null ? _fields.ToList() :
+                                                pFields.Intersect(_fields).ToList();
+
+            List<string> originalTableFields = fields.Select(f => $"{_model}.{f}").ToList();
+
+            List<string> joinedTableFields = new List<string>();
+            List<string> joinConditions = new List<string>();
+
+            foreach (var join in _join)
+            {
+                var joinParts = join.Split(':');
+                joinTables.Add(joinParts[0]);
+                var joinFields = joinParts[1].Split(',');
+
+                joinedTableFields.AddRange(joinFields);
+                joinConditions.Add($"{_model}.Id = {joinParts[0]}.{_model}Id");
+            }
+
+            // Lấy các trường từ bảng gốc và các trường từ các bảng join
+            List<string> allFields = originalTableFields.Concat(joinedTableFields.Select(f => $"{joinTables[0]}.{f}")).ToList();
+
+            List<string> filter = new List<string>();
+            filter.Add($"{_model}.IsDeleted = 0");
+
+            List<string> searchs = new List<string>();
+            if (!string.IsNullOrEmpty(pKeyword))
+            {
+                foreach (string item in _seachers)
+                {
+                    searchs.Add($"{item} like N'%{pKeyword}%'");
+                }
+            }
+            string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
+
+            // Tạo câu truy vấn SQL với JOIN
+            string joinClauses = string.Join(" ", joinTables.Zip(joinConditions, (joinTable, condition) =>
+                $"left join {joinTable} on {condition}"));
+
+            string query = $"select {_model}.Id, {string.Join(", ", allFields)} " +
+                           $"from {_model} {joinClauses} " +
+                           $"where {string.Join(" and ", filter)} {resultSearchs} " +
+                           $"order by {_model}.{pSort} " +
+                           $"offset {(pPageNumber - 1) * pPageSize} rows " +
+                           $"fetch next {pPageSize} rows only";
+
+            string subQuery = $"SELECT COUNT({_model}.Id) FROM {_model} {joinClauses} " +
+                             $"where {string.Join(" and ", filter)} {resultSearchs};";
+
+            int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
+                                    .ExecuteScalarAsync<int>(subQuery)
+                                    .ConfigureAwait(false);
+
+            using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+            {
+                var result = await connection.QueryAsync<ModelVM>(query).ConfigureAwait(false);
+
+                decimal pageNumber = Math.Ceiling((decimal)totalCount / (decimal)pPageSize);
+
+                return (result.AsList(), totalCount, (int)pageNumber);
+            }
         }
 
 
