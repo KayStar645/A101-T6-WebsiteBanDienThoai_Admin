@@ -243,7 +243,7 @@
             // 
             TableLayoutPanel_Content.BackColor = Color.WhiteSmoke;
             TableLayoutPanel_Content.ColumnCount = 2;
-            TableLayoutPanel_Content.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 248F));
+            TableLayoutPanel_Content.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 258F));
             TableLayoutPanel_Content.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             TableLayoutPanel_Content.Controls.Add(Panel_Body, 1, 0);
             TableLayoutPanel_Content.Controls.Add(Panel_Menu, 0, 0);
@@ -258,11 +258,11 @@
             // Panel_Body
             // 
             Panel_Body.Dock = DockStyle.Fill;
-            Panel_Body.Location = new Point(248, 12);
-            Panel_Body.Margin = new Padding(0, 12, 0, 0);
+            Panel_Body.Location = new Point(258, 0);
+            Panel_Body.Margin = new Padding(0);
             Panel_Body.Name = "Panel_Body";
             Panel_Body.Padding = new Padding(5, 0, 5, 0);
-            Panel_Body.Size = new Size(628, 725);
+            Panel_Body.Size = new Size(618, 737);
             Panel_Body.TabIndex = 5;
             // 
             // Panel_Menu
@@ -279,7 +279,7 @@
             Panel_Menu.Name = "Panel_Menu";
             Panel_Menu.ShadowColor = Color.Black;
             Panel_Menu.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            Panel_Menu.Size = new Size(248, 737);
+            Panel_Menu.Size = new Size(258, 737);
             Panel_Menu.TabIndex = 7;
             // 
             // Panel_System
@@ -289,13 +289,13 @@
             Panel_System.Controls.Add(Btn_System);
             Panel_System.CustomizableEdges = customizableEdges7;
             Panel_System.Dock = DockStyle.Top;
-            Panel_System.Location = new Point(0, 338);
+            Panel_System.Location = new Point(0, 498);
             Panel_System.Margin = new Padding(2);
             Panel_System.MaximumSize = new Size(248, 120);
             Panel_System.MinimumSize = new Size(248, 40);
             Panel_System.Name = "Panel_System";
             Panel_System.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            Panel_System.Size = new Size(248, 40);
+            Panel_System.Size = new Size(248, 120);
             Panel_System.TabIndex = 17;
             // 
             // Btn_Customer
@@ -369,6 +369,7 @@
             Btn_System.Animated = true;
             Btn_System.AnimatedGIF = true;
             Btn_System.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            Btn_System.Checked = true;
             Btn_System.CheckedState.FillColor = Color.Transparent;
             Btn_System.CheckedState.Image = Properties.Resources.arrow_down;
             Btn_System.CustomizableEdges = customizableEdges5;
@@ -411,7 +412,7 @@
             Panel_Product.MinimumSize = new Size(248, 40);
             Panel_Product.Name = "Panel_Product";
             Panel_Product.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            Panel_Product.Size = new Size(248, 40);
+            Panel_Product.Size = new Size(248, 200);
             Panel_Product.TabIndex = 16;
             // 
             // Btn_PhoneCase
@@ -552,6 +553,7 @@
             Btn_Product.AnimatedGIF = true;
             Btn_Product.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
             Btn_Product.CausesValidation = false;
+            Btn_Product.Checked = true;
             Btn_Product.CheckedState.FillColor = Color.Transparent;
             Btn_Product.CheckedState.Image = Properties.Resources.arrow_down;
             Btn_Product.CustomizableEdges = customizableEdges17;
@@ -629,7 +631,7 @@
             Btn_Configuration.Text = "Cấu hình";
             Btn_Configuration.TextAlign = HorizontalAlignment.Left;
             Btn_Configuration.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Btn_Configuration.Click += Btn_System_Click;
+            Btn_Configuration.Click += Btn_Configuration_Click;
             // 
             // Btn_CouponEnter
             // 
@@ -812,7 +814,7 @@
             guna2ImageButton2.Padding = new Padding(0, 0, 12, 0);
             guna2ImageButton2.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges35;
-            guna2ImageButton2.Size = new Size(248, 60);
+            guna2ImageButton2.Size = new Size(258, 60);
             guna2ImageButton2.TabIndex = 0;
             // 
             // Admin
