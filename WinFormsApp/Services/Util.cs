@@ -13,10 +13,10 @@ namespace WinFormsApp.Services
             AddControl(pBody, pControl, DockStyle.Fill);
         }
 
-        public static void Scroll(bool isScroll, Control container)
+        public static void Collpase(bool collapse, Control container)
         {
 
-            if (isScroll)
+            if (collapse)
             {
                 container.Size = container.MaximumSize;
             }

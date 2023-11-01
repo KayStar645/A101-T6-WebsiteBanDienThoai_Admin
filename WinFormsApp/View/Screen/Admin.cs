@@ -88,17 +88,17 @@ namespace WinFormsApp.View.Screen
 
         private void Btn_MasterData_Click(object sender, EventArgs e)
         {
-            Util.Scroll(Btn_MasterData.Checked, Panel_MaterData);
+            Util.Collpase(Btn_MasterData.Checked, Panel_MaterData);
         }
 
         private void Btn_Product_Click(object sender, EventArgs e)
         {
-            Util.Scroll(Btn_Product.Checked, Panel_Product);
+            Util.Collpase(Btn_Product.Checked, Panel_Product);
         }
 
         private void Btn_System_Click(object sender, EventArgs e)
         {
-            Util.Scroll(Btn_System.Checked, Panel_System);
+            Util.Collpase(Btn_System.Checked, Panel_System);
         }
 
         private void Btn_Distributor_Click(object sender, EventArgs e)
