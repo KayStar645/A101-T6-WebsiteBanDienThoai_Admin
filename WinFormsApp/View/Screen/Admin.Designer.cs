@@ -632,7 +632,7 @@
 			Btn_Configuration.Text = "Cấu hình";
 			Btn_Configuration.TextAlign = HorizontalAlignment.Left;
 			Btn_Configuration.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-			Btn_Configuration.Click += Btn_System_Click;
+			Btn_Configuration.Click += Btn_Configuration_Click;
 			// 
 			// Btn_CouponEnter
 			// 

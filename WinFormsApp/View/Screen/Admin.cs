@@ -1,38 +1,36 @@
 ﻿using SimpleInjector;
 using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
+using WinFormsApp.Resources.Controls.Module.Employee;
+using WinFormsApp.Resources.Controls.Module.Product;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
 {
-    public partial class Admin : Form
-    {
-        private readonly Container _container;
+	public partial class Admin : Form
+	{
+		public Admin()
+		{
+			InitializeComponent();
 
-        public Admin(Container container)
-        {
-            InitializeComponent();
+			OnInit();
+		}
 
-            _container = container;
-
-            OnInit();
-        }
-
-        private void OnInit()
-        {
-            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
-        }
+		private void OnInit()
+		{
+			Util.LoadControl(Panel_Body, new DistributorControl());
+		}
 
 		private void Btn_MasterData_Click(object sender, EventArgs e)
 		{
 			Util.Scroll(Btn_MasterData.Checked, Panel_MaterData);
 		}
 
-        private void Btn_Distributor_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách nhà cung cấp";
-            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
-        }
+		private void Btn_Distributor_Click(object sender, EventArgs e)
+		{
+			Label_Heading.Text = "Danh sách nhà cung cấp";
+			Util.LoadControl(Panel_Body, new DistributorControl());
+		}
 
 		private void Btn_Product_Click(object sender, EventArgs e)
 		{
@@ -59,10 +57,12 @@ namespace WinFormsApp.View.Screen
 			Label_Heading.Text = "Danh sách hóa đơn nhập";
 		}
 
-        private void Btn_Phone_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách điện thoại";
-        }
+		private void Btn_Phone_Click(object sender, EventArgs e)
+		{
+			Label_Heading.Text = "Danh sách điện thoại";
+
+			Util.LoadControl(Panel_Body, new ProductControl());
+		}
 
 		private void Btn_EarPhone_Click(object sender, EventArgs e)
 		{
@@ -82,7 +82,7 @@ namespace WinFormsApp.View.Screen
 		private void Btn_Employee_Click(object sender, EventArgs e)
 		{
 			Label_Heading.Text = "Danh sách nhân viên";
-			Util.LoadControl(Panel_Body, new EmployeeControl(Program.container));
+			Util.LoadControl(Panel_Body, new EmployeeControl());
 		}
 
 		private void Btn_Customer_Click(object sender, EventArgs e)

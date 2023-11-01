@@ -1,33 +1,26 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
-using SimpleInjector;
-using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Employee
 {
 	public partial class EmployeeForm : Form
 	{
-		private readonly Container _container;
 		private readonly IEmployeeService _employeeService;
 
 		EmployeeDto formData = new EmployeeDto();
 
-		public EmployeeForm(Container container)
+		public EmployeeForm()
 		{
-			_container = container;
-
 			InitializeComponent();
 
-			_employeeService = _container.GetInstance<IEmployeeService>();
+			_employeeService = Program.container.GetInstance<IEmployeeService>();
 		}
 
-		public EmployeeForm(Container container, EmployeeDto formData)
+		public EmployeeForm(EmployeeDto formData)
 		{
-			_container = container;
-
 			InitializeComponent();
 
-			_employeeService = _container.GetInstance<IEmployeeService>();
+			_employeeService = Program.container.GetInstance<IEmployeeService>();
 
 			this.formData = formData;
 

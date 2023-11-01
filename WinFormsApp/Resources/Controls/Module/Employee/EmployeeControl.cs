@@ -9,30 +9,27 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 {
 	public partial class EmployeeControl : UserControl
 	{
-		private readonly Container _container;
 		private readonly IEmployeeService _employeeService;
 		public static Guna2Button _refreshButton = new Guna2Button();
 		(List<EmployeeDto> list, int totalCount, int pageNumber) _result;
 		int _currPage = 1;
 
-		public EmployeeControl(Container container)
+		public EmployeeControl()
 		{
-			_container = container;
 
 			InitializeComponent();
 
-			_employeeService = _container.GetInstance<IEmployeeService>();
+			_employeeService = Program.container.GetInstance<IEmployeeService>();
 			_refreshButton = Button_Refresh;
 			InitializeAsync();
 		}
 
-		public EmployeeControl(Container container, List<EmployeeDto> employees)
+		public EmployeeControl(List<EmployeeDto> employees)
 		{
-			_container = container;
-
 			InitializeComponent();
 
-			_employeeService = _container.GetInstance<IEmployeeService>();
+			_employeeService = Program.container.GetInstance<IEmployeeService>();
+
 
 			_refreshButton = Button_Refresh;
 
@@ -93,7 +90,7 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 
 		private void Button_Create_Click(object sender, EventArgs e)
 		{
-			Util.LoadForm(new EmployeeForm(_container), true);
+			Util.LoadForm(new EmployeeForm(), true);
 		}
 
 		private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -111,7 +108,7 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 
 			if (e.ColumnIndex == 0)
 			{
-				Util.LoadForm(new EmployeeForm(_container, formData), true);
+				Util.LoadForm(new EmployeeForm(formData), true);
 			}
 			else if (e.ColumnIndex == 1)
 			{
