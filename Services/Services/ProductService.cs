@@ -18,9 +18,10 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
+            int? pPageSize = 30, string? pKeyword = "", int? pCategoryId = null)
         {
-            var result = await _productRepo.GetAllPropertiesAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
+            var result = await _productRepo.GetAllPropertiesAsync(null, pKeyword, pSort, pPageNumber, pPageSize, pCategoryId);
 
             var list = _mapper.Map<List<ProductVM>>(result.list);
 

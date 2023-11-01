@@ -5,6 +5,6 @@ namespace Database.Interfaces
 {
     public interface IProductRepository : IBaseRepository<Product>
     {
-        Task<(List<ProductPropertiesDto> list, int totalCount, int pageNumber)> GetAllPropertiesAsync(List<string> pFields = null, string? pKeyword = "", string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10);
+        Task<(List<ProductPropertiesDto> list, int totalCount, int pageNumber)> GetAllPropertiesAsync(List<string> pFields = null, string? pKeyword = "", string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10, int? CategoryId = null);
     }
 }
