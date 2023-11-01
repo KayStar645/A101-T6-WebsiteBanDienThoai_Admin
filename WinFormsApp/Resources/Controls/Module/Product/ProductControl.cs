@@ -1,9 +1,8 @@
 ﻿using Controls.UI;
 using Domain.DTOs;
-using Domain.ViewModels;
+using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
-using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Product
 {

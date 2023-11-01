@@ -1,4 +1,4 @@
-﻿using Domain.ViewModels;
+﻿using Domain.ModelViews;
 
 namespace Services.Common
 {

@@ -1,4 +1,4 @@
-﻿namespace Domain.ViewModels
+﻿namespace Domain.ModelViews
 {
     public class AuthVM
     {
