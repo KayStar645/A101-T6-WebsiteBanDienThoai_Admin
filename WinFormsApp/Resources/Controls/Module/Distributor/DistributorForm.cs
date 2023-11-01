@@ -53,6 +53,11 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
         private void Button_Save_Click(object sender, EventArgs e)
         {
+            formData.InternalCode = Text_InternalCode.Text;
+            formData.Name = Text_Name.Text;
+            formData.Address = Text_Address.Text;
+            formData.Phone = Text_Phone.Text;
+
             if (formData.Id != 0)
             {
                 _distributorService.Update(formData);
@@ -65,26 +70,6 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
             DistributorControl._refreshButton.PerformClick();
 
             Close();
-        }
-
-        private void Text_InternalCode_TextChanged(object sender, EventArgs e)
-        {
-            formData.InternalCode = Text_InternalCode.Text;
-        }
-
-        private void Text_Name_TextChanged(object sender, EventArgs e)
-        {
-            formData.Name = Text_Name.Text;
-        }
-
-        private void Text_Address_TextChanged(object sender, EventArgs e)
-        {
-            formData.Address = Text_Address.Text;
-        }
-
-        private void Text_Phone_TextChanged(object sender, EventArgs e)
-        {
-            formData.Phone = Text_Phone.Text;
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
