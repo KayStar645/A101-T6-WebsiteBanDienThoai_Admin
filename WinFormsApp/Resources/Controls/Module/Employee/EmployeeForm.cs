@@ -1,8 +1,7 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
 using SimpleInjector;
-
-
+using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Employee
 {
@@ -42,7 +41,7 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 			Text_InternalCode.Text = formData.InternalCode;
 			Text_Name.Text = formData.Name;
 			Text_Sex.Text = formData.Sex;
-			Text_Birthday.Text = formData.Birthday.ToString();
+			DateTime_Birthday.Text = formData.Birthday.ToString();
 			Text_Phone.Text = formData.Phone;
 		}
 
@@ -51,7 +50,7 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 			Text_InternalCode.Clear();
 			Text_Name.Clear();
 			Text_Sex.Clear();
-			Text_Birthday.Clear();
+			DateTime_Birthday.Value = DateTime.Now;
 			Text_Phone.Clear();
 		}
 
@@ -60,7 +59,7 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 			formData.InternalCode = Text_InternalCode.Text;
 			formData.Name = Text_Name.Text;
 			formData.Sex = Text_Sex.Text;
-			formData.Birthday = DateTime.Parse(Text_Birthday.Text);
+			formData.Birthday = DateTime_Birthday.Value;
 			formData.Phone = Text_Phone.Text;
 
 			if (formData.Id != 0)

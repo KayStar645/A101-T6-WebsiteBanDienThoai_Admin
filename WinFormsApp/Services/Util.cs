@@ -111,5 +111,19 @@ namespace WinFormsApp.Services
                 control.Select(control.Text.Length, 0);
             }
         }
+
+        public static DateTime GetDateItemFromGunaData(DateTime date)
+        {
+            int day = date.Day;
+            int month = date.Month;
+            int year = date.Year;
+            int hour = date.Hour;
+            int minute = date.Minute;
+            int second = date.Second;
+
+            string nDate = year + "-" + month + "-" + day;
+
+            return DateTime.Parse(nDate);
+        }
     }
 }

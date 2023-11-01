@@ -29,27 +29,27 @@
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			FormBorderLess_Distributor = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
 			Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
 			tableLayoutPanel4 = new TableLayoutPanel();
@@ -63,7 +63,6 @@
 			guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
 			label5 = new Label();
 			Text_Sex = new Guna.UI2.WinForms.Guna2TextBox();
-			Text_Birthday = new Guna.UI2.WinForms.Guna2TextBox();
 			guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
 			guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
 			guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -74,6 +73,7 @@
 			Text_Phone = new Guna.UI2.WinForms.Guna2TextBox();
 			guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
 			TableLayoutPanel_Container = new TableLayoutPanel();
+			DateTime_Birthday = new Guna.UI2.WinForms.Guna2DateTimePicker();
 			tableLayoutPanel4.SuspendLayout();
 			tableLayoutPanel2.SuspendLayout();
 			tableLayoutPanel3.SuspendLayout();
@@ -96,7 +96,7 @@
 			Button_Cancel.Animated = true;
 			Button_Cancel.AnimatedGIF = true;
 			Button_Cancel.BorderRadius = 8;
-			Button_Cancel.CustomizableEdges = customizableEdges18;
+			Button_Cancel.CustomizableEdges = customizableEdges22;
 			Button_Cancel.DisabledState.BorderColor = Color.DarkGray;
 			Button_Cancel.DisabledState.CustomBorderColor = Color.DarkGray;
 			Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -106,7 +106,7 @@
 			Button_Cancel.ForeColor = Color.White;
 			Button_Cancel.Location = new Point(11, 18);
 			Button_Cancel.Name = "Button_Cancel";
-			Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges19;
+			Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges23;
 			Button_Cancel.Size = new Size(111, 51);
 			Button_Cancel.TabIndex = 1;
 			Button_Cancel.Text = "Hủy";
@@ -136,7 +136,7 @@
 			Button_Save.Animated = true;
 			Button_Save.AnimatedGIF = true;
 			Button_Save.BorderRadius = 8;
-			Button_Save.CustomizableEdges = customizableEdges20;
+			Button_Save.CustomizableEdges = customizableEdges24;
 			Button_Save.DisabledState.BorderColor = Color.DarkGray;
 			Button_Save.DisabledState.CustomBorderColor = Color.DarkGray;
 			Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -146,7 +146,7 @@
 			Button_Save.ForeColor = Color.White;
 			Button_Save.Location = new Point(680, 18);
 			Button_Save.Name = "Button_Save";
-			Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges21;
+			Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges25;
 			Button_Save.Size = new Size(111, 51);
 			Button_Save.TabIndex = 0;
 			Button_Save.Text = "Lưu";
@@ -164,7 +164,7 @@
 			guna2ImageButton4.Location = new Point(767, 223);
 			guna2ImageButton4.Name = "guna2ImageButton4";
 			guna2ImageButton4.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton4.ShadowDecoration.CustomizableEdges = customizableEdges3;
+			guna2ImageButton4.ShadowDecoration.CustomizableEdges = customizableEdges26;
 			guna2ImageButton4.Size = new Size(26, 62);
 			guna2ImageButton4.TabIndex = 14;
 			// 
@@ -183,7 +183,7 @@
 			// 
 			Text_InternalCode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 			Text_InternalCode.BorderRadius = 8;
-			Text_InternalCode.CustomizableEdges = customizableEdges4;
+			Text_InternalCode.CustomizableEdges = customizableEdges27;
 			Text_InternalCode.DefaultText = "";
 			Text_InternalCode.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			Text_InternalCode.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -199,7 +199,7 @@
 			Text_InternalCode.PasswordChar = '\0';
 			Text_InternalCode.PlaceholderText = "Mã nhân viên";
 			Text_InternalCode.SelectedText = "";
-			Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges5;
+			Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges28;
 			Text_InternalCode.Size = new Size(474, 52);
 			Text_InternalCode.TabIndex = 1;
 			// 
@@ -219,7 +219,7 @@
 			Text_Name.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 			Text_Name.Animated = true;
 			Text_Name.BorderRadius = 8;
-			Text_Name.CustomizableEdges = customizableEdges6;
+			Text_Name.CustomizableEdges = customizableEdges29;
 			Text_Name.DefaultText = "";
 			Text_Name.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			Text_Name.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -235,7 +235,7 @@
 			Text_Name.PasswordChar = '\0';
 			Text_Name.PlaceholderText = "Tên nhân viên";
 			Text_Name.SelectedText = "";
-			Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges7;
+			Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges30;
 			Text_Name.Size = new Size(474, 52);
 			Text_Name.TabIndex = 3;
 			// 
@@ -254,13 +254,13 @@
 			// 
 			guna2ControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			guna2ControlBox1.BackColor = Color.Transparent;
-			guna2ControlBox1.CustomizableEdges = customizableEdges1;
+			guna2ControlBox1.CustomizableEdges = customizableEdges31;
 			guna2ControlBox1.FillColor = Color.Transparent;
 			guna2ControlBox1.IconColor = Color.White;
 			guna2ControlBox1.Location = new Point(746, 0);
 			guna2ControlBox1.Margin = new Padding(0);
 			guna2ControlBox1.Name = "guna2ControlBox1";
-			guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+			guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges32;
 			guna2ControlBox1.Size = new Size(56, 36);
 			guna2ControlBox1.TabIndex = 1;
 			// 
@@ -280,7 +280,7 @@
 			Text_Sex.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 			Text_Sex.Animated = true;
 			Text_Sex.BorderRadius = 8;
-			Text_Sex.CustomizableEdges = customizableEdges8;
+			Text_Sex.CustomizableEdges = customizableEdges33;
 			Text_Sex.DefaultText = "";
 			Text_Sex.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			Text_Sex.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -296,34 +296,9 @@
 			Text_Sex.PasswordChar = '\0';
 			Text_Sex.PlaceholderText = "Giới tính";
 			Text_Sex.SelectedText = "";
-			Text_Sex.ShadowDecoration.CustomizableEdges = customizableEdges9;
+			Text_Sex.ShadowDecoration.CustomizableEdges = customizableEdges34;
 			Text_Sex.Size = new Size(474, 52);
 			Text_Sex.TabIndex = 7;
-			// 
-			// Text_Birthday
-			// 
-			Text_Birthday.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-			Text_Birthday.Animated = true;
-			Text_Birthday.BorderRadius = 8;
-			Text_Birthday.CustomizableEdges = customizableEdges10;
-			Text_Birthday.DefaultText = "";
-			Text_Birthday.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-			Text_Birthday.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-			Text_Birthday.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-			Text_Birthday.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-			Text_Birthday.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-			Text_Birthday.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-			Text_Birthday.ForeColor = Color.Black;
-			Text_Birthday.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-			Text_Birthday.Location = new Point(286, 228);
-			Text_Birthday.Margin = new Padding(3, 5, 3, 5);
-			Text_Birthday.Name = "Text_Birthday";
-			Text_Birthday.PasswordChar = '\0';
-			Text_Birthday.PlaceholderText = "Ngày sinh";
-			Text_Birthday.SelectedText = "";
-			Text_Birthday.ShadowDecoration.CustomizableEdges = customizableEdges11;
-			Text_Birthday.Size = new Size(474, 52);
-			Text_Birthday.TabIndex = 8;
 			// 
 			// guna2ImageButton1
 			// 
@@ -337,7 +312,7 @@
 			guna2ImageButton1.Location = new Point(767, 19);
 			guna2ImageButton1.Name = "guna2ImageButton1";
 			guna2ImageButton1.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+			guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges35;
 			guna2ImageButton1.Size = new Size(26, 62);
 			guna2ImageButton1.TabIndex = 11;
 			// 
@@ -353,7 +328,7 @@
 			guna2ImageButton2.Location = new Point(767, 87);
 			guna2ImageButton2.Name = "guna2ImageButton2";
 			guna2ImageButton2.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges13;
+			guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges36;
 			guna2ImageButton2.Size = new Size(26, 62);
 			guna2ImageButton2.TabIndex = 12;
 			// 
@@ -369,7 +344,7 @@
 			guna2ImageButton3.Location = new Point(767, 155);
 			guna2ImageButton3.Name = "guna2ImageButton3";
 			guna2ImageButton3.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges14;
+			guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges37;
 			guna2ImageButton3.Size = new Size(26, 62);
 			guna2ImageButton3.TabIndex = 13;
 			// 
@@ -417,13 +392,13 @@
 			tableLayoutPanel3.Controls.Add(label4, 0, 2);
 			tableLayoutPanel3.Controls.Add(label5, 0, 3);
 			tableLayoutPanel3.Controls.Add(Text_Sex, 1, 2);
-			tableLayoutPanel3.Controls.Add(Text_Birthday, 1, 3);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton1, 2, 0);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton2, 2, 1);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton3, 2, 2);
 			tableLayoutPanel3.Controls.Add(label6, 0, 4);
 			tableLayoutPanel3.Controls.Add(Text_Phone, 1, 4);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton5, 2, 4);
+			tableLayoutPanel3.Controls.Add(DateTime_Birthday, 1, 3);
 			tableLayoutPanel3.Dock = DockStyle.Fill;
 			tableLayoutPanel3.Location = new Point(0, 68);
 			tableLayoutPanel3.Margin = new Padding(0);
@@ -455,7 +430,7 @@
 			Text_Phone.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 			Text_Phone.Animated = true;
 			Text_Phone.BorderRadius = 8;
-			Text_Phone.CustomizableEdges = customizableEdges15;
+			Text_Phone.CustomizableEdges = customizableEdges38;
 			Text_Phone.DefaultText = "";
 			Text_Phone.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			Text_Phone.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -471,7 +446,7 @@
 			Text_Phone.PasswordChar = '\0';
 			Text_Phone.PlaceholderText = "Số điện thoại";
 			Text_Phone.SelectedText = "";
-			Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges16;
+			Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges39;
 			Text_Phone.Size = new Size(474, 52);
 			Text_Phone.TabIndex = 16;
 			// 
@@ -487,7 +462,7 @@
 			guna2ImageButton5.Location = new Point(767, 291);
 			guna2ImageButton5.Name = "guna2ImageButton5";
 			guna2ImageButton5.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton5.ShadowDecoration.CustomizableEdges = customizableEdges17;
+			guna2ImageButton5.ShadowDecoration.CustomizableEdges = customizableEdges40;
 			guna2ImageButton5.Size = new Size(26, 62);
 			guna2ImageButton5.TabIndex = 17;
 			// 
@@ -508,6 +483,24 @@
 			TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 87F));
 			TableLayoutPanel_Container.Size = new Size(802, 541);
 			TableLayoutPanel_Container.TabIndex = 1;
+			// 
+			// DateTime_Birthday
+			// 
+			DateTime_Birthday.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+			DateTime_Birthday.BackColor = Color.White;
+			DateTime_Birthday.Checked = true;
+			DateTime_Birthday.CustomizableEdges = customizableEdges41;
+			DateTime_Birthday.FillColor = Color.White;
+			DateTime_Birthday.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+			DateTime_Birthday.Format = DateTimePickerFormat.Long;
+			DateTime_Birthday.Location = new Point(286, 231);
+			DateTime_Birthday.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+			DateTime_Birthday.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+			DateTime_Birthday.Name = "DateTime_Birthday";
+			DateTime_Birthday.ShadowDecoration.CustomizableEdges = customizableEdges42;
+			DateTime_Birthday.Size = new Size(474, 45);
+			DateTime_Birthday.TabIndex = 18;
+			DateTime_Birthday.Value = new DateTime(2023, 11, 1, 9, 1, 37, 831);
 			// 
 			// EmployeeForm
 			// 
@@ -543,7 +536,6 @@
 		private Label label4;
 		private Label label5;
 		private Guna.UI2.WinForms.Guna2TextBox Text_Sex;
-		private Guna.UI2.WinForms.Guna2TextBox Text_Birthday;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
@@ -553,5 +545,6 @@
 		private Label label6;
 		private Guna.UI2.WinForms.Guna2TextBox Text_Phone;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton5;
+		private Guna.UI2.WinForms.Guna2DateTimePicker DateTime_Birthday;
 	}
 }
