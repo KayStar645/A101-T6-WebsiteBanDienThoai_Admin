@@ -59,7 +59,7 @@
     <Compile Update="Resources\Controls\Module\Distributor\DistributorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Resources\Controls\Module\EmployeeControl.cs">
+    <Compile Update="Resources\Controls\Module\Employee\EmployeeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Resources\Controls\Module\OrderControl.cs">

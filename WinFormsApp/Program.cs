@@ -89,9 +89,9 @@ namespace WinFormsApp
             admin = new Admin();
             login = new Login(container);
 
-            Application.Run(new frmTest(container));
+            Application.Run(admin);
             //Application.Run(login);
-            //Application.Run(admin);
+            //Application.Run(new frmTest(container));
         }
     }
 
