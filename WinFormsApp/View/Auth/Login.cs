@@ -31,7 +31,7 @@ namespace WinFormsApp.View.Auth
             {
                 MyThread thread = new();
 
-                thread.CloseThisOpenThat(this, new Admin(_container));
+                thread.CloseThisOpenThat(this, new Admin());
             }
             else
             {
