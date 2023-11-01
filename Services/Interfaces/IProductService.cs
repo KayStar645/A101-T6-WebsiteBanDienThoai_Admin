@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs;
-using Domain.ViewModels;
+using Domain.DTOs.More;
+using Domain.ModelViews;
 
 namespace Services.Interfaces
 {
@@ -8,7 +9,7 @@ namespace Services.Interfaces
         Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pCategoryId = null);
 
-        Task<ProductDto> GetDetail(int pId);
+        Task<DetailProductPropertiesDto> GetDetail(int pId);
 
         Task<bool> Create(ProductDto pCreate);
 

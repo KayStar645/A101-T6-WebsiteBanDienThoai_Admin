@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Database.Interfaces;
 using Domain.DTOs;
+using Domain.DTOs.More;
 using Domain.Entities;
-using Domain.ViewModels;
+using Domain.ModelViews;
 using Services.Interfaces;
 
 namespace Services.Services
@@ -21,20 +22,18 @@ namespace Services.Services
         public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pCategoryId = null)
         {
-            var result = await _productRepo.GetAllPropertiesAsync(null, pKeyword, pSort, pPageNumber, pPageSize, pCategoryId);
+            var result = await _productRepo.GetAllPropertiesAsync(pKeyword, pSort, pPageNumber, pPageSize, pCategoryId);
 
             var list = _mapper.Map<List<ProductVM>>(result.list);
 
             return (list, result.totalCount, result.pageNumber);
         }
 
-        public async Task<ProductDto> GetDetail(int pId)
+        public async Task<DetailProductPropertiesDto> GetDetail(int pId)
         {
-            var product = await _productRepo.GetDetailAsync(pId);
+            var detailProduct = await _productRepo.GetDetailPropertiesAsync(pId);
 
-            var productDto = _mapper.Map<ProductDto>(product);
-
-            return productDto;
+            return detailProduct;
         }
 
         public async Task<bool> Create(ProductDto pCreate)
