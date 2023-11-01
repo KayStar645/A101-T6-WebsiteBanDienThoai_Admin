@@ -25,6 +25,8 @@ namespace Services.Profiles
             CreateMap<ProductPropertiesDto, ProductVM>().ReverseMap();
             CreateMap<Specifications, SpecificationsDto>().ReverseMap();
             CreateMap<DetailSpecifications, DetailSpecificationsDto>().ReverseMap();
+            CreateMap<ImportBill, ImportBillDto>().ReverseMap();
+            CreateMap<DetailImport, DetailImportDto>().ReverseMap();
         }
 
         private class StringToListTypeConverter : ITypeConverter<string, List<string>>
