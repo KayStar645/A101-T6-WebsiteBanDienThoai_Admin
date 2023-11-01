@@ -207,6 +207,7 @@ namespace WinFormsApp.View.Screen
             btn.TabIndex = 15;
             btn.Tag = "panel_product" + "|" + category.Name + "|" + category.Id;
             btn.Text = category.Name;
+            btn.BorderRadius = 8;
             btn.TextAlign = HorizontalAlignment.Left;
             btn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             btn.Click += Btn_Category_Click!;
