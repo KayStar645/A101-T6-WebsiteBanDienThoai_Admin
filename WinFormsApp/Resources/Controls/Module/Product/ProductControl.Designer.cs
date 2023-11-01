@@ -334,6 +334,7 @@
             CategoryName.HeaderText = "Danh mục";
             CategoryName.Name = "CategoryName";
             CategoryName.ReadOnly = true;
+            CategoryName.Visible = false;
             // 
             // ColorName
             // 

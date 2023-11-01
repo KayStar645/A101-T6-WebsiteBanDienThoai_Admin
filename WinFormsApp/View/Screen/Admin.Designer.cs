@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -44,33 +44,27 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             button8 = new Button();
             Resize_Admin = new Guna.UI2.WinForms.Guna2ResizeForm(components);
             DragControl_Admin = new Guna.UI2.WinForms.Guna2DragControl(components);
@@ -89,10 +83,6 @@
             Btn_Employee = new Guna.UI2.WinForms.Guna2Button();
             Btn_System = new Guna.UI2.WinForms.Guna2Button();
             Panel_Product = new Guna.UI2.WinForms.Guna2Panel();
-            Btn_PhoneCase = new Guna.UI2.WinForms.Guna2Button();
-            Btn_Charger = new Guna.UI2.WinForms.Guna2Button();
-            Btn_EarPhone = new Guna.UI2.WinForms.Guna2Button();
-            Btn_Phone = new Guna.UI2.WinForms.Guna2Button();
             Btn_Product = new Guna.UI2.WinForms.Guna2Button();
             Panel_MaterData = new Guna.UI2.WinForms.Guna2Panel();
             Btn_Configuration = new Guna.UI2.WinForms.Guna2Button();
@@ -102,6 +92,7 @@
             Btn_Distributor = new Guna.UI2.WinForms.Guna2Button();
             Btn_MasterData = new Guna.UI2.WinForms.Guna2Button();
             guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
+            Btn_Parameter = new Guna.UI2.WinForms.Guna2Button();
             tableLayoutPanel1.SuspendLayout();
             TableLayoutPanel_Content.SuspendLayout();
             Panel_Menu.SuspendLayout();
@@ -167,13 +158,13 @@
             guna2ControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ControlBox1.Animated = true;
             guna2ControlBox1.BackColor = Color.Transparent;
-            guna2ControlBox1.CustomizableEdges = customizableEdges36;
+            guna2ControlBox1.CustomizableEdges = customizableEdges30;
             guna2ControlBox1.FillColor = Color.Transparent;
             guna2ControlBox1.IconColor = Color.White;
             guna2ControlBox1.Location = new Point(846, 0);
             guna2ControlBox1.Margin = new Padding(0);
             guna2ControlBox1.Name = "guna2ControlBox1";
-            guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges37;
+            guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges31;
             guna2ControlBox1.Size = new Size(30, 30);
             guna2ControlBox1.TabIndex = 6;
             // 
@@ -183,13 +174,13 @@
             guna2ControlBox2.Animated = true;
             guna2ControlBox2.BackColor = Color.Transparent;
             guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
-            guna2ControlBox2.CustomizableEdges = customizableEdges38;
+            guna2ControlBox2.CustomizableEdges = customizableEdges32;
             guna2ControlBox2.FillColor = Color.Transparent;
             guna2ControlBox2.IconColor = Color.White;
             guna2ControlBox2.Location = new Point(806, 0);
             guna2ControlBox2.Margin = new Padding(0);
             guna2ControlBox2.Name = "guna2ControlBox2";
-            guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges39;
+            guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges33;
             guna2ControlBox2.Size = new Size(30, 30);
             guna2ControlBox2.TabIndex = 7;
             // 
@@ -199,12 +190,12 @@
             guna2ControlBox3.Animated = true;
             guna2ControlBox3.BackColor = Color.Transparent;
             guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
-            guna2ControlBox3.CustomizableEdges = customizableEdges40;
+            guna2ControlBox3.CustomizableEdges = customizableEdges34;
             guna2ControlBox3.FillColor = Color.Transparent;
             guna2ControlBox3.IconColor = Color.White;
             guna2ControlBox3.Location = new Point(763, 3);
             guna2ControlBox3.Name = "guna2ControlBox3";
-            guna2ControlBox3.ShadowDecoration.CustomizableEdges = customizableEdges41;
+            guna2ControlBox3.ShadowDecoration.CustomizableEdges = customizableEdges35;
             guna2ControlBox3.Size = new Size(30, 29);
             guna2ControlBox3.TabIndex = 8;
             // 
@@ -235,7 +226,7 @@
             guna2ImageButton1.Name = "guna2ImageButton1";
             guna2ImageButton1.Padding = new Padding(0, 0, 12, 0);
             guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges36;
             guna2ImageButton1.Size = new Size(62, 60);
             guna2ImageButton1.TabIndex = 0;
             // 
@@ -289,7 +280,7 @@
             Panel_System.Controls.Add(Btn_System);
             Panel_System.CustomizableEdges = customizableEdges7;
             Panel_System.Dock = DockStyle.Top;
-            Panel_System.Location = new Point(0, 498);
+            Panel_System.Location = new Point(0, 378);
             Panel_System.Margin = new Padding(2);
             Panel_System.MaximumSize = new Size(248, 120);
             Panel_System.MinimumSize = new Size(248, 40);
@@ -394,6 +385,7 @@
             Btn_System.ShadowDecoration.CustomizableEdges = customizableEdges6;
             Btn_System.Size = new Size(248, 40);
             Btn_System.TabIndex = 9;
+            Btn_System.Tag = "parent";
             Btn_System.Text = "Hệ thống";
             Btn_System.TextAlign = HorizontalAlignment.Left;
             Btn_System.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -401,157 +393,17 @@
             // 
             // Panel_Product
             // 
-            Panel_Product.Controls.Add(Btn_PhoneCase);
-            Panel_Product.Controls.Add(Btn_Charger);
-            Panel_Product.Controls.Add(Btn_EarPhone);
-            Panel_Product.Controls.Add(Btn_Phone);
             Panel_Product.Controls.Add(Btn_Product);
-            Panel_Product.CustomizableEdges = customizableEdges19;
+            Panel_Product.CustomizableEdges = customizableEdges11;
             Panel_Product.Dock = DockStyle.Top;
-            Panel_Product.Location = new Point(0, 298);
+            Panel_Product.Location = new Point(0, 338);
             Panel_Product.Margin = new Padding(2);
             Panel_Product.MaximumSize = new Size(248, 200);
             Panel_Product.MinimumSize = new Size(248, 40);
             Panel_Product.Name = "Panel_Product";
-            Panel_Product.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            Panel_Product.Size = new Size(248, 200);
+            Panel_Product.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            Panel_Product.Size = new Size(248, 40);
             Panel_Product.TabIndex = 16;
-            // 
-            // Btn_PhoneCase
-            // 
-            Btn_PhoneCase.Animated = true;
-            Btn_PhoneCase.AnimatedGIF = true;
-            Btn_PhoneCase.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            Btn_PhoneCase.CheckedState.FillColor = Color.RoyalBlue;
-            Btn_PhoneCase.CheckedState.ForeColor = Color.White;
-            Btn_PhoneCase.CustomizableEdges = customizableEdges9;
-            Btn_PhoneCase.DisabledState.BorderColor = Color.Transparent;
-            Btn_PhoneCase.DisabledState.CustomBorderColor = Color.Transparent;
-            Btn_PhoneCase.DisabledState.FillColor = Color.Transparent;
-            Btn_PhoneCase.DisabledState.ForeColor = Color.Transparent;
-            Btn_PhoneCase.Dock = DockStyle.Top;
-            Btn_PhoneCase.FillColor = Color.Transparent;
-            Btn_PhoneCase.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_PhoneCase.ForeColor = Color.Black;
-            Btn_PhoneCase.HoverState.FillColor = Color.Transparent;
-            Btn_PhoneCase.ImageAlign = HorizontalAlignment.Left;
-            Btn_PhoneCase.ImageSize = new Size(10, 10);
-            Btn_PhoneCase.Location = new Point(0, 160);
-            Btn_PhoneCase.Margin = new Padding(0);
-            Btn_PhoneCase.Name = "Btn_PhoneCase";
-            Btn_PhoneCase.Padding = new Padding(26, 0, 0, 0);
-            Btn_PhoneCase.PressedColor = Color.RoyalBlue;
-            Btn_PhoneCase.PressedDepth = 100;
-            Btn_PhoneCase.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            Btn_PhoneCase.Size = new Size(248, 40);
-            Btn_PhoneCase.TabIndex = 18;
-            Btn_PhoneCase.Tag = "panel_product";
-            Btn_PhoneCase.Text = "Ốp lưng";
-            Btn_PhoneCase.TextAlign = HorizontalAlignment.Left;
-            Btn_PhoneCase.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Btn_PhoneCase.Click += Btn_PhoneCase_Click;
-            // 
-            // Btn_Charger
-            // 
-            Btn_Charger.Animated = true;
-            Btn_Charger.AnimatedGIF = true;
-            Btn_Charger.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            Btn_Charger.CheckedState.FillColor = Color.RoyalBlue;
-            Btn_Charger.CheckedState.ForeColor = Color.White;
-            Btn_Charger.CustomizableEdges = customizableEdges11;
-            Btn_Charger.DisabledState.BorderColor = Color.Transparent;
-            Btn_Charger.DisabledState.CustomBorderColor = Color.Transparent;
-            Btn_Charger.DisabledState.FillColor = Color.Transparent;
-            Btn_Charger.DisabledState.ForeColor = Color.Transparent;
-            Btn_Charger.Dock = DockStyle.Top;
-            Btn_Charger.FillColor = Color.Transparent;
-            Btn_Charger.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_Charger.ForeColor = Color.Black;
-            Btn_Charger.HoverState.FillColor = Color.Transparent;
-            Btn_Charger.ImageAlign = HorizontalAlignment.Left;
-            Btn_Charger.ImageSize = new Size(10, 10);
-            Btn_Charger.Location = new Point(0, 120);
-            Btn_Charger.Margin = new Padding(0);
-            Btn_Charger.Name = "Btn_Charger";
-            Btn_Charger.Padding = new Padding(26, 0, 0, 0);
-            Btn_Charger.PressedColor = Color.RoyalBlue;
-            Btn_Charger.PressedDepth = 100;
-            Btn_Charger.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            Btn_Charger.Size = new Size(248, 40);
-            Btn_Charger.TabIndex = 17;
-            Btn_Charger.Tag = "panel_product";
-            Btn_Charger.Text = "Củ sạc";
-            Btn_Charger.TextAlign = HorizontalAlignment.Left;
-            Btn_Charger.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Btn_Charger.Click += Btn_Charger_Click;
-            // 
-            // Btn_EarPhone
-            // 
-            Btn_EarPhone.Animated = true;
-            Btn_EarPhone.AnimatedGIF = true;
-            Btn_EarPhone.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            Btn_EarPhone.CheckedState.FillColor = Color.RoyalBlue;
-            Btn_EarPhone.CheckedState.ForeColor = Color.White;
-            Btn_EarPhone.CustomizableEdges = customizableEdges13;
-            Btn_EarPhone.DisabledState.BorderColor = Color.Transparent;
-            Btn_EarPhone.DisabledState.CustomBorderColor = Color.Transparent;
-            Btn_EarPhone.DisabledState.FillColor = Color.Transparent;
-            Btn_EarPhone.DisabledState.ForeColor = Color.Transparent;
-            Btn_EarPhone.Dock = DockStyle.Top;
-            Btn_EarPhone.FillColor = Color.Transparent;
-            Btn_EarPhone.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_EarPhone.ForeColor = Color.Black;
-            Btn_EarPhone.HoverState.FillColor = Color.Transparent;
-            Btn_EarPhone.ImageAlign = HorizontalAlignment.Left;
-            Btn_EarPhone.ImageSize = new Size(10, 10);
-            Btn_EarPhone.Location = new Point(0, 80);
-            Btn_EarPhone.Margin = new Padding(0);
-            Btn_EarPhone.Name = "Btn_EarPhone";
-            Btn_EarPhone.Padding = new Padding(26, 0, 0, 0);
-            Btn_EarPhone.PressedColor = Color.RoyalBlue;
-            Btn_EarPhone.PressedDepth = 100;
-            Btn_EarPhone.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            Btn_EarPhone.Size = new Size(248, 40);
-            Btn_EarPhone.TabIndex = 16;
-            Btn_EarPhone.Tag = "panel_product";
-            Btn_EarPhone.Text = "Tai nghe";
-            Btn_EarPhone.TextAlign = HorizontalAlignment.Left;
-            Btn_EarPhone.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Btn_EarPhone.Click += Btn_EarPhone_Click;
-            // 
-            // Btn_Phone
-            // 
-            Btn_Phone.Animated = true;
-            Btn_Phone.AnimatedGIF = true;
-            Btn_Phone.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            Btn_Phone.CheckedState.FillColor = Color.RoyalBlue;
-            Btn_Phone.CheckedState.ForeColor = Color.White;
-            Btn_Phone.CustomizableEdges = customizableEdges15;
-            Btn_Phone.DisabledState.BorderColor = Color.Transparent;
-            Btn_Phone.DisabledState.CustomBorderColor = Color.Transparent;
-            Btn_Phone.DisabledState.FillColor = Color.Transparent;
-            Btn_Phone.DisabledState.ForeColor = Color.Transparent;
-            Btn_Phone.Dock = DockStyle.Top;
-            Btn_Phone.FillColor = Color.Transparent;
-            Btn_Phone.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_Phone.ForeColor = Color.Black;
-            Btn_Phone.HoverState.FillColor = Color.Transparent;
-            Btn_Phone.ImageAlign = HorizontalAlignment.Left;
-            Btn_Phone.ImageSize = new Size(10, 10);
-            Btn_Phone.Location = new Point(0, 40);
-            Btn_Phone.Margin = new Padding(0);
-            Btn_Phone.Name = "Btn_Phone";
-            Btn_Phone.Padding = new Padding(26, 0, 0, 0);
-            Btn_Phone.PressedColor = Color.RoyalBlue;
-            Btn_Phone.PressedDepth = 100;
-            Btn_Phone.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            Btn_Phone.Size = new Size(248, 40);
-            Btn_Phone.TabIndex = 15;
-            Btn_Phone.Tag = "panel_product";
-            Btn_Phone.Text = "Điện thoại";
-            Btn_Phone.TextAlign = HorizontalAlignment.Left;
-            Btn_Phone.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Btn_Phone.Click += Btn_Phone_Click;
             // 
             // Btn_Product
             // 
@@ -562,7 +414,7 @@
             Btn_Product.Checked = true;
             Btn_Product.CheckedState.FillColor = Color.Transparent;
             Btn_Product.CheckedState.Image = Properties.Resources.arrow_down;
-            Btn_Product.CustomizableEdges = customizableEdges17;
+            Btn_Product.CustomizableEdges = customizableEdges9;
             Btn_Product.DisabledState.BorderColor = Color.Transparent;
             Btn_Product.DisabledState.CustomBorderColor = Color.Transparent;
             Btn_Product.DisabledState.FillColor = Color.Transparent;
@@ -579,9 +431,10 @@
             Btn_Product.Margin = new Padding(0);
             Btn_Product.Name = "Btn_Product";
             Btn_Product.PressedColor = Color.Transparent;
-            Btn_Product.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            Btn_Product.ShadowDecoration.CustomizableEdges = customizableEdges10;
             Btn_Product.Size = new Size(248, 40);
-            Btn_Product.TabIndex = 9;
+            Btn_Product.TabIndex = 999999;
+            Btn_Product.Tag = "parent";
             Btn_Product.Text = "Sản phẩm";
             Btn_Product.TextAlign = HorizontalAlignment.Left;
             Btn_Product.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -589,21 +442,22 @@
             // 
             // Panel_MaterData
             // 
+            Panel_MaterData.Controls.Add(Btn_Parameter);
             Panel_MaterData.Controls.Add(Btn_Configuration);
             Panel_MaterData.Controls.Add(Btn_CouponEnter);
             Panel_MaterData.Controls.Add(Btn_Order);
             Panel_MaterData.Controls.Add(Btn_Promotion);
             Panel_MaterData.Controls.Add(Btn_Distributor);
             Panel_MaterData.Controls.Add(Btn_MasterData);
-            Panel_MaterData.CustomizableEdges = customizableEdges33;
+            Panel_MaterData.CustomizableEdges = customizableEdges27;
             Panel_MaterData.Dock = DockStyle.Top;
             Panel_MaterData.Location = new Point(0, 60);
             Panel_MaterData.Margin = new Padding(2);
-            Panel_MaterData.MaximumSize = new Size(248, 238);
+            Panel_MaterData.MaximumSize = new Size(248, 278);
             Panel_MaterData.MinimumSize = new Size(248, 40);
             Panel_MaterData.Name = "Panel_MaterData";
-            Panel_MaterData.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            Panel_MaterData.Size = new Size(248, 238);
+            Panel_MaterData.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            Panel_MaterData.Size = new Size(248, 278);
             Panel_MaterData.TabIndex = 10;
             // 
             // Btn_Configuration
@@ -613,7 +467,7 @@
             Btn_Configuration.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             Btn_Configuration.CheckedState.FillColor = Color.RoyalBlue;
             Btn_Configuration.CheckedState.ForeColor = Color.White;
-            Btn_Configuration.CustomizableEdges = customizableEdges21;
+            Btn_Configuration.CustomizableEdges = customizableEdges15;
             Btn_Configuration.DisabledState.BorderColor = Color.Transparent;
             Btn_Configuration.DisabledState.CustomBorderColor = Color.Transparent;
             Btn_Configuration.DisabledState.FillColor = Color.Transparent;
@@ -631,7 +485,7 @@
             Btn_Configuration.Padding = new Padding(26, 0, 0, 0);
             Btn_Configuration.PressedColor = Color.RoyalBlue;
             Btn_Configuration.PressedDepth = 100;
-            Btn_Configuration.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            Btn_Configuration.ShadowDecoration.CustomizableEdges = customizableEdges16;
             Btn_Configuration.Size = new Size(248, 40);
             Btn_Configuration.TabIndex = 19;
             Btn_Configuration.Tag = "panel_masterData";
@@ -647,7 +501,7 @@
             Btn_CouponEnter.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             Btn_CouponEnter.CheckedState.FillColor = Color.RoyalBlue;
             Btn_CouponEnter.CheckedState.ForeColor = Color.White;
-            Btn_CouponEnter.CustomizableEdges = customizableEdges23;
+            Btn_CouponEnter.CustomizableEdges = customizableEdges17;
             Btn_CouponEnter.DisabledState.BorderColor = Color.Transparent;
             Btn_CouponEnter.DisabledState.CustomBorderColor = Color.Transparent;
             Btn_CouponEnter.DisabledState.FillColor = Color.Transparent;
@@ -665,14 +519,13 @@
             Btn_CouponEnter.Padding = new Padding(26, 0, 0, 0);
             Btn_CouponEnter.PressedColor = Color.RoyalBlue;
             Btn_CouponEnter.PressedDepth = 100;
-            Btn_CouponEnter.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            Btn_CouponEnter.ShadowDecoration.CustomizableEdges = customizableEdges18;
             Btn_CouponEnter.Size = new Size(248, 40);
             Btn_CouponEnter.TabIndex = 18;
             Btn_CouponEnter.Tag = "panel_masterData";
             Btn_CouponEnter.Text = "Hóa đơn nhập";
             Btn_CouponEnter.TextAlign = HorizontalAlignment.Left;
             Btn_CouponEnter.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Btn_CouponEnter.Click += Btn_CouponEnter_Click;
             // 
             // Btn_Order
             // 
@@ -681,7 +534,7 @@
             Btn_Order.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             Btn_Order.CheckedState.FillColor = Color.RoyalBlue;
             Btn_Order.CheckedState.ForeColor = Color.White;
-            Btn_Order.CustomizableEdges = customizableEdges25;
+            Btn_Order.CustomizableEdges = customizableEdges19;
             Btn_Order.DisabledState.BorderColor = Color.Transparent;
             Btn_Order.DisabledState.CustomBorderColor = Color.Transparent;
             Btn_Order.DisabledState.FillColor = Color.Transparent;
@@ -699,7 +552,7 @@
             Btn_Order.Padding = new Padding(26, 0, 0, 0);
             Btn_Order.PressedColor = Color.RoyalBlue;
             Btn_Order.PressedDepth = 100;
-            Btn_Order.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            Btn_Order.ShadowDecoration.CustomizableEdges = customizableEdges20;
             Btn_Order.Size = new Size(248, 40);
             Btn_Order.TabIndex = 17;
             Btn_Order.Tag = "panel_masterData";
@@ -715,7 +568,7 @@
             Btn_Promotion.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             Btn_Promotion.CheckedState.FillColor = Color.RoyalBlue;
             Btn_Promotion.CheckedState.ForeColor = Color.White;
-            Btn_Promotion.CustomizableEdges = customizableEdges27;
+            Btn_Promotion.CustomizableEdges = customizableEdges21;
             Btn_Promotion.DisabledState.BorderColor = Color.Transparent;
             Btn_Promotion.DisabledState.CustomBorderColor = Color.Transparent;
             Btn_Promotion.DisabledState.FillColor = Color.Transparent;
@@ -733,7 +586,7 @@
             Btn_Promotion.Padding = new Padding(26, 0, 0, 0);
             Btn_Promotion.PressedColor = Color.RoyalBlue;
             Btn_Promotion.PressedDepth = 100;
-            Btn_Promotion.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            Btn_Promotion.ShadowDecoration.CustomizableEdges = customizableEdges22;
             Btn_Promotion.Size = new Size(248, 40);
             Btn_Promotion.TabIndex = 16;
             Btn_Promotion.Tag = "panel_masterData";
@@ -749,7 +602,7 @@
             Btn_Distributor.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             Btn_Distributor.CheckedState.FillColor = Color.RoyalBlue;
             Btn_Distributor.CheckedState.ForeColor = Color.White;
-            Btn_Distributor.CustomizableEdges = customizableEdges29;
+            Btn_Distributor.CustomizableEdges = customizableEdges23;
             Btn_Distributor.DisabledState.BorderColor = Color.Transparent;
             Btn_Distributor.DisabledState.CustomBorderColor = Color.Transparent;
             Btn_Distributor.DisabledState.FillColor = Color.Transparent;
@@ -767,7 +620,7 @@
             Btn_Distributor.Padding = new Padding(26, 0, 0, 0);
             Btn_Distributor.PressedColor = Color.RoyalBlue;
             Btn_Distributor.PressedDepth = 100;
-            Btn_Distributor.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            Btn_Distributor.ShadowDecoration.CustomizableEdges = customizableEdges24;
             Btn_Distributor.Size = new Size(248, 40);
             Btn_Distributor.TabIndex = 15;
             Btn_Distributor.Tag = "panel_masterData";
@@ -784,7 +637,7 @@
             Btn_MasterData.Checked = true;
             Btn_MasterData.CheckedState.FillColor = Color.Transparent;
             Btn_MasterData.CheckedState.Image = Properties.Resources.arrow_down;
-            Btn_MasterData.CustomizableEdges = customizableEdges31;
+            Btn_MasterData.CustomizableEdges = customizableEdges25;
             Btn_MasterData.DisabledState.BorderColor = Color.Transparent;
             Btn_MasterData.DisabledState.CustomBorderColor = Color.Transparent;
             Btn_MasterData.DisabledState.FillColor = Color.Transparent;
@@ -801,9 +654,10 @@
             Btn_MasterData.Margin = new Padding(0);
             Btn_MasterData.Name = "Btn_MasterData";
             Btn_MasterData.PressedColor = Color.Transparent;
-            Btn_MasterData.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            Btn_MasterData.ShadowDecoration.CustomizableEdges = customizableEdges26;
             Btn_MasterData.Size = new Size(248, 40);
             Btn_MasterData.TabIndex = 9;
+            Btn_MasterData.Tag = "parent";
             Btn_MasterData.Text = "Dữ liệu nguồn";
             Btn_MasterData.TextAlign = HorizontalAlignment.Left;
             Btn_MasterData.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -824,9 +678,43 @@
             guna2ImageButton2.Name = "guna2ImageButton2";
             guna2ImageButton2.Padding = new Padding(0, 0, 12, 0);
             guna2ImageButton2.PressedState.ImageSize = new Size(64, 64);
-            guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges35;
+            guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges29;
             guna2ImageButton2.Size = new Size(248, 60);
             guna2ImageButton2.TabIndex = 0;
+            // 
+            // Btn_Parameter
+            // 
+            Btn_Parameter.Animated = true;
+            Btn_Parameter.AnimatedGIF = true;
+            Btn_Parameter.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            Btn_Parameter.CheckedState.FillColor = Color.RoyalBlue;
+            Btn_Parameter.CheckedState.ForeColor = Color.White;
+            Btn_Parameter.CustomizableEdges = customizableEdges13;
+            Btn_Parameter.DisabledState.BorderColor = Color.Transparent;
+            Btn_Parameter.DisabledState.CustomBorderColor = Color.Transparent;
+            Btn_Parameter.DisabledState.FillColor = Color.Transparent;
+            Btn_Parameter.DisabledState.ForeColor = Color.Transparent;
+            Btn_Parameter.Dock = DockStyle.Top;
+            Btn_Parameter.FillColor = Color.Transparent;
+            Btn_Parameter.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Parameter.ForeColor = Color.Black;
+            Btn_Parameter.HoverState.FillColor = Color.Transparent;
+            Btn_Parameter.ImageAlign = HorizontalAlignment.Left;
+            Btn_Parameter.ImageSize = new Size(10, 10);
+            Btn_Parameter.Location = new Point(0, 240);
+            Btn_Parameter.Margin = new Padding(0);
+            Btn_Parameter.Name = "Btn_Parameter";
+            Btn_Parameter.Padding = new Padding(26, 0, 0, 0);
+            Btn_Parameter.PressedColor = Color.RoyalBlue;
+            Btn_Parameter.PressedDepth = 100;
+            Btn_Parameter.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            Btn_Parameter.Size = new Size(248, 40);
+            Btn_Parameter.TabIndex = 20;
+            Btn_Parameter.Tag = "panel_masterData";
+            Btn_Parameter.Text = "Thông số kỹ thuật";
+            Btn_Parameter.TextAlign = HorizontalAlignment.Left;
+            Btn_Parameter.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            Btn_Parameter.Click += Btn_Parameter_Click;
             // 
             // Admin
             // 
@@ -868,10 +756,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_Employee;
         private Guna.UI2.WinForms.Guna2Button Btn_System;
         private Guna.UI2.WinForms.Guna2Panel Panel_Product;
-        private Guna.UI2.WinForms.Guna2Button Btn_PhoneCase;
-        private Guna.UI2.WinForms.Guna2Button Btn_Charger;
-        private Guna.UI2.WinForms.Guna2Button Btn_EarPhone;
-        private Guna.UI2.WinForms.Guna2Button Btn_Phone;
         private Guna.UI2.WinForms.Guna2Button Btn_Product;
         private Guna.UI2.WinForms.Guna2Panel Panel_MaterData;
         private Guna.UI2.WinForms.Guna2Button Btn_Configuration;
@@ -886,5 +770,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
         private Label Label_Heading;
+        private Guna.UI2.WinForms.Guna2Button Btn_Parameter;
     }
 }

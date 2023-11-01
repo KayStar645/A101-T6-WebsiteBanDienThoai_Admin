@@ -10,9 +10,7 @@ namespace WinFormsApp.Services
         {
             pBody.Controls.Clear();
 
-            pControl.Dock = DockStyle.Fill;
-
-            pBody.Controls.Add(pControl);
+            AddControl(pBody, pControl, DockStyle.Fill);
         }
 
         public static void Scroll(bool isScroll, Guna2Panel container)
@@ -124,6 +122,12 @@ namespace WinFormsApp.Services
             string nDate = year + "-" + month + "-" + day;
 
             return DateTime.Parse(nDate);
+        }
+
+        public static void AddControl(Control parent, Control chil, DockStyle dockStyle)
+        {
+            chil.Dock = dockStyle;
+            parent.Controls.Add(chil);
         }
     }
 }
