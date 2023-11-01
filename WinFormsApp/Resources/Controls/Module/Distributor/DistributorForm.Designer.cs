@@ -218,7 +218,6 @@
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges5;
             Text_InternalCode.Size = new Size(339, 39);
             Text_InternalCode.TabIndex = 1;
-            Text_InternalCode.TextChanged += Text_InternalCode_TextChanged;
             // 
             // label3
             // 
@@ -255,7 +254,6 @@
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges7;
             Text_Name.Size = new Size(339, 39);
             Text_Name.TabIndex = 3;
-            Text_Name.TextChanged += Text_Name_TextChanged;
             // 
             // label4
             // 
@@ -303,7 +301,6 @@
             Text_Address.ShadowDecoration.CustomizableEdges = customizableEdges9;
             Text_Address.Size = new Size(339, 39);
             Text_Address.TabIndex = 7;
-            Text_Address.TextChanged += Text_Address_TextChanged;
             // 
             // Text_Phone
             // 
@@ -329,7 +326,6 @@
             Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges11;
             Text_Phone.Size = new Size(339, 39);
             Text_Phone.TabIndex = 8;
-            Text_Phone.TextChanged += Text_Phone_TextChanged;
             // 
             // guna2ImageButton1
             // 
