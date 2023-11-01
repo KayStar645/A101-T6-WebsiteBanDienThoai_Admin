@@ -13,7 +13,7 @@ namespace WinFormsApp.Services
             AddControl(pBody, pControl, DockStyle.Fill);
         }
 
-        public static void Scroll(bool isScroll, Guna2Panel container)
+        public static void Scroll(bool isScroll, Control container)
         {
 
             if (isScroll)

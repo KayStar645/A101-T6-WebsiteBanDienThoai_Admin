@@ -50,6 +50,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -63,8 +65,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             button8 = new Button();
             Resize_Admin = new Guna.UI2.WinForms.Guna2ResizeForm(components);
             DragControl_Admin = new Guna.UI2.WinForms.Guna2DragControl(components);
@@ -85,6 +85,7 @@
             Panel_Product = new Guna.UI2.WinForms.Guna2Panel();
             Btn_Product = new Guna.UI2.WinForms.Guna2Button();
             Panel_MaterData = new Guna.UI2.WinForms.Guna2Panel();
+            Btn_Parameter = new Guna.UI2.WinForms.Guna2Button();
             Btn_Configuration = new Guna.UI2.WinForms.Guna2Button();
             Btn_CouponEnter = new Guna.UI2.WinForms.Guna2Button();
             Btn_Order = new Guna.UI2.WinForms.Guna2Button();
@@ -92,7 +93,6 @@
             Btn_Distributor = new Guna.UI2.WinForms.Guna2Button();
             Btn_MasterData = new Guna.UI2.WinForms.Guna2Button();
             guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
-            Btn_Parameter = new Guna.UI2.WinForms.Guna2Button();
             tableLayoutPanel1.SuspendLayout();
             TableLayoutPanel_Content.SuspendLayout();
             Panel_Menu.SuspendLayout();
@@ -398,7 +398,6 @@
             Panel_Product.Dock = DockStyle.Top;
             Panel_Product.Location = new Point(0, 338);
             Panel_Product.Margin = new Padding(2);
-            Panel_Product.MaximumSize = new Size(248, 200);
             Panel_Product.MinimumSize = new Size(248, 40);
             Panel_Product.Name = "Panel_Product";
             Panel_Product.ShadowDecoration.CustomizableEdges = customizableEdges12;
@@ -459,6 +458,40 @@
             Panel_MaterData.ShadowDecoration.CustomizableEdges = customizableEdges28;
             Panel_MaterData.Size = new Size(248, 278);
             Panel_MaterData.TabIndex = 10;
+            // 
+            // Btn_Parameter
+            // 
+            Btn_Parameter.Animated = true;
+            Btn_Parameter.AnimatedGIF = true;
+            Btn_Parameter.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            Btn_Parameter.CheckedState.FillColor = Color.RoyalBlue;
+            Btn_Parameter.CheckedState.ForeColor = Color.White;
+            Btn_Parameter.CustomizableEdges = customizableEdges13;
+            Btn_Parameter.DisabledState.BorderColor = Color.Transparent;
+            Btn_Parameter.DisabledState.CustomBorderColor = Color.Transparent;
+            Btn_Parameter.DisabledState.FillColor = Color.Transparent;
+            Btn_Parameter.DisabledState.ForeColor = Color.Transparent;
+            Btn_Parameter.Dock = DockStyle.Top;
+            Btn_Parameter.FillColor = Color.Transparent;
+            Btn_Parameter.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Parameter.ForeColor = Color.Black;
+            Btn_Parameter.HoverState.FillColor = Color.Transparent;
+            Btn_Parameter.ImageAlign = HorizontalAlignment.Left;
+            Btn_Parameter.ImageSize = new Size(10, 10);
+            Btn_Parameter.Location = new Point(0, 240);
+            Btn_Parameter.Margin = new Padding(0);
+            Btn_Parameter.Name = "Btn_Parameter";
+            Btn_Parameter.Padding = new Padding(26, 0, 0, 0);
+            Btn_Parameter.PressedColor = Color.RoyalBlue;
+            Btn_Parameter.PressedDepth = 100;
+            Btn_Parameter.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            Btn_Parameter.Size = new Size(248, 40);
+            Btn_Parameter.TabIndex = 20;
+            Btn_Parameter.Tag = "panel_masterData";
+            Btn_Parameter.Text = "Thông số kỹ thuật";
+            Btn_Parameter.TextAlign = HorizontalAlignment.Left;
+            Btn_Parameter.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            Btn_Parameter.Click += Btn_Parameter_Click;
             // 
             // Btn_Configuration
             // 
@@ -681,40 +714,6 @@
             guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges29;
             guna2ImageButton2.Size = new Size(248, 60);
             guna2ImageButton2.TabIndex = 0;
-            // 
-            // Btn_Parameter
-            // 
-            Btn_Parameter.Animated = true;
-            Btn_Parameter.AnimatedGIF = true;
-            Btn_Parameter.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            Btn_Parameter.CheckedState.FillColor = Color.RoyalBlue;
-            Btn_Parameter.CheckedState.ForeColor = Color.White;
-            Btn_Parameter.CustomizableEdges = customizableEdges13;
-            Btn_Parameter.DisabledState.BorderColor = Color.Transparent;
-            Btn_Parameter.DisabledState.CustomBorderColor = Color.Transparent;
-            Btn_Parameter.DisabledState.FillColor = Color.Transparent;
-            Btn_Parameter.DisabledState.ForeColor = Color.Transparent;
-            Btn_Parameter.Dock = DockStyle.Top;
-            Btn_Parameter.FillColor = Color.Transparent;
-            Btn_Parameter.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_Parameter.ForeColor = Color.Black;
-            Btn_Parameter.HoverState.FillColor = Color.Transparent;
-            Btn_Parameter.ImageAlign = HorizontalAlignment.Left;
-            Btn_Parameter.ImageSize = new Size(10, 10);
-            Btn_Parameter.Location = new Point(0, 240);
-            Btn_Parameter.Margin = new Padding(0);
-            Btn_Parameter.Name = "Btn_Parameter";
-            Btn_Parameter.Padding = new Padding(26, 0, 0, 0);
-            Btn_Parameter.PressedColor = Color.RoyalBlue;
-            Btn_Parameter.PressedDepth = 100;
-            Btn_Parameter.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            Btn_Parameter.Size = new Size(248, 40);
-            Btn_Parameter.TabIndex = 20;
-            Btn_Parameter.Tag = "panel_masterData";
-            Btn_Parameter.Text = "Thông số kỹ thuật";
-            Btn_Parameter.TextAlign = HorizontalAlignment.Left;
-            Btn_Parameter.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Btn_Parameter.Click += Btn_Parameter_Click;
             // 
             // Admin
             // 
