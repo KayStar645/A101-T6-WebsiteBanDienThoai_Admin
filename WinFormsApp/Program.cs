@@ -71,7 +71,6 @@ namespace WinFormsApp
                 var options = new PasswordHasherOptions
                 {
                     CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2,
-                    // Các cài đặt khác
                 };
 
                 return Options.Create(options);
@@ -87,14 +86,13 @@ namespace WinFormsApp
             container.Register<IProductParametersService, ProductParametersService>();
             container.Register<IProductService, ProductService>();
 
-            admin = new Admin(container);
+            admin = new Admin();
             login = new Login(container);
-			
 
-			//Application.Run(new frmTest(container));
-			//Application.Run(login);
-			Application.Run(admin);
-		}
+            Application.Run(new frmTest(container));
+            //Application.Run(login);
+            //Application.Run(new frmTest(container));
+        }
     }
 
 }

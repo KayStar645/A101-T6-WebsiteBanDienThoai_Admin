@@ -1,6 +1,6 @@
-﻿namespace Domain.ViewModels
+﻿namespace Domain.DTOs.More
 {
-    public class ProductVM
+    public class DetailProductPropertiesDto
     {
         public int Id { get; set; }
 
@@ -8,17 +8,11 @@
 
         public string? Name { get; set; }
 
-        public List<string>? Images { get; set; }
+        public string? Images { get; set; }
 
         public int? Quantity { get; set; }
 
         public long? Price { get; set; }
-
-        public int? CategoryId { get; set; }
-
-        public string? CategoryName { get; set; }
-
-        public string? CategoryInternalCode { get; set; }
 
         public int? ColorId { get; set; }
 
@@ -29,5 +23,9 @@
         public int? CapacityId { get; set; }
 
         public string? CapacityName { get; set; }
+
+        public List<SpecificationsDto>? SpecificationsDtos { get; set; }
+
+
     }
 }

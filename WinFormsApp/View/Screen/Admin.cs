@@ -1,39 +1,38 @@
 ﻿using SimpleInjector;
-using WinFormsApp.Resources.Controls.Module;
+using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
-using WinFormsApp.Resources.Controls.Module.Employee;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
 {
-	public partial class Admin : Form
-	{
-		private readonly Container _container;
+    public partial class Admin : Form
+    {
+        private readonly Container _container;
 
-		public Admin(Container container)
-		{
-			InitializeComponent();
+        public Admin(Container container)
+        {
+            InitializeComponent();
 
-			_container = container;
+            _container = container;
 
-			OnInit();
-		}
+            OnInit();
+        }
 
-		private void OnInit()
-		{
-			Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
-		}
+        private void OnInit()
+        {
+            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
+        }
 
 		private void Btn_MasterData_Click(object sender, EventArgs e)
 		{
 			Util.Scroll(Btn_MasterData.Checked, Panel_MaterData);
 		}
 
-		private void Btn_Distributor_Click(object sender, EventArgs e)
-		{
-			Label_Heading.Text = "Danh sách nhà cung cấp";
-			Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
-		}
+        private void Btn_Distributor_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Danh sách nhà cung cấp";
+            Util.LoadControl(Panel_Body, new DistributorControl(Program.container));
+        }
 
 		private void Btn_Product_Click(object sender, EventArgs e)
 		{
@@ -60,10 +59,10 @@ namespace WinFormsApp.View.Screen
 			Label_Heading.Text = "Danh sách hóa đơn nhập";
 		}
 
-		private void Btn_Phone_Click(object sender, EventArgs e)
-		{
-			Label_Heading.Text = "Danh sách điện thoại";
-		}
+        private void Btn_Phone_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Danh sách điện thoại";
+        }
 
 		private void Btn_EarPhone_Click(object sender, EventArgs e)
 		{

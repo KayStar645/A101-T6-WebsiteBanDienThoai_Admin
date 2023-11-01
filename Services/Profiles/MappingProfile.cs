@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Domain.DTOs;
+using Domain.DTOs.More;
 using Domain.Entities;
-using Domain.ViewModels;
+using Domain.ModelViews;
 
 namespace Services.Profiles
 {

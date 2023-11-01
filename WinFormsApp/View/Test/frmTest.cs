@@ -1,5 +1,5 @@
 ﻿using Domain.DTOs;
-using Domain.ViewModels;
+using Domain.ModelViews;
 using Services.Common;
 using Services.Interfaces;
 using SimpleInjector;
@@ -33,7 +33,7 @@ namespace WinFormsApp.View.Test
 
         private async Task Test2()
         {
-            var result = await _productService.GetList();
+            var result = await _productService.GetDetail(2);
 
             int a = 1;
 

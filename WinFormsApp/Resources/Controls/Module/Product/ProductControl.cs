@@ -1,38 +1,40 @@
 ﻿using Controls.UI;
 using Domain.DTOs;
+using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
-using SimpleInjector;
-using WinFormsApp.Services;
 
-namespace WinFormsApp.Resources.Controls.Module.Distributor
+namespace WinFormsApp.Resources.Controls.Module.Product
 {
-    public partial class DistributorControl : UserControl
+    public partial class ProductControl : UserControl
     {
         public static Guna2Button _refreshButton = new Guna2Button();
 
-        private readonly IDistributorService _distributorService;
-        (List<DistributorDto> list, int totalCount, int pageNumber) _result;
+        private readonly IProductService _distributorService;
+        (List<ProductVM> list, int totalCount, int pageNumber) _result;
         int _currPage = 1;
 
-        public DistributorControl()
+        public ProductControl()
         {
             InitializeComponent();
 
-            _distributorService = Program.container.GetInstance<IDistributorService>();
+            _distributorService = Program.container.GetInstance<IProductService>();
+
+            _refreshButton = Button_Refresh;
 
             InitializeAsync();
         }
 
-        public DistributorControl(List<DistributorDto> distributors)
+        public ProductControl(List<ProductVM> products)
         {
+
             InitializeComponent();
 
-            _distributorService = Program.container.GetInstance<IDistributorService>();
+            _distributorService = Program.container.GetInstance<IProductService>();
 
             _refreshButton = Button_Refresh;
 
-            LoadData(distributors);
+            LoadData(products);
         }
 
         private async void InitializeAsync()
@@ -82,43 +84,43 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
             LoadData(_result.list);
         }
 
-        public void LoadData(List<DistributorDto> distributors)
+        public void LoadData(List<ProductVM> products)
         {
-            DataGridView_Listing.DataSource = distributors;
+            DataGridView_Listing.DataSource = products;
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
         {
-            Util.LoadForm(new DistributorForm(Program.container), true);
+            //Util.LoadForm(new ProductForm(_container), true);
         }
 
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
-            DistributorDto formData = new()
+            ProductDto formData = new()
             {
-                Id = int.Parse(selected["Id"].FormattedValue.ToString()),
-                InternalCode = selected["InternalCode"].FormattedValue.ToString(),
-                Name = selected["_Name"].FormattedValue.ToString(),
-                Address = selected["Address"].FormattedValue.ToString(),
-                Phone = selected["Phone"].FormattedValue.ToString(),
+                Id = int.Parse(selected["Id"].Value.ToString()),
+                InternalCode = selected["InternalCode"].Value.ToString(),
+                Name = selected["Name"].Value.ToString(),
+                Price = int.Parse(selected["Price"].Value.ToString()),
+                Quantity = int.Parse(selected["Quantity"].Value.ToString()),
             };
 
             if (e.ColumnIndex == 0)
             {
-                Util.LoadForm(new DistributorForm(Program.container, formData), true);
+                //Util.LoadForm(new ProductForm(_container, formData), true);
             }
             else if (e.ColumnIndex == 1)
             {
-                DialogResult dialogResult = Dialog_Confirm.Show();
+                //DialogResult dialogResult = Dialog_Confirm.Show();
 
-                if (dialogResult != DialogResult.Yes)
-                {
-                    return;
-                }
+                //if (dialogResult != DialogResult.Yes)
+                //{
+                //    return;
+                //}
 
-                _distributorService.Delete(formData.Id);
-                Button_Refresh.PerformClick();
+                //_distributorService.Delete(formData.Id);
+                //Button_Refresh.PerformClick();
             }
         }
 

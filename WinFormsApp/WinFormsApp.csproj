@@ -68,9 +68,6 @@
     <Compile Update="Resources\Controls\Module\PriceHistoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Resources\Controls\Module\ProductControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Resources\Controls\Module\PromotionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
