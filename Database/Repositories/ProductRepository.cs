@@ -81,11 +81,7 @@ namespace Database.Repositories
                 }
                 string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
-                string query = $"select P.Id, P.InternalCode, P.Name, P.Price, P.Quantity, " +
-                                        $"STUFF((SELECT ', ' + Images " +
-                                        $"FROM Product " +
-                                        $"WHERE Id = P.Id " +
-                                        $"FOR XML PATH('')), 1, 2, '') as Images, " +
+                string query = $"select P.Id, P.InternalCode, P.Name, P.Price, P.Quantity, P.Images, " +
                                       $"P.CategoryId, Cg.InternalCode as CategoryInternalCode, Cg.Name as CategoryName, " +
                                       $"P.ColorId, Cl.InternalCode as ColorInternalCode, Cl.Name as ColorName, " +
                                       $"P.CapacityId, Cc.Name as CapacityName " +
