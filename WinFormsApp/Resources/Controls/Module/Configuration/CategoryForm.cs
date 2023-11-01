@@ -41,18 +41,18 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             Text_InternalCode.Clear();
         }
 
-        private void Button_Save_Click(object sender, EventArgs e)
+        private async void Button_Save_Click(object sender, EventArgs e)
         {
             _formData.Name = Text_Name.Text;
             _formData.InternalCode = Text_InternalCode.Text;
 
             if (_formData.Id != 0)
             {
-                _categoryService.Update(_formData);
+                await _categoryService.Update(_formData);
             }
             else
             {
-                _categoryService.Create(_formData);
+                await _categoryService.Create(_formData);
             }
 
             ConfigurationControl._refreahCategoryButotn.PerformClick();

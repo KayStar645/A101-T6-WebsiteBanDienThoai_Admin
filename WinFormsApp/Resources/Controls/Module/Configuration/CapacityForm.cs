@@ -40,17 +40,17 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             Text_Name.Clear();
         }
 
-        private void Button_Save_Click(object sender, EventArgs e)
+        private async void Button_Save_Click(object sender, EventArgs e)
         {
             _formData.Name = Text_Name.Text;
 
             if (_formData.Id != 0)
             {
-                _distributorService.Update(_formData);
+                await _distributorService.Update(_formData);
             }
             else
             {
-                _distributorService.Create(_formData);
+                await _distributorService.Create(_formData);
             }
 
             ConfigurationControl._refreahCapacityButotn.PerformClick();
