@@ -64,7 +64,9 @@ namespace Database.Repositories
 
         #region FUNCTION
 
-        public async Task<(List<ProductPropertiesDto> list, int totalCount, int pageNumber)> GetAllPropertiesAsync(List<string> pFields = null, string? pKeyword = "", string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10)
+        public async Task<(List<ProductPropertiesDto> list, int totalCount, int pageNumber)> GetAllPropertiesAsync(
+                                        List<string> pFields = null, string? pKeyword = "", string? pSort = "Id", 
+                                        int? pPageNumber = 1, int? pPageSize = 10, int? pCategoryId = null)
         {
             try
             {
@@ -79,6 +81,13 @@ namespace Database.Repositories
                         searchs.Add($"{item} like N'%{pKeyword}%'");
                     }
                 }
+
+                string whereCategory = "";
+                if(pCategoryId != null)
+                {
+                    whereCategory = $" and CategoryId = {pCategoryId} ";
+                }   
+                
                 string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
                 string query = $"select P.Id, P.InternalCode, P.Name, P.Price, P.Quantity, P.Images, " +
@@ -89,7 +98,7 @@ namespace Database.Repositories
                                $"left join Capacity as Cc on P.CapacityId = Cc.Id " +
                                $"left join Category as Cg on P.CategoryId = Cg.Id " +
                                $"left join Color as Cl on P.ColorId = Cl.Id " +
-                               $"where {string.Join(" and ", filter)} {resultSearchs} " +
+                               $"where {string.Join(" and ", filter)} {resultSearchs} {whereCategory}" +
                                $"order by {pSort} " +
                                $"offset {(pPageNumber - 1) * pPageSize} rows " +
                                $"fetch next {pPageSize} rows only";
