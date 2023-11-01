@@ -17,22 +17,13 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<(List<DetailSpecificationsDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
+        public async Task<List<DetailSpecificationsDto>> GetListBySpecificationsIdAsync(int pSpecificationsId)
         {
-            var result = await _detailSpecificationsRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
+            var result = await _detailSpecificationsRepo.GetBySpecificationsIdAsync(pSpecificationsId);
 
-            var list = _mapper.Map<List<DetailSpecificationsDto>>(result.list);
+            var list = _mapper.Map<List<DetailSpecificationsDto>>(result);
 
-            return (list, result.totalCount, result.pageNumber);
-        }
-
-        public async Task<DetailSpecificationsDto> GetDetail(int pId)
-        {
-            var detailSpecifications = await _detailSpecificationsRepo.GetDetailAsync(pId);
-
-            var detailSpecificationsDto = _mapper.Map<DetailSpecificationsDto>(detailSpecifications);
-
-            return detailSpecificationsDto;
+            return list;
         }
 
         public async Task<bool> Create(DetailSpecificationsDto pCreate)

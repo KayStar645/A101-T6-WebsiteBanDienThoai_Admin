@@ -26,15 +26,6 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
-        public async Task<SpecificationsDto> GetDetail(int pId)
-        {
-            var specifications = await _specificationsRepo.GetDetailAsync(pId);
-
-            var specificationsDto = _mapper.Map<SpecificationsDto>(specifications);
-
-            return specificationsDto;
-        }
-
         public async Task<bool> Create(SpecificationsDto pCreate)
         {
             var specifications = _mapper.Map<Specifications>(pCreate);
