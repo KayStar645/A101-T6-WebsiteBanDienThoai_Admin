@@ -99,7 +99,7 @@ namespace Database.Repositories
                                                         pFields.Intersect(_fields).ToList();
 
                 string query = $"SELECT Id, {string.Join(", ", fields)} " +
-                               $"FROM {_model} " +
+                               $"FROM \"{_model}\" " +
                                $"WHERE id = {pId} and IsDeleted = 0";
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
@@ -173,7 +173,7 @@ namespace Database.Repositories
                     {
                         PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
 
-                        if (property.Name != null)
+                        if (property.GetValue(pModel) != null)
                         {
                             value.Add($"{fieldName} = N'{property.GetValue(pModel)}'");
                         }
