@@ -26,13 +26,13 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
-        public async Task<bool> Create(SpecificationsDto pCreate)
+        public async Task<int> Create(SpecificationsDto pCreate)
         {
             var specifications = _mapper.Map<Specifications>(pCreate);
 
             var result = await _specificationsRepo.AddAsync(specifications);
 
-            return result > 0;
+            return result;
         }
 
         public async Task<bool> Update(SpecificationsDto pUpdate)

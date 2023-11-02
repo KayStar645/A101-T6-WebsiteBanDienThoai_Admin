@@ -1,7 +1,12 @@
-﻿using Guna.UI2.WinForms;
+﻿using Domain.DTOs;
+using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
+using Services.Interfaces;
+using Services.Services;
 using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Resources.Controls.Module.Employee;
+using WinFormsApp.Resources.Controls.Module.Parameter;
 using WinFormsApp.Resources.Controls.Module.Product;
 using WinFormsApp.Services;
 
@@ -15,11 +20,8 @@ namespace WinFormsApp.View.Screen
         {
             InitializeComponent();
 
-            OnInit();
-        }
+            LoadCategory();
 
-        private void OnInit()
-        {
             Util.LoadControl(Panel_Body, new DistributorControl());
         }
 
@@ -31,48 +33,72 @@ namespace WinFormsApp.View.Screen
 
             if (_currPanel != "panel_masterData")
             {
-                for (int i = 1; i < masterDataControls.Count; i++)
+                for (int i = 0; i < masterDataControls.Count; i++)
                 {
                     Guna2Button btn = (Guna2Button)masterDataControls[i];
 
-                    btn.Checked = false;
+                    if (btn.Tag!.ToString()!.Split("|")[0] != "parent")
+                    {
+                        btn.Checked = false;
+                    }
                 }
             }
 
             if (_currPanel != "panel_product")
             {
-                for (int i = 1; i < productControls.Count; i++)
+                for (int i = 0; i < productControls.Count; i++)
                 {
                     Guna2Button btn = (Guna2Button)productControls[i];
 
-                    btn.Checked = false;
+                    if (btn.Tag!.ToString()!.Split("|")[0] != "parent")
+                    {
+                        btn.Checked = false;
+                    }
                 }
             }
 
             if (_currPanel != "panel_system")
             {
-                for (int i = 1; i < systemControls.Count; i++)
+                for (int i = 0; i < systemControls.Count; i++)
                 {
                     Guna2Button btn = (Guna2Button)systemControls[i];
 
-                    btn.Checked = false;
+                    if (btn.Tag!.ToString()!.Split("|")[0] != "parent")
+                    {
+                        btn.Checked = false;
+                    }
                 }
+            }
+
+            if (_currPanel == "panel_masterData")
+            {
+                Btn_MasterData.Checked = true;
+            }
+
+            if (_currPanel == "panel_product")
+            {
+                Btn_Product.Checked = true;
+            }
+
+            if (_currPanel == "panel_system")
+            {
+                Btn_System.Checked = true;
             }
         }
 
         private void Btn_MasterData_Click(object sender, EventArgs e)
         {
-            Util.Scroll(Btn_MasterData.Checked, Panel_MaterData);
+            Util.Collpase(!Btn_MasterData.Checked, Panel_MaterData);
         }
 
         private void Btn_Product_Click(object sender, EventArgs e)
         {
-            Util.Scroll(Btn_Product.Checked, Panel_Product);
+            Util.Collpase(!Btn_Product.Checked, Panel_Product);
         }
 
         private void Btn_System_Click(object sender, EventArgs e)
         {
-            Util.Scroll(Btn_System.Checked, Panel_System);
+            Util.Collpase(!Btn_System.Checked, Panel_System);
         }
 
         private void Btn_Distributor_Click(object sender, EventArgs e)
@@ -80,7 +106,7 @@ namespace WinFormsApp.View.Screen
             Label_Heading.Text = "Danh sách nhà cung cấp";
             Util.LoadControl(Panel_Body, new DistributorControl());
 
-            _currPanel = Btn_Distributor.Tag.ToString();
+            _currPanel = Btn_Distributor.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
 
@@ -88,7 +114,9 @@ namespace WinFormsApp.View.Screen
         {
             Label_Heading.Text = "Danh sách chương trình khuyến mãi";
 
-            _currPanel = Btn_Promotion.Tag.ToString();
+            _currPanel = Btn_Promotion.Tag!.ToString()!.Split("|")[0];
+
+            bool x = Btn_MasterData.Checked;
             LoadMenu();
         }
 
@@ -96,48 +124,7 @@ namespace WinFormsApp.View.Screen
         {
             Label_Heading.Text = "Danh sách đơn hàng";
 
-            _currPanel = Btn_Order.Tag.ToString();
-            LoadMenu();
-        }
-
-        private void Btn_CouponEnter_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách hóa đơn nhập";
-
-            _currPanel = Btn_CouponEnter.Tag.ToString();
-            LoadMenu();
-        }
-
-        private void Btn_Phone_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách điện thoại";
-            Util.LoadControl(Panel_Body, new ProductControl());
-
-            _currPanel = Btn_Phone.Tag.ToString();
-            LoadMenu();
-        }
-
-        private void Btn_EarPhone_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách tai nghe";
-
-            _currPanel = Btn_EarPhone.Tag.ToString();
-            LoadMenu();
-        }
-
-        private void Btn_Charger_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách củ sạc";
-
-            _currPanel = Btn_Charger.Tag.ToString();
-            LoadMenu();
-        }
-
-        private void Btn_PhoneCase_Click(object sender, EventArgs e)
-        {
-            Label_Heading.Text = "Danh sách ớp lưng";
-
-            _currPanel = Btn_PhoneCase.Tag.ToString();
+            _currPanel = Btn_Order.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
 
@@ -146,7 +133,7 @@ namespace WinFormsApp.View.Screen
             Label_Heading.Text = "Danh sách nhân viên";
             Util.LoadControl(Panel_Body, new EmployeeControl());
 
-            _currPanel = Btn_Employee.Tag.ToString();
+            _currPanel = Btn_Employee.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
 
@@ -154,7 +141,7 @@ namespace WinFormsApp.View.Screen
         {
             Label_Heading.Text = "Danh sách khách hàng";
 
-            _currPanel = Btn_Customer.Tag.ToString();
+            _currPanel = Btn_Customer.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
 
@@ -163,7 +150,88 @@ namespace WinFormsApp.View.Screen
             Label_Heading.Text = "Cấu hình chung";
             Util.LoadControl(Panel_Body, new ConfigurationControl());
 
-            _currPanel = Btn_Configuration.Tag.ToString();
+            _currPanel = Btn_Configuration.Tag!.ToString()!.Split("|")[0];
+            LoadMenu();
+        }
+
+        public async void LoadCategory()
+        {
+            ICategoryService _categoryService = Program.container.GetInstance<ICategoryService>();
+            var _result = await _categoryService.GetList();
+
+            foreach (var item in _result.list)
+            {
+                Guna2Button btn = CategoryButton(item);
+
+                Util.AddControl(Panel_Product, btn, DockStyle.Top);
+
+                int panelHeight = Panel_Product.Height + 40;
+
+                Panel_Product.MaximumSize = new Size(248, panelHeight);
+                Panel_Product.Height = panelHeight;
+            }
+
+            Btn_Product.SendToBack();
+        }
+
+        private Guna2Button CategoryButton(CategoryDto category)
+        {
+            Guna2Button btn = new();
+            CustomizableEdges edge1 = new();
+            CustomizableEdges edge2 = new();
+
+            btn.Animated = true;
+            btn.AnimatedGIF = true;
+            btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            btn.CheckedState.FillColor = Color.RoyalBlue;
+            btn.CheckedState.ForeColor = Color.White;
+            btn.CustomizableEdges = edge1;
+            btn.DisabledState.BorderColor = Color.Transparent;
+            btn.DisabledState.CustomBorderColor = Color.Transparent;
+            btn.DisabledState.FillColor = Color.Transparent;
+            btn.DisabledState.ForeColor = Color.Transparent;
+            btn.FillColor = Color.Transparent;
+            btn.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn.ForeColor = Color.Black;
+            btn.HoverState.FillColor = Color.Transparent;
+            btn.ImageAlign = HorizontalAlignment.Left;
+            btn.ImageSize = new Size(10, 10);
+            btn.Location = new Point(0, 40);
+            btn.Margin = new Padding(0);
+            btn.Name = "Btn_Phone";
+            btn.Padding = new Padding(26, 0, 0, 0);
+            btn.PressedColor = Color.RoyalBlue;
+            btn.PressedDepth = 100;
+            btn.ShadowDecoration.CustomizableEdges = edge2;
+            btn.Size = new Size(248, 40);
+            btn.TabIndex = 15;
+            btn.Tag = "panel_product" + "|" + category.Name + "|" + category.Id;
+            btn.Text = category.Name;
+            btn.BorderRadius = 8;
+            btn.TextAlign = HorizontalAlignment.Left;
+            btn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            btn.Click += Btn_Category_Click!;
+
+            return btn;
+        }
+
+        private void Btn_Category_Click(object sender, EventArgs e)
+        {
+            Guna2Button btn = (Guna2Button)sender;
+
+            Label_Heading.Text = "Danh sách " + btn.Tag!.ToString()!.Split("|")[1];
+            Util.LoadControl(Panel_Body, new ProductControl(int.Parse(btn.Tag!.ToString()!.Split("|")[2])));
+
+            _currPanel = btn.Tag!.ToString()!.Split("|")[0];
+            LoadMenu();
+        }
+
+        private void Btn_Parameter_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Thông số kỹ thuật";
+            Util.LoadControl(Panel_Body, new ParameterControl());
+
+            _currPanel = Btn_Parameter.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
     }
