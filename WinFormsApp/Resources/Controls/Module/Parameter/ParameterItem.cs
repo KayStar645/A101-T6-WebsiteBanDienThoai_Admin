@@ -104,6 +104,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         private async void Btn_SaveParent_ClickAsync(object sender, EventArgs e)
         {
             formData.Name = Text_Parent.Text;
+            formData.Id = _parent.Id;
 
             if (_parent.Id == 0)
             {
