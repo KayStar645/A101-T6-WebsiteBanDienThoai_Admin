@@ -10,21 +10,19 @@ namespace WinFormsApp.Services
         {
             pBody.Controls.Clear();
 
-            pControl.Dock = DockStyle.Fill;
-
-            pBody.Controls.Add(pControl);
+            AddControl(pBody, pControl, DockStyle.Fill);
         }
 
-        public static void Scroll(bool isScroll, Guna2Panel container)
+        public static void Collpase(bool collapse, Control container)
         {
 
-            if (isScroll)
+            if (collapse)
             {
-                container.Size = container.MaximumSize;
+                container.Size = container.MinimumSize;
             }
             else
             {
-                container.Size = container.MinimumSize;
+                container.Size = container.MaximumSize;
             }
         }
 
@@ -124,6 +122,12 @@ namespace WinFormsApp.Services
             string nDate = year + "-" + month + "-" + day;
 
             return DateTime.Parse(nDate);
+        }
+
+        public static void AddControl(Control parent, Control chil, DockStyle dockStyle)
+        {
+            chil.Dock = dockStyle;
+            parent.Controls.Add(chil);
         }
     }
 }

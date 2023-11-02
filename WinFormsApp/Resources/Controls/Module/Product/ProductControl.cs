@@ -1,5 +1,6 @@
 ﻿using Controls.UI;
 using Domain.DTOs;
+using Domain.Entities;
 using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
@@ -8,44 +9,29 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 {
     public partial class ProductControl : UserControl
     {
-        public static Guna2Button _refreshButton = new Guna2Button();
-
-        private readonly IProductService _distributorService;
+        public static Guna2Button _refreshButton = new();
+        int _categoryId = 0;
+        private readonly IProductService _productService;
         (List<ProductVM> list, int totalCount, int pageNumber) _result;
         int _currPage = 1;
 
-        public ProductControl()
+        public ProductControl(int categoryId)
         {
             InitializeComponent();
 
-            _distributorService = Program.container.GetInstance<IProductService>();
-
+            _productService = Program.container.GetInstance<IProductService>();
             _refreshButton = Button_Refresh;
+            _categoryId = categoryId;
 
-            InitializeAsync();
+            LoadProduct();
+            Paginator();
         }
 
-        public ProductControl(List<ProductVM> products)
+        private async void LoadProduct()
         {
-
-            InitializeComponent();
-
-            _distributorService = Program.container.GetInstance<IProductService>();
-
-            _refreshButton = Button_Refresh;
-
-            LoadData(products);
-        }
-
-        private async void InitializeAsync()
-        {
-            _result = await _distributorService.GetList("Name", 1, 15, "");
+            _result = await _productService.GetList("Name", _currPage, 15, Text_Search.Text, _categoryId);
 
             DataGridView_Listing.DataSource = _result.list;
-
-            _refreshButton = Button_Refresh;
-
-            Paginator();
         }
 
         private void Paginator()
@@ -61,8 +47,8 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
             if (_result.pageNumber > 0)
             {
-                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
+                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
+                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
             }
         }
 
@@ -70,23 +56,13 @@ namespace WinFormsApp.Resources.Controls.Module.Product
         {
             Guna2Button button = (Guna2Button)sender;
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.White;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.Black;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.White;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.Black;
 
             _currPage = int.Parse(button.Text);
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
-
-            _result = await _distributorService.GetList("Name", _currPage, 15, "");
-
-
-            LoadData(_result.list);
-        }
-
-        public void LoadData(List<ProductVM> products)
-        {
-            DataGridView_Listing.DataSource = products;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
@@ -119,16 +95,14 @@ namespace WinFormsApp.Resources.Controls.Module.Product
                 //    return;
                 //}
 
-                //_distributorService.Delete(formData.Id);
+                //_productService.Delete(formData.Id);
                 //Button_Refresh.PerformClick();
             }
         }
 
         private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            _result = await _distributorService.GetList("Name", 1, 15, "");
-
-            LoadData(_result.list);
+            LoadProduct();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
@@ -143,9 +117,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
             Paginator();
 
-            _result = await _distributorService.GetList("Name", _currPage, 15, Text_Search.Text);
-
-            LoadData(_result.list);
+            LoadProduct();
         }
     }
 }
