@@ -18,11 +18,11 @@ namespace WinFormsApp.Services
 
             if (collapse)
             {
-                container.Size = container.MaximumSize;
+                container.Size = container.MinimumSize;
             }
             else
             {
-                container.Size = container.MinimumSize;
+                container.Size = container.MaximumSize;
             }
         }
 

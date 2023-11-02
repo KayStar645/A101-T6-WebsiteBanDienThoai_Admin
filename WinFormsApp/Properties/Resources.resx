@@ -118,22 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="arrow_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\arrow-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="require" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\require.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrow-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\arrow-left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Image\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\arrow-down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrow_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\arrow-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrow-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\arrow-left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_arrow_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\ic_arrow_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow-up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\arrow-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

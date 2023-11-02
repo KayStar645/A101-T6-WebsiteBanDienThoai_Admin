@@ -13,7 +13,6 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         IDetailSpecificationsService _detailSpecificationsService;
         List<DetailSpecificationsDto> _details;
         SpecificationsDto _parent;
-        int _childKey = new Random().Next(9999);
         SpecificationsDto formData = new();
 
         public ParameterItem(SpecificationsDto parent)
@@ -47,12 +46,12 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             if (collapse)
             {
-                LoadDetail(_parent.Id);
-                Util.Collpase(collapse, this);
+                Util.Collpase(true, this);
             }
             else
             {
-                Util.Collpase(collapse, this);
+                LoadDetail(_parent.Id);
+                Util.Collpase(false, this);
             }
 
             MaximumSize = new Size(0, Height - 70);
@@ -63,8 +62,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         {
             Guna2Button btn = (Guna2Button)sender;
             TableLayoutPanel parent = (TableLayoutPanel)btn.Parent!;
-            Guna2TextBox name = (Guna2TextBox)parent.Controls[2];
-            Guna2TextBox value = (Guna2TextBox)parent.Controls[1];
+            Guna2TextBox name = (Guna2TextBox)parent.Controls[3];
+            Guna2TextBox value = (Guna2TextBox)parent.Controls[2];
 
             formData.Name = name.Text;
 
@@ -82,7 +81,6 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
                     };
 
                     await _detailSpecificationsService.Create(formChildData);
-
                 }
             }
             else
@@ -97,6 +95,9 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
                 await _detailSpecificationsService.Create(formChildData);
 
             }
+
+            Util.Collpase(false, this);
+            Util.Collpase(true, this);
 
             LoadDetail(_parent.Id);
         }
@@ -114,17 +115,15 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             {
                 await _specificationsService.Update(formData);
             }
+
+            ParameterControl._refreshBtn.PerformClick();
         }
 
         private async void LoadDetail(int specificationsId)
         {
             _details = await _detailSpecificationsService.GetListBySpecificationsIdAsync(specificationsId);
-            int controlCount = Controls.Count;
 
-            for (int i = 0; i < controlCount - 1; i++)
-            {
-                Controls.RemoveAt(0);
-            }
+            EmptyChild();
 
             for (int i = 0; i < _details.Count; i++)
             {
@@ -145,36 +144,47 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             TableLayoutPanel_Header.SendToBack();
         }
 
+        private void EmptyChild()
+        {
+            int controlCount = Controls.Count;
+
+            for (int i = 0; i < controlCount - 1; i++)
+            {
+                Controls.RemoveAt(0);
+            }
+        }
+
         private TableLayoutPanel Child(DetailSpecificationsDto? item)
         {
             TableLayoutPanel child = new();
             DetailSpecificationsDto? nItem = item;
 
-            if (nItem == null)
+            nItem ??= new()
             {
-                nItem = new()
-                {
-                    Description = string.Empty,
-                    Name = string.Empty,
-                };
-            }
+                Id = 0,
+                Description = string.Empty,
+                Name = string.Empty,
+            };
 
-            child.ColumnCount = 3;
+
+            child.BackColor = Color.Transparent;
+            child.ColumnCount = 4;
             child.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
             child.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             child.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
-            child.Controls.Add(ChildBtn(), 0, 0);
+            child.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
+            child.Controls.Add(ChildBtnCreate(), 0, 0);
+            child.Controls.Add(ChildBtnRemove(nItem.Id), 0, 0);
             child.Controls.Add(Childvalue(nItem.Description), 0, 0);
             child.Controls.Add(ChildName(nItem.Name), 0, 0);
             child.Dock = DockStyle.Top;
             child.Location = new Point(0, 52);
             child.Margin = new Padding(3, 8, 3, 3);
-            child.Name = "TableLayoutPanel_Container" + _childKey;
             child.Padding = new Padding(0, 8, 0, 0);
             child.RowCount = 1;
             child.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            child.Size = new Size(586, 50);
-            child.TabIndex = 8;
+            child.Size = new Size(589, 50);
+            child.TabIndex = 13;
 
             return child;
         }
@@ -196,7 +206,6 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             name.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             name.Location = new Point(3, 11);
-            name.Name = "Text_Name" + _childKey;
             name.PasswordChar = '\0';
             name.PlaceholderText = "Tên thông số";
             name.SelectedText = "";
@@ -227,7 +236,6 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             value.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             value.Location = new Point(222, 11);
             value.Margin = new Padding(12, 3, 3, 3);
-            value.Name = "Text_Value" + _childKey;
             value.PasswordChar = '\0';
             value.PlaceholderText = "Giá trị thông số";
             value.SelectedText = "";
@@ -240,12 +248,13 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             return value;
         }
 
-        private Guna2Button ChildBtn()
+        private Guna2Button ChildBtnCreate()
         {
             Guna2Button btn = new();
             CustomizableEdges edge1 = new();
             CustomizableEdges edge2 = new();
 
+            btn.Anchor = AnchorStyles.None;
             btn.AnimatedGIF = true;
             btn.BorderRadius = 8;
             btn.CustomizableEdges = edge1;
@@ -253,19 +262,64 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             btn.DisabledState.CustomBorderColor = Color.DarkGray;
             btn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btn.Dock = DockStyle.Fill;
             btn.FillColor = Color.FromArgb(100, 88, 255);
             btn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn.ForeColor = Color.White;
-            btn.Location = new Point(498, 11);
-            btn.Name = "Btn_Create" + _childKey;
+            btn.Location = new Point(474, 11);
             btn.ShadowDecoration.CustomizableEdges = edge2;
-            btn.Size = new Size(55, 36);
-            btn.TabIndex = 2;
+            btn.Size = new Size(48, 36);
+            btn.TabIndex = 3;
             btn.Text = "Lưu";
             btn.Click += Button_Create_Click;
 
             return btn;
+        }
+
+        private Guna2Button ChildBtnRemove(int id)
+        {
+            Guna2Button btn = new();
+            CustomizableEdges edge1 = new();
+            CustomizableEdges edge2 = new();
+
+            btn.Anchor = AnchorStyles.None;
+            btn.AnimatedGIF = true;
+            btn.BorderRadius = 8;
+            btn.CustomizableEdges = edge1;
+            btn.DisabledState.BorderColor = Color.DarkGray;
+            btn.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn.FillColor = Color.Crimson;
+            btn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn.ForeColor = Color.White;
+            btn.Location = new Point(534, 11);
+            btn.ShadowDecoration.CustomizableEdges = edge2;
+            btn.Size = new Size(48, 36);
+            btn.TabIndex = 2;
+            btn.Text = "Xóa";
+            btn.Click += Btn_ChildRemove_Click;
+            btn.Tag = id;
+
+            return btn;
+        }
+
+        private async void Btn_ChildRemove_Click(object sender, EventArgs e)
+        {
+            Guna2Button btn = (Guna2Button)sender;
+
+            await _detailSpecificationsService.Delete(int.Parse(btn.Tag!.ToString()));
+
+            Util.Collpase(false, this);
+            Util.Collpase(true, this);
+
+            LoadDetail(_parent.Id);
+        }
+
+        private async void Btn_RemoveParent_Click(object sender, EventArgs e)
+        {
+            await _specificationsService.Delete(_parent.Id);
+
+            ParameterControl._refreshBtn.PerformClick();
         }
     }
 }
