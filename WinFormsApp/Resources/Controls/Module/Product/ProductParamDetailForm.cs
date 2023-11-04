@@ -55,8 +55,8 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             {
                 foreach (DataGridViewRow item in DataGridView_Parameter.Rows)
                 {
-                    int id = int.Parse(item.Cells["Parameter_Id"].Value.ToString()!);
-                    var found = _productParameter.Find(t => t.Id == id);
+                    int detailSpecificationId = int.Parse(item.Cells["DetailSpecification_Id"].Value.ToString()!);
+                    var found = _productParameter.Find(t => t.DetailSpecificationsId == detailSpecificationId);
 
                     if (found == null)
                     {
@@ -75,23 +75,6 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void Button_Save_Click(object sender, EventArgs e)
         {
-            DataGridViewRowCollection rows = DataGridView_Parameter.Rows;
-
-            _productParameter.Clear();
-
-            foreach (DataGridViewRow item in rows)
-            {
-                if (item.Cells["Select"].FormattedValue != null && bool.Parse(item.Cells["Select"].FormattedValue.ToString()!))
-                {
-                    _productParameter.Add(new ProductParametersDto()
-                    {
-                        Id = int.Parse(item.Cells["Parameter_Id"].Value.ToString()!),
-                        DetailSpecificationsId = int.Parse(item.Cells["SpecificationsId"].Value.ToString()!),
-                        ProductId = 0
-                    });
-                }
-            }
-
             onSaveCallback(_index, _productParameter);
 
             Close();
@@ -101,14 +84,27 @@ namespace WinFormsApp.Resources.Controls.Module.Product
         {
             DataGridViewRow row = DataGridView_Parameter.CurrentRow;
             bool choose = bool.Parse(row.Cells["Select"].FormattedValue.ToString()!);
+            int detailSpecificationId = int.Parse(row.Cells["DetailSpecification_Id"].Value.ToString()!);
 
             if (choose)
             {
                 row.Cells["Select"].Value = "False";
+
+                var i = _productParameter.FindIndex(t => t.DetailSpecificationsId == detailSpecificationId);
+
+
+                if(i > -1) {
+                    _productParameter.RemoveAt(i);
+                }
             }
             else
             {
                 row.Cells["Select"].Value = "True";
+
+                _productParameter.Add(new ProductParametersDto()
+                {
+                    DetailSpecificationsId = detailSpecificationId,
+                });
             }
         }
     }

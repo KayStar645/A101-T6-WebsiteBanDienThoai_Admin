@@ -85,7 +85,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
             if (e.ColumnIndex == 0)
             {
-                Util.LoadControl(this, new ProductDetailControl(formData));
+                Util.LoadControl(this, new ProductDetailControl(formData.Id));
             }
             else if (e.ColumnIndex == 1)
             {

@@ -45,7 +45,7 @@
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
             panel1 = new Panel();
             DataGridView_Parameter = new Guna.UI2.WinForms.Guna2DataGridView();
-            Parameter_Id = new DataGridViewTextBoxColumn();
+            DetailSpecification_Id = new DataGridViewTextBoxColumn();
             Select = new DataGridViewCheckBoxColumn();
             SpecificationsId = new DataGridViewTextBoxColumn();
             Parameter_Name = new DataGridViewTextBoxColumn();
@@ -185,7 +185,7 @@
             DataGridView_Parameter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Parameter.ColumnHeadersHeight = 40;
             DataGridView_Parameter.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Parameter.Columns.AddRange(new DataGridViewColumn[] { Parameter_Id, Select, SpecificationsId, Parameter_Name, Parameter_Description });
+            DataGridView_Parameter.Columns.AddRange(new DataGridViewColumn[] { DetailSpecification_Id, Select, SpecificationsId, Parameter_Name, Parameter_Description });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -237,12 +237,12 @@
             DataGridView_Parameter.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Parameter.CellClick += DataGridView_Parameter_CellClick;
             // 
-            // Parameter_Id
+            // DetailSpecification_Id
             // 
-            Parameter_Id.DataPropertyName = "Id";
-            Parameter_Id.HeaderText = "Id";
-            Parameter_Id.Name = "Parameter_Id";
-            Parameter_Id.Visible = false;
+            DetailSpecification_Id.DataPropertyName = "Id";
+            DetailSpecification_Id.HeaderText = "Id";
+            DetailSpecification_Id.Name = "DetailSpecification_Id";
+            DetailSpecification_Id.Visible = false;
             // 
             // Select
             // 
@@ -311,7 +311,7 @@
         private Guna.UI2.WinForms.Guna2Button Button_Save;
         private Guna.UI2.WinForms.Guna2Button Button_Cancel;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Parameter;
-        private DataGridViewTextBoxColumn Parameter_Id;
+        private DataGridViewTextBoxColumn DetailSpecification_Id;
         private DataGridViewCheckBoxColumn Select;
         private DataGridViewTextBoxColumn SpecificationsId;
         private DataGridViewTextBoxColumn Parameter_Name;

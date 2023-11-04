@@ -1,5 +1,7 @@
 ﻿using Controls.Type;
 using Domain.DTOs;
+using Domain.Entities;
+using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
 using Services.Interfaces;
@@ -9,8 +11,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 {
     public partial class ProductDetailControl : UserControl
     {
-        ProductDto _product;
-        CategoryDto _category;
+        DetailProductVM _product;
 
         ISpecificationsService _specificationsService;
         IProductService _productService;
@@ -31,10 +32,8 @@ namespace WinFormsApp.Resources.Controls.Module.Product
                 Id = 0,
                 Price = 0,
                 Images = new List<string>(),
-                Quantity = 0
+                CategoryName = category.Name,
             };
-
-            _category = category;
 
             OnInit();
         }
@@ -60,32 +59,20 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             _capacityService = Program.container.GetInstance<ICapacityService>();
             _colorService = Program.container.GetInstance<IColorService>();
 
-            await LoadParameter();
             await LoadCapacity();
             await LoadColor();
-            LoadImage();
 
-            if(_product.Id != 0)
+            if (_product.Id != 0)
             {
                 var result = await _productService.GetDetail(_product.Id);
 
-                //_category = new()
-                //{
-                //    Id = (int)result.CapacityId!,
-                //};
-
-                _product = new()
-                {
-                    Name = result.Name,
-                    Id = result.Id,
-                    CapacityId = result.CapacityId,
-                    ColorId = result.ColorId,
-                    Price = result.Price,
-                    InternalCode = result.InternalCode,
-                };
+                _product = result;
 
                 LoadInfo();
+                LoadImage();
             }
+
+            await LoadParameter();
         }
 
         private void LoadInfo()
@@ -121,42 +108,56 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            try
+            ProductDto product = new()
             {
-                _product.Name = Text_Name.Text;
-                _product.InternalCode = Text_InternalCode.Text;
-                _product.Price = int.Parse(Text_Price.Text);
-                _product.CapacityId = int.Parse(ComboBox_Capacity.SelectedValue!.ToString()!);
-                _product.ColorId = int.Parse(ComboBox_Color.SelectedValue!.ToString()!);
+                Id = _product.Id,
+                Name = Text_Name.Text,
+                InternalCode = Text_InternalCode.Text,
+                Price = int.Parse(Util.DeleteCommas(Text_Price.Text)),
+                CapacityId = int.Parse(ComboBox_Capacity.SelectedValue!.ToString()!),
+                ColorId = int.Parse(ComboBox_Color.SelectedValue!.ToString()!),
+                Quantity = 0,
+                CategoryId = _product.CategoryId,
+                Images = _product.Images,
+            };
 
-                if (_product.Id == 0)
+            if (_product.Id == 0)
+            {
+                int productId = await _productService.Create(product);
+
+                if (productId == 0)
                 {
-                    int productId = await _productService.Create(_product);
-
-                    if (productId == 0)
-                    {
-                        return;
-                    }
-
-                    List<ProductParametersDto> productParameters = _productParameters.SelectMany(t => t.productParameters!).ToList();
-
-                    foreach (var item in productParameters)
-                    {
-                        item.ProductId = productId;
-
-                        await _productParameterService.Create(item);
-                    }
+                    return;
                 }
-                else
-                {
 
+                List<ProductParametersDto> productParameters = _productParameters.SelectMany(t => t.productParameters!).ToList();
+
+                foreach (var item in productParameters)
+                {
+                    item.ProductId = productId;
+
+                    await _productParameterService.Create(item);
                 }
             }
-            catch (Exception)
+            else
             {
+                await _productService.Update(product);
+
+                List<ProductParametersDto> productParameters = _productParameters.SelectMany(t => t.productParameters!).ToList();
+
+                foreach (var item in productParameters)
+                {
+                    item.ProductId = _product.Id;
+
+                    await _productParameterService.Create(item);
+                }
             }
 
-            Util.LoadControl(this, new ProductControl(_category));
+            Util.LoadControl(this, new ProductControl(new CategoryDto()
+            {
+                Id = (int)_product.CategoryId!,
+                Name = _product.CategoryName
+            }));
         }
 
         /*========================================= PARAMETER =============================================*/
@@ -169,12 +170,33 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             for (int i = 0; i < specificationsDtos.Count; i++)
             {
                 var item = specificationsDtos[i];
+                List<ProductParametersDto> list = new();
 
                 Panel_Parameter.Controls.Add(ParameterButton(item.Name!, item.Id, i));
 
+                if(_product.Id > 0)
+                {
+                    foreach (var specifications in _product.SpecificationsDtos)
+                    {
+                        if(item.Id != specifications.Id)
+                        {
+                            continue;
+                        }
+
+                        foreach (var detailSpecifications in specifications.Details)
+                        {
+                            list.Add(new ProductParametersDto()
+                            {
+                                DetailSpecificationsId = detailSpecifications.Id,
+                                ProductId = _product.Id,
+                            });
+                        }
+                    }
+                }
+
                 _productParameters.Add(new ProductParameter()
                 {
-                    productParameters = new List<ProductParametersDto>()
+                    productParameters = list
                 });
             }
         }
@@ -215,7 +237,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             int parentId = int.Parse(tags[0]);
             int index = int.Parse(tags[1]);
 
-            if (_productParameters[index] == null)
+            if (_productParameters.Count == 0)
             {
                 Util.LoadForm(new ProductParamDetailForm(btn.Text, parentId, index, OnSaveParameters), true);
             }
@@ -298,7 +320,11 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void Btn_Back_Click(object sender, EventArgs e)
         {
-            Util.LoadControl(this, new ProductControl(_category));
+            Util.LoadControl(this, new ProductControl(new CategoryDto()
+            {
+                Id = (int)_product.CategoryId!,
+                Name = _product.CategoryName
+            }));
         }
     }
 }
