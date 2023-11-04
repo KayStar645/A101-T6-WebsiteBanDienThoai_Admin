@@ -104,7 +104,8 @@ namespace Database.Repositories
                                $"offset {(pPageNumber - 1) * pPageSize} rows " +
                                $"fetch next {pPageSize} rows only";
 
-                string subQuery = $"SELECT COUNT(Id) FROM {_model} as P where {string.Join(" and ", filter)} {resultSearchs};";
+                string subQuery = $"SELECT COUNT(Id) FROM {_model} as P " +
+                                  $"where {string.Join(" and ", filter)} {resultSearchs} {whereCategory};";
                 int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
                                         .ExecuteScalarAsync<int>(subQuery)
                                         .ConfigureAwait(false);
@@ -129,10 +130,12 @@ namespace Database.Repositories
             try
             {
                 string query = $"select P.Id, P.InternalCode, P.Name, P.Price, P.Quantity, P.Images, " +
+                                      $"P.CategoryId, Cg.InternalCode as CategoryInternalCode, Cg.Name as CategoryName, " +
                                       $"P.ColorId, Cl.InternalCode as ColorInternalCode, Cl.Name as ColorName, " +
                                       $"P.CapacityId, Cc.Name as CapacityName " +
                                $"from Product as P " +
                                $"left join Capacity as Cc on P.CapacityId = Cc.Id " +
+                               $"left join Category as Cg on P.CategoryId = Cg.Id " +
                                $"left join Color as Cl on P.ColorId = Cl.Id " +
                                $"where P.Id = {pId} and P.IsDeleted = 0";
 
@@ -198,6 +201,24 @@ namespace Database.Repositories
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public async Task<bool> IncreasingNumberAsync(int pProductId, int pNumber)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    string query = $"UPDATE Product SET Quantity = ISNULL(Quantity, 0) + {pNumber} WHERE Id = {pProductId}";
+
+                    await connection.ExecuteAsync(query).ConfigureAwait(false);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 

@@ -36,5 +36,9 @@ namespace Database
 
         public DbSet<ProductParameters> ProductParameters { get; set; }
 
+        public DbSet<ImportBill> ImportBill { get; set; }
+
+        public DbSet<DetailImport> DetailImport { get; set; }
+
     }
 }
