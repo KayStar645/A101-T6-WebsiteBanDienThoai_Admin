@@ -51,6 +51,7 @@
 			TableLayoutPanel_Container = new TableLayoutPanel();
 			DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
 			edit = new DataGridViewButtonColumn();
+			UserId = new DataGridViewTextBoxColumn();
 			Id = new DataGridViewTextBoxColumn();
 			remove = new DataGridViewButtonColumn();
 			InternalCode = new DataGridViewTextBoxColumn();
@@ -225,7 +226,7 @@
 			DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			DataGridView_Listing.ColumnHeadersHeight = 50;
 			DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-			DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, Id, remove, InternalCode, _Name, Sex, Birthday, Phone });
+			DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, UserId, Id, remove, InternalCode, _Name, Sex, Birthday, Phone });
 			dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle5.BackColor = Color.White;
 			dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -284,6 +285,15 @@
 			edit.Text = "Sửa";
 			edit.UseColumnTextForButtonValue = true;
 			edit.Width = 6;
+			// 
+			// UserId
+			// 
+			UserId.DataPropertyName = "UserId";
+			UserId.HeaderText = "Column1";
+			UserId.MinimumWidth = 6;
+			UserId.Name = "UserId";
+			UserId.ReadOnly = true;
+			UserId.Visible = false;
 			// 
 			// Id
 			// 
@@ -388,6 +398,7 @@
 		private TableLayoutPanel TableLayoutPanel_Container;
 		private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
 		private DataGridViewButtonColumn edit;
+		private DataGridViewTextBoxColumn UserId;
 		private DataGridViewTextBoxColumn Id;
 		private DataGridViewButtonColumn remove;
 		private DataGridViewTextBoxColumn InternalCode;

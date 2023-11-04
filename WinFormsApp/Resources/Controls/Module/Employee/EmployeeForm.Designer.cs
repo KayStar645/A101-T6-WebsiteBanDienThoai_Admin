@@ -62,7 +62,6 @@
 			label4 = new Label();
 			guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
 			label5 = new Label();
-			Text_Sex = new Guna.UI2.WinForms.Guna2TextBox();
 			guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
 			guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
 			guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -72,8 +71,9 @@
 			label6 = new Label();
 			Text_Phone = new Guna.UI2.WinForms.Guna2TextBox();
 			guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
-			TableLayoutPanel_Container = new TableLayoutPanel();
 			DateTime_Birthday = new Guna.UI2.WinForms.Guna2DateTimePicker();
+			cbb_Sex = new Guna.UI2.WinForms.Guna2ComboBox();
+			TableLayoutPanel_Container = new TableLayoutPanel();
 			tableLayoutPanel4.SuspendLayout();
 			tableLayoutPanel2.SuspendLayout();
 			tableLayoutPanel3.SuspendLayout();
@@ -275,31 +275,6 @@
 			label5.TabIndex = 5;
 			label5.Text = "Ngày sinh";
 			// 
-			// Text_Sex
-			// 
-			Text_Sex.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-			Text_Sex.Animated = true;
-			Text_Sex.BorderRadius = 8;
-			Text_Sex.CustomizableEdges = customizableEdges33;
-			Text_Sex.DefaultText = "";
-			Text_Sex.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-			Text_Sex.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-			Text_Sex.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-			Text_Sex.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-			Text_Sex.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-			Text_Sex.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-			Text_Sex.ForeColor = Color.Black;
-			Text_Sex.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-			Text_Sex.Location = new Point(286, 160);
-			Text_Sex.Margin = new Padding(3, 5, 3, 5);
-			Text_Sex.Name = "Text_Sex";
-			Text_Sex.PasswordChar = '\0';
-			Text_Sex.PlaceholderText = "Giới tính";
-			Text_Sex.SelectedText = "";
-			Text_Sex.ShadowDecoration.CustomizableEdges = customizableEdges34;
-			Text_Sex.Size = new Size(474, 52);
-			Text_Sex.TabIndex = 7;
-			// 
 			// guna2ImageButton1
 			// 
 			guna2ImageButton1.Anchor = AnchorStyles.None;
@@ -312,7 +287,7 @@
 			guna2ImageButton1.Location = new Point(767, 19);
 			guna2ImageButton1.Name = "guna2ImageButton1";
 			guna2ImageButton1.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges35;
+			guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges33;
 			guna2ImageButton1.Size = new Size(26, 62);
 			guna2ImageButton1.TabIndex = 11;
 			// 
@@ -328,7 +303,7 @@
 			guna2ImageButton2.Location = new Point(767, 87);
 			guna2ImageButton2.Name = "guna2ImageButton2";
 			guna2ImageButton2.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges36;
+			guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges34;
 			guna2ImageButton2.Size = new Size(26, 62);
 			guna2ImageButton2.TabIndex = 12;
 			// 
@@ -344,7 +319,7 @@
 			guna2ImageButton3.Location = new Point(767, 155);
 			guna2ImageButton3.Name = "guna2ImageButton3";
 			guna2ImageButton3.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges37;
+			guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges35;
 			guna2ImageButton3.Size = new Size(26, 62);
 			guna2ImageButton3.TabIndex = 13;
 			// 
@@ -391,7 +366,6 @@
 			tableLayoutPanel3.Controls.Add(Text_Name, 1, 1);
 			tableLayoutPanel3.Controls.Add(label4, 0, 2);
 			tableLayoutPanel3.Controls.Add(label5, 0, 3);
-			tableLayoutPanel3.Controls.Add(Text_Sex, 1, 2);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton1, 2, 0);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton2, 2, 1);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton3, 2, 2);
@@ -399,6 +373,7 @@
 			tableLayoutPanel3.Controls.Add(Text_Phone, 1, 4);
 			tableLayoutPanel3.Controls.Add(guna2ImageButton5, 2, 4);
 			tableLayoutPanel3.Controls.Add(DateTime_Birthday, 1, 3);
+			tableLayoutPanel3.Controls.Add(cbb_Sex, 1, 2);
 			tableLayoutPanel3.Dock = DockStyle.Fill;
 			tableLayoutPanel3.Location = new Point(0, 68);
 			tableLayoutPanel3.Margin = new Padding(0);
@@ -430,7 +405,7 @@
 			Text_Phone.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 			Text_Phone.Animated = true;
 			Text_Phone.BorderRadius = 8;
-			Text_Phone.CustomizableEdges = customizableEdges38;
+			Text_Phone.CustomizableEdges = customizableEdges36;
 			Text_Phone.DefaultText = "";
 			Text_Phone.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			Text_Phone.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -446,7 +421,7 @@
 			Text_Phone.PasswordChar = '\0';
 			Text_Phone.PlaceholderText = "Số điện thoại";
 			Text_Phone.SelectedText = "";
-			Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges39;
+			Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges37;
 			Text_Phone.Size = new Size(474, 52);
 			Text_Phone.TabIndex = 16;
 			// 
@@ -462,9 +437,46 @@
 			guna2ImageButton5.Location = new Point(767, 291);
 			guna2ImageButton5.Name = "guna2ImageButton5";
 			guna2ImageButton5.PressedState.ImageSize = new Size(25, 25);
-			guna2ImageButton5.ShadowDecoration.CustomizableEdges = customizableEdges40;
+			guna2ImageButton5.ShadowDecoration.CustomizableEdges = customizableEdges38;
 			guna2ImageButton5.Size = new Size(26, 62);
 			guna2ImageButton5.TabIndex = 17;
+			// 
+			// DateTime_Birthday
+			// 
+			DateTime_Birthday.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+			DateTime_Birthday.BackColor = Color.White;
+			DateTime_Birthday.Checked = true;
+			DateTime_Birthday.CustomizableEdges = customizableEdges39;
+			DateTime_Birthday.FillColor = Color.White;
+			DateTime_Birthday.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+			DateTime_Birthday.Format = DateTimePickerFormat.Long;
+			DateTime_Birthday.Location = new Point(286, 231);
+			DateTime_Birthday.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+			DateTime_Birthday.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+			DateTime_Birthday.Name = "DateTime_Birthday";
+			DateTime_Birthday.ShadowDecoration.CustomizableEdges = customizableEdges40;
+			DateTime_Birthday.Size = new Size(474, 45);
+			DateTime_Birthday.TabIndex = 18;
+			DateTime_Birthday.Value = new DateTime(2023, 11, 1, 9, 1, 37, 831);
+			// 
+			// cbb_Sex
+			// 
+			cbb_Sex.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+			cbb_Sex.BackColor = Color.Transparent;
+			cbb_Sex.CustomizableEdges = customizableEdges41;
+			cbb_Sex.DrawMode = DrawMode.OwnerDrawFixed;
+			cbb_Sex.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbb_Sex.FocusedColor = Color.FromArgb(94, 148, 255);
+			cbb_Sex.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+			cbb_Sex.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			cbb_Sex.ForeColor = Color.FromArgb(68, 88, 112);
+			cbb_Sex.ItemHeight = 30;
+			cbb_Sex.Items.AddRange(new object[] { "Nam", "Nữ", "Khác" });
+			cbb_Sex.Location = new Point(286, 168);
+			cbb_Sex.Name = "cbb_Sex";
+			cbb_Sex.ShadowDecoration.CustomizableEdges = customizableEdges42;
+			cbb_Sex.Size = new Size(474, 36);
+			cbb_Sex.TabIndex = 19;
 			// 
 			// TableLayoutPanel_Container
 			// 
@@ -484,24 +496,6 @@
 			TableLayoutPanel_Container.Size = new Size(802, 541);
 			TableLayoutPanel_Container.TabIndex = 1;
 			// 
-			// DateTime_Birthday
-			// 
-			DateTime_Birthday.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-			DateTime_Birthday.BackColor = Color.White;
-			DateTime_Birthday.Checked = true;
-			DateTime_Birthday.CustomizableEdges = customizableEdges41;
-			DateTime_Birthday.FillColor = Color.White;
-			DateTime_Birthday.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-			DateTime_Birthday.Format = DateTimePickerFormat.Long;
-			DateTime_Birthday.Location = new Point(286, 231);
-			DateTime_Birthday.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-			DateTime_Birthday.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-			DateTime_Birthday.Name = "DateTime_Birthday";
-			DateTime_Birthday.ShadowDecoration.CustomizableEdges = customizableEdges42;
-			DateTime_Birthday.Size = new Size(474, 45);
-			DateTime_Birthday.TabIndex = 18;
-			DateTime_Birthday.Value = new DateTime(2023, 11, 1, 9, 1, 37, 831);
-			// 
 			// EmployeeForm
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
@@ -510,6 +504,7 @@
 			Controls.Add(TableLayoutPanel_Container);
 			FormBorderStyle = FormBorderStyle.None;
 			Name = "EmployeeForm";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "EmployeeForm";
 			tableLayoutPanel4.ResumeLayout(false);
 			tableLayoutPanel2.ResumeLayout(false);
@@ -535,7 +530,6 @@
 		private Guna.UI2.WinForms.Guna2TextBox Text_Name;
 		private Label label4;
 		private Label label5;
-		private Guna.UI2.WinForms.Guna2TextBox Text_Sex;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
@@ -546,5 +540,6 @@
 		private Guna.UI2.WinForms.Guna2TextBox Text_Phone;
 		private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton5;
 		private Guna.UI2.WinForms.Guna2DateTimePicker DateTime_Birthday;
+		private Guna.UI2.WinForms.Guna2ComboBox cbb_Sex;
 	}
 }
