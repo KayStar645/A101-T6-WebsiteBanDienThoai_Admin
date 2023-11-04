@@ -20,9 +20,12 @@ namespace Services.Profiles
             CreateMap<Domain.Entities.Color, ColorDto>().ReverseMap();
             CreateMap<Capacity, CapacityDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
+
             CreateMap<ProductParameters, ProductParametersDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ProductPropertiesDto, ProductVM>().ReverseMap();
+            CreateMap<DetailProductPropertiesDto, DetailProductVM>().ReverseMap();
+
             CreateMap<Specifications, SpecificationsDto>().ReverseMap();
             CreateMap<DetailSpecifications, DetailSpecificationsDto>().ReverseMap();
             CreateMap<ImportBill, ImportBillDto>().ReverseMap();

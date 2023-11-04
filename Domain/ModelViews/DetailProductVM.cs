@@ -1,4 +1,6 @@
-﻿namespace Domain.ModelViews
+﻿using Domain.DTOs;
+
+namespace Domain.ModelViews
 {
     public class DetailProductVM
     {
@@ -29,5 +31,7 @@
         public int? CapacityId { get; set; }
 
         public string? CapacityName { get; set; }
+
+        public List<SpecificationsDto>? SpecificationsDtos { get; set; }
     }
 }
