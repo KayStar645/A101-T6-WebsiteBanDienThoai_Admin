@@ -55,6 +55,8 @@ namespace WinFormsApp
             container.Register<IProductRepository, ProductRepository>();
             container.Register<ISpecificationsRepository, SpecificationsRepository>();
             container.Register<IDetailSpecificationsRepository, DetailSpecificationsRepository>();
+            container.Register<IImportBillRepository, ImportBillRepository>();
+            container.Register<IDetailImportRepository, DetailImportRepository>();
 
             // Đăng ký mapper
             container.Register<IMapper>(() =>
@@ -89,13 +91,14 @@ namespace WinFormsApp
             container.Register<IProductService, ProductService>();
             container.Register<ISpecificationsService, SpecificationsService>();
             container.Register<IDetailSpecificationsService, DetailSpecificationsService>();
+            container.Register<IImportBillService, ImportBillService>();
 
             admin = new Admin();
             login = new Login(container);
 
-            Application.Run(admin);
+            //Application.Run(admin);
             //Application.Run(login);
-            //Application.Run(new frmTest(container));
+            Application.Run(new frmTest(container));
         }
     }
 

@@ -1,8 +1,10 @@
 ﻿using Domain.DTOs;
 using Domain.ModelViews;
+using FluentValidation;
 using Services.Common;
 using Services.Interfaces;
 using SimpleInjector;
+using System.Net.WebSockets;
 
 namespace WinFormsApp.View.Test
 {
@@ -15,6 +17,7 @@ namespace WinFormsApp.View.Test
         private readonly IProductService _productService;
         private readonly ISpecificationsService _specificationsService;
         private readonly IDetailSpecificationsService _detailSpecificationsService;
+        private readonly IImportBillService _importBillService;
 
 
 
@@ -30,13 +33,30 @@ namespace WinFormsApp.View.Test
             _productService = _container.GetInstance<IProductService>();
             _specificationsService = _container.GetInstance<ISpecificationsService>();
             _detailSpecificationsService = _container.GetInstance<IDetailSpecificationsService>();
+            _importBillService = _container.GetInstance<IImportBillService>();
 
             //Test();
 
             //Test2();
 
-            Test3();
+            //Test3();
+
+            Test4();
         }
+
+        private async Task Test4()
+        {
+            //var result = await _importBillService.GetDetail(2);
+
+            await _importBillService.Create(new ImportBillDto
+            {
+                InternalCode = "999",
+
+            });
+
+            int a = 1;
+        }
+
 
         async Task Test3()
         {

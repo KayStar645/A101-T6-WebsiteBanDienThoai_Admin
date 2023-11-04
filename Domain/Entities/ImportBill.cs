@@ -6,21 +6,21 @@ namespace Domain.Entities
     public class ImportBill : BaseEntity
     {
         [NotMapped]
-        public const string IMPORT_TYPE_DRAFT = "D";
+        public const string IMPORT_TYPE_DRAFT = "D"; // Nháp
 
         [NotMapped]
-        public const string IMPORT_TYPE_ORDER = "O";
+        public const string IMPORT_TYPE_ORDER = "O"; // Đã đặt hàng
 
         [NotMapped]
-        public const string IMPORT_TYPE_ENTERED = "E";
+        public const string IMPORT_TYPE_ENTERED = "E"; // Đã nhận hàng (đã nhập)
 
 
         public string? InternalCode { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime ImportDate { get; set; }
+        public DateTime? ImportDate { get; set; }
 
-        public long Price { get; set; }
+        public long? Price { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
         public string? Type {  get; set; }

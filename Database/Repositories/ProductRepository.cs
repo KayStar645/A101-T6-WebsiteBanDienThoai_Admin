@@ -104,7 +104,8 @@ namespace Database.Repositories
                                $"offset {(pPageNumber - 1) * pPageSize} rows " +
                                $"fetch next {pPageSize} rows only";
 
-                string subQuery = $"SELECT COUNT(Id) FROM {_model} as P where {string.Join(" and ", filter)} {resultSearchs};";
+                string subQuery = $"SELECT COUNT(Id) FROM {_model} as P " +
+                                  $"where {string.Join(" and ", filter)} {resultSearchs} {whereCategory};";
                 int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
                                         .ExecuteScalarAsync<int>(subQuery)
                                         .ConfigureAwait(false);
@@ -198,6 +199,24 @@ namespace Database.Repositories
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public async Task<bool> IncreasingNumberAsync(int pProductId, int pNumber)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    string query = $"UPDATE Product SET Quantity = ISNULL(Quantity, 0) + {pNumber} WHERE Id = {pProductId}";
+
+                    await connection.ExecuteAsync(query).ConfigureAwait(false);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 
