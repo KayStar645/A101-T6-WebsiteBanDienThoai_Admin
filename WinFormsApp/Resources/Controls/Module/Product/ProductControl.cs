@@ -4,24 +4,26 @@ using Domain.Entities;
 using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Product
 {
     public partial class ProductControl : UserControl
     {
         public static Guna2Button _refreshButton = new();
-        int _categoryId = 0;
-        private readonly IProductService _productService;
+
+        IProductService _productService;
+        CategoryDto _category;
         (List<ProductVM> list, int totalCount, int pageNumber) _result;
         int _currPage = 1;
 
-        public ProductControl(int categoryId)
+        public ProductControl(CategoryDto category)
         {
             InitializeComponent();
 
             _productService = Program.container.GetInstance<IProductService>();
             _refreshButton = Button_Refresh;
-            _categoryId = categoryId;
+            _category = category;
 
             LoadProduct();
             Paginator();
@@ -29,7 +31,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private async void LoadProduct()
         {
-            _result = await _productService.GetList("Name", _currPage, 15, Text_Search.Text, _categoryId);
+            _result = await _productService.GetList("Name", _currPage, 15, Text_Search.Text, _category.Id);
 
             DataGridView_Listing.DataSource = _result.list;
         }
@@ -67,24 +69,23 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void Button_Create_Click(object sender, EventArgs e)
         {
-            //Util.LoadForm(new ProductForm(_container), true);
+            Util.LoadControl(this, new ProductDetailControl(_category));
         }
 
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
-            ProductDto formData = new()
+
+            ProductVM formData = _result.list.Find(t => t.Id == int.Parse(selected["Id"].Value!.ToString()!));
+
+            if(formData == null)
             {
-                Id = int.Parse(selected["Id"].Value.ToString()),
-                InternalCode = selected["InternalCode"].Value.ToString(),
-                Name = selected["Name"].Value.ToString(),
-                Price = int.Parse(selected["Price"].Value.ToString()),
-                Quantity = int.Parse(selected["Quantity"].Value.ToString()),
-            };
+                return;
+            }
 
             if (e.ColumnIndex == 0)
             {
-                //Util.LoadForm(new ProductForm(_container, formData), true);
+                Util.LoadControl(this, new ProductDetailControl(formData.Id));
             }
             else if (e.ColumnIndex == 1)
             {

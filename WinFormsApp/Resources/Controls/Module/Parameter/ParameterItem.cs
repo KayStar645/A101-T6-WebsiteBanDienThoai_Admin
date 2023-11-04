@@ -8,7 +8,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 {
     public partial class ParameterItem : UserControl
     {
-        bool collapse = false;
+        bool collapse = true;
         ISpecificationsService _specificationsService;
         IDetailSpecificationsService _detailSpecificationsService;
         List<DetailSpecificationsDto> _details;
@@ -62,10 +62,10 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         {
             Guna2Button btn = (Guna2Button)sender;
             TableLayoutPanel parent = (TableLayoutPanel)btn.Parent!;
-            Guna2TextBox name = (Guna2TextBox)parent.Controls[3];
-            Guna2TextBox value = (Guna2TextBox)parent.Controls[2];
+            Guna2TextBox name = (Guna2TextBox)parent.Controls[2];
+            Guna2TextBox value = (Guna2TextBox)parent.Controls[3];
 
-            formData.Name = name.Text;
+            formData.Name = Text_Parent.Text;
 
             if (_parent.Id == 0)
             {
@@ -175,8 +175,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             child.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
             child.Controls.Add(ChildBtnCreate(), 0, 0);
             child.Controls.Add(ChildBtnRemove(nItem.Id), 0, 0);
-            child.Controls.Add(Childvalue(nItem.Description), 0, 0);
             child.Controls.Add(ChildName(nItem.Name), 0, 0);
+            child.Controls.Add(Childvalue(nItem.Description), 0, 0);
             child.Dock = DockStyle.Top;
             child.Location = new Point(0, 52);
             child.Margin = new Padding(3, 8, 3, 3);

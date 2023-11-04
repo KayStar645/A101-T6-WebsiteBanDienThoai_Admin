@@ -11,7 +11,7 @@ namespace Services.Interfaces
 
         Task<DetailProductVM> GetDetail(int pId);
 
-        Task<bool> Create(ProductDto pCreate);
+        Task<int> Create(ProductDto pCreate);
 
         Task<bool> Update(ProductDto pUpdate);
 

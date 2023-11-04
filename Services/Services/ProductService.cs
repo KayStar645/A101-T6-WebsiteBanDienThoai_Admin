@@ -37,13 +37,13 @@ namespace Services.Services
             return mapDetail;
         }
 
-        public async Task<bool> Create(ProductDto pCreate)
+        public async Task<int> Create(ProductDto pCreate)
         {
             Product product = _mapper.Map<Product>(pCreate);
 
             var result = await _productRepo.AddAsync(product);
 
-            return result > 0;
+            return result;
         }
 
         public async Task<bool> Update(ProductDto pCreate)
