@@ -215,12 +215,17 @@ namespace WinFormsApp.View.Screen
             return btn;
         }
 
-        private void Btn_Category_Click(object sender, EventArgs e)
+        private async void Btn_Category_Click(object sender, EventArgs e)
         {
             Guna2Button btn = (Guna2Button)sender;
+            CategoryDto category = new()
+            {
+                Id = int.Parse(btn.Tag!.ToString()!.Split("|")[2]),
+                Name = btn.Tag!.ToString()!.Split("|")[1]
+            };
 
-            Label_Heading.Text = "Danh sách " + btn.Tag!.ToString()!.Split("|")[1];
-            Util.LoadControl(Panel_Body, new ProductControl(int.Parse(btn.Tag!.ToString()!.Split("|")[2])));
+            Label_Heading.Text = "Danh sách " + category.Name;
+            Util.LoadControl(Panel_Body, new ProductControl(category));
 
             _currPanel = btn.Tag!.ToString()!.Split("|")[0];
             LoadMenu();

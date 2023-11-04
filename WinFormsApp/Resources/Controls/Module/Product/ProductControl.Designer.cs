@@ -53,7 +53,7 @@
             edit = new DataGridViewButtonColumn();
             remove = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
-            _Name = new DataGridViewTextBoxColumn();
+            Name = new DataGridViewTextBoxColumn();
             CategoryName = new DataGridViewTextBoxColumn();
             ColorName = new DataGridViewTextBoxColumn();
             CapacityName = new DataGridViewTextBoxColumn();
@@ -110,7 +110,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 50;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, _Name, CategoryName, ColorName, CapacityName, Price, Quantity, Id, CapacityId, ColorId, ColorInternalCode, CategoryInternalCode, CategoryId });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Name, CategoryName, ColorName, CapacityName, Price, Quantity, Id, CapacityId, ColorId, ColorInternalCode, CategoryInternalCode, CategoryId });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -317,21 +317,21 @@
             InternalCode.Resizable = DataGridViewTriState.True;
             InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
-            // _Name
+            // Name
             // 
-            _Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            _Name.DataPropertyName = "Name";
-            _Name.FillWeight = 41.4820366F;
-            _Name.HeaderText = "Tên sản phẩm";
-            _Name.MinimumWidth = 6;
-            _Name.Name = "_Name";
-            _Name.ReadOnly = true;
+            Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Name.DataPropertyName = "Name";
+            Name.FillWeight = 41.4820366F;
+            Name.HeaderText = "Tên sản phẩm";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
+            Name.ReadOnly = true;
             // 
             // CategoryName
             // 
             CategoryName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CategoryName.DataPropertyName = "CategoryName";
-            CategoryName.HeaderText = "Danh mục";
+            CategoryName.HeaderText = "CategoryName";
             CategoryName.Name = "CategoryName";
             CategoryName.ReadOnly = true;
             CategoryName.Visible = false;
@@ -426,7 +426,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TableLayoutPanel_Container);
-            Name = "ProductControl";
             Size = new Size(827, 538);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
             TableLayoutPanel_Action.ResumeLayout(false);
@@ -451,7 +450,7 @@
         private DataGridViewButtonColumn edit;
         private DataGridViewButtonColumn remove;
         private DataGridViewTextBoxColumn InternalCode;
-        private DataGridViewTextBoxColumn _Name;
+        private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn CategoryName;
         private DataGridViewTextBoxColumn ColorName;
         private DataGridViewTextBoxColumn CapacityName;

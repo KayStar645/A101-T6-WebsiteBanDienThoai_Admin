@@ -46,7 +46,7 @@ namespace WinFormsApp.Services
             }
         }
 
-        public static string AddCommas(int number, string currency = "đ")
+        public static string AddCommas(long? number, string currency = "đ")
         {
             return (string.Format("{0:n0}", number) + currency).Trim();
         }
