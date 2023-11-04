@@ -10,6 +10,7 @@ namespace Domain.Entities
 
         public string? Sex { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime? Birthday { get; set; }
 
         public string? Phone { get; set; }
