@@ -30,6 +30,8 @@ namespace Services.Profiles
             CreateMap<DetailSpecifications, DetailSpecificationsDto>().ReverseMap();
             CreateMap<ImportBill, ImportBillDto>().ReverseMap();
             CreateMap<DetailImport, DetailImportDto>().ReverseMap();
+
+            CreateMap<Promotion, PromotionDto>().ReverseMap();
         }
 
         private class StringToListTypeConverter : ITypeConverter<string, List<string>>
