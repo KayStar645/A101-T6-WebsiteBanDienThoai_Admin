@@ -24,6 +24,12 @@
 
         public string? CapacityName { get; set; }
 
+        public int? CategoryId { get; set; }
+
+        public string? CategoryName { get; set; }
+
+        public string? CategoryInternalCode { get; set; }
+
         public List<SpecificationsDto>? SpecificationsDtos { get; set; }
 
 
