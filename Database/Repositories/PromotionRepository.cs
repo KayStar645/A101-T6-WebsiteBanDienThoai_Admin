@@ -3,7 +3,6 @@ using Database.Common;
 using Database.Interfaces;
 using Domain.Entities;
 using System.Data.SqlClient;
-using System.Reflection;
 
 namespace Database.Repositories
 {
@@ -26,9 +25,7 @@ namespace Database.Repositories
             "PriceMin",
             "Status",
             "Discount",
-            "DiscountMax",
             "Percent",
-            "PercentMax"
         };
 
         protected override List<string> _seachers { get; } = new List<string>()
@@ -38,9 +35,7 @@ namespace Database.Repositories
             "PriceMin",
             "Status",
             "Discount",
-            "DiscountMax",
             "Percent",
-            "PercentMax"
         };
 
         #endregion
@@ -78,6 +73,22 @@ namespace Database.Repositories
                 }
             }
             catch { return false; }
+        }
+
+        public async Task<List<Promotion>> GetByProductId(int productId)
+        {
+
+            string query = $"select P.Id, \"{string.Join("\", \"", _fields)}\" " +
+                           $"from Promotion as P, PromotionProduct as PP " +
+                           $"where P.IsDeleted = 0 and p.Id = PP.PromotionId and Status = \"{Promotion.STATUS_APPROVED}\" " +
+                            $"and getdate() between start and \"End\";";
+
+            using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+            {
+                var result = await connection.QueryAsync<Promotion>(query).ConfigureAwait(false);
+
+                return result.AsList();
+            }
         }
 
         #endregion

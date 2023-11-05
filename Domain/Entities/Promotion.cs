@@ -34,11 +34,7 @@ namespace Domain.Entities
 
         public long? Discount { get; set; }
 
-        public long? PercentMax { get; set; }
-
         public long? Percent { get; set; }
-
-        public long? DiscountMax { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
         [DefaultValue(TYPE_PERCENT)]

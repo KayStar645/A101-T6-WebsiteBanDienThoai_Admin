@@ -44,5 +44,9 @@ namespace Database
 
         public DbSet<PromotionProduct> PromotionProduct { get; set; }
 
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<DetailOrder> DetailOrder { get; set; }
+
     }
 }

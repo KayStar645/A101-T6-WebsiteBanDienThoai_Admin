@@ -4,6 +4,7 @@ using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(SmartPhoneDbContext))]
-    partial class SmartPhoneDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231105052306_create_table_order")]
+    partial class create_table_order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,44 +146,6 @@ namespace Database.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("DetailImport");
-                });
-
-            modelBuilder.Entity("Domain.Entities.DetailOrder", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<long?>("DiscountPrice")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("Price")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("SumPrice")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("DetailOrder");
                 });
 
             modelBuilder.Entity("Domain.Entities.DetailSpecifications", b =>
@@ -323,9 +288,6 @@ namespace Database.Migrations
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<long?>("DiscountPrice")
-                        .HasColumnType("bigint");
-
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
@@ -339,9 +301,6 @@ namespace Database.Migrations
                         .HasColumnType("date");
 
                     b.Property<long?>("Price")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("SumPrice")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Type")
@@ -442,6 +401,9 @@ namespace Database.Migrations
                     b.Property<long?>("Discount")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("DiscountMax")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("End")
                         .HasColumnType("datetime2");
 
@@ -455,6 +417,9 @@ namespace Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("Percent")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("PercentMax")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("PriceMin")
@@ -552,21 +517,6 @@ namespace Database.Migrations
                         .HasForeignKey("ProductId");
 
                     b.Navigation("ImportBill");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Domain.Entities.DetailOrder", b =>
-                {
-                    b.HasOne("Domain.Entities.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId");
-
-                    b.HasOne("Domain.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
