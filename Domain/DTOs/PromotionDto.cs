@@ -16,11 +16,7 @@
 
         public long? Discount { get; set; }
 
-        public long? PercentMax { get; set; }
-
         public long? Percent { get; set; }
-
-        public long? DiscountMax { get; set; }
 
         public string? Status { get; set; }
     }

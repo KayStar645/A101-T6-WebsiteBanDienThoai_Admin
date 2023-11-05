@@ -33,6 +33,10 @@ namespace Services.Profiles
 
             CreateMap<Promotion, PromotionDto>().ReverseMap();
             CreateMap<PromotionProduct, PromotionProductDto>().ReverseMap();
+
+            CreateMap<Order, OrderDto>().ReverseMap();
+            CreateMap<DetailOrder, DetailOrderDto>().ReverseMap();
+
         }
 
         private class StringToListTypeConverter : ITypeConverter<string, List<string>>

@@ -6,13 +6,13 @@ namespace Domain.Entities
     public class ImportBill : BaseEntity
     {
         [NotMapped]
-        public const string IMPORT_TYPE_DRAFT = "D"; // Nháp
+        public const string TYPE_DRAFT = "D"; // Nháp
 
         [NotMapped]
-        public const string IMPORT_TYPE_ORDER = "O"; // Đã đặt hàng
+        public const string TYPE_ORDER = "O"; // Đã đặt hàng
 
         [NotMapped]
-        public const string IMPORT_TYPE_ENTERED = "E"; // Đã nhận hàng (đã nhập)
+        public const string TYPE_ENTERED = "E"; // Đã nhận hàng (đã nhập)
 
 
         public string? InternalCode { get; set; }
