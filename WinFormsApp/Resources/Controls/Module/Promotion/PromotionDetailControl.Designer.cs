@@ -45,25 +45,29 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             tableLayoutPanel1 = new TableLayoutPanel();
             Btn_Back = new Guna.UI2.WinForms.Guna2ImageButton();
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
             Label_Heading = new Label();
             TableLayoutPanel_Info = new TableLayoutPanel();
-            label4 = new Label();
-            Text_Price = new Guna.UI2.WinForms.Guna2TextBox();
             label3 = new Label();
-            label2 = new Label();
-            Text_InternalCode = new Guna.UI2.WinForms.Guna2TextBox();
             Text_Name = new Guna.UI2.WinForms.Guna2TextBox();
-            label7 = new Label();
+            Label_Discount = new Label();
             label1 = new Label();
-            ComboBox_Capacity = new Guna.UI2.WinForms.Guna2ComboBox();
-            guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            label8 = new Label();
+            label2 = new Label();
+            DateTime_Start = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            Text_InternalCode = new Guna.UI2.WinForms.Guna2TextBox();
             label5 = new Label();
-            ComboBox_Color = new Guna.UI2.WinForms.Guna2ComboBox();
-            guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            DateTime_End = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            label4 = new Label();
+            Text_MinPrice = new Guna.UI2.WinForms.Guna2TextBox();
+            Text_Discount = new Guna.UI2.WinForms.Guna2TextBox();
+            label6 = new Label();
+            label7 = new Label();
+            ComboBox_Type = new Guna.UI2.WinForms.Guna2ComboBox();
+            ComboBox_Status = new Guna.UI2.WinForms.Guna2ComboBox();
             tableLayoutPanel1.SuspendLayout();
             TableLayoutPanel_Info.SuspendLayout();
             SuspendLayout();
@@ -144,118 +148,50 @@
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Info.Controls.Add(label4, 0, 2);
-            TableLayoutPanel_Info.Controls.Add(Text_Price, 1, 2);
             TableLayoutPanel_Info.Controls.Add(label3, 0, 0);
-            TableLayoutPanel_Info.Controls.Add(label2, 0, 1);
-            TableLayoutPanel_Info.Controls.Add(Text_InternalCode, 1, 1);
             TableLayoutPanel_Info.Controls.Add(Text_Name, 1, 0);
+            TableLayoutPanel_Info.Controls.Add(Label_Discount, 3, 3);
+            TableLayoutPanel_Info.Controls.Add(label1, 0, 1);
+            TableLayoutPanel_Info.Controls.Add(label2, 3, 0);
+            TableLayoutPanel_Info.Controls.Add(DateTime_Start, 1, 1);
+            TableLayoutPanel_Info.Controls.Add(Text_InternalCode, 4, 0);
+            TableLayoutPanel_Info.Controls.Add(label5, 3, 1);
+            TableLayoutPanel_Info.Controls.Add(DateTime_End, 4, 1);
+            TableLayoutPanel_Info.Controls.Add(label4, 3, 2);
+            TableLayoutPanel_Info.Controls.Add(Text_MinPrice, 4, 2);
+            TableLayoutPanel_Info.Controls.Add(Text_Discount, 4, 3);
+            TableLayoutPanel_Info.Controls.Add(label6, 0, 2);
             TableLayoutPanel_Info.Controls.Add(label7, 0, 3);
-            TableLayoutPanel_Info.Controls.Add(label1, 3, 1);
-            TableLayoutPanel_Info.Controls.Add(ComboBox_Capacity, 1, 3);
-            TableLayoutPanel_Info.Controls.Add(guna2DateTimePicker1, 4, 1);
-            TableLayoutPanel_Info.Controls.Add(label8, 3, 3);
-            TableLayoutPanel_Info.Controls.Add(label5, 3, 2);
-            TableLayoutPanel_Info.Controls.Add(ComboBox_Color, 4, 3);
-            TableLayoutPanel_Info.Controls.Add(guna2DateTimePicker2, 4, 2);
+            TableLayoutPanel_Info.Controls.Add(ComboBox_Type, 1, 3);
+            TableLayoutPanel_Info.Controls.Add(ComboBox_Status, 1, 2);
             TableLayoutPanel_Info.Dock = DockStyle.Top;
             TableLayoutPanel_Info.Location = new Point(0, 49);
             TableLayoutPanel_Info.Name = "TableLayoutPanel_Info";
             TableLayoutPanel_Info.Padding = new Padding(0, 12, 0, 0);
-            TableLayoutPanel_Info.RowCount = 5;
+            TableLayoutPanel_Info.RowCount = 4;
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Absolute, 57F));
-            TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanel_Info.Size = new Size(1021, 266);
+            TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            TableLayoutPanel_Info.Size = new Size(1021, 245);
             TableLayoutPanel_Info.TabIndex = 2;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(3, 151);
-            label4.Name = "label4";
-            label4.Size = new Size(110, 17);
-            label4.TabIndex = 4;
-            label4.Text = "Đơn giá tôi thiểu";
-            // 
-            // Text_Price
-            // 
-            Text_Price.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            Text_Price.BorderRadius = 5;
-            Text_Price.CustomizableEdges = customizableEdges4;
-            Text_Price.DefaultText = "";
-            Text_Price.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            Text_Price.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            Text_Price.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            Text_Price.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            Text_Price.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Price.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Text_Price.ForeColor = Color.Black;
-            Text_Price.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Price.Location = new Point(123, 140);
-            Text_Price.Name = "Text_Price";
-            Text_Price.PasswordChar = '\0';
-            Text_Price.PlaceholderText = "Đơn giá";
-            Text_Price.SelectedText = "";
-            Text_Price.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            Text_Price.Size = new Size(364, 38);
-            Text_Price.TabIndex = 5;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(3, 33);
+            label3.Location = new Point(3, 32);
             label3.Name = "label3";
             label3.Size = new Size(68, 17);
             label3.TabIndex = 1;
             label3.Text = "Tên CTKM";
             // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Left;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 92);
-            label2.Name = "label2";
-            label2.Size = new Size(66, 17);
-            label2.TabIndex = 0;
-            label2.Text = "Mã CTKM";
-            // 
-            // Text_InternalCode
-            // 
-            Text_InternalCode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            Text_InternalCode.BorderRadius = 5;
-            Text_InternalCode.CustomizableEdges = customizableEdges6;
-            Text_InternalCode.DefaultText = "";
-            Text_InternalCode.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            Text_InternalCode.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            Text_InternalCode.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            Text_InternalCode.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            Text_InternalCode.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Text_InternalCode.ForeColor = Color.Black;
-            Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(123, 81);
-            Text_InternalCode.Name = "Text_InternalCode";
-            Text_InternalCode.PasswordChar = '\0';
-            Text_InternalCode.PlaceholderText = "Mã sản phẩm";
-            Text_InternalCode.SelectedText = "";
-            Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            Text_InternalCode.Size = new Size(364, 38);
-            Text_InternalCode.TabIndex = 2;
-            // 
             // Text_Name
             // 
             Text_Name.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             Text_Name.BorderRadius = 5;
-            TableLayoutPanel_Info.SetColumnSpan(Text_Name, 4);
-            Text_Name.CustomizableEdges = customizableEdges8;
+            Text_Name.CustomizableEdges = customizableEdges4;
             Text_Name.DefaultText = "";
             Text_Name.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             Text_Name.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -270,133 +206,240 @@
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên sản phẩm";
             Text_Name.SelectedText = "";
-            Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            Text_Name.Size = new Size(895, 38);
+            Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            Text_Name.Size = new Size(364, 38);
             Text_Name.TabIndex = 3;
             // 
-            // label7
+            // Label_Discount
             // 
-            label7.Anchor = AnchorStyles.Left;
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(3, 209);
-            label7.Name = "label7";
-            label7.Size = new Size(80, 17);
-            label7.TabIndex = 10;
-            label7.Text = "Dung lượng";
+            Label_Discount.Anchor = AnchorStyles.Left;
+            Label_Discount.AutoSize = true;
+            Label_Discount.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_Discount.Location = new Point(533, 207);
+            Label_Discount.Name = "Label_Discount";
+            Label_Discount.Size = new Size(61, 17);
+            Label_Discount.TabIndex = 13;
+            Label_Discount.Text = "Giảm giá";
+            Label_Discount.Visible = false;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(533, 92);
+            label1.Location = new Point(3, 90);
             label1.Name = "label1";
             label1.Size = new Size(55, 17);
             label1.TabIndex = 15;
             label1.Text = "Bắt đầu";
             // 
-            // ComboBox_Capacity
+            // label2
             // 
-            ComboBox_Capacity.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            ComboBox_Capacity.BackColor = Color.Transparent;
-            ComboBox_Capacity.BorderRadius = 5;
-            ComboBox_Capacity.CustomizableEdges = customizableEdges10;
-            ComboBox_Capacity.DrawMode = DrawMode.OwnerDrawFixed;
-            ComboBox_Capacity.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBox_Capacity.FocusedColor = Color.FromArgb(94, 148, 255);
-            ComboBox_Capacity.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            ComboBox_Capacity.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            ComboBox_Capacity.ForeColor = Color.FromArgb(68, 88, 112);
-            ComboBox_Capacity.ItemHeight = 30;
-            ComboBox_Capacity.Location = new Point(123, 199);
-            ComboBox_Capacity.Name = "ComboBox_Capacity";
-            ComboBox_Capacity.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            ComboBox_Capacity.Size = new Size(364, 36);
-            ComboBox_Capacity.Sorted = true;
-            ComboBox_Capacity.TabIndex = 12;
+            label2.Anchor = AnchorStyles.Left;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(533, 32);
+            label2.Name = "label2";
+            label2.Size = new Size(66, 17);
+            label2.TabIndex = 0;
+            label2.Text = "Mã CTKM";
             // 
-            // guna2DateTimePicker1
+            // DateTime_Start
             // 
-            guna2DateTimePicker1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            guna2DateTimePicker1.BackColor = Color.Transparent;
-            guna2DateTimePicker1.BorderRadius = 5;
-            guna2DateTimePicker1.Checked = true;
-            guna2DateTimePicker1.CustomFormat = "";
-            guna2DateTimePicker1.CustomizableEdges = customizableEdges12;
-            guna2DateTimePicker1.FillColor = Color.Transparent;
-            guna2DateTimePicker1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2DateTimePicker1.Format = DateTimePickerFormat.Long;
-            guna2DateTimePicker1.Location = new Point(653, 82);
-            guna2DateTimePicker1.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            guna2DateTimePicker1.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            guna2DateTimePicker1.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            guna2DateTimePicker1.Size = new Size(365, 36);
-            guna2DateTimePicker1.TabIndex = 16;
-            guna2DateTimePicker1.Value = new DateTime(2023, 11, 5, 14, 15, 7, 425);
+            DateTime_Start.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            DateTime_Start.Animated = true;
+            DateTime_Start.BackColor = Color.Transparent;
+            DateTime_Start.BorderRadius = 5;
+            DateTime_Start.Checked = true;
+            DateTime_Start.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            DateTime_Start.CustomizableEdges = customizableEdges6;
+            DateTime_Start.FillColor = Color.White;
+            DateTime_Start.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DateTime_Start.Format = DateTimePickerFormat.Custom;
+            DateTime_Start.Location = new Point(123, 81);
+            DateTime_Start.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            DateTime_Start.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            DateTime_Start.Name = "DateTime_Start";
+            DateTime_Start.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            DateTime_Start.ShowUpDown = true;
+            DateTime_Start.Size = new Size(364, 36);
+            DateTime_Start.TabIndex = 16;
+            DateTime_Start.Value = new DateTime(2023, 11, 5, 17, 11, 33, 0);
             // 
-            // label8
+            // Text_InternalCode
             // 
-            label8.Anchor = AnchorStyles.Left;
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(533, 209);
-            label8.Name = "label8";
-            label8.Size = new Size(35, 17);
-            label8.TabIndex = 13;
-            label8.Text = "Màu";
+            Text_InternalCode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            Text_InternalCode.BorderRadius = 5;
+            Text_InternalCode.CustomizableEdges = customizableEdges8;
+            Text_InternalCode.DefaultText = "";
+            Text_InternalCode.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            Text_InternalCode.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            Text_InternalCode.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            Text_InternalCode.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Text_InternalCode.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Text_InternalCode.ForeColor = Color.Black;
+            Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_InternalCode.Location = new Point(653, 22);
+            Text_InternalCode.Name = "Text_InternalCode";
+            Text_InternalCode.PasswordChar = '\0';
+            Text_InternalCode.PlaceholderText = "Mã sản phẩm";
+            Text_InternalCode.SelectedText = "";
+            Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            Text_InternalCode.Size = new Size(365, 38);
+            Text_InternalCode.TabIndex = 2;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(533, 151);
+            label5.Location = new Point(533, 90);
             label5.Name = "label5";
             label5.Size = new Size(59, 17);
             label5.TabIndex = 18;
             label5.Text = "Kết thúc";
             // 
-            // ComboBox_Color
+            // DateTime_End
             // 
-            ComboBox_Color.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            ComboBox_Color.BackColor = Color.Transparent;
-            ComboBox_Color.BorderRadius = 5;
-            ComboBox_Color.CustomizableEdges = customizableEdges14;
-            ComboBox_Color.DrawMode = DrawMode.OwnerDrawFixed;
-            ComboBox_Color.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBox_Color.FocusedColor = Color.FromArgb(94, 148, 255);
-            ComboBox_Color.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            ComboBox_Color.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            ComboBox_Color.ForeColor = Color.FromArgb(68, 88, 112);
-            ComboBox_Color.ItemHeight = 30;
-            ComboBox_Color.Location = new Point(653, 199);
-            ComboBox_Color.Name = "ComboBox_Color";
-            ComboBox_Color.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            ComboBox_Color.Size = new Size(365, 36);
-            ComboBox_Color.Sorted = true;
-            ComboBox_Color.TabIndex = 14;
+            DateTime_End.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            DateTime_End.BackColor = Color.White;
+            DateTime_End.BorderRadius = 5;
+            DateTime_End.Checked = true;
+            DateTime_End.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            DateTime_End.CustomizableEdges = customizableEdges10;
+            DateTime_End.FillColor = Color.White;
+            DateTime_End.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DateTime_End.Format = DateTimePickerFormat.Custom;
+            DateTime_End.Location = new Point(653, 81);
+            DateTime_End.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            DateTime_End.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            DateTime_End.Name = "DateTime_End";
+            DateTime_End.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            DateTime_End.Size = new Size(365, 36);
+            DateTime_End.TabIndex = 17;
+            DateTime_End.Value = new DateTime(2023, 11, 5, 17, 11, 40, 0);
             // 
-            // guna2DateTimePicker2
+            // label4
             // 
-            guna2DateTimePicker2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            guna2DateTimePicker2.BackColor = Color.Transparent;
-            guna2DateTimePicker2.BorderRadius = 5;
-            guna2DateTimePicker2.Checked = true;
-            guna2DateTimePicker2.CustomFormat = "";
-            guna2DateTimePicker2.CustomizableEdges = customizableEdges16;
-            guna2DateTimePicker2.FillColor = Color.Transparent;
-            guna2DateTimePicker2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2DateTimePicker2.Format = DateTimePickerFormat.Long;
-            guna2DateTimePicker2.Location = new Point(653, 141);
-            guna2DateTimePicker2.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            guna2DateTimePicker2.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            guna2DateTimePicker2.Name = "guna2DateTimePicker2";
-            guna2DateTimePicker2.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            guna2DateTimePicker2.Size = new Size(365, 36);
-            guna2DateTimePicker2.TabIndex = 17;
-            guna2DateTimePicker2.Value = new DateTime(2023, 11, 5, 14, 15, 7, 425);
+            label4.Anchor = AnchorStyles.Left;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(533, 148);
+            label4.Name = "label4";
+            label4.Size = new Size(110, 17);
+            label4.TabIndex = 4;
+            label4.Text = "Đơn giá tôi thiểu";
+            // 
+            // Text_MinPrice
+            // 
+            Text_MinPrice.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            Text_MinPrice.BorderRadius = 5;
+            Text_MinPrice.CustomizableEdges = customizableEdges12;
+            Text_MinPrice.DefaultText = "";
+            Text_MinPrice.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            Text_MinPrice.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            Text_MinPrice.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            Text_MinPrice.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Text_MinPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_MinPrice.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Text_MinPrice.ForeColor = Color.Black;
+            Text_MinPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_MinPrice.Location = new Point(653, 138);
+            Text_MinPrice.Name = "Text_MinPrice";
+            Text_MinPrice.PasswordChar = '\0';
+            Text_MinPrice.PlaceholderText = "Đơn giá";
+            Text_MinPrice.SelectedText = "";
+            Text_MinPrice.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            Text_MinPrice.Size = new Size(365, 38);
+            Text_MinPrice.TabIndex = 5;
+            // 
+            // Text_Discount
+            // 
+            Text_Discount.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            Text_Discount.BorderRadius = 5;
+            Text_Discount.CustomizableEdges = customizableEdges14;
+            Text_Discount.DefaultText = "";
+            Text_Discount.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            Text_Discount.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            Text_Discount.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            Text_Discount.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Text_Discount.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_Discount.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Text_Discount.ForeColor = Color.Black;
+            Text_Discount.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_Discount.Location = new Point(653, 196);
+            Text_Discount.Name = "Text_Discount";
+            Text_Discount.PasswordChar = '\0';
+            Text_Discount.PlaceholderText = "";
+            Text_Discount.SelectedText = "";
+            Text_Discount.ShadowDecoration.CustomizableEdges = customizableEdges15;
+            Text_Discount.Size = new Size(365, 38);
+            Text_Discount.TabIndex = 21;
+            Text_Discount.Visible = false;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Left;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(3, 148);
+            label6.Name = "label6";
+            label6.Size = new Size(69, 17);
+            label6.TabIndex = 19;
+            label6.Text = "Trạng thái";
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Left;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(3, 207);
+            label7.Name = "label7";
+            label7.Size = new Size(32, 17);
+            label7.TabIndex = 10;
+            label7.Text = "Loại";
+            // 
+            // ComboBox_Type
+            // 
+            ComboBox_Type.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            ComboBox_Type.BackColor = Color.Transparent;
+            ComboBox_Type.BorderRadius = 5;
+            ComboBox_Type.CustomizableEdges = customizableEdges16;
+            ComboBox_Type.DrawMode = DrawMode.OwnerDrawFixed;
+            ComboBox_Type.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox_Type.FocusedColor = Color.FromArgb(94, 148, 255);
+            ComboBox_Type.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            ComboBox_Type.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ComboBox_Type.ForeColor = Color.FromArgb(68, 88, 112);
+            ComboBox_Type.ItemHeight = 30;
+            ComboBox_Type.Location = new Point(123, 197);
+            ComboBox_Type.Name = "ComboBox_Type";
+            ComboBox_Type.ShadowDecoration.CustomizableEdges = customizableEdges17;
+            ComboBox_Type.Size = new Size(364, 36);
+            ComboBox_Type.Sorted = true;
+            ComboBox_Type.TabIndex = 12;
+            ComboBox_Type.SelectedIndexChanged += ComboBox_Type_SelectedIndexChanged;
+            // 
+            // ComboBox_Status
+            // 
+            ComboBox_Status.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            ComboBox_Status.BackColor = Color.Transparent;
+            ComboBox_Status.BorderRadius = 5;
+            ComboBox_Status.CustomizableEdges = customizableEdges18;
+            ComboBox_Status.DrawMode = DrawMode.OwnerDrawFixed;
+            ComboBox_Status.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox_Status.FocusedColor = Color.FromArgb(94, 148, 255);
+            ComboBox_Status.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            ComboBox_Status.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ComboBox_Status.ForeColor = Color.FromArgb(68, 88, 112);
+            ComboBox_Status.ItemHeight = 30;
+            ComboBox_Status.Location = new Point(123, 139);
+            ComboBox_Status.Name = "ComboBox_Status";
+            ComboBox_Status.ShadowDecoration.CustomizableEdges = customizableEdges19;
+            ComboBox_Status.Size = new Size(364, 36);
+            ComboBox_Status.Sorted = true;
+            ComboBox_Status.TabIndex = 20;
             // 
             // PromotionDetailControl
             // 
@@ -421,18 +464,20 @@
         private Label Label_Heading;
         private TableLayoutPanel TableLayoutPanel_Info;
         private Label label4;
-        private Guna.UI2.WinForms.Guna2TextBox Text_Price;
-        private Label label8;
+        private Guna.UI2.WinForms.Guna2TextBox Text_MinPrice;
+        private Label Label_Discount;
         private Label label7;
-        private Guna.UI2.WinForms.Guna2ComboBox ComboBox_Color;
-        private Guna.UI2.WinForms.Guna2ComboBox ComboBox_Capacity;
+        private Guna.UI2.WinForms.Guna2ComboBox ComboBox_Type;
         private Label label3;
         private Label label2;
         private Guna.UI2.WinForms.Guna2TextBox Text_InternalCode;
         private Guna.UI2.WinForms.Guna2TextBox Text_Name;
         private Label label1;
-        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
-        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker2;
+        private Guna.UI2.WinForms.Guna2DateTimePicker DateTime_Start;
+        private Guna.UI2.WinForms.Guna2DateTimePicker DateTime_End;
         private Label label5;
+        private Label label6;
+        private Guna.UI2.WinForms.Guna2ComboBox ComboBox_Status;
+        private Guna.UI2.WinForms.Guna2TextBox Text_Discount;
     }
 }

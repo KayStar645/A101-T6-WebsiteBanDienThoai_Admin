@@ -57,9 +57,7 @@
             Discount = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
-            PercentMax = new DataGridViewTextBoxColumn();
             Percent = new DataGridViewTextBoxColumn();
-            DiscountMax = new DataGridViewTextBoxColumn();
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
             FlowLayoutPanel_Paginator = new FlowLayoutPanel();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
@@ -189,7 +187,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 50;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Name, Type, Start, End, PriceMin, Discount, Status, Id, PercentMax, Percent, DiscountMax });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Name, Type, Start, End, PriceMin, Discount, Status, Id, Percent });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -348,14 +346,6 @@
             Id.ReadOnly = true;
             Id.Visible = false;
             // 
-            // PercentMax
-            // 
-            PercentMax.DataPropertyName = "PercentMax";
-            PercentMax.HeaderText = "PercentMax";
-            PercentMax.Name = "PercentMax";
-            PercentMax.ReadOnly = true;
-            PercentMax.Visible = false;
-            // 
             // Percent
             // 
             Percent.DataPropertyName = "Percent";
@@ -363,14 +353,6 @@
             Percent.Name = "Percent";
             Percent.ReadOnly = true;
             Percent.Visible = false;
-            // 
-            // DiscountMax
-            // 
-            DiscountMax.DataPropertyName = "DiscountMax";
-            DiscountMax.HeaderText = "DiscountMax";
-            DiscountMax.Name = "DiscountMax";
-            DiscountMax.ReadOnly = true;
-            DiscountMax.Visible = false;
             // 
             // Dialog_Confirm
             // 
@@ -393,6 +375,7 @@
             // Timer_Debounce
             // 
             Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
             // 
             // TableLayoutPanel_Container
             // 
@@ -417,7 +400,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TableLayoutPanel_Container);
-            Name = "PromotionControl";
             Size = new Size(861, 514);
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Action.ResumeLayout(false);
@@ -450,8 +432,6 @@
         private DataGridViewTextBoxColumn Discount;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn PercentMax;
         private DataGridViewTextBoxColumn Percent;
-        private DataGridViewTextBoxColumn DiscountMax;
     }
 }

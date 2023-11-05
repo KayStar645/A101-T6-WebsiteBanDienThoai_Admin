@@ -189,7 +189,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             name.DefaultText = "";
             name.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             name.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            name.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            name.DisabledState.ForeColor = Color.Black;
             name.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             name.Dock = DockStyle.Fill;
             name.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -218,7 +218,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             value.DefaultText = "";
             value.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             value.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            value.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            value.DisabledState.ForeColor = Color.Black;
             value.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             value.Dock = DockStyle.Fill;
             value.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);

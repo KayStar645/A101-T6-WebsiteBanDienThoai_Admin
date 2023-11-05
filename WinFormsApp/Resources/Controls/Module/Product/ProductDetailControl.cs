@@ -177,11 +177,11 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
                 Panel_Parameter.Controls.Add(ParameterButton(item.Name!, item.Id, i));
 
-                if(_product.Id > 0)
+                if (_product.Id > 0)
                 {
                     foreach (var specifications in _product.SpecificationsDtos)
                     {
-                        if(item.Id != specifications.Id)
+                        if (item.Id != specifications.Id)
                         {
                             continue;
                         }

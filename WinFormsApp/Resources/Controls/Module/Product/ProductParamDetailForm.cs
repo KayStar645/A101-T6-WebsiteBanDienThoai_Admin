@@ -93,7 +93,8 @@ namespace WinFormsApp.Resources.Controls.Module.Product
                 var i = _productParameter.FindIndex(t => t.DetailSpecificationsId == detailSpecificationId);
 
 
-                if(i > -1) {
+                if (i > -1)
+                {
                     _productParameter.RemoveAt(i);
                 }
             }

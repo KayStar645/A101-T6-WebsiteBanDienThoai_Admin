@@ -38,6 +38,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             TableLayoutPanel_Container = new TableLayoutPanel();
@@ -54,7 +55,6 @@
             _Name = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
             Phone = new DataGridViewTextBoxColumn();
-            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             TableLayoutPanel_Container.SuspendLayout();
@@ -69,15 +69,14 @@
             TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
             TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
-            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
             TableLayoutPanel_Container.Dock = DockStyle.Fill;
             TableLayoutPanel_Container.Location = new Point(0, 0);
             TableLayoutPanel_Container.Margin = new Padding(0);
             TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
             TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             TableLayoutPanel_Container.Size = new Size(910, 620);
             TableLayoutPanel_Container.TabIndex = 0;
             // 
@@ -94,14 +93,14 @@
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Header.Size = new Size(910, 55);
+            TableLayoutPanel_Header.Size = new Size(910, 50);
             TableLayoutPanel_Header.TabIndex = 0;
             // 
             // Text_Search
             // 
             Text_Search.Anchor = AnchorStyles.Left;
             Text_Search.Animated = true;
-            Text_Search.BorderRadius = 8;
+            Text_Search.BorderRadius = 5;
             Text_Search.CustomizableEdges = customizableEdges1;
             Text_Search.DefaultText = "";
             Text_Search.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -112,7 +111,7 @@
             Text_Search.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Search.ForeColor = Color.Black;
             Text_Search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Search.Location = new Point(0, 7);
+            Text_Search.Location = new Point(0, 5);
             Text_Search.Margin = new Padding(0);
             Text_Search.Name = "Text_Search";
             Text_Search.PasswordChar = '\0';
@@ -137,7 +136,7 @@
             TableLayoutPanel_Action.Name = "TableLayoutPanel_Action";
             TableLayoutPanel_Action.RowCount = 1;
             TableLayoutPanel_Action.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.Size = new Size(455, 55);
+            TableLayoutPanel_Action.Size = new Size(455, 50);
             TableLayoutPanel_Action.TabIndex = 1;
             // 
             // Button_Create
@@ -153,7 +152,7 @@
             Button_Create.FillColor = Color.FromArgb(100, 88, 255);
             Button_Create.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Create.ForeColor = Color.White;
-            Button_Create.Location = new Point(365, 7);
+            Button_Create.Location = new Point(365, 5);
             Button_Create.Margin = new Padding(0);
             Button_Create.Name = "Button_Create";
             Button_Create.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -175,7 +174,7 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(265, 7);
+            Button_Refresh.Location = new Point(265, 5);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -190,37 +189,51 @@
             DataGridView_Listing.AllowUserToDeleteRows = false;
             DataGridView_Listing.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             DataGridView_Listing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DataGridView_Listing.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            DataGridView_Listing.ColumnHeadersHeight = 50;
+            DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, Id, remove, InternalCode, _Name, Address, Phone });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
             DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle5;
             DataGridView_Listing.Dock = DockStyle.Fill;
             DataGridView_Listing.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Listing.Location = new Point(0, 55);
+            DataGridView_Listing.Location = new Point(0, 50);
             DataGridView_Listing.Margin = new Padding(0);
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
+            DataGridView_Listing.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             DataGridView_Listing.RowHeadersVisible = false;
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            DataGridView_Listing.RowTemplate.Height = 50;
-            DataGridView_Listing.Size = new Size(910, 517);
+            DataGridView_Listing.RowTemplate.Height = 40;
+            DataGridView_Listing.Size = new Size(910, 520);
             DataGridView_Listing.TabIndex = 1;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -234,13 +247,13 @@
             DataGridView_Listing.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             DataGridView_Listing.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             DataGridView_Listing.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.ThemeStyle.HeaderStyle.Height = 50;
+            DataGridView_Listing.ThemeStyle.HeaderStyle.Height = 40;
             DataGridView_Listing.ThemeStyle.ReadOnly = true;
             DataGridView_Listing.ThemeStyle.RowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DataGridView_Listing.ThemeStyle.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            DataGridView_Listing.ThemeStyle.RowsStyle.Height = 50;
+            DataGridView_Listing.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
@@ -327,15 +340,6 @@
             Phone.Name = "Phone";
             Phone.ReadOnly = true;
             // 
-            // FlowLayoutPanel_Paginator
-            // 
-            FlowLayoutPanel_Paginator.AutoSize = true;
-            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(907, 575);
-            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
-            FlowLayoutPanel_Paginator.Size = new Size(0, 42);
-            FlowLayoutPanel_Paginator.TabIndex = 2;
-            // 
             // Dialog_Confirm
             // 
             Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
@@ -358,7 +362,6 @@
             Name = "DistributorControl";
             Size = new Size(910, 620);
             TableLayoutPanel_Container.ResumeLayout(false);
-            TableLayoutPanel_Container.PerformLayout();
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Action.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
@@ -368,12 +371,9 @@
         #endregion
 
         private TableLayoutPanel TableLayoutPanel_Container;
-        private TableLayoutPanel TableLayoutPanel_Header;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
-        private TableLayoutPanel TableLayoutPanel_Action;
-        private Guna.UI2.WinForms.Guna2Button Button_Create;
-        private Guna.UI2.WinForms.Guna2TextBox Text_Search;
-        private Guna.UI2.WinForms.Guna2Button Button_Refresh;
+        private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Confirm;
+        private System.Windows.Forms.Timer Timer_Debounce;
         private DataGridViewButtonColumn edit;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewButtonColumn remove;
@@ -381,8 +381,10 @@
         private DataGridViewTextBoxColumn _Name;
         private DataGridViewTextBoxColumn Address;
         private DataGridViewTextBoxColumn Phone;
-        private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Confirm;
-        private System.Windows.Forms.Timer Timer_Debounce;
-        private FlowLayoutPanel FlowLayoutPanel_Paginator;
+        private TableLayoutPanel TableLayoutPanel_Header;
+        private Guna.UI2.WinForms.Guna2TextBox Text_Search;
+        private TableLayoutPanel TableLayoutPanel_Action;
+        private Guna.UI2.WinForms.Guna2Button Button_Create;
+        private Guna.UI2.WinForms.Guna2Button Button_Refresh;
     }
 }

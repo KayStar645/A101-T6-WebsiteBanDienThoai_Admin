@@ -5,6 +5,7 @@ using Services.Interfaces;
 using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Resources.Controls.Module.Employee;
+using WinFormsApp.Resources.Controls.Module.Import;
 using WinFormsApp.Resources.Controls.Module.Parameter;
 using WinFormsApp.Resources.Controls.Module.Product;
 using WinFormsApp.Resources.Controls.Module.Promotion;
@@ -215,6 +216,7 @@ namespace WinFormsApp.View.Screen
             CustomizableEdges edge1 = new();
             CustomizableEdges edge2 = new();
 
+            btn.Cursor = Cursors.Hand;
             btn.Animated = true;
             btn.AnimatedGIF = true;
             btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -246,6 +248,7 @@ namespace WinFormsApp.View.Screen
             btn.TextAlign = HorizontalAlignment.Left;
             btn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             btn.Click += Btn_Category_Click!;
+            btn.HoverState.FillColor = Color.WhiteSmoke;
 
             return btn;
         }
@@ -278,7 +281,7 @@ namespace WinFormsApp.View.Screen
         private void Btn_Import_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Nhập hàng";
-            Util.LoadControl(Panel_Body, new ParameterControl());
+            Util.LoadControl(Panel_Body, new ImportControl());
 
             _currPanel = Btn_Import.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
