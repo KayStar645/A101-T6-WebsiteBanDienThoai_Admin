@@ -53,7 +53,7 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
                 await _distributorService.Create(_formData);
             }
 
-            ConfigurationControl._refreahCapacityButotn.PerformClick();
+            ConfigurationControl._refreahCapacityButton.PerformClick();
 
             Close();
         }

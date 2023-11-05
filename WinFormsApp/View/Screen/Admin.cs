@@ -2,7 +2,6 @@
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
 using Services.Interfaces;
-using Services.Services;
 using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Resources.Controls.Module.Employee;
@@ -15,6 +14,7 @@ namespace WinFormsApp.View.Screen
     public partial class Admin : Form
     {
         string _currPanel;
+        public static Button _refreshCategoryBtn = new();
 
         public Admin()
         {
@@ -23,6 +23,13 @@ namespace WinFormsApp.View.Screen
             LoadCategory();
 
             Util.LoadControl(Panel_Body, new DistributorControl());
+
+            _refreshCategoryBtn.Click += _refreshCategoryBtn_Click;
+        }
+
+        private void _refreshCategoryBtn_Click(object? sender, EventArgs e)
+        {
+            LoadCategory();
         }
 
         private void LoadMenu()
@@ -158,6 +165,10 @@ namespace WinFormsApp.View.Screen
         {
             ICategoryService _categoryService = Program.container.GetInstance<ICategoryService>();
             var _result = await _categoryService.GetList();
+
+            Util.RemoveChildFrom(Panel_Product, 1);
+
+            Util.Collpase(true, Panel_Product);
 
             foreach (var item in _result.list)
             {

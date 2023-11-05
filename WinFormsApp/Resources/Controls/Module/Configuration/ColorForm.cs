@@ -55,7 +55,7 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
                 await _colorService.Create(_formData);
             }
 
-            ConfigurationControl._refreahColorButotn.PerformClick();
+            ConfigurationControl._refreahColorButton.PerformClick();
 
             Close();
         }

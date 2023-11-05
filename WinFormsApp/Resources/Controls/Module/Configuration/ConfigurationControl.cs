@@ -10,9 +10,9 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
 {
     public partial class ConfigurationControl : UserControl
     {
-        public static Guna2Button _refreahColorButotn;
-        public static Guna2Button _refreahCapacityButotn;
-        public static Guna2Button _refreahCategoryButotn;
+        public static Guna2Button _refreahColorButton;
+        public static Guna2Button _refreahCapacityButton;
+        public static Guna2Button _refreahCategoryButton;
 
         private readonly IColorService _colorService;
         private readonly ICapacityService _capacityService;
@@ -33,9 +33,9 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             _categoryService = Program.container.GetInstance<ICategoryService>();
 
 
-            _refreahColorButotn = Button_ColorRefresh;
-            _refreahCapacityButotn = Button_CapacityRefresh;
-            _refreahCategoryButotn = Button_CategoryRefresh;
+            _refreahColorButton = Button_ColorRefresh;
+            _refreahCapacityButton = Button_CapacityRefresh;
+            _refreahCategoryButton = Button_CategoryRefresh;
 
             LoadCapacity();
             LoadColor();

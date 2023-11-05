@@ -129,5 +129,15 @@ namespace WinFormsApp.Services
             chil.Dock = dockStyle;
             parent.Controls.Add(chil);
         }
+
+        public static void RemoveChildFrom(Control parent, int from)
+        {
+            int length = parent.Controls.Count - from;
+
+            for (int i = 0; i < length; i++)
+            {
+                parent.Controls.RemoveAt(0);
+            }
+        }
     }
 }

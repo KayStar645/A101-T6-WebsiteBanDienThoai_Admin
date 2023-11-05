@@ -123,7 +123,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         {
             _details = await _detailSpecificationsService.GetListBySpecificationsIdAsync(specificationsId);
 
-            EmptyChild();
+            Util.RemoveChildFrom(this, 1);
 
             for (int i = 0; i < _details.Count; i++)
             {
@@ -142,16 +142,6 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             Util.AddControl(this, Child(null), DockStyle.Top);
 
             TableLayoutPanel_Header.SendToBack();
-        }
-
-        private void EmptyChild()
-        {
-            int controlCount = Controls.Count;
-
-            for (int i = 0; i < controlCount - 1; i++)
-            {
-                Controls.RemoveAt(0);
-            }
         }
 
         private TableLayoutPanel Child(DetailSpecificationsDto? item)
