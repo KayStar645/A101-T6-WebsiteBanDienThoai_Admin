@@ -4,6 +4,7 @@ using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(SmartPhoneDbContext))]
-    partial class SmartPhoneDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231105073700_update_table_promotion")]
+    partial class update_table_promotion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,9 +156,6 @@ namespace Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<long?>("DiscountPrice")
-                        .HasColumnType("bigint");
-
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -170,9 +170,6 @@ namespace Database.Migrations
 
                     b.Property<int?>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<long?>("SumPrice")
-                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -323,9 +320,6 @@ namespace Database.Migrations
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<long?>("DiscountPrice")
-                        .HasColumnType("bigint");
-
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
@@ -339,9 +333,6 @@ namespace Database.Migrations
                         .HasColumnType("date");
 
                     b.Property<long?>("Price")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("SumPrice")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Type")

@@ -32,6 +32,7 @@ namespace Services.Services
                     bool flag = true;
 
                     var importBill = _mapper.Map<ImportBill>(pImportBill);
+                    importBill.Type = ImportBill.TYPE_ENTERED;
                     var resultImport = await _importBillRepo.AddAsync(importBill);
 
                     long? sumPrice = 0;
