@@ -67,7 +67,7 @@ namespace Database.Repositories
             }
             string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
-            string query = $"select Id, {string.Join(", ", fields)} " +
+            string query = $"select Id, \"{string.Join("\", \"", fields)}\" " +
                            $"from {_model} " +
                            $"where {string.Join(" and ", filter)} {resultSearchs} " +
                            $"order by {pSort} " +

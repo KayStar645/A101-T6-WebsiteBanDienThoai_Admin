@@ -7,6 +7,7 @@ using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Resources.Controls.Module.Employee;
 using WinFormsApp.Resources.Controls.Module.Parameter;
 using WinFormsApp.Resources.Controls.Module.Product;
+using WinFormsApp.Resources.Controls.Module.Promotion;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
@@ -37,6 +38,7 @@ namespace WinFormsApp.View.Screen
             var masterDataControls = Panel_MaterData.Controls;
             var productControls = Panel_Product.Controls;
             var systemControls = Panel_System.Controls;
+            var businessControls = Panel_Business.Controls;
 
             if (_currPanel != "panel_masterData")
             {
@@ -77,6 +79,19 @@ namespace WinFormsApp.View.Screen
                 }
             }
 
+            if (_currPanel != "panel_business")
+            {
+                for (int i = 0; i < businessControls.Count; i++)
+                {
+                    Guna2Button btn = (Guna2Button)businessControls[i];
+
+                    if (btn.Tag!.ToString()!.Split("|")[0] != "parent")
+                    {
+                        btn.Checked = false;
+                    }
+                }
+            }
+
             if (_currPanel == "panel_masterData")
             {
                 Btn_MasterData.Checked = true;
@@ -90,6 +105,11 @@ namespace WinFormsApp.View.Screen
             if (_currPanel == "panel_system")
             {
                 Btn_System.Checked = true;
+            }
+
+            if (_currPanel == "panel_business")
+            {
+                Btn_Business.Checked = true;
             }
         }
 
@@ -108,6 +128,11 @@ namespace WinFormsApp.View.Screen
             Util.Collpase(!Btn_System.Checked, Panel_System);
         }
 
+        private void Btn_Business_Click(object sender, EventArgs e)
+        {
+            Util.Collpase(!Btn_Business.Checked, Panel_Business);
+        }
+
         private void Btn_Distributor_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Danh sách nhà cung cấp";
@@ -120,10 +145,9 @@ namespace WinFormsApp.View.Screen
         private void Btn_Promotion_Click(object sender, EventArgs e)
         {
             Label_Heading.Text = "Danh sách chương trình khuyến mãi";
+            Util.LoadControl(Panel_Body, new PromotionControl());
 
             _currPanel = Btn_Promotion.Tag!.ToString()!.Split("|")[0];
-
-            bool x = Btn_MasterData.Checked;
             LoadMenu();
         }
 
@@ -248,6 +272,15 @@ namespace WinFormsApp.View.Screen
             Util.LoadControl(Panel_Body, new ParameterControl());
 
             _currPanel = Btn_Parameter.Tag!.ToString()!.Split("|")[0];
+            LoadMenu();
+        }
+
+        private void Btn_Import_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Nhập hàng";
+            Util.LoadControl(Panel_Body, new ParameterControl());
+
+            _currPanel = Btn_Import.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
     }

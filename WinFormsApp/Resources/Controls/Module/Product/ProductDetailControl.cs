@@ -62,11 +62,14 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             await LoadCapacity();
             await LoadColor();
 
+            Label_Heading.Text = "Thêm mới sản phẩm";
+
             if (_product.Id != 0)
             {
                 var result = await _productService.GetDetail(_product.Id);
 
                 _product = result;
+                Label_Heading.Text = "Cập nhập" + _product.Name;
 
                 LoadInfo();
                 LoadImage();
