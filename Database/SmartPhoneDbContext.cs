@@ -40,5 +40,9 @@ namespace Database
 
         public DbSet<DetailImport> DetailImport { get; set; }
 
+        public DbSet<Promotion> Promotion { get; set; }
+
+        public DbSet<PromotionProduct> PromotionProduct { get; set; }
+
     }
 }
