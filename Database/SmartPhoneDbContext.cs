@@ -42,5 +42,7 @@ namespace Database
 
         public DbSet<Promotion> Promotion { get; set; }
 
+        public DbSet<PromotionProduct> PromotionProduct { get; set; }
+
     }
 }

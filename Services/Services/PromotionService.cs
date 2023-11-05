@@ -37,6 +37,7 @@ namespace Services.Services
 
         public async Task<bool> Create(PromotionDto pCreate)
         {
+            pCreate.Status = Promotion.STATUS_DRAFT;
             var promotion = _mapper.Map<Promotion>(pCreate);
 
             var result = await _promotionRepo.AddAsync(promotion);
@@ -45,7 +46,7 @@ namespace Services.Services
         }
 
         public async Task<bool> Update(PromotionDto pUpdate)
-        {
+        { 
             var promotion = _mapper.Map<Promotion>(pUpdate);
 
             var result = await _promotionRepo.UpdateAsync(promotion);
@@ -56,6 +57,13 @@ namespace Services.Services
         public async Task<bool> Delete(int pId)
         {
             var result = await _promotionRepo.DeleteAsync(pId);
+
+            return result;
+        }
+
+        public async Task<bool> Approve(int pId, string type)
+        {
+            var result = await _promotionRepo.ApproveAsync(pId, type);
 
             return result;
         }
