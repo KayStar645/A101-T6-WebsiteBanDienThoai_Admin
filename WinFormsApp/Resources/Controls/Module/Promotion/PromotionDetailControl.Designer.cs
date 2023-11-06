@@ -204,7 +204,7 @@
             Text_Name.Location = new Point(123, 22);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
-            Text_Name.PlaceholderText = "Tên sản phẩm";
+            Text_Name.PlaceholderText = "Tên chương trình khuyến mãi";
             Text_Name.SelectedText = "";
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges5;
             Text_Name.Size = new Size(364, 38);
@@ -251,7 +251,7 @@
             DateTime_Start.BackColor = Color.Transparent;
             DateTime_Start.BorderRadius = 5;
             DateTime_Start.Checked = true;
-            DateTime_Start.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            DateTime_Start.CustomFormat = "MM/dd/yyyy HH:mm";
             DateTime_Start.CustomizableEdges = customizableEdges6;
             DateTime_Start.FillColor = Color.White;
             DateTime_Start.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -283,7 +283,7 @@
             Text_InternalCode.Location = new Point(653, 22);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
-            Text_InternalCode.PlaceholderText = "Mã sản phẩm";
+            Text_InternalCode.PlaceholderText = "Mã chương trình khuyến mãi";
             Text_InternalCode.SelectedText = "";
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges9;
             Text_InternalCode.Size = new Size(365, 38);
@@ -306,7 +306,7 @@
             DateTime_End.BackColor = Color.White;
             DateTime_End.BorderRadius = 5;
             DateTime_End.Checked = true;
-            DateTime_End.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            DateTime_End.CustomFormat = "MM/dd/yyyy HH:mm";
             DateTime_End.CustomizableEdges = customizableEdges10;
             DateTime_End.FillColor = Color.White;
             DateTime_End.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -327,9 +327,9 @@
             label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(533, 148);
             label4.Name = "label4";
-            label4.Size = new Size(110, 17);
+            label4.Size = new Size(114, 17);
             label4.TabIndex = 4;
-            label4.Text = "Đơn giá tôi thiểu";
+            label4.Text = "Đơn giá tối  thiểu";
             // 
             // Text_MinPrice
             // 
@@ -357,17 +357,19 @@
             // Text_Discount
             // 
             Text_Discount.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            Text_Discount.BorderColor = Color.White;
             Text_Discount.BorderRadius = 5;
             Text_Discount.CustomizableEdges = customizableEdges14;
             Text_Discount.DefaultText = "";
-            Text_Discount.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            Text_Discount.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            Text_Discount.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            Text_Discount.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Text_Discount.DisabledState.BorderColor = Color.Transparent;
+            Text_Discount.DisabledState.FillColor = Color.White;
+            Text_Discount.DisabledState.ForeColor = Color.Transparent;
+            Text_Discount.DisabledState.PlaceholderForeColor = Color.Transparent;
+            Text_Discount.Enabled = false;
             Text_Discount.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             Text_Discount.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Discount.ForeColor = Color.Black;
-            Text_Discount.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_Discount.HoverState.BorderColor = Color.White;
             Text_Discount.Location = new Point(653, 196);
             Text_Discount.Name = "Text_Discount";
             Text_Discount.PasswordChar = '\0';
@@ -376,7 +378,6 @@
             Text_Discount.ShadowDecoration.CustomizableEdges = customizableEdges15;
             Text_Discount.Size = new Size(365, 38);
             Text_Discount.TabIndex = 21;
-            Text_Discount.Visible = false;
             // 
             // label6
             // 
@@ -445,6 +446,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(TableLayoutPanel_Info);
             Controls.Add(tableLayoutPanel1);
             Name = "PromotionDetailControl";

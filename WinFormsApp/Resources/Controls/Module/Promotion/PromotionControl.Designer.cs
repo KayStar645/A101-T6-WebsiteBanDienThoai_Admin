@@ -47,10 +47,6 @@
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
-            Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
-            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
-            Timer_Debounce = new System.Windows.Forms.Timer(components);
-            TableLayoutPanel_Container = new TableLayoutPanel();
             edit = new DataGridViewButtonColumn();
             remove = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
@@ -63,6 +59,10 @@
             Status = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
             Percent = new DataGridViewTextBoxColumn();
+            Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
+            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
+            Timer_Debounce = new System.Windows.Forms.Timer(components);
+            TableLayoutPanel_Container = new TableLayoutPanel();
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
@@ -243,47 +243,7 @@
             DataGridView_Listing.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // Dialog_Confirm
-            // 
-            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
-            Dialog_Confirm.Caption = "Thông báo";
-            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
-            Dialog_Confirm.Parent = null;
-            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
-            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
-            // 
-            // FlowLayoutPanel_Paginator
-            // 
-            FlowLayoutPanel_Paginator.AutoSize = true;
-            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(858, 469);
-            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
-            FlowLayoutPanel_Paginator.Size = new Size(0, 42);
-            FlowLayoutPanel_Paginator.TabIndex = 2;
-            // 
-            // Timer_Debounce
-            // 
-            Timer_Debounce.Interval = 600;
-            Timer_Debounce.Tick += Timer_Debounce_Tick;
-            // 
-            // TableLayoutPanel_Container
-            // 
-            TableLayoutPanel_Container.ColumnCount = 1;
-            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
-            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
-            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
-            TableLayoutPanel_Container.Dock = DockStyle.Fill;
-            TableLayoutPanel_Container.Location = new Point(0, 0);
-            TableLayoutPanel_Container.Margin = new Padding(0);
-            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
-            TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            TableLayoutPanel_Container.Size = new Size(861, 514);
-            TableLayoutPanel_Container.TabIndex = 2;
+            DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
             // 
             // edit
             // 
@@ -408,6 +368,47 @@
             Percent.Name = "Percent";
             Percent.ReadOnly = true;
             Percent.Visible = false;
+            // 
+            // Dialog_Confirm
+            // 
+            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            Dialog_Confirm.Caption = "Thông báo";
+            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Confirm.Parent = null;
+            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
+            // 
+            // FlowLayoutPanel_Paginator
+            // 
+            FlowLayoutPanel_Paginator.AutoSize = true;
+            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
+            FlowLayoutPanel_Paginator.Location = new Point(858, 469);
+            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
+            FlowLayoutPanel_Paginator.Size = new Size(0, 42);
+            FlowLayoutPanel_Paginator.TabIndex = 2;
+            // 
+            // Timer_Debounce
+            // 
+            Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
+            // 
+            // TableLayoutPanel_Container
+            // 
+            TableLayoutPanel_Container.ColumnCount = 1;
+            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
+            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
+            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
+            TableLayoutPanel_Container.Dock = DockStyle.Fill;
+            TableLayoutPanel_Container.Location = new Point(0, 0);
+            TableLayoutPanel_Container.Margin = new Padding(0);
+            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
+            TableLayoutPanel_Container.RowCount = 3;
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            TableLayoutPanel_Container.Size = new Size(861, 514);
+            TableLayoutPanel_Container.TabIndex = 2;
             // 
             // PromotionControl
             // 

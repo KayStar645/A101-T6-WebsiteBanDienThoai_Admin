@@ -98,7 +98,7 @@ namespace Database.Repositories
                 List<string> fields = pFields == null ? _fields.ToList() :
                                                         pFields.Intersect(_fields).ToList();
 
-                string query = $"SELECT Id, {string.Join(", ", fields)} " +
+                string query = $"SELECT Id, \"{string.Join("\", \"", fields)}\" " +
                                $"FROM \"{_model}\" " +
                                $"WHERE id = {pId} and IsDeleted = 0";
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
@@ -133,12 +133,18 @@ namespace Database.Repositories
                     PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
                     if (property != null)
                     {
+                        if(property.PropertyType.Name == "DateTime")
+                        {
+                            DateTime datetime = DateTime.Parse(property.GetValue(pModel).ToString());
+                            values.Add($"N'{DateTimeConvertToString(datetime)}'");
+                            continue;
+                        }    
                         values.Add($"N'{property.GetValue(pModel)}'");
                     }
                 }
 
                 // Câu lệnh thêm dữ liệu
-                string query = $"INSERT INTO \"{_model}\" ({string.Join(", ", fields)}, IsDeleted) " +
+                string query = $"INSERT INTO \"{_model}\" (\"{string.Join("\", \"", fields)}\", IsDeleted) " +
                                $"OUTPUT INSERTED.Id VALUES ({string.Join(", ", values)}, 0);";
 
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
@@ -168,20 +174,27 @@ namespace Database.Repositories
                         .Intersect(_fields)
                         .ToList();
 
-                    List<string> value = new List<string>();
+                    List<string> values = new List<string>();
                     foreach (string fieldName in fields)
                     {
                         PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
 
                         if (property.GetValue(pModel) != null)
                         {
-                            value.Add($"{fieldName} = N'{property.GetValue(pModel)}'");
+
+                            if (property.PropertyType.Name == "DateTime")
+                            {
+                                DateTime datetime = DateTime.Parse(property.GetValue(pModel).ToString());
+                                values.Add($"\"{fieldName}\" = N'{DateTimeConvertToString(datetime)}'");
+                                continue;
+                            }
+                            values.Add($"\"{fieldName}\" = N'{property.GetValue(pModel)}'");
                         }
                     }
 
                     // Câu lệnh cập nhật dữ liệu
-                    string query = $"UPDATE {_model} " +
-                                   $"SET {string.Join(", ", value)} " +
+                    string query = $"UPDATE \"{_model}\" " +
+                                   $"SET {string.Join(", ", values)} " +
                                    $"WHERE Id = @Id";
 
                     using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
@@ -201,7 +214,7 @@ namespace Database.Repositories
         {
             try
             {
-                string query = $"UPDATE {_model} " +
+                string query = $"UPDATE \"{_model}\" " +
                            $"SET IsDeleted = 1 " +
                            $"WHERE Id = @Id";
 
@@ -214,6 +227,11 @@ namespace Database.Repositories
                 }
             }
             catch { return false; }
+        }
+
+        private string DateTimeConvertToString(DateTime pDate)
+        {
+            return pDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         // Không sài được: rối qué

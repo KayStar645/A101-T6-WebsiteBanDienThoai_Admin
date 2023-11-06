@@ -77,34 +77,6 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             Util.LoadControl(this, new PromotionDetailControl());
         }
 
-        private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
-            PromotionDto formData = new()
-            {
-                Id = int.Parse(selected["Id"].FormattedValue.ToString()),
-                InternalCode = selected["InternalCode"].FormattedValue.ToString(),
-                Name = selected["Product_name"].FormattedValue.ToString(),
-            };
-
-            if (e.ColumnIndex == 0)
-            {
-                Util.LoadControl(this, new PromotionDetailControl());
-            }
-            else if (e.ColumnIndex == 1)
-            {
-                DialogResult dialogResult = Dialog_Confirm.Show();
-
-                if (dialogResult != DialogResult.Yes)
-                {
-                    return;
-                }
-
-                _promotionService.Delete(formData.Id);
-                Button_Refresh.PerformClick();
-            }
-        }
-
         private void Button_Refresh_Click(object sender, EventArgs e)
         {
             LoadDataAsync();
@@ -123,6 +95,28 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             Paginator();
 
             LoadDataAsync();
+        }
+
+        private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = int.Parse(DataGridView_Listing.CurrentRow.Cells["Id"].Value.ToString()!);
+
+            if (e.ColumnIndex == 0)
+            {
+                Util.LoadControl(this, new PromotionDetailControl(id));
+            }
+            else if (e.ColumnIndex == 1)
+            {
+                DialogResult dialogResult = Dialog_Confirm.Show();
+
+                if (dialogResult != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                _promotionService.Delete(id);
+                Button_Refresh.PerformClick();
+            }
         }
     }
 }
