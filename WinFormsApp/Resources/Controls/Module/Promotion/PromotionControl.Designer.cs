@@ -38,6 +38,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             TableLayoutPanel_Header = new TableLayoutPanel();
@@ -46,10 +47,14 @@
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
+            Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
+            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
+            Timer_Debounce = new System.Windows.Forms.Timer(components);
+            TableLayoutPanel_Container = new TableLayoutPanel();
             edit = new DataGridViewButtonColumn();
             remove = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
+            Product_Name = new DataGridViewTextBoxColumn();
             Type = new DataGridViewTextBoxColumn();
             Start = new DataGridViewTextBoxColumn();
             End = new DataGridViewTextBoxColumn();
@@ -58,10 +63,6 @@
             Status = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
             Percent = new DataGridViewTextBoxColumn();
-            Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
-            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
-            Timer_Debounce = new System.Windows.Forms.Timer(components);
-            TableLayoutPanel_Container = new TableLayoutPanel();
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
@@ -87,7 +88,7 @@
             // Text_Search
             // 
             Text_Search.Animated = true;
-            Text_Search.BorderRadius = 8;
+            Text_Search.BorderRadius = 5;
             Text_Search.CustomizableEdges = customizableEdges1;
             Text_Search.DefaultText = "";
             Text_Search.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -139,11 +140,11 @@
             Button_Create.FillColor = Color.FromArgb(100, 88, 255);
             Button_Create.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Create.ForeColor = Color.White;
-            Button_Create.Location = new Point(340, 0);
+            Button_Create.Location = new Point(341, 0);
             Button_Create.Margin = new Padding(0);
             Button_Create.Name = "Button_Create";
             Button_Create.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Button_Create.Size = new Size(91, 41);
+            Button_Create.Size = new Size(90, 40);
             Button_Create.TabIndex = 0;
             Button_Create.Text = "Thêm mới";
             Button_Create.Click += Button_Create_Click;
@@ -161,11 +162,11 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(240, 0);
+            Button_Refresh.Location = new Point(241, 0);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Button_Refresh.Size = new Size(91, 41);
+            Button_Refresh.Size = new Size(90, 40);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
             Button_Refresh.Click += Button_Refresh_Click;
@@ -176,18 +177,22 @@
             DataGridView_Listing.AllowUserToDeleteRows = false;
             DataGridView_Listing.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Listing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            DataGridView_Listing.ColumnHeadersHeight = 50;
+            DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Name, Type, Start, End, PriceMin, Discount, Status, Id, Percent });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Product_Name, Type, Start, End, PriceMin, Discount, Status, Id, Percent });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -202,10 +207,19 @@
             DataGridView_Listing.Margin = new Padding(0);
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
+            DataGridView_Listing.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             DataGridView_Listing.RowHeadersVisible = false;
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            DataGridView_Listing.RowTemplate.Height = 50;
+            DataGridView_Listing.RowTemplate.Height = 40;
             DataGridView_Listing.Size = new Size(861, 411);
             DataGridView_Listing.TabIndex = 1;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
@@ -220,15 +234,56 @@
             DataGridView_Listing.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             DataGridView_Listing.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             DataGridView_Listing.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.ThemeStyle.HeaderStyle.Height = 50;
+            DataGridView_Listing.ThemeStyle.HeaderStyle.Height = 40;
             DataGridView_Listing.ThemeStyle.ReadOnly = true;
             DataGridView_Listing.ThemeStyle.RowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DataGridView_Listing.ThemeStyle.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            DataGridView_Listing.ThemeStyle.RowsStyle.Height = 50;
+            DataGridView_Listing.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            // 
+            // Dialog_Confirm
+            // 
+            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            Dialog_Confirm.Caption = "Thông báo";
+            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Confirm.Parent = null;
+            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
+            // 
+            // FlowLayoutPanel_Paginator
+            // 
+            FlowLayoutPanel_Paginator.AutoSize = true;
+            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
+            FlowLayoutPanel_Paginator.Location = new Point(858, 469);
+            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
+            FlowLayoutPanel_Paginator.Size = new Size(0, 42);
+            FlowLayoutPanel_Paginator.TabIndex = 2;
+            // 
+            // Timer_Debounce
+            // 
+            Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
+            // 
+            // TableLayoutPanel_Container
+            // 
+            TableLayoutPanel_Container.ColumnCount = 1;
+            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
+            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
+            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
+            TableLayoutPanel_Container.Dock = DockStyle.Fill;
+            TableLayoutPanel_Container.Location = new Point(0, 0);
+            TableLayoutPanel_Container.Margin = new Padding(0);
+            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
+            TableLayoutPanel_Container.RowCount = 3;
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            TableLayoutPanel_Container.Size = new Size(861, 514);
+            TableLayoutPanel_Container.TabIndex = 2;
             // 
             // edit
             // 
@@ -276,15 +331,15 @@
             InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
             InternalCode.Width = 129;
             // 
-            // Name
+            // Product_Name
             // 
-            Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Name.DataPropertyName = "Name";
-            Name.FillWeight = 41.4820366F;
-            Name.HeaderText = "Tên CTKM";
-            Name.MinimumWidth = 6;
-            Name.Name = "Name";
-            Name.ReadOnly = true;
+            Product_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Product_Name.DataPropertyName = "Name";
+            Product_Name.FillWeight = 41.4820366F;
+            Product_Name.HeaderText = "Tên CTKM";
+            Product_Name.MinimumWidth = 6;
+            Product_Name.Name = "Product_Name";
+            Product_Name.ReadOnly = true;
             // 
             // Type
             // 
@@ -354,52 +409,12 @@
             Percent.ReadOnly = true;
             Percent.Visible = false;
             // 
-            // Dialog_Confirm
-            // 
-            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
-            Dialog_Confirm.Caption = "Thông báo";
-            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
-            Dialog_Confirm.Parent = null;
-            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
-            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
-            // 
-            // FlowLayoutPanel_Paginator
-            // 
-            FlowLayoutPanel_Paginator.AutoSize = true;
-            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(858, 469);
-            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
-            FlowLayoutPanel_Paginator.Size = new Size(0, 42);
-            FlowLayoutPanel_Paginator.TabIndex = 2;
-            // 
-            // Timer_Debounce
-            // 
-            Timer_Debounce.Interval = 600;
-            Timer_Debounce.Tick += Timer_Debounce_Tick;
-            // 
-            // TableLayoutPanel_Container
-            // 
-            TableLayoutPanel_Container.ColumnCount = 1;
-            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
-            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
-            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
-            TableLayoutPanel_Container.Dock = DockStyle.Fill;
-            TableLayoutPanel_Container.Location = new Point(0, 0);
-            TableLayoutPanel_Container.Margin = new Padding(0);
-            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
-            TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            TableLayoutPanel_Container.Size = new Size(861, 514);
-            TableLayoutPanel_Container.TabIndex = 2;
-            // 
             // PromotionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TableLayoutPanel_Container);
+            Name = "PromotionControl";
             Size = new Size(861, 514);
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Action.ResumeLayout(false);
@@ -424,7 +439,7 @@
         private DataGridViewButtonColumn edit;
         private DataGridViewButtonColumn remove;
         private DataGridViewTextBoxColumn InternalCode;
-        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn Product_Name;
         private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Start;
         private DataGridViewTextBoxColumn End;

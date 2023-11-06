@@ -241,17 +241,17 @@
             Text_InternalCode.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             Text_InternalCode.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             Text_InternalCode.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_InternalCode.ForeColor = Color.Black;
             Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(131, 20);
-            Text_InternalCode.Margin = new Padding(3, 4, 3, 4);
+            Text_InternalCode.Location = new Point(131, 17);
+            Text_InternalCode.Margin = new Padding(3, 5, 3, 5);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
             Text_InternalCode.PlaceholderText = "Mã nhà cung cấp";
             Text_InternalCode.SelectedText = "";
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            Text_InternalCode.Size = new Size(417, 39);
+            Text_InternalCode.Size = new Size(417, 44);
             Text_InternalCode.TabIndex = 1;
             // 
             // label3
@@ -276,17 +276,17 @@
             Text_Name.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             Text_Name.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             Text_Name.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            Text_Name.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Name.ForeColor = Color.Black;
             Text_Name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Location = new Point(131, 75);
-            Text_Name.Margin = new Padding(3, 4, 3, 4);
+            Text_Name.Location = new Point(131, 72);
+            Text_Name.Margin = new Padding(3, 5, 3, 5);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên nhà cung cấp";
             Text_Name.SelectedText = "";
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            Text_Name.Size = new Size(417, 39);
+            Text_Name.Size = new Size(417, 44);
             Text_Name.TabIndex = 3;
             // 
             // label4
@@ -323,17 +323,17 @@
             Text_Address.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             Text_Address.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             Text_Address.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Address.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            Text_Address.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Address.ForeColor = Color.Black;
             Text_Address.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Address.Location = new Point(131, 130);
-            Text_Address.Margin = new Padding(3, 4, 3, 4);
+            Text_Address.Location = new Point(131, 127);
+            Text_Address.Margin = new Padding(3, 5, 3, 5);
             Text_Address.Name = "Text_Address";
             Text_Address.PasswordChar = '\0';
             Text_Address.PlaceholderText = "Địa chỉ";
             Text_Address.SelectedText = "";
             Text_Address.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            Text_Address.Size = new Size(417, 39);
+            Text_Address.Size = new Size(417, 44);
             Text_Address.TabIndex = 7;
             // 
             // Text_Phone
@@ -348,17 +348,17 @@
             Text_Phone.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             Text_Phone.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             Text_Phone.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Phone.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            Text_Phone.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Phone.ForeColor = Color.Black;
             Text_Phone.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Phone.Location = new Point(131, 185);
-            Text_Phone.Margin = new Padding(3, 4, 3, 4);
+            Text_Phone.Location = new Point(131, 182);
+            Text_Phone.Margin = new Padding(3, 5, 3, 5);
             Text_Phone.Name = "Text_Phone";
             Text_Phone.PasswordChar = '\0';
             Text_Phone.PlaceholderText = "Số điện thoại";
             Text_Phone.SelectedText = "";
             Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            Text_Phone.Size = new Size(417, 39);
+            Text_Phone.Size = new Size(417, 44);
             Text_Phone.TabIndex = 8;
             // 
             // guna2ImageButton1

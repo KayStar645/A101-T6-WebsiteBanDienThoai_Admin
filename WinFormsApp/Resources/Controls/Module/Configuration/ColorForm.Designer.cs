@@ -205,17 +205,17 @@
             Text_InternalCode.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             Text_InternalCode.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             Text_InternalCode.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_InternalCode.ForeColor = Color.Black;
             Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(131, 20);
-            Text_InternalCode.Margin = new Padding(3, 4, 3, 4);
+            Text_InternalCode.Location = new Point(131, 17);
+            Text_InternalCode.Margin = new Padding(3, 5, 3, 5);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
             Text_InternalCode.PlaceholderText = "Mã màu";
             Text_InternalCode.SelectedText = "";
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Text_InternalCode.Size = new Size(269, 39);
+            Text_InternalCode.Size = new Size(269, 44);
             Text_InternalCode.TabIndex = 1;
             // 
             // label3
@@ -241,17 +241,17 @@
             Text_Name.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             Text_Name.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             Text_Name.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            Text_Name.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Name.ForeColor = Color.Black;
             Text_Name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Location = new Point(131, 75);
-            Text_Name.Margin = new Padding(3, 4, 3, 4);
+            Text_Name.Location = new Point(131, 72);
+            Text_Name.Margin = new Padding(3, 5, 3, 5);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên màu";
             Text_Name.SelectedText = "";
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Text_Name.Size = new Size(269, 39);
+            Text_Name.Size = new Size(269, 44);
             Text_Name.TabIndex = 3;
             // 
             // guna2ImageButton1

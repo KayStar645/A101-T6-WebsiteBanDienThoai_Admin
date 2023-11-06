@@ -1,5 +1,5 @@
 ﻿using Controls.UI;
-using Domain.Entities;
+using Domain.DTOs;
 using Domain.ModelViews;
 using Services.Interfaces;
 using WinFormsApp.Services;
@@ -8,10 +8,10 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 {
     public partial class ImportProductControl : Form
     {
-        public delegate void OnSaveCallBack(List<ProductVM> products);
+        public delegate void OnSaveCallBack(List<DetailImportDto> products);
 
         OnSaveCallBack _onSave;
-        List<ProductVM> _products;
+        List<DetailImportDto> _products;
         IProductService _productService;
         int _currPage = 1;
         (List<ProductVM> list, int totalCount, int pageNumber) _fetchData;
@@ -22,12 +22,12 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
             _productService = Program.container.GetInstance<IProductService>();
             _onSave = onSave;
-            _products = new List<ProductVM>();
+            _products = new List<DetailImportDto>();
 
             OnInit();
         }
 
-        public ImportProductControl(OnSaveCallBack onSave, List<ProductVM> products)
+        public ImportProductControl(OnSaveCallBack onSave, List<DetailImportDto> products)
         {
             InitializeComponent();
 
@@ -43,11 +43,11 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             await LoadData();
 
-            if(_products.Count > 0)
+            if (_products.Count > 0)
             {
                 foreach (DataGridViewRow item in DataGridView_Product.Rows)
                 {
-                    if(_products.FindIndex(t => t.Id == int.Parse(item.Cells["Id"].Value.ToString()!)) == -1)
+                    if (_products.FindIndex(t => t.ProductId == int.Parse(item.Cells["Id"].Value.ToString()!)) == -1)
                     {
                         continue;
                     }
@@ -108,7 +108,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
             if (selected)
             {
-                int index = _products.FindIndex(t => t.Id == id);
+                int index = _products.FindIndex(t => t.ProductId == id);
 
                 cells["Product_Select"].Value = "False";
 
@@ -121,17 +121,14 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             {
                 cells["Product_Select"].Value = "True";
 
-                _products.Add(new ProductVM()
+                _products.Add(new DetailImportDto()
                 {
-                    Id = id,
-                    InternalCode = cells["InternalCode"].Value.ToString(),
-                    Name = cells["Product_Name"].Value.ToString(),
-                    CapacityId = int.Parse(cells["CapacityId"].Value.ToString()!),
-                    CapacityName = cells["CapacityName"].Value.ToString(),
-                    CategoryId = int.Parse(cells["CategoryId"].Value.ToString()!),
-                    ColorId = int.Parse(cells["ColorId"].Value.ToString()!),
-                    ColorName = cells["ColorName"].Value.ToString(),
-                    Quantity = int.Parse(cells["Quantity"].Value.ToString()!),
+                    ProductId = id,
+                    ProductInternalCode = cells["InternalCode"].Value.ToString(),
+                    ProductName = cells["Product_Name"].Value.ToString(),
+                    //CapacityName = cells["CapacityName"].Value.ToString(),
+                    //ColorName = cells["ColorName"].Value.ToString(),
+                    Quantity = cells["Quantity"].Value == null ? 0 : int.Parse(cells["Quantity"].Value.ToString()!),
                     Price = long.Parse(cells["Price"].Value.ToString()!)
                 });
             }

@@ -18,6 +18,7 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+            base.Dispose(disposing);
         }
 
         #region Component Designer generated code
@@ -74,13 +75,10 @@
             CapacityName = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
-            CategoryName = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
-            CapacityId = new DataGridViewTextBoxColumn();
-            ColorId = new DataGridViewTextBoxColumn();
-            ColorInternalCode = new DataGridViewTextBoxColumn();
-            CategoryInternalCode = new DataGridViewTextBoxColumn();
-            CategoryId = new DataGridViewTextBoxColumn();
+            DetailId = new DataGridViewTextBoxColumn();
+            ProductImage = new DataGridViewTextBoxColumn();
+            ImportBillId = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Info.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Product).BeginInit();
@@ -396,7 +394,7 @@
             DataGridView_Product.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Product.ColumnHeadersHeight = 40;
             DataGridView_Product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, InternalCode, Product_Name, ColorName, CapacityName, Price, Quantity, CategoryName, Id, CapacityId, ColorId, ColorInternalCode, CategoryInternalCode, CategoryId });
+            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, InternalCode, Product_Name, ColorName, CapacityName, Price, Quantity, Id, DetailId, ProductImage, ImportBillId });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -459,7 +457,7 @@
             // InternalCode
             // 
             InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            InternalCode.DataPropertyName = "InternalCode";
+            InternalCode.DataPropertyName = "ProductInternalCode";
             InternalCode.DividerWidth = 1;
             InternalCode.FillWeight = 42.0936546F;
             InternalCode.HeaderText = "Mã sản phẩm";
@@ -473,7 +471,7 @@
             // Product_Name
             // 
             Product_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Product_Name.DataPropertyName = "Name";
+            Product_Name.DataPropertyName = "ProductName";
             Product_Name.DividerWidth = 1;
             Product_Name.FillWeight = 42.0936546F;
             Product_Name.HeaderText = "Tên sản phẩm";
@@ -532,56 +530,34 @@
             Quantity.Name = "Quantity";
             Quantity.Width = 79;
             // 
-            // CategoryName
-            // 
-            CategoryName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CategoryName.DataPropertyName = "CategoryName";
-            CategoryName.HeaderText = "CategoryName";
-            CategoryName.Name = "CategoryName";
-            CategoryName.Visible = false;
-            // 
             // Id
             // 
-            Id.DataPropertyName = "Id";
+            Id.DataPropertyName = "ProductId";
             Id.HeaderText = "Id";
             Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.Visible = false;
             // 
-            // CapacityId
+            // DetailId
             // 
-            CapacityId.DataPropertyName = "CapacityId";
-            CapacityId.HeaderText = "CapacityId";
-            CapacityId.Name = "CapacityId";
-            CapacityId.Visible = false;
+            DetailId.DataPropertyName = "Id";
+            DetailId.HeaderText = "DetailId";
+            DetailId.Name = "DetailId";
+            DetailId.Visible = false;
             // 
-            // ColorId
+            // ProductImage
             // 
-            ColorId.DataPropertyName = "ColorId";
-            ColorId.HeaderText = "ColorId";
-            ColorId.Name = "ColorId";
-            ColorId.Visible = false;
+            ProductImage.DataPropertyName = "ProductImage";
+            ProductImage.HeaderText = "ProductImage";
+            ProductImage.Name = "ProductImage";
+            ProductImage.Visible = false;
             // 
-            // ColorInternalCode
+            // ImportBillId
             // 
-            ColorInternalCode.DataPropertyName = "ColorInternalCode";
-            ColorInternalCode.HeaderText = "ColorInternalCode";
-            ColorInternalCode.Name = "ColorInternalCode";
-            ColorInternalCode.Visible = false;
-            // 
-            // CategoryInternalCode
-            // 
-            CategoryInternalCode.DataPropertyName = "CategoryInternalCode";
-            CategoryInternalCode.HeaderText = "CategoryInternalCode";
-            CategoryInternalCode.Name = "CategoryInternalCode";
-            CategoryInternalCode.Visible = false;
-            // 
-            // CategoryId
-            // 
-            CategoryId.DataPropertyName = "CategoryId";
-            CategoryId.HeaderText = "CategoryId";
-            CategoryId.Name = "CategoryId";
-            CategoryId.Visible = false;
+            ImportBillId.DataPropertyName = "ImportBillId";
+            ImportBillId.HeaderText = "ImportBillId";
+            ImportBillId.Name = "ImportBillId";
+            ImportBillId.Visible = false;
             // 
             // ImportDetailControl
             // 
@@ -605,10 +581,8 @@
         private Label label3;
         private Guna.UI2.WinForms.Guna2TextBox Text_Name;
         private Label label2;
-        private Guna.UI2.WinForms.Guna2DateTimePicker DateTime_Start;
         private Guna.UI2.WinForms.Guna2TextBox Text_InternalCode;
         private Label label5;
-        private Guna.UI2.WinForms.Guna2DateTimePicker DateTime_End;
         private Label label4;
         private Guna.UI2.WinForms.Guna2TextBox Text_MinPrice;
         private Label label6;
@@ -629,12 +603,9 @@
         private DataGridViewTextBoxColumn CapacityName;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn CategoryName;
         private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn CapacityId;
-        private DataGridViewTextBoxColumn ColorId;
-        private DataGridViewTextBoxColumn ColorInternalCode;
-        private DataGridViewTextBoxColumn CategoryInternalCode;
-        private DataGridViewTextBoxColumn CategoryId;
+        private DataGridViewTextBoxColumn DetailId;
+        private DataGridViewTextBoxColumn ProductImage;
+        private DataGridViewTextBoxColumn ImportBillId;
     }
 }

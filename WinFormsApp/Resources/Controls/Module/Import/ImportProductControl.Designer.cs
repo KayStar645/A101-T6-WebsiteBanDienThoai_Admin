@@ -86,6 +86,7 @@
             tableLayoutPanel1.Dock = DockStyle.Bottom;
             tableLayoutPanel1.Location = new Point(0, 506);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(8, 0, 8, 0);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Size = new Size(1007, 50);
@@ -105,7 +106,7 @@
             Button_Cancel.FillColor = Color.DarkGray;
             Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Cancel.ForeColor = Color.White;
-            Button_Cancel.Location = new Point(3, 5);
+            Button_Cancel.Location = new Point(11, 5);
             Button_Cancel.Margin = new Padding(3, 2, 3, 2);
             Button_Cancel.Name = "Button_Cancel";
             Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -128,7 +129,7 @@
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
             Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(934, 5);
+            Button_Save.Location = new Point(926, 5);
             Button_Save.Margin = new Padding(3, 2, 3, 2);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges4;

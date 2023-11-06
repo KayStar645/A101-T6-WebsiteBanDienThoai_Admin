@@ -1,8 +1,6 @@
-﻿using Controls.UI;
-using Domain.DTOs;
+﻿using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
-using WinFormsApp.Resources.Controls.Module.Employee;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Promotion
@@ -86,7 +84,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             {
                 Id = int.Parse(selected["Id"].FormattedValue.ToString()),
                 InternalCode = selected["InternalCode"].FormattedValue.ToString(),
-                Name = selected["_Name"].FormattedValue.ToString(),
+                Name = selected["Product_name"].FormattedValue.ToString(),
             };
 
             if (e.ColumnIndex == 0)
