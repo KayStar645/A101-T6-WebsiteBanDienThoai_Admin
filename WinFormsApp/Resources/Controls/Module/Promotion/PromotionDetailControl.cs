@@ -29,21 +29,41 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
         private async void LoadInfo()
         {
-            var result = await _promotionService.GetDetail(_promotion.Id);
+            if(_promotion.Id > 0)
+            {
+                var result = await _promotionService.GetDetail(_promotion.Id);
 
-            _promotion = result;
+                _promotion = result;
 
-            Text_Name.Text = _promotion.Name;
-            Text_InternalCode.Text = _promotion.InternalCode;
-            DateTime_Start.Value = _promotion.Start;
-            DateTime_End.Value = _promotion.End;
-            ComboBox_Status.SelectedValue = _promotion.Status;
+                Text_Name.Text = _promotion.Name;
+                Text_InternalCode.Text = _promotion.InternalCode;
+                DateTime_Start.Value = _promotion.Start;
+                DateTime_End.Value = _promotion.End;
+                ComboBox_Status.SelectedValue = _promotion.Status;
+            }
+            else
+            {
+                DateTime_Start.Value = DateTime.Now;
+                DateTime_End.Value = DateTime.Now;
+            }
 
         }
 
-        private void Button_Save_Click(object sender, EventArgs e)
+        private async void Button_Save_Click(object sender, EventArgs e)
         {
+            _promotion.Name = Text_Name.Text;
+            _promotion.InternalCode = Text_InternalCode.Text;
+            _promotion.End = DateTime_End.Value;
+            _promotion.Start = DateTime_Start.Value;
 
+            if (_promotion.Id > 0)
+            {
+                await _promotionService.Update(_promotion);
+            }
+            else 
+            { 
+
+            }
         }
 
         private void Btn_Back_Click(object sender, EventArgs e)

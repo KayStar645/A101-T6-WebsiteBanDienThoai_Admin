@@ -118,13 +118,13 @@
             Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             Button_Save.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
-            Button_Save.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(921, 5);
+            Button_Save.Location = new Point(948, 4);
             Button_Save.Margin = new Padding(3, 2, 3, 2);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            Button_Save.Size = new Size(97, 38);
+            Button_Save.Size = new Size(70, 40);
             Button_Save.TabIndex = 2;
             Button_Save.Text = "Lưu";
             Button_Save.Click += Button_Save_Click;
