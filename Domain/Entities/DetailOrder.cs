@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -6,10 +7,13 @@ namespace Domain.Entities
     {
         public int? Quantity { get; set; }
 
+        [DefaultValue(0)]
         public long? DiscountPrice { get; set; }
 
+        [DefaultValue(0)]
         public long? Price { get; set; }
 
+        [DefaultValue(0)]
         public long? SumPrice { get; set; }
 
         public int? ProductId { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -23,10 +24,16 @@ namespace Domain.Entities
 
         [Column(TypeName = "date")]
         public DateTime? OrderDate { get; set; }
+
+        [DefaultValue(0)]
         public long? DiscountPrice { get; set; }
 
+        [DefaultValue(0)]
         public long? Price { get; set; }
+
+        [DefaultValue(0)]
         public long? SumPrice { get; set; }
+
 
         [Column(TypeName = "nvarchar(5)")]
         public string? Type { get; set; }
