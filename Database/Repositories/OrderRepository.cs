@@ -150,9 +150,13 @@ namespace Database.Repositories
                     if (order != null)
                     {
                         string queryDetail = $"SELECT DO.Id, DO.Quantity, DO.Price, DO.ProductId, " +
-                                                $"P.InternalCode AS ProductInternalCode, P.Name AS ProductName, P.Images AS ProductImage " +
+                                                $"P.InternalCode AS ProductInternalCode, P.Name AS ProductName, P.Images AS ProductImage, P.ColorId, P.CapacityId, " +
+                                                $"Cl.InternalCode AS ColorInternalCode, Cl.Name AS ColorName, " +
+                                                $"Cc.Name AS CapacityName " +
                                                 $"FROM DetailOrder AS DO " +
                                                 $"LEFT JOIN Product AS P ON DO.ProductId = P.Id " +
+                                                $"LEFT JOIN Color AS Cl ON CL.Id = P.ColorId " +
+                                                $"LEFT JOIN Capacity AS Cc ON Cc.Id = P.CapacityId " +
                                              $"WHERE DO.OrderId = {pId} and D0.IsDeleted = 0";
 
                         order.Details = (List<DetailOrderDto>?)await connection.QueryAsync<DetailOrderDto>(queryDetail).ConfigureAwait(false);
