@@ -1,8 +1,13 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using FluentValidation;
 using Services.Interfaces;
+using Services.Validators;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace Services.Services
 {
@@ -37,20 +42,52 @@ namespace Services.Services
 
         public async Task<bool> Create(DistributorDto pCreate)
         {
-            Distributor distributor = _mapper.Map<Distributor>(pCreate);
+            try
+            {
+                DistributorValidator validator = new DistributorValidator(_distributorRepo, true);
+                var validationResult = await validator.ValidateAsync(pCreate);
 
-            var result = await _distributorRepo.AddAsync(distributor);
-            
-            return result > 0;
+                if (validationResult.IsValid == false)
+                {
+                    var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                    throw new Exception(errorMessages);
+                }
+
+                Distributor distributor = _mapper.Map<Distributor>(pCreate);
+
+                var result = await _distributorRepo.AddAsync(distributor);
+
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task<bool> Update(DistributorDto pCreate)
+        public async Task<bool> Update(DistributorDto pUpdate)
         {
-            Distributor distributor = _mapper.Map<Distributor>(pCreate);
+            try
+            {
+                DistributorValidator validator = new DistributorValidator(_distributorRepo, false, pUpdate.Id);
+                var validationResult = await validator.ValidateAsync(pUpdate);
 
-            var result = await _distributorRepo.UpdateAsync(distributor);
+                if (validationResult.IsValid == false)
+                {
+                    var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                    throw new Exception(errorMessages);
+                }
 
-            return result;
+                Distributor distributor = _mapper.Map<Distributor>(pUpdate);
+
+                var result = await _distributorRepo.UpdateAsync(distributor);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<bool> Delete(int pId)
