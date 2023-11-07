@@ -131,9 +131,13 @@ namespace Database.Repositories
                     if(importBill != null)
                     {
                         string queryDetail = $"SELECT DI.Id, DI.Quantity, DI.Price, DI.ProductId, " +
-                                                $"P.InternalCode AS ProductInternalCode, P.Name AS ProductName, P.Images AS ProductImage " +
+                                                $"P.InternalCode AS ProductInternalCode, P.Name AS ProductName, P.Images AS ProductImage, P.ColorId, P.CapacityId, " +
+                                                $"Cl.InternalCode AS ColorInternalCode, Cl.Name AS ColorName, " +
+                                                $"Cc.Name AS CapacityName " +
                                                 $"FROM DetailImport AS DI " +
                                                 $"LEFT JOIN Product AS P ON DI.ProductId = P.Id " +
+                                                $"LEFT JOIN Color AS Cl ON CL.Id = P.ColorId " +
+                                                $"LEFT JOIN Capacity AS Cc ON Cc.Id = P.CapacityId " +
                                              $"WHERE DI.ImportBillId = {pId} and DI.IsDeleted = 0";
 
                         importBill.Details = (List<DetailImportDto>?)await connection.QueryAsync<DetailImportDto>(queryDetail).ConfigureAwait(false);   
