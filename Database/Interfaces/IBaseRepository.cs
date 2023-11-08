@@ -1,4 +1,6 @@
-﻿namespace Database.Interfaces
+﻿using System.Linq.Expressions;
+
+namespace Database.Interfaces
 {
     public interface IBaseRepository<T>
     {
@@ -12,6 +14,8 @@
         Task<bool> UpdateAsync(T pModel);
 
         Task<bool> DeleteAsync(int pId);
+
+        Task<bool> AnyInternalCodeAsync(string pInternalCode, int? pId = null);
 
         Task<(List<ModelVM> list, int totalCount, int pageNumber)> GetAllJoinAsync<ModelVM>(
                                                     List<string> pFields = null, string? pKeyword = "",

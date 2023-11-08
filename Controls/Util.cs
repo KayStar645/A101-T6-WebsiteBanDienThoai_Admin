@@ -13,7 +13,7 @@ namespace WinFormsApp.Services
             AddControl(pBody, pControl, DockStyle.Fill);
         }
 
-        public static void Collpase(bool collapse, Control container)
+        public static void Collapse(bool collapse, Control container)
         {
 
             if (collapse)

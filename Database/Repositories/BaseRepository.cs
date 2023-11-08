@@ -1,8 +1,10 @@
 ﻿using Dapper;
 using Database.Common;
 using Database.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Database.Repositories
@@ -133,12 +135,12 @@ namespace Database.Repositories
                     PropertyInfo property = properties.FirstOrDefault(p => p.Name == fieldName);
                     if (property != null)
                     {
-                        if(property.PropertyType.Name == "DateTime")
+                        if (property.PropertyType.Name == "DateTime")
                         {
                             DateTime datetime = DateTime.Parse(property.GetValue(pModel).ToString());
                             values.Add($"N'{DateTimeConvertToString(datetime)}'");
                             continue;
-                        }    
+                        }
                         values.Add($"N'{property.GetValue(pModel)}'");
                     }
                 }
@@ -151,7 +153,7 @@ namespace Database.Repositories
                 {
                     var insertedId = await connection.ExecuteScalarAsync<int>(query, null).ConfigureAwait(false);
                     return insertedId;
-                }                
+                }
             }
             catch { return 0; }
         }
@@ -233,6 +235,29 @@ namespace Database.Repositories
         {
             return pDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
+
+        public virtual async Task<bool> AnyInternalCodeAsync(string pInternalCode, int? pId = null)
+        {
+            try
+            {
+                var query = $"SELECT COUNT(Id) " +
+                            $"FROM \"{_model}\" " +
+                            $"WHERE IsDeleted = 0 and InternalCode = N'{pInternalCode}'";
+                if (pId != null)
+                {
+                    query += $" and Id != {pId}";
+                }
+
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    var count = await connection.ExecuteScalarAsync<int>(query).ConfigureAwait(false);
+
+                    return count > 0;
+                }
+            }
+            catch { return false; }
+        }
+
 
         // Không sài được: rối qué
         public virtual async Task<(List<ModelVM> list, int totalCount, int pageNumber)> GetAllJoinAsync<ModelVM>(

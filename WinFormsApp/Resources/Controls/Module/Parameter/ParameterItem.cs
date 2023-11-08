@@ -46,12 +46,12 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             if (collapse)
             {
-                Util.Collpase(true, this);
+                Util.Collapse(true, this);
             }
             else
             {
                 LoadDetail(_parent.Id);
-                Util.Collpase(false, this);
+                Util.Collapse(false, this);
             }
 
             MaximumSize = new Size(0, Height - 70);
@@ -96,8 +96,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             }
 
-            Util.Collpase(false, this);
-            Util.Collpase(true, this);
+            Util.Collapse(false, this);
+            Util.Collapse(true, this);
 
             LoadDetail(_parent.Id);
         }
@@ -299,8 +299,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             await _detailSpecificationsService.Delete(int.Parse(btn.Tag!.ToString()));
 
-            Util.Collpase(false, this);
-            Util.Collpase(true, this);
+            Util.Collapse(false, this);
+            Util.Collapse(true, this);
 
             LoadDetail(_parent.Id);
         }
