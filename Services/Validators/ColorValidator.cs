@@ -4,46 +4,37 @@ using FluentValidation;
 using Services.Common;
 using Services.Transform;
 
+
 namespace Services.Validators
 {
-    public class CustomerValidator : AbstractValidator<CustomerDto>
-    {
-		private readonly ICustomerRepository _customerRepo;
+	public class ColorValidator : AbstractValidator<ColorDto>
+	{
+		private readonly IColorRepository _colorRepo;
 
-		public CustomerValidator(ICustomerRepository customerRepository, bool? pIsCreate = true, int? pId = null)
+		public ColorValidator(IColorRepository colorRepository, bool? pIsCreate = true, int? pId = null)
 		{
-			_customerRepo = customerRepository;
+			_colorRepo = colorRepository;
 
 			RuleFor(x => x.Name)
 				.NotEmpty()
 				.WithMessage(ValidatorTranform.Required(ModulesTransform.Common.Name +
-										ModulesTransform.Customer.module))
+										ModulesTransform.Color.module))
 				.MaximumLength(ValidatorCommon.NameLength)
 				.WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
-							 ModulesTransform.Customer.module, ValidatorCommon.NameLength));
-
-			RuleFor(x => x.Address)
-				.MaximumLength(ValidatorCommon.AddressLength)
-				.WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Address,
-															 ValidatorCommon.AddressLength));
-
-			RuleFor(x => x.Phone)
-			   .Must(phoneNumber => string.IsNullOrEmpty(phoneNumber) || phoneNumber.Length == 10)
-			   .WithMessage(ValidatorTranform.Length(ModulesTransform.Common.Phone,
-													 ValidatorCommon.PhoneLength));
+							 ModulesTransform.Color.module, ValidatorCommon.NameLength));
 
 			if (pIsCreate == true)
 			{
 				RuleFor(x => x.InternalCode)
 			   .NotEmpty()
 			   .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
-										ModulesTransform.Customer.module))
+										ModulesTransform.Color.module))
 			   .MaximumLength(ValidatorCommon.InternalCodeLength)
 			   .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
-										ModulesTransform.Customer.module, ValidatorCommon.InternalCodeLength))
+										ModulesTransform.Color.module, ValidatorCommon.InternalCodeLength))
 			   .MustAsync(async (internalCode, token) =>
 			   {
-				   return await _customerRepo.AnyInternalCodeAsync(internalCode) == false;
+				   return await _colorRepo.AnyInternalCodeAsync(internalCode) == false;
 			   })
 			   .WithMessage(internalCode => ValidatorTranform.Exists("internalCode"));
 			}
@@ -52,16 +43,17 @@ namespace Services.Validators
 				RuleFor(x => x.InternalCode)
 			   .NotEmpty()
 			   .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
-										ModulesTransform.Customer.module))
+										ModulesTransform.Color.module))
 			   .MaximumLength(ValidatorCommon.InternalCodeLength)
 			   .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
-										ModulesTransform.Customer.module, ValidatorCommon.InternalCodeLength))
+										ModulesTransform.Color.module, ValidatorCommon.InternalCodeLength))
 			   .MustAsync(async (internalCode, token) =>
 			   {
-				   return await _customerRepo.AnyInternalCodeAsync(internalCode, pId) == false;
+				   return await _colorRepo.AnyInternalCodeAsync(internalCode, pId) == false;
 			   })
 			   .WithMessage(internalCode => ValidatorTranform.Exists("internalCode"));
 			}
+
 		}
 	}
 }
