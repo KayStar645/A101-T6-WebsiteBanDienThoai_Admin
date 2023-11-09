@@ -29,8 +29,7 @@ namespace Services.Validators
 													 ValidatorCommon.PhoneLength));
 
 			RuleFor(x => x.Sex)
-				.Must(gender => string.IsNullOrEmpty(gender) || gender == CommonTranform.male
-							|| gender == CommonTranform.female || gender == CommonTranform.other)
+				.Must(gender => string.IsNullOrEmpty(gender) || CommonTranform.GetGender().Contains(gender))
 				.WithMessage(ValidatorTranform.Must("sex", CommonTranform.GetGender()));
 
 			RuleFor(x => x.Birthday)
