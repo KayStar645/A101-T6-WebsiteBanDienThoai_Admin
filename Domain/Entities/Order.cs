@@ -23,7 +23,7 @@ namespace Domain.Entities
         public string? InternalCode { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [DefaultValue(0)]
         public long? DiscountPrice { get; set; }

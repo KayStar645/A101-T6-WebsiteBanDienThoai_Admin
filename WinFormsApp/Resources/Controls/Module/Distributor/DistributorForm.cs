@@ -51,30 +51,41 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
             Text_Phone.Clear();
         }
 
-        private void Button_Save_Click(object sender, EventArgs e)
+        private async void Button_Save_Click(object sender, EventArgs e)
         {
-            formData.InternalCode = Text_InternalCode.Text;
-            formData.Name = Text_Name.Text;
-            formData.Address = Text_Address.Text;
-            formData.Phone = Text_Phone.Text;
-
-            if (formData.Id != 0)
+            try
             {
-                _distributorService.Update(formData);
+                formData.InternalCode = Text_InternalCode.Text;
+                formData.Name = Text_Name.Text;
+                formData.Address = Text_Address.Text;
+                formData.Phone = Text_Phone.Text;
+
+                if (formData.Id != 0)
+                {
+                    await _distributorService.Update(formData);
+                }
+                else
+                {
+                    await _distributorService.Create(formData);
+                }
+
+                DistributorControl._refreshButton.PerformClick();
+
+                Close();
             }
-            else
+            catch (Exception err)
             {
-                _distributorService.Create(formData);
+                Dialog_Notification.Show(err.Message);
             }
-
-            DistributorControl._refreshButton.PerformClick();
-
-            Close();
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Timer_Close_Tick(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -70,6 +70,7 @@ namespace Services.Services
                     {
                         flag = false;
                     }
+                    importBill.Id = resultImport;
                     importBill.Price = sumPrice;
                     var update = await _importBillRepo.UpdateAsync(importBill);
                     if(update == false)

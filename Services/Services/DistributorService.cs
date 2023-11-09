@@ -42,52 +42,39 @@ namespace Services.Services
 
         public async Task<bool> Create(DistributorDto pCreate)
         {
-            try
+            DistributorValidator validator = new DistributorValidator(_distributorRepo, true);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
             {
-                DistributorValidator validator = new DistributorValidator(_distributorRepo, true);
-                var validationResult = await validator.ValidateAsync(pCreate);
-
-                if (validationResult.IsValid == false)
-                {
-                    var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
-                    throw new Exception(errorMessages);
-                }
-
-                Distributor distributor = _mapper.Map<Distributor>(pCreate);
-
-                var result = await _distributorRepo.AddAsync(distributor);
-
-                return result > 0;
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            Distributor distributor = _mapper.Map<Distributor>(pCreate);
+
+            var result = await _distributorRepo.AddAsync(distributor);
+
+            return result > 0;
         }
 
         public async Task<bool> Update(DistributorDto pUpdate)
         {
-            try
+
+            DistributorValidator validator = new DistributorValidator(_distributorRepo, false, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
             {
-                DistributorValidator validator = new DistributorValidator(_distributorRepo, false, pUpdate.Id);
-                var validationResult = await validator.ValidateAsync(pUpdate);
-
-                if (validationResult.IsValid == false)
-                {
-                    var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
-                    throw new Exception(errorMessages);
-                }
-
-                Distributor distributor = _mapper.Map<Distributor>(pUpdate);
-
-                var result = await _distributorRepo.UpdateAsync(distributor);
-
-                return result;
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            Distributor distributor = _mapper.Map<Distributor>(pUpdate);
+
+            var result = await _distributorRepo.UpdateAsync(distributor);
+
+            return result;
         }
 
         public async Task<bool> Delete(int pId)
