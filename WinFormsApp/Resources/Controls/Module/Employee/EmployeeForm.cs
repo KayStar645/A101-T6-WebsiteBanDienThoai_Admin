@@ -52,7 +52,7 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
             formData.InternalCode = Text_InternalCode.Text;
             formData.Name = Text_Name.Text;
             formData.Sex = cbb_Sex.Text;
-            formData.Birthday = DateTime.Parse(guna2TextBox1.Text);
+            formData.Birthday = DateTime_Birthday.Value;
             formData.Phone = Text_Phone.Text;
 
             if (formData.Id != 0)
