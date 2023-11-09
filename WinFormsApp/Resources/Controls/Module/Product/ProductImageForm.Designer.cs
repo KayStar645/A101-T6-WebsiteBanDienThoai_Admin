@@ -43,8 +43,8 @@
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
             TableLayoutPanel_Header = new TableLayoutPanel();
             Label_Heading = new Label();
-            DataGridView_Images = new Guna.UI2.WinForms.Guna2DataGridView();
             Dialog_Notification = new Guna.UI2.WinForms.Guna2MessageDialog();
+            DataGridView_Images = new Guna.UI2.WinForms.Guna2DataGridView();
             tableLayoutPanel1.SuspendLayout();
             TableLayoutPanel_Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Images).BeginInit();
@@ -60,17 +60,19 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.BackColor = Color.White;
-            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(Button_Cancel, 0, 0);
             tableLayoutPanel1.Controls.Add(Button_Save, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(8, 335);
+            tableLayoutPanel1.Location = new Point(0, 343);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(8, 0, 8, 0);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(572, 47);
+            tableLayoutPanel1.Size = new Size(588, 47);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // Button_Cancel
@@ -85,13 +87,13 @@
             Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             Button_Cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             Button_Cancel.FillColor = Color.DarkGray;
-            Button_Cancel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Cancel.ForeColor = Color.White;
-            Button_Cancel.Location = new Point(3, 4);
+            Button_Cancel.Location = new Point(11, 3);
             Button_Cancel.Margin = new Padding(3, 2, 3, 2);
             Button_Cancel.Name = "Button_Cancel";
             Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Button_Cancel.Size = new Size(97, 38);
+            Button_Cancel.Size = new Size(70, 40);
             Button_Cancel.TabIndex = 2;
             Button_Cancel.Text = "Hủy";
             Button_Cancel.Click += Button_Cancel_Click;
@@ -108,32 +110,28 @@
             Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             Button_Save.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
-            Button_Save.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(472, 4);
+            Button_Save.Location = new Point(487, 3);
             Button_Save.Margin = new Padding(3, 2, 3, 2);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Button_Save.Size = new Size(97, 38);
+            Button_Save.Size = new Size(70, 40);
             Button_Save.TabIndex = 1;
             Button_Save.Text = "Lưu";
             Button_Save.Click += Button_Save_Click;
             // 
             // TableLayoutPanel_Header
             // 
-            TableLayoutPanel_Header.ColumnCount = 5;
+            TableLayoutPanel_Header.ColumnCount = 1;
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Header.Controls.Add(Label_Heading, 1, 0);
+            TableLayoutPanel_Header.Controls.Add(Label_Heading, 0, 0);
             TableLayoutPanel_Header.Dock = DockStyle.Top;
-            TableLayoutPanel_Header.Location = new Point(8, 0);
+            TableLayoutPanel_Header.Location = new Point(0, 0);
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Header.Size = new Size(572, 44);
+            TableLayoutPanel_Header.Size = new Size(588, 35);
             TableLayoutPanel_Header.TabIndex = 6;
             // 
             // Label_Heading
@@ -142,11 +140,20 @@
             Label_Heading.AutoSize = true;
             Label_Heading.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             Label_Heading.ForeColor = Color.White;
-            Label_Heading.Location = new Point(225, 12);
+            Label_Heading.Location = new Point(243, 8);
             Label_Heading.Name = "Label_Heading";
-            Label_Heading.Size = new Size(122, 19);
+            Label_Heading.Size = new Size(101, 19);
             Label_Heading.TabIndex = 9;
-            Label_Heading.Text = "Thông số kỹ thuật";
+            Label_Heading.Text = "Danh sách ảnh";
+            // 
+            // Dialog_Notification
+            // 
+            Dialog_Notification.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            Dialog_Notification.Caption = "Thông báo";
+            Dialog_Notification.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
+            Dialog_Notification.Parent = this;
+            Dialog_Notification.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            Dialog_Notification.Text = "Đường dẫn ảnh không hợp lệ";
             // 
             // DataGridView_Images
             // 
@@ -155,8 +162,9 @@
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             DataGridView_Images.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DataGridView_Images.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(102, 102, 102);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -172,12 +180,12 @@
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             DataGridView_Images.DefaultCellStyle = dataGridViewCellStyle3;
             DataGridView_Images.Dock = DockStyle.Fill;
             DataGridView_Images.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Images.Location = new Point(8, 44);
+            DataGridView_Images.Location = new Point(0, 35);
             DataGridView_Images.Margin = new Padding(0);
             DataGridView_Images.Name = "DataGridView_Images";
             DataGridView_Images.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -194,7 +202,7 @@
             DataGridView_Images.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridView_Images.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Images.RowTemplate.Height = 40;
-            DataGridView_Images.Size = new Size(572, 291);
+            DataGridView_Images.Size = new Size(588, 308);
             DataGridView_Images.TabIndex = 8;
             DataGridView_Images.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Images.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -218,15 +226,6 @@
             DataGridView_Images.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Images.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
-            // Dialog_Notification
-            // 
-            Dialog_Notification.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-            Dialog_Notification.Caption = "Thông báo";
-            Dialog_Notification.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
-            Dialog_Notification.Parent = this;
-            Dialog_Notification.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
-            Dialog_Notification.Text = "Đường dẫn ảnh không hợp lệ";
-            // 
             // ProductImageForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -238,7 +237,6 @@
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProductImageForm";
-            Padding = new Padding(8, 0, 8, 8);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ProductImage";
             tableLayoutPanel1.ResumeLayout(false);
@@ -255,7 +253,7 @@
         private Guna.UI2.WinForms.Guna2Button Button_Save;
         private TableLayoutPanel TableLayoutPanel_Header;
         private Label Label_Heading;
-        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Images;
         private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
+        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Images;
     }
 }

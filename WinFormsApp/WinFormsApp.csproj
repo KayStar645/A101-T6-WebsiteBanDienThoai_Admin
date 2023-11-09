@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Controls\Controls.csproj" />
+    <ProjectReference Include="..\Controls\Common.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
@@ -60,15 +60,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Resources\Controls\Module\Employee\EmployeeControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Resources\Controls\Module\OrderControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Resources\Controls\Module\PriceHistoryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Resources\Controls\Module\PromotionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

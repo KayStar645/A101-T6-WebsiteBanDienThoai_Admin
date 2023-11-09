@@ -1,6 +1,4 @@
-﻿using Controls.UI;
-using Domain.DTOs;
-using Domain.Entities;
+﻿using Domain.DTOs;
 using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
@@ -38,20 +36,20 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void Paginator()
         {
-            FlowLayoutPanel_Paginator.Controls.Clear();
+            //FlowLayoutPanel_Paginator.Controls.Clear();
 
-            for (int i = 1; i <= _result.pageNumber; i++)
-            {
-                PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
+            //for (int i = 1; i <= _result.pageNumber; i++)
+            //{
+            //    PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
 
-                FlowLayoutPanel_Paginator.Controls.Add(button);
-            }
+            //    FlowLayoutPanel_Paginator.Controls.Add(button);
+            //}
 
-            if (_result.pageNumber > 0)
-            {
-                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
-                FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
-            }
+            //if (_result.pageNumber > 0)
+            //{
+            //    FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
+            //    FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
+            //}
         }
 
         private async void Button_Paginator_Click(object sender, EventArgs e)
@@ -78,7 +76,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
             ProductVM formData = _result.list.Find(t => t.Id == int.Parse(selected["Id"].Value!.ToString()!));
 
-            if(formData == null)
+            if (formData == null)
             {
                 return;
             }

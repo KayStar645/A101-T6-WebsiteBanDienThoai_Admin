@@ -3,12 +3,13 @@ using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
 using Services.Interfaces;
-using Services.Services;
 using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Resources.Controls.Module.Employee;
+using WinFormsApp.Resources.Controls.Module.Import;
 using WinFormsApp.Resources.Controls.Module.Parameter;
 using WinFormsApp.Resources.Controls.Module.Product;
+using WinFormsApp.Resources.Controls.Module.Promotion;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
@@ -16,6 +17,7 @@ namespace WinFormsApp.View.Screen
 	public partial class Admin : Form
 	{
 		string _currPanel;
+		public static Button _refreshCategoryBtn = new();
 
 		public Admin()
 		{
@@ -24,7 +26,13 @@ namespace WinFormsApp.View.Screen
 			LoadCategory();
 
 			Util.LoadControl(Panel_Body, new DistributorControl());
-			Util.LoadControl(Panel_Body, new CustomerControl());
+
+			_refreshCategoryBtn.Click += _refreshCategoryBtn_Click;
+		}
+
+		private void _refreshCategoryBtn_Click(object? sender, EventArgs e)
+		{
+			LoadCategory();
 		}
 
 		private void LoadMenu()
@@ -32,6 +40,7 @@ namespace WinFormsApp.View.Screen
 			var masterDataControls = Panel_MaterData.Controls;
 			var productControls = Panel_Product.Controls;
 			var systemControls = Panel_System.Controls;
+			var businessControls = Panel_Business.Controls;
 
 			if (_currPanel != "panel_masterData")
 			{
@@ -72,6 +81,19 @@ namespace WinFormsApp.View.Screen
 				}
 			}
 
+			if (_currPanel != "panel_business")
+			{
+				for (int i = 0; i < businessControls.Count; i++)
+				{
+					Guna2Button btn = (Guna2Button)businessControls[i];
+
+					if (btn.Tag!.ToString()!.Split("|")[0] != "parent")
+					{
+						btn.Checked = false;
+					}
+				}
+			}
+
 			if (_currPanel == "panel_masterData")
 			{
 				Btn_MasterData.Checked = true;
@@ -86,21 +108,31 @@ namespace WinFormsApp.View.Screen
 			{
 				Btn_System.Checked = true;
 			}
+
+			if (_currPanel == "panel_business")
+			{
+				Btn_Business.Checked = true;
+			}
 		}
 
 		private void Btn_MasterData_Click(object sender, EventArgs e)
 		{
-			Util.Collpase(!Btn_MasterData.Checked, Panel_MaterData);
+			Util.Collapse(!Btn_MasterData.Checked, Panel_MaterData);
 		}
 
 		private void Btn_Product_Click(object sender, EventArgs e)
 		{
-			Util.Collpase(!Btn_Product.Checked, Panel_Product);
+			Util.Collapse(!Btn_Product.Checked, Panel_Product);
 		}
 
 		private void Btn_System_Click(object sender, EventArgs e)
 		{
-			Util.Collpase(!Btn_System.Checked, Panel_System);
+			Util.Collapse(!Btn_System.Checked, Panel_System);
+		}
+
+		private void Btn_Business_Click(object sender, EventArgs e)
+		{
+			Util.Collapse(!Btn_Business.Checked, Panel_Business);
 		}
 
 		private void Btn_Distributor_Click(object sender, EventArgs e)
@@ -115,10 +147,9 @@ namespace WinFormsApp.View.Screen
 		private void Btn_Promotion_Click(object sender, EventArgs e)
 		{
 			Label_Heading.Text = "Danh sách chương trình khuyến mãi";
+			Util.LoadControl(Panel_Body, new PromotionControl());
 
 			_currPanel = Btn_Promotion.Tag!.ToString()!.Split("|")[0];
-
-			bool x = Btn_MasterData.Checked;
 			LoadMenu();
 		}
 
@@ -162,6 +193,10 @@ namespace WinFormsApp.View.Screen
 			ICategoryService _categoryService = Program.container.GetInstance<ICategoryService>();
 			var _result = await _categoryService.GetList();
 
+			Util.RemoveChildFrom(Panel_Product, 1);
+
+			Util.Collapse(true, Panel_Product);
+
 			foreach (var item in _result.list)
 			{
 				Guna2Button btn = CategoryButton(item);
@@ -183,6 +218,7 @@ namespace WinFormsApp.View.Screen
 			CustomizableEdges edge1 = new();
 			CustomizableEdges edge2 = new();
 
+			btn.Cursor = Cursors.Hand;
 			btn.Animated = true;
 			btn.AnimatedGIF = true;
 			btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -214,6 +250,7 @@ namespace WinFormsApp.View.Screen
 			btn.TextAlign = HorizontalAlignment.Left;
 			btn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
 			btn.Click += Btn_Category_Click!;
+			btn.HoverState.FillColor = Color.WhiteSmoke;
 
 			return btn;
 		}
@@ -240,6 +277,15 @@ namespace WinFormsApp.View.Screen
 			Util.LoadControl(Panel_Body, new ParameterControl());
 
 			_currPanel = Btn_Parameter.Tag!.ToString()!.Split("|")[0];
+			LoadMenu();
+		}
+
+		private void Btn_Import_Click(object sender, EventArgs e)
+		{
+			Label_Heading.Text = "Nhập hàng";
+			Util.LoadControl(Panel_Body, new ImportControl());
+
+			_currPanel = Btn_Import.Tag!.ToString()!.Split("|")[0];
 			LoadMenu();
 		}
 	}

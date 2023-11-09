@@ -1,13 +1,11 @@
-﻿using Controls.UI;
-using Domain.DTOs;
+﻿using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
-using SimpleInjector;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Employee
 {
-	public partial class EmployeeControl : UserControl
+    public partial class EmployeeControl : UserControl
 	{
 		private readonly IEmployeeService _employeeService;
 		public static Guna2Button _refreshButton = new Guna2Button();
@@ -49,20 +47,20 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 
 		private void Paginator()
 		{
-			FlowLayoutPanel_Paginator.Controls.Clear();
+			//FlowLayoutPanel_Paginator.Controls.Clear();
 
-			for (int i = 1; i <= _result.pageNumber; i++)
-			{
-				PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
+			//for (int i = 1; i <= _result.pageNumber; i++)
+			//{
+			//	PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
 
-				FlowLayoutPanel_Paginator.Controls.Add(button);
-			}
+			//	FlowLayoutPanel_Paginator.Controls.Add(button);
+			//}
 
-			if (_result.pageNumber > 0)
-			{
-				FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-				FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
-			}
+			//if (_result.pageNumber > 0)
+			//{
+			//	FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
+			//	FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
+			//}
 		}
 
 		private async void Button_Paginator_Click(object sender, EventArgs e)

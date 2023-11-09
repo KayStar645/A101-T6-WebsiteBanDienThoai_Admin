@@ -37,14 +37,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
-            TableLayoutPanel_Container = new TableLayoutPanel();
             TableLayoutPanel_Header = new TableLayoutPanel();
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
             TableLayoutPanel_Action = new TableLayoutPanel();
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
             Panel_Container = new Panel();
-            TableLayoutPanel_Container.SuspendLayout();
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
             SuspendLayout();
@@ -62,22 +60,6 @@
             Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
             // 
-            // TableLayoutPanel_Container
-            // 
-            TableLayoutPanel_Container.ColumnCount = 1;
-            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
-            TableLayoutPanel_Container.Controls.Add(Panel_Container, 0, 1);
-            TableLayoutPanel_Container.Dock = DockStyle.Fill;
-            TableLayoutPanel_Container.Location = new Point(0, 0);
-            TableLayoutPanel_Container.Margin = new Padding(0);
-            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
-            TableLayoutPanel_Container.RowCount = 2;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Size = new Size(1016, 659);
-            TableLayoutPanel_Container.TabIndex = 1;
-            // 
             // TableLayoutPanel_Header
             // 
             TableLayoutPanel_Header.ColumnCount = 2;
@@ -85,13 +67,13 @@
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Header.Controls.Add(Text_Search, 0, 0);
             TableLayoutPanel_Header.Controls.Add(TableLayoutPanel_Action, 1, 0);
-            TableLayoutPanel_Header.Dock = DockStyle.Fill;
+            TableLayoutPanel_Header.Dock = DockStyle.Top;
             TableLayoutPanel_Header.Location = new Point(0, 0);
             TableLayoutPanel_Header.Margin = new Padding(0);
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Header.Size = new Size(1016, 55);
+            TableLayoutPanel_Header.Size = new Size(1016, 50);
             TableLayoutPanel_Header.TabIndex = 0;
             // 
             // Text_Search
@@ -109,7 +91,7 @@
             Text_Search.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Search.ForeColor = Color.Black;
             Text_Search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Search.Location = new Point(0, 7);
+            Text_Search.Location = new Point(0, 5);
             Text_Search.Margin = new Padding(0);
             Text_Search.Name = "Text_Search";
             Text_Search.PasswordChar = '\0';
@@ -133,7 +115,7 @@
             TableLayoutPanel_Action.Name = "TableLayoutPanel_Action";
             TableLayoutPanel_Action.RowCount = 1;
             TableLayoutPanel_Action.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.Size = new Size(508, 55);
+            TableLayoutPanel_Action.Size = new Size(508, 50);
             TableLayoutPanel_Action.TabIndex = 1;
             // 
             // Button_Create
@@ -149,7 +131,7 @@
             Button_Create.FillColor = Color.FromArgb(100, 88, 255);
             Button_Create.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Create.ForeColor = Color.White;
-            Button_Create.Location = new Point(418, 7);
+            Button_Create.Location = new Point(418, 5);
             Button_Create.Margin = new Padding(0);
             Button_Create.Name = "Button_Create";
             Button_Create.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -171,7 +153,7 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(318, 7);
+            Button_Refresh.Location = new Point(318, 5);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -183,19 +165,19 @@
             // Panel_Container
             // 
             Panel_Container.Dock = DockStyle.Fill;
-            Panel_Container.Location = new Point(3, 58);
+            Panel_Container.Location = new Point(0, 50);
             Panel_Container.Name = "Panel_Container";
-            Panel_Container.Size = new Size(1010, 598);
-            Panel_Container.TabIndex = 3;
+            Panel_Container.Size = new Size(1016, 609);
+            Panel_Container.TabIndex = 4;
             // 
             // ParameterControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(TableLayoutPanel_Container);
+            Controls.Add(Panel_Container);
+            Controls.Add(TableLayoutPanel_Header);
             Name = "ParameterControl";
             Size = new Size(1016, 659);
-            TableLayoutPanel_Container.ResumeLayout(false);
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Action.ResumeLayout(false);
             ResumeLayout(false);
@@ -205,7 +187,6 @@
 
         private System.Windows.Forms.Timer Timer_Debounce;
         private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Confirm;
-        private TableLayoutPanel TableLayoutPanel_Container;
         private TableLayoutPanel TableLayoutPanel_Header;
         private Guna.UI2.WinForms.Guna2TextBox Text_Search;
         private TableLayoutPanel TableLayoutPanel_Action;

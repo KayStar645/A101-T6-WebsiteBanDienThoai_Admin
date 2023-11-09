@@ -32,7 +32,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         {
             _result = await _specificationsService.GetList();
 
-            Panel_Container.Controls.Clear();  
+            Panel_Container.Controls.Clear();
 
             foreach (var item in _result.list)
             {

@@ -46,12 +46,12 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             if (collapse)
             {
-                Util.Collpase(true, this);
+                Util.Collapse(true, this);
             }
             else
             {
                 LoadDetail(_parent.Id);
-                Util.Collpase(false, this);
+                Util.Collapse(false, this);
             }
 
             MaximumSize = new Size(0, Height - 70);
@@ -96,8 +96,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             }
 
-            Util.Collpase(false, this);
-            Util.Collpase(true, this);
+            Util.Collapse(false, this);
+            Util.Collapse(true, this);
 
             LoadDetail(_parent.Id);
         }
@@ -123,7 +123,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         {
             _details = await _detailSpecificationsService.GetListBySpecificationsIdAsync(specificationsId);
 
-            EmptyChild();
+            Util.RemoveChildFrom(this, 1);
 
             for (int i = 0; i < _details.Count; i++)
             {
@@ -142,16 +142,6 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             Util.AddControl(this, Child(null), DockStyle.Top);
 
             TableLayoutPanel_Header.SendToBack();
-        }
-
-        private void EmptyChild()
-        {
-            int controlCount = Controls.Count;
-
-            for (int i = 0; i < controlCount - 1; i++)
-            {
-                Controls.RemoveAt(0);
-            }
         }
 
         private TableLayoutPanel Child(DetailSpecificationsDto? item)
@@ -199,7 +189,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             name.DefaultText = "";
             name.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             name.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            name.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            name.DisabledState.ForeColor = Color.Black;
             name.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             name.Dock = DockStyle.Fill;
             name.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -228,7 +218,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             value.DefaultText = "";
             value.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             value.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            value.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            value.DisabledState.ForeColor = Color.Black;
             value.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             value.Dock = DockStyle.Fill;
             value.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -309,8 +299,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             await _detailSpecificationsService.Delete(int.Parse(btn.Tag!.ToString()));
 
-            Util.Collpase(false, this);
-            Util.Collpase(true, this);
+            Util.Collapse(false, this);
+            Util.Collapse(true, this);
 
             LoadDetail(_parent.Id);
         }

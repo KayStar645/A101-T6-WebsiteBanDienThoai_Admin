@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
+using WinFormsApp.View.Screen;
 
 namespace WinFormsApp.Resources.Controls.Module.Configuration
 {
@@ -55,7 +56,9 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
                 await _categoryService.Create(_formData);
             }
 
-            ConfigurationControl._refreahCategoryButotn.PerformClick();
+            ConfigurationControl._refreahCategoryButton.PerformClick();
+            Admin._refreshCategoryBtn.PerformClick();
+
 
             Close();
         }
