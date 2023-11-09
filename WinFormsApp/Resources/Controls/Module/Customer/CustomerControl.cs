@@ -48,20 +48,20 @@ namespace Controls.Module
 
 		private void Paginator()
 		{
-			FlowLayoutPanel_Paginator.Controls.Clear();
+			//FlowLayoutPanel_Paginator.Controls.Clear();
 
-			for (int i = 1; i <= _result.pageNumber; i++)
-			{
-				PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
+			//for (int i = 1; i <= _result.pageNumber; i++)
+			//{
+			//	PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
 
-				FlowLayoutPanel_Paginator.Controls.Add(button);
-			}
+			//	FlowLayoutPanel_Paginator.Controls.Add(button);
+			//}
 
-			if (_result.pageNumber > 0)
-			{
-				FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-				FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
-			}
+			//if (_result.pageNumber > 0)
+			//{
+			//	FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
+			//	FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
+			//}
 		}
 
 		private async void Button_Paginator_Click(object sender, EventArgs e)

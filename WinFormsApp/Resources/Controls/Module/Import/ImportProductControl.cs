@@ -126,8 +126,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                     ProductId = id,
                     ProductInternalCode = cells["InternalCode"].Value.ToString(),
                     ProductName = cells["Product_Name"].Value.ToString(),
-                    //CapacityName = cells["CapacityName"].Value.ToString(),
-                    //ColorName = cells["ColorName"].Value.ToString(),
+                    CapacityName = cells["CapacityName"].Value.ToString(),
+                    ColorName = cells["ColorName"].Value.ToString(),
                     Quantity = cells["Quantity"].Value == null ? 0 : int.Parse(cells["Quantity"].Value.ToString()!),
                     Price = long.Parse(cells["Price"].Value.ToString()!)
                 });
