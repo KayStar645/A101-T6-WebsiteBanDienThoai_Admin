@@ -11,6 +11,8 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
         DistributorDto formData = new DistributorDto();
 
+
+
         public DistributorForm(Container container)
         {
             _container = container;
@@ -53,24 +55,31 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
         private void Button_Save_Click(object sender, EventArgs e)
         {
-            formData.InternalCode = Text_InternalCode.Text;
-            formData.Name = Text_Name.Text;
-            formData.Address = Text_Address.Text;
-            formData.Phone = Text_Phone.Text;
+			try
+			{
+				formData.InternalCode = Text_InternalCode.Text;
+				formData.Name = Text_Name.Text;
+				formData.Address = Text_Address.Text;
+				formData.Phone = Text_Phone.Text;
 
-            if (formData.Id != 0)
-            {
-                _distributorService.Update(formData);
-            }
-            else
-            {
-                _distributorService.Create(formData);
-            }
+				if (formData.Id != 0)
+				{
+					_distributorService.Update(formData);
+				}
+				else
+				{
+					_distributorService.Create(formData);
+				}
 
-            DistributorControl._refreshButton.PerformClick();
+				DistributorControl._refreshButton.PerformClick();
 
-            Close();
-        }
+				Close();
+			}
+			catch
+			{
+                MessageBox.Show("Thông tin bạn nhập không hợp lệ");
+			}
+		}
 
         private void Button_Cancel_Click(object sender, EventArgs e)
         {

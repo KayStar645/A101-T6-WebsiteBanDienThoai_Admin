@@ -17,5 +17,9 @@
         {
             public const string module = "Nhà cung cấp";
         }
-    }
+		public class Employee
+		{
+			public const string module = "Nhân viên";
+		}
+	}
 }
