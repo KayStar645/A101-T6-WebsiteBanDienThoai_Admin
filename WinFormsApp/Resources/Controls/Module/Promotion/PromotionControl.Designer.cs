@@ -57,11 +57,11 @@
             remove = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             Product_Name = new DataGridViewTextBoxColumn();
-            Type = new DataGridViewTextBoxColumn();
             Start = new DataGridViewTextBoxColumn();
             End = new DataGridViewTextBoxColumn();
             PriceMin = new DataGridViewTextBoxColumn();
             Discount = new DataGridViewTextBoxColumn();
+            Type = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
             Percent = new DataGridViewTextBoxColumn();
@@ -84,7 +84,7 @@
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Header.Size = new Size(861, 55);
+            TableLayoutPanel_Header.Size = new Size(990, 55);
             TableLayoutPanel_Header.TabIndex = 0;
             // 
             // Text_Search
@@ -121,12 +121,12 @@
             TableLayoutPanel_Action.Controls.Add(Button_Create, 2, 0);
             TableLayoutPanel_Action.Controls.Add(Button_Refresh, 1, 0);
             TableLayoutPanel_Action.Dock = DockStyle.Fill;
-            TableLayoutPanel_Action.Location = new Point(430, 0);
+            TableLayoutPanel_Action.Location = new Point(495, 0);
             TableLayoutPanel_Action.Margin = new Padding(0);
             TableLayoutPanel_Action.Name = "TableLayoutPanel_Action";
             TableLayoutPanel_Action.RowCount = 1;
             TableLayoutPanel_Action.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.Size = new Size(431, 55);
+            TableLayoutPanel_Action.Size = new Size(495, 55);
             TableLayoutPanel_Action.TabIndex = 1;
             // 
             // Button_Create
@@ -142,7 +142,7 @@
             Button_Create.FillColor = Color.FromArgb(100, 88, 255);
             Button_Create.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Create.ForeColor = Color.White;
-            Button_Create.Location = new Point(341, 0);
+            Button_Create.Location = new Point(405, 0);
             Button_Create.Margin = new Padding(0);
             Button_Create.Name = "Button_Create";
             Button_Create.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -164,7 +164,7 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(241, 0);
+            Button_Refresh.Location = new Point(305, 0);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -194,7 +194,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Product_Name, Type, Start, End, PriceMin, Discount, Status, Id, Percent });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Product_Name, Start, End, PriceMin, Discount, Type, Status, Id, Percent });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.White;
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -222,7 +222,7 @@
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
-            DataGridView_Listing.Size = new Size(861, 411);
+            DataGridView_Listing.Size = new Size(990, 410);
             DataGridView_Listing.TabIndex = 1;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -260,7 +260,7 @@
             // 
             FlowLayoutPanel_Paginator.AutoSize = true;
             FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(858, 469);
+            FlowLayoutPanel_Paginator.Location = new Point(987, 468);
             FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
             FlowLayoutPanel_Paginator.Size = new Size(0, 42);
             FlowLayoutPanel_Paginator.TabIndex = 2;
@@ -285,7 +285,7 @@
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            TableLayoutPanel_Container.Size = new Size(861, 514);
+            TableLayoutPanel_Container.Size = new Size(990, 513);
             TableLayoutPanel_Container.TabIndex = 2;
             // 
             // edit
@@ -323,7 +323,7 @@
             // 
             // InternalCode
             // 
-            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             InternalCode.DataPropertyName = "InternalCode";
             InternalCode.FillWeight = 41.4820366F;
             InternalCode.HeaderText = "Mã CTKM";
@@ -332,6 +332,7 @@
             InternalCode.ReadOnly = true;
             InternalCode.Resizable = DataGridViewTriState.True;
             InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
+            InternalCode.Width = 120;
             // 
             // Product_Name
             // 
@@ -342,15 +343,6 @@
             Product_Name.MinimumWidth = 120;
             Product_Name.Name = "Product_Name";
             Product_Name.ReadOnly = true;
-            // 
-            // Type
-            // 
-            Type.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Type.DataPropertyName = "Type";
-            Type.HeaderText = "Loại";
-            Type.Name = "Type";
-            Type.ReadOnly = true;
-            Type.Width = 80;
             // 
             // Start
             // 
@@ -363,6 +355,7 @@
             Start.MinimumWidth = 6;
             Start.Name = "Start";
             Start.ReadOnly = true;
+            Start.Width = 150;
             // 
             // End
             // 
@@ -375,16 +368,18 @@
             End.MinimumWidth = 6;
             End.Name = "End";
             End.ReadOnly = true;
+            End.Width = 150;
             // 
             // PriceMin
             // 
-            PriceMin.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            PriceMin.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             PriceMin.DataPropertyName = "PriceMin";
             PriceMin.HeaderText = "Đơn giá tối thiểu";
             PriceMin.MinimumWidth = 6;
             PriceMin.Name = "PriceMin";
             PriceMin.ReadOnly = true;
-            PriceMin.Width = 94;
+            PriceMin.Visible = false;
+            PriceMin.Width = 150;
             // 
             // Discount
             // 
@@ -395,6 +390,15 @@
             Discount.ReadOnly = true;
             Discount.Visible = false;
             Discount.Width = 120;
+            // 
+            // Type
+            // 
+            Type.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Type.DataPropertyName = "Type";
+            Type.HeaderText = "Loại";
+            Type.Name = "Type";
+            Type.ReadOnly = true;
+            Type.Width = 80;
             // 
             // Status
             // 
@@ -427,7 +431,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TableLayoutPanel_Container);
             Name = "PromotionControl";
-            Size = new Size(861, 514);
+            Size = new Size(990, 513);
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Action.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
@@ -452,11 +456,11 @@
         private DataGridViewButtonColumn remove;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn Product_Name;
-        private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Start;
         private DataGridViewTextBoxColumn End;
         private DataGridViewTextBoxColumn PriceMin;
         private DataGridViewTextBoxColumn Discount;
+        private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Percent;

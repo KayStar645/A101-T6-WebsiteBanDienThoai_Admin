@@ -69,6 +69,14 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             _result = await _promotionService.GetList("Name", _currPage, 15, "");
 
+            foreach (var item in _result.list)
+            {
+                string[] row = new string[]
+                {
+
+                };
+            }
+
             DataGridView_Listing.DataSource = _result.list;
         }
 
