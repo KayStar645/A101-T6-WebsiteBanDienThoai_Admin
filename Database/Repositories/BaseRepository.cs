@@ -4,7 +4,6 @@ using Database.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Database.Repositories
@@ -236,17 +235,35 @@ namespace Database.Repositories
             return pDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        public virtual async Task<bool> AnyInternalCodeAsync(string pInternalCode, int? pId = null)
+        public virtual async Task<bool> AnyKeyValueAsync(string pKey, string pValue, int? pId = null)
         {
             try
             {
                 var query = $"SELECT COUNT(Id) " +
                             $"FROM \"{_model}\" " +
-                            $"WHERE IsDeleted = 0 and InternalCode = N'{pInternalCode}'";
+                            $"WHERE IsDeleted = 0 and \"{pKey}\" = N'{pValue}'";
                 if (pId != null)
                 {
                     query += $" and Id != {pId}";
                 }
+
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    var count = await connection.ExecuteScalarAsync<int>(query).ConfigureAwait(false);
+
+                    return count > 0;
+                }
+            }
+            catch { return false; }
+        }
+
+        public virtual async Task<bool> AnyIdAsync<Entity>(int pId)
+        {
+            try
+            {
+                var query = $"SELECT COUNT(Id) " +
+                            $"FROM \"{typeof(Entity)}\" " +
+                            $"WHERE IsDeleted = 0 and Id = N'{pId}'";
 
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {

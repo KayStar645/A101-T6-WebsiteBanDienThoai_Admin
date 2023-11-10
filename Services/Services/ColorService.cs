@@ -2,6 +2,7 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Services.Interfaces;
+using Services.Validators;
 
 namespace Services.Services
 {
@@ -36,6 +37,15 @@ namespace Services.Services
 
         public async Task<bool> Create(ColorDto pCreate)
         {
+            ColorValidator validator = new ColorValidator(_colorRepo);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var color = _mapper.Map<Domain.Entities.Color>(pCreate);
 
             var result = await _colorRepo.AddAsync(color);
@@ -43,9 +53,18 @@ namespace Services.Services
             return result > 0;
         }
 
-        public async Task<bool> Update(ColorDto pCreate)
+        public async Task<bool> Update(ColorDto pUpdate)
         {
-            var color = _mapper.Map<Domain.Entities.Color>(pCreate);
+            ColorValidator validator = new ColorValidator(_colorRepo, false, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
+            var color = _mapper.Map<Domain.Entities.Color>(pUpdate);
 
             var result = await _colorRepo.UpdateAsync(color);
 

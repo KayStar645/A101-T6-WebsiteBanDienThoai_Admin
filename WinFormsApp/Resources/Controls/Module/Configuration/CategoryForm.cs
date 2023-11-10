@@ -47,20 +47,26 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             _formData.Name = Text_Name.Text;
             _formData.InternalCode = Text_InternalCode.Text;
 
-            if (_formData.Id != 0)
+            try
             {
-                await _categoryService.Update(_formData);
+                if (_formData.Id != 0)
+                {
+                    await _categoryService.Update(_formData);
+                }
+                else
+                {
+                    await _categoryService.Create(_formData);
+                }
+
+                ConfigurationControl._refreahCategoryButton.PerformClick();
+                Admin._refreshCategoryBtn.PerformClick();
+
+                Close();
             }
-            else
+            catch (Exception ex)
             {
-                await _categoryService.Create(_formData);
+                Dialog_Notification.Show(ex.Message);
             }
-
-            ConfigurationControl._refreahCategoryButton.PerformClick();
-            Admin._refreshCategoryBtn.PerformClick();
-
-
-            Close();
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)

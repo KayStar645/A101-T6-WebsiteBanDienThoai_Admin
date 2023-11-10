@@ -3,6 +3,7 @@ using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
 using Services.Interfaces;
+using Services.Validators;
 
 namespace Services.Services
 {
@@ -37,6 +38,15 @@ namespace Services.Services
 
         public async Task<bool> Create(CapacityDto pCreate)
         {
+            CapacityValidator validator = new CapacityValidator(_capacityRepo);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var capacity = _mapper.Map<Capacity>(pCreate);
 
             var result = await _capacityRepo.AddAsync(capacity);
@@ -46,6 +56,15 @@ namespace Services.Services
 
         public async Task<bool> Update(CapacityDto pUpdate)
         {
+            CapacityValidator validator = new CapacityValidator(_capacityRepo, false, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var capacity = _mapper.Map<Capacity>(pUpdate);
 
             var result = await _capacityRepo.UpdateAsync(capacity);

@@ -46,18 +46,25 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             _formData.Name = Text_Name.Text;
             _formData.InternalCode = Text_InternalCode.Text;
 
-            if (_formData.Id != 0)
+            try
             {
-                await _colorService.Update(_formData);
+                if (_formData.Id != 0)
+                {
+                    await _colorService.Update(_formData);
+                }
+                else
+                {
+                    await _colorService.Create(_formData);
+                }
+
+                ConfigurationControl._refreahColorButton.PerformClick();
+
+                Close();
             }
-            else
+            catch (Exception err)
             {
-                await _colorService.Create(_formData);
+                Dialog_Notification.Show(err.Message);
             }
-
-            ConfigurationControl._refreahColorButton.PerformClick();
-
-            Close();
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
