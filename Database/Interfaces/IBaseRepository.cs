@@ -17,6 +17,8 @@ namespace Database.Interfaces
 
         Task<bool> AnyInternalCodeAsync(string pInternalCode, int? pId = null);
 
+        Task<bool> AnyIdAsync<Entity>(int pId);
+
         Task<(List<ModelVM> list, int totalCount, int pageNumber)> GetAllJoinAsync<ModelVM>(
                                                     List<string> pFields = null, string? pKeyword = "",
                                                     string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10);
