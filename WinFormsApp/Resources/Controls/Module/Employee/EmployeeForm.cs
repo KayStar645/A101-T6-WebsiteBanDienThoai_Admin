@@ -33,7 +33,7 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 
             Text_InternalCode.Text = formData.InternalCode;
             Text_Name.Text = formData.Name;
-            cbb_Sex.Text = formData.Sex;
+            ComboBox_Gender.Text = formData.Sex;
             DateTime_Birthday.Text = formData.Birthday.ToString();
             Text_Phone.Text = formData.Phone;
         }
@@ -54,18 +54,25 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
             formData.Birthday = DateTime_Birthday.Value;
             formData.Phone = Text_Phone.Text;
 
-            if (formData.Id != 0)
+            try
             {
-                await _employeeService.Update(formData);
+                if (formData.Id != 0)
+                {
+                    await _employeeService.Update(formData);
+                }
+                else
+                {
+                    await _employeeService.Create(formData);
+                }
+
+                EmployeeControl._refreshButton.PerformClick();
+
+                Close();
             }
-            else
+            catch (Exception err)
             {
-                await _employeeService.Create(formData);
+                Dialog_Notification.Show(err.Message);
             }
-
-            EmployeeControl._refreshButton.PerformClick();
-
-            Close();
         }
         private void Button_Cancel_Click(object sender, EventArgs e)
         {

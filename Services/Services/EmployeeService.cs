@@ -3,6 +3,7 @@ using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
 using Services.Interfaces;
+using Services.Validators;
 using System.Transactions;
 
 namespace Services.Services
@@ -40,43 +41,53 @@ namespace Services.Services
 
         public async Task<bool> Create(EmployeeDto pCreate)
         {
+            EmployeeValidator validator = new EmployeeValidator(_employeeRepo, true);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             using (var transaction = new TransactionScope())
             {
-                try
+                var resultAccount = await _authService.CreateAccount(new UserDto
                 {
-                    var resultAccount = await _authService.CreateAccount(new UserDto
-                    {
-                        UserName = pCreate.InternalCode,
-                        Password = pCreate.InternalCode
-                    });
+                    UserName = pCreate.InternalCode,
+                    Password = pCreate.InternalCode
+                });
 
-                    if (resultAccount > 0)
-                    {
-                        pCreate.UserId = resultAccount;
-                        Employee employee = _mapper.Map<Employee>(pCreate);
-                        var resultEmployee = await _employeeRepo.AddAsync(employee);
+                if (resultAccount > 0)
+                {
+                    pCreate.UserId = resultAccount;
+                    Employee employee = _mapper.Map<Employee>(pCreate);
+                    var resultEmployee = await _employeeRepo.AddAsync(employee);
 
-                        if (resultEmployee > 0)
-                        {
-                            transaction.Complete();
-                            return true;
-                        }    
+                    if (resultEmployee > 0)
+                    {
+                        transaction.Complete();
+                        return true;
                     }
+                }
 
-                    transaction.Dispose();
-                    return false;
-                }
-                catch (Exception)
-                {
-                    transaction.Dispose();
-                    return false;
-                }
+                transaction.Dispose();
+                return false;
             }
         }
 
 
         public async Task<bool> Update(EmployeeDto pUpdate)
         {
+            EmployeeValidator validator = new EmployeeValidator(_employeeRepo, false, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             Employee employee = _mapper.Map<Employee>(pUpdate);
 
             var result = await _employeeRepo.UpdateAsync(employee);
