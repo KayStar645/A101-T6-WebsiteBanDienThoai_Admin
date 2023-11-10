@@ -54,7 +54,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
         public async void LoadDataAsync()
         {
-            _result = await _importService.GetList("Name", _currPage, 15, "");
+            _result = await _importService.GetList("InternalCode", _currPage, 15, "");
 
             DataGridView_Listing.DataSource = _result.list;
         }

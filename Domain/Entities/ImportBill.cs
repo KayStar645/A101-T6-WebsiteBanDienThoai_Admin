@@ -18,7 +18,7 @@ namespace Domain.Entities
         public string? InternalCode { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? ImportDate { get; set; }
+        public DateTime ImportDate { get; set; }
 
         public long? Price { get; set; }
 

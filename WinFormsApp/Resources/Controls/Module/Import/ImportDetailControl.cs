@@ -105,7 +105,9 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                     item.ColorName,
                     item.CapacityName,
                     item.Price.ToString(),
-                    item.Quantity.ToString()
+                    item.CapacityName.ToString(),
+                    item.Quantity.ToString(),
+                    item.Id.ToString(),
                 };
 
                 DataGridView_Product.Rows.Add(rowValues);
@@ -115,7 +117,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            _import.EmployeeId = 1;
+            _import.EmployeeId = 6;
             _import.InternalCode = Text_InternalCode.Text;
             _import.DistributorId = int.Parse(ComboBox_Distributor.SelectedValue!.ToString()!);
             _import.Price = int.Parse(Text_Price.Text);
@@ -126,6 +128,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             {
                 await _importBillService.Create(_import);
             }
+
+            Util.LoadControl(this, new ImportControl());
         }
 
         private void Btn_Back_Click(object sender, EventArgs e)
