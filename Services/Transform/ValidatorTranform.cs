@@ -27,6 +27,16 @@
             return $"Trường {name} đã chọn không hợp lệ!";
         }
 
+        public static string MustLong(string name)
+        {
+            return $"Trường {name} phải là một số nguyên lớn!";
+        }
+
+        public static string MustInt(string name)
+        {
+            return $"Trường {name} phải là một số nguyên!";
+        }
+
         public static string MustDate(string name, int year)
         {
             return $"Trường {name} tối thiểu phải đủ {year} tuổi!";
