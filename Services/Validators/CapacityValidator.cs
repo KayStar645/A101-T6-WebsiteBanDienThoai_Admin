@@ -23,7 +23,7 @@ namespace Services.Validators
                                         ModulesTransform.Capacity.module, ValidatorCommon.NameLength))
                .MustAsync(async (name, token) =>
                {
-                   return await _capacityRepo.AnyKeyValueAsync("Name", name, pId) == false;
+                   return await _capacityRepo.AnyKeyValueAsync(new[] { ("Name", name) }, pId) == false;
                })
                .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.Name +
                                         ModulesTransform.Capacity.module));

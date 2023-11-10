@@ -23,7 +23,7 @@ namespace Services.Validators
                                         ModulesTransform.Category.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
-                   return await _categoryRepo.AnyKeyValueAsync("InternalCode", internalCode, pId) == false;
+                   return await _categoryRepo.AnyKeyValueAsync(new[] { ("InternalCode", internalCode) }, pId) == false;
                })
                .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Category.module));
@@ -38,7 +38,7 @@ namespace Services.Validators
                                         ModulesTransform.Category.module, ValidatorCommon.NameLength))
                .MustAsync(async (name, token) =>
                {
-                   return await _categoryRepo.AnyKeyValueAsync("Name", name, pId) == false;
+                   return await _categoryRepo.AnyKeyValueAsync(new[] { ("Name", name) }, pId) == false;
                })
                .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.Name +
                                         ModulesTransform.Category.module));

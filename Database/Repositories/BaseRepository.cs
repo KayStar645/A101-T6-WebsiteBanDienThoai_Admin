@@ -235,13 +235,20 @@ namespace Database.Repositories
             return pDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        public virtual async Task<bool> AnyKeyValueAsync(string pKey, string pValue, int? pId = null)
+        public virtual async Task<bool> AnyKeyValueAsync((string pKey, string pValue)[] pKeyValueArray, int? pId = null)
         {
             try
             {
+                string where = string.Join(" and ", pKeyValueArray.Select(pair => $"\"{pair.pKey}\" = N'{pair.pValue}'"));
+
                 var query = $"SELECT COUNT(Id) " +
                             $"FROM \"{_model}\" " +
-                            $"WHERE IsDeleted = 0 and \"{pKey}\" = N'{pValue}'";
+                            $"WHERE IsDeleted = 0";
+                if(where != null)
+                {
+                    query += $" and {where}";
+                }    
+
                 if (pId != null)
                 {
                     query += $" and Id != {pId}";

@@ -47,7 +47,7 @@ namespace Services.Validators
                                         ModulesTransform.Employee.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
-                   return await _employeeRepo.AnyKeyValueAsync("Internalcode", internalCode, pId) == false;
+                   return await _employeeRepo.AnyKeyValueAsync(new[] { ("InternalCode", internalCode) }, pId) == false;
                })
                .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Employee.module));
