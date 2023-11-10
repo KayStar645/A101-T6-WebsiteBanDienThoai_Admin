@@ -8,7 +8,6 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
     {
         private readonly Container _container;
         private readonly IDistributorService _distributorService;
-
         DistributorDto formData = new DistributorDto();
 
         public DistributorForm(Container container)
@@ -35,20 +34,10 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
         public void LoadData()
         {
-            ClearForm();
-
             Text_InternalCode.Text = formData.InternalCode;
             Text_Name.Text = formData.Name;
             Text_Address.Text = formData.Address;
             Text_Phone.Text = formData.Phone;
-        }
-
-        private void ClearForm()
-        {
-            Text_InternalCode.Clear();
-            Text_Name.Clear();
-            Text_Address.Clear();
-            Text_Phone.Clear();
         }
 
         private async void Button_Save_Click(object sender, EventArgs e)
@@ -82,10 +71,6 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void Timer_Close_Tick(object sender, EventArgs e)
-        {
         }
     }
 }

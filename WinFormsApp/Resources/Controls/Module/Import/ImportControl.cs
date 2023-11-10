@@ -1,5 +1,4 @@
-﻿using Controls.UI;
-using Domain.DTOs;
+﻿using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
 using WinFormsApp.Services;
@@ -56,7 +55,21 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _result = await _importService.GetList("InternalCode", _currPage, 15, "");
 
-            DataGridView_Listing.DataSource = _result.list;
+            foreach (var item in _result.list)
+            {
+                string[] rows = new string[]
+                {
+                    "",
+                    item.Id.ToString(),
+                    item.InternalCode,
+                    item.EmployeeInternalCode + "_" + item.EmployeeName,
+                    item.DistributorInternalCode + "_" + item.DistributorName,
+                    item.ImportDate.ToString("dd/MM/yyyy"),
+                    Util.AddCommas(item.Price, ""),
+                };
+
+                DataGridView_Listing.Rows.Add(rows);
+            }
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
@@ -71,19 +84,10 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             if (e.ColumnIndex == 0)
             {
                 int id = int.Parse(selected["Id"].FormattedValue.ToString());
+
                 Util.LoadControl(this, new ImportDetailControl(id));
             }
-            else if (e.ColumnIndex == 1)
-            {
-                DialogResult dialogResult = Dialog_Confirm.Show();
-
-                if (dialogResult != DialogResult.Yes)
-                {
-                    return;
-                }
-
-                Button_Refresh.PerformClick();
-            }
+            
         }
 
         private void Button_Refresh_Click(object sender, EventArgs e)

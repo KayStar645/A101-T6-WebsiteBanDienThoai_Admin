@@ -312,6 +312,7 @@
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Product.CellClick += DataGridView_Product_CellClick;
+            DataGridView_Product.CellEndEdit += DataGridView_Product_CellEndEdit;
             // 
             // Timer_Debounce
             // 
@@ -336,7 +337,7 @@
             // 
             // InternalCode
             // 
-            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             InternalCode.DataPropertyName = "InternalCode";
             InternalCode.DividerWidth = 1;
             InternalCode.FillWeight = 0.316279262F;
@@ -346,7 +347,7 @@
             InternalCode.ReadOnly = true;
             InternalCode.Resizable = DataGridViewTriState.True;
             InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
-            InternalCode.Width = 6;
+            InternalCode.Width = 120;
             // 
             // Product_Name
             // 
@@ -361,18 +362,17 @@
             // 
             // ColorName
             // 
-            ColorName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColorName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             ColorName.DataPropertyName = "ColorName";
             ColorName.DividerWidth = 1;
             ColorName.FillWeight = 163.152664F;
             ColorName.HeaderText = "Màu";
             ColorName.Name = "ColorName";
             ColorName.ReadOnly = true;
-            ColorName.Width = 5;
             // 
             // CapacityName
             // 
-            CapacityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            CapacityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             CapacityName.DataPropertyName = "CapacityName";
             CapacityName.DividerWidth = 1;
             CapacityName.FillWeight = 52.65846F;
@@ -380,13 +380,14 @@
             CapacityName.MinimumWidth = 40;
             CapacityName.Name = "CapacityName";
             CapacityName.ReadOnly = true;
-            CapacityName.Width = 96;
+            CapacityName.Width = 120;
             // 
             // Price
             // 
-            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Price.DataPropertyName = "Price";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "0,0";
             Price.DefaultCellStyle = dataGridViewCellStyle3;
             Price.DividerWidth = 1;
             Price.FillWeight = 149.168167F;
@@ -394,11 +395,10 @@
             Price.MinimumWidth = 6;
             Price.Name = "Price";
             Price.ReadOnly = true;
-            Price.Width = 6;
             // 
             // Quantity
             // 
-            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Quantity.DataPropertyName = "Quantity";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
             Quantity.DefaultCellStyle = dataGridViewCellStyle4;
@@ -407,7 +407,7 @@
             Quantity.HeaderText = "Số lượng";
             Quantity.MinimumWidth = 6;
             Quantity.Name = "Quantity";
-            Quantity.Width = 79;
+            Quantity.Width = 120;
             // 
             // Id
             // 

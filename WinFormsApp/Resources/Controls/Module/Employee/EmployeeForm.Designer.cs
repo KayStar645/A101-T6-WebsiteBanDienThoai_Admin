@@ -160,11 +160,11 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(176, 8);
+            label1.Location = new Point(188, 8);
             label1.Name = "label1";
-            label1.Size = new Size(161, 19);
+            label1.Size = new Size(138, 19);
             label1.TabIndex = 0;
-            label1.Text = "Thêm mới nhà cung cấp";
+            label1.Text = "Thêm mới nhân viên";
             // 
             // tableLayoutPanel3
             // 
