@@ -9,5 +9,7 @@
         public const int AddressLength = 300;
 
         public const int PhoneLength = 10;
+
+        public const int DescriptionLength = 3000;
     }
 }

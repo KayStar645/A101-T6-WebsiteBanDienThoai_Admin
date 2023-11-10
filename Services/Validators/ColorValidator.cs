@@ -23,25 +23,25 @@ namespace Services.Validators
                                         ModulesTransform.Color.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
-                   return await _colorRepo.AnyKeyValueAsync("InternalCode", internalCode, pId) == false;
+                   return await _colorRepo.AnyKeyValueAsync(new[] { ("InternalCode", internalCode) }, pId) == false;
                })
                .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Color.module));
 
 
             RuleFor(x => x.Name)
-           .NotEmpty()
-           .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.Name +
-                                    ModulesTransform.Color.module))
-           .MaximumLength(ValidatorCommon.NameLength)
-           .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
-                                    ModulesTransform.Color.module, ValidatorCommon.NameLength))
-           .MustAsync(async (name, token) =>
-           {
-               return await _colorRepo.AnyKeyValueAsync("Name", name, pId) == false;
-           })
-           .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.Name +
-                                    ModulesTransform.Color.module));
+               .NotEmpty()
+               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.Name +
+                                        ModulesTransform.Color.module))
+               .MaximumLength(ValidatorCommon.NameLength)
+               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
+                                        ModulesTransform.Color.module, ValidatorCommon.NameLength))
+               .MustAsync(async (name, token) =>
+               {
+                   return await _colorRepo.AnyKeyValueAsync(new[] { ("Name", name) }, pId) == false;
+               })
+               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.Name +
+                                        ModulesTransform.Color.module));
         }
     }
 }

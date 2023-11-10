@@ -15,7 +15,7 @@ namespace Database.Interfaces
 
         Task<bool> DeleteAsync(int pId);
 
-        Task<bool> AnyKeyValueAsync(string pKey, string pValue, int? pId = null);
+        Task<bool> AnyKeyValueAsync((string pKey, string pValue)[] pKeyValueArray, int? pId = null);
 
         Task<bool> AnyIdAsync<Entity>(int pId);
 

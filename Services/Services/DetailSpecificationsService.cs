@@ -3,6 +3,7 @@ using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
 using Services.Interfaces;
+using Services.Validators;
 
 namespace Services.Services
 {
@@ -28,6 +29,15 @@ namespace Services.Services
 
         public async Task<bool> Create(DetailSpecificationsDto pCreate)
         {
+            DetailSpecificationsValidator validator = new DetailSpecificationsValidator(_detailSpecificationsRepo, pCreate.Description);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var detailSpecifications = _mapper.Map<DetailSpecifications>(pCreate);
 
             var result = await _detailSpecificationsRepo.AddAsync(detailSpecifications);
@@ -37,6 +47,15 @@ namespace Services.Services
 
         public async Task<bool> Update(DetailSpecificationsDto pUpdate)
         {
+            DetailSpecificationsValidator validator = new DetailSpecificationsValidator(_detailSpecificationsRepo, pUpdate.Description, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var detailSpecifications = _mapper.Map<DetailSpecifications>(pUpdate);
 
             var result = await _detailSpecificationsRepo.UpdateAsync(detailSpecifications);

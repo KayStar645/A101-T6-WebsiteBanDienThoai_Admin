@@ -67,11 +67,25 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
             formData.Name = Text_Parent.Text;
 
-            if (_parent.Id == 0)
+            try
             {
-                _parent.Id = await _specificationsService.Create(formData);
+                if (_parent.Id == 0)
+                {
+                    _parent.Id = await _specificationsService.Create(formData);
 
-                if (_parent.Id > 0)
+                    if (_parent.Id > 0)
+                    {
+                        DetailSpecificationsDto formChildData = new()
+                        {
+                            Name = name.Text,
+                            Description = value.Text,
+                            SpecificationsId = _parent.Id
+                        };
+
+                        await _detailSpecificationsService.Create(formChildData);
+                    }
+                }
+                else
                 {
                     DetailSpecificationsDto formChildData = new()
                     {
@@ -81,25 +95,18 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
                     };
 
                     await _detailSpecificationsService.Create(formChildData);
+
                 }
+
+                Util.Collapse(false, this);
+                Util.Collapse(true, this);
+
+                LoadDetail(_parent.Id);
             }
-            else
+            catch (Exception ex)
             {
-                DetailSpecificationsDto formChildData = new()
-                {
-                    Name = name.Text,
-                    Description = value.Text,
-                    SpecificationsId = _parent.Id
-                };
-
-                await _detailSpecificationsService.Create(formChildData);
-
+                Dialog_Notification.Show(ex.Message);
             }
-
-            Util.Collapse(false, this);
-            Util.Collapse(true, this);
-
-            LoadDetail(_parent.Id);
         }
 
         private async void Btn_SaveParent_ClickAsync(object sender, EventArgs e)
@@ -107,16 +114,23 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             formData.Name = Text_Parent.Text;
             formData.Id = _parent.Id;
 
-            if (_parent.Id == 0)
+            try
             {
-                await _specificationsService.Create(formData);
-            }
-            else
-            {
-                await _specificationsService.Update(formData);
-            }
+                if (_parent.Id == 0)
+                {
+                    await _specificationsService.Create(formData);
+                }
+                else
+                {
+                    await _specificationsService.Update(formData);
+                }
 
-            ParameterControl._refreshBtn.PerformClick();
+                ParameterControl._refreshBtn.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                Dialog_Notification.Show(ex.Message);
+            }
         }
 
         private async void LoadDetail(int specificationsId)

@@ -17,27 +17,40 @@
 
         public class Distributor
         {
-            public const string module = "nhà cung cấp";
-        }
+            public const string module = "nhà cung cấp ";        }
 
         public class Employee
         {
-            public const string module = "nhân viên";
+            public const string module = "nhân viên ";
         }
 
         public class Color
         {
-            public const string module = "màu sắc";
+            public const string module = "màu sắc ";
         }
 
         public class Category
         {
-            public const string module = "danh mục";
+            public const string module = "danh mục ";
         }
 
         public class Capacity
         {
-            public const string module = "dung lượng";
+            public const string module = "dung lượng ";
         }    
+
+        public class Specifications
+        {
+            public const string module = "thông số kỹ thuật ";
+        }
+
+        public class DetailSpecifications
+        {
+            public const string module = "thông số ";
+
+            public const string obj = "tên thông số và giá trị thông số ";
+
+            public const string value = "giá trị thông số ";
+        }
     }
 }
