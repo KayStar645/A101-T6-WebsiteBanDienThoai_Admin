@@ -32,9 +32,7 @@ namespace Services.Validators
                .WithMessage(ValidatorTranform.Length(ModulesTransform.Common.Phone,
                                                      ValidatorCommon.PhoneLength));
 
-            if (pIsCreate == true)
-            {
-                RuleFor(x => x.InternalCode)
+            RuleFor(x => x.InternalCode)
                .NotEmpty()
                .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Distributor.module))
@@ -43,25 +41,10 @@ namespace Services.Validators
                                         ModulesTransform.Distributor.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
-                   return await _distributorRepo.AnyInternalCodeAsync(internalCode) == false;
+                   return await _distributorRepo.AnyKeyValueAsync("InternalCode", internalCode, pId) == false;
                })
-               .WithMessage(internalCode => ValidatorTranform.Exists("internalCode"));
-            }    
-            else
-            {
-                RuleFor(x => x.InternalCode)
-               .NotEmpty()
-               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
-                                        ModulesTransform.Distributor.module))
-               .MaximumLength(ValidatorCommon.InternalCodeLength)
-               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
-                                        ModulesTransform.Distributor.module, ValidatorCommon.InternalCodeLength))
-               .MustAsync(async (internalCode, token) =>
-               {
-                   return await _distributorRepo.AnyInternalCodeAsync(internalCode, pId) == false;
-               })
-               .WithMessage(internalCode => ValidatorTranform.Exists("internalCode"));
-            } 
+               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
+                                        ModulesTransform.Distributor.module));
         }
 
     }

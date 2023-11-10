@@ -235,13 +235,13 @@ namespace Database.Repositories
             return pDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        public virtual async Task<bool> AnyInternalCodeAsync(string pInternalCode, int? pId = null)
+        public virtual async Task<bool> AnyKeyValueAsync(string pKey, string pValue, int? pId = null)
         {
             try
             {
                 var query = $"SELECT COUNT(Id) " +
                             $"FROM \"{_model}\" " +
-                            $"WHERE IsDeleted = 0 and InternalCode = N'{pInternalCode}'";
+                            $"WHERE IsDeleted = 0 and \"{pKey}\" = N'{pValue}'";
                 if (pId != null)
                 {
                     query += $" and Id != {pId}";

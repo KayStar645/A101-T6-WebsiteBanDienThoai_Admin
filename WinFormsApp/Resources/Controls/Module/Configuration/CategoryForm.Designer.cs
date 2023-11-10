@@ -55,6 +55,7 @@
             guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
             Text_InternalCode = new Guna.UI2.WinForms.Guna2TextBox();
+            Dialog_Notification = new Guna.UI2.WinForms.Guna2MessageDialog();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -84,7 +85,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(435, 35);
+            tableLayoutPanel2.Size = new Size(497, 47);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // label1
@@ -92,9 +93,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(148, 8);
+            label1.Location = new Point(164, 12);
             label1.Name = "label1";
-            label1.Size = new Size(139, 19);
+            label1.Size = new Size(169, 23);
             label1.TabIndex = 0;
             label1.Text = "Thêm mới danh mục";
             // 
@@ -107,13 +108,13 @@
             tableLayoutPanel4.Controls.Add(Button_Cancel, 0, 0);
             tableLayoutPanel4.Controls.Add(Button_Save, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Bottom;
-            tableLayoutPanel4.Location = new Point(0, 210);
+            tableLayoutPanel4.Location = new Point(0, 280);
             tableLayoutPanel4.Margin = new Padding(0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.Padding = new Padding(7, 0, 7, 0);
+            tableLayoutPanel4.Padding = new Padding(8, 0, 8, 0);
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(435, 50);
+            tableLayoutPanel4.Size = new Size(497, 67);
             tableLayoutPanel4.TabIndex = 3;
             // 
             // Button_Cancel
@@ -130,11 +131,10 @@
             Button_Cancel.FillColor = Color.DarkGray;
             Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Cancel.ForeColor = Color.White;
-            Button_Cancel.Location = new Point(10, 5);
-            Button_Cancel.Margin = new Padding(3, 2, 3, 2);
+            Button_Cancel.Location = new Point(11, 7);
             Button_Cancel.Name = "Button_Cancel";
             Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            Button_Cancel.Size = new Size(70, 40);
+            Button_Cancel.Size = new Size(80, 53);
             Button_Cancel.TabIndex = 1;
             Button_Cancel.Text = "Hủy";
             Button_Cancel.Click += Button_Cancel_Click;
@@ -153,11 +153,10 @@
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
             Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(355, 5);
-            Button_Save.Margin = new Padding(3, 2, 3, 2);
+            Button_Save.Location = new Point(406, 7);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            Button_Save.Size = new Size(70, 40);
+            Button_Save.Size = new Size(80, 53);
             Button_Save.TabIndex = 0;
             Button_Save.Text = "Lưu";
             Button_Save.Click += Button_Save_Click;
@@ -182,9 +181,9 @@
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 21);
+            label2.Location = new Point(3, 15);
             label2.Name = "label2";
-            label2.Size = new Size(44, 57);
+            label2.Size = new Size(54, 69);
             label2.TabIndex = 0;
             label2.Text = "Mã danh mục";
             // 
@@ -203,9 +202,9 @@
             // 
             tableLayoutPanel1.BackColor = Color.White;
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 28F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
             tableLayoutPanel1.Controls.Add(label4, 0, 0);
             tableLayoutPanel1.Controls.Add(label5, 0, 1);
             tableLayoutPanel1.Controls.Add(Text_Name, 1, 1);
@@ -213,15 +212,15 @@
             tableLayoutPanel1.Controls.Add(guna2ImageButton2, 2, 1);
             tableLayoutPanel1.Controls.Add(Text_InternalCode, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 35);
+            tableLayoutPanel1.Location = new Point(0, 47);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(8, 12, 4, 0);
+            tableLayoutPanel1.Padding = new Padding(9, 16, 5, 0);
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 73F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 73F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(435, 175);
+            tableLayoutPanel1.Size = new Size(497, 233);
             tableLayoutPanel1.TabIndex = 4;
             // 
             // label4
@@ -229,9 +228,9 @@
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(11, 30);
+            label4.Location = new Point(12, 41);
             label4.Name = "label4";
-            label4.Size = new Size(95, 19);
+            label4.Size = new Size(117, 23);
             label4.TabIndex = 0;
             label4.Text = "Mã danh mục";
             // 
@@ -240,9 +239,9 @@
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(11, 85);
+            label5.Location = new Point(12, 114);
             label5.Name = "label5";
-            label5.Size = new Size(97, 19);
+            label5.Size = new Size(118, 23);
             label5.TabIndex = 2;
             label5.Text = "Tên danh mục";
             // 
@@ -261,14 +260,14 @@
             Text_Name.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Name.ForeColor = Color.Black;
             Text_Name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Location = new Point(131, 72);
-            Text_Name.Margin = new Padding(3, 5, 3, 5);
+            Text_Name.Location = new Point(149, 96);
+            Text_Name.Margin = new Padding(3, 7, 3, 7);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên danh mục";
             Text_Name.SelectedText = "";
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Text_Name.Size = new Size(269, 44);
+            Text_Name.Size = new Size(308, 59);
             Text_Name.TabIndex = 3;
             // 
             // guna2ImageButton1
@@ -280,12 +279,11 @@
             guna2ImageButton1.ImageOffset = new Point(0, 0);
             guna2ImageButton1.ImageRotate = 0F;
             guna2ImageButton1.ImageSize = new Size(25, 25);
-            guna2ImageButton1.Location = new Point(406, 15);
-            guna2ImageButton1.Margin = new Padding(3, 2, 3, 2);
+            guna2ImageButton1.Location = new Point(463, 20);
             guna2ImageButton1.Name = "guna2ImageButton1";
             guna2ImageButton1.PressedState.ImageSize = new Size(25, 25);
             guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            guna2ImageButton1.Size = new Size(22, 48);
+            guna2ImageButton1.Size = new Size(25, 64);
             guna2ImageButton1.TabIndex = 11;
             // 
             // guna2ImageButton2
@@ -297,12 +295,11 @@
             guna2ImageButton2.ImageOffset = new Point(0, 0);
             guna2ImageButton2.ImageRotate = 0F;
             guna2ImageButton2.ImageSize = new Size(25, 25);
-            guna2ImageButton2.Location = new Point(406, 70);
-            guna2ImageButton2.Margin = new Padding(3, 2, 3, 2);
+            guna2ImageButton2.Location = new Point(463, 93);
             guna2ImageButton2.Name = "guna2ImageButton2";
             guna2ImageButton2.PressedState.ImageSize = new Size(25, 25);
             guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2ImageButton2.Size = new Size(22, 48);
+            guna2ImageButton2.Size = new Size(25, 64);
             guna2ImageButton2.TabIndex = 12;
             // 
             // Text_InternalCode
@@ -319,25 +316,35 @@
             Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_InternalCode.ForeColor = Color.Black;
             Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(131, 17);
-            Text_InternalCode.Margin = new Padding(3, 5, 3, 5);
+            Text_InternalCode.Location = new Point(149, 23);
+            Text_InternalCode.Margin = new Padding(3, 7, 3, 7);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
             Text_InternalCode.PlaceholderText = "Mã danh mục";
             Text_InternalCode.SelectedText = "";
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Text_InternalCode.Size = new Size(269, 44);
+            Text_InternalCode.Size = new Size(308, 59);
             Text_InternalCode.TabIndex = 1;
+            // 
+            // Dialog_Notification
+            // 
+            Dialog_Notification.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            Dialog_Notification.Caption = "Thông báo";
+            Dialog_Notification.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Notification.Parent = this;
+            Dialog_Notification.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            Dialog_Notification.Text = null;
             // 
             // CategoryForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(435, 260);
+            ClientSize = new Size(497, 347);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel4);
             Controls.Add(tableLayoutPanel2);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "CategoryForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ColorForm";
@@ -369,5 +376,6 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Label label2;
         private Label label3;
+        private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
     }
 }
