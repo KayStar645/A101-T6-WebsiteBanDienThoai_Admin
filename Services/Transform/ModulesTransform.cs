@@ -15,7 +15,12 @@
 
         public class Distributor
         {
-            public const string module = "Nhà cung cấp";
+            public const string module = "nhà cung cấp";
+        }
+
+        public class Employee
+        {
+            public const string module = "nhân viên";
         }
     }
 }
