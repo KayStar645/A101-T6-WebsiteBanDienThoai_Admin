@@ -44,18 +44,25 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
         {
             _formData.Name = Text_Name.Text;
 
-            if (_formData.Id != 0)
+            try
             {
-                await _distributorService.Update(_formData);
-            }
-            else
+                if (_formData.Id != 0)
+                {
+                    await _distributorService.Update(_formData);
+                }
+                else
+                {
+                    await _distributorService.Create(_formData);
+                }
+
+                ConfigurationControl._refreahCapacityButton.PerformClick();
+
+                Close();
+            }    
+            catch (Exception ex)
             {
-                await _distributorService.Create(_formData);
+                Dialog_Notification.Show(ex.Message);
             }
-
-            ConfigurationControl._refreahCapacityButton.PerformClick();
-
-            Close();
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)

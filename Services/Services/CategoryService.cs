@@ -3,6 +3,7 @@ using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
 using Services.Interfaces;
+using Services.Validators;
 
 namespace Services.Services
 {
@@ -37,6 +38,15 @@ namespace Services.Services
 
         public async Task<bool> Create(CategoryDto pCreate)
         {
+            CategoryValidator validator = new CategoryValidator(_categoryRepo);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var category = _mapper.Map<Category>(pCreate);
 
             var result = await _categoryRepo.AddAsync(category);
@@ -46,6 +56,15 @@ namespace Services.Services
 
         public async Task<bool> Update(CategoryDto pUpdate)
         {
+            CategoryValidator validator = new CategoryValidator(_categoryRepo, false, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var category = _mapper.Map<Category>(pUpdate);
 
             var result = await _categoryRepo.UpdateAsync(category);

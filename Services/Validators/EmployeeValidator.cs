@@ -36,11 +36,9 @@ namespace Services.Validators
             RuleFor(x => x.Birthday)
                 .Must(dateOfBirth => string.IsNullOrEmpty(dateOfBirth.ToString()) ||
                                     CustomValidatorCommon.IsAtLeastNYearsOld(dateOfBirth, 16))
-                .WithMessage(ValidatorTranform.MustDate("dateOfBirth", 16));
+                .WithMessage(ValidatorTranform.MustDate(ModulesTransform.Common.DateOfBirth, 16));
 
-            if (pIsCreate == true)
-            {
-                RuleFor(x => x.InternalCode)
+            RuleFor(x => x.InternalCode)
                .NotEmpty()
                .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Employee.module))
@@ -49,25 +47,10 @@ namespace Services.Validators
                                         ModulesTransform.Employee.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
-                   return await _employeeRepo.AnyInternalCodeAsync(internalCode) == false;
+                   return await _employeeRepo.AnyKeyValueAsync("Internalcode", internalCode, pId) == false;
                })
-               .WithMessage(internalCode => ValidatorTranform.Exists("internalCode"));
-            }
-            else
-            {
-                RuleFor(x => x.InternalCode)
-               .NotEmpty()
-               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
-                                        ModulesTransform.Employee.module))
-               .MaximumLength(ValidatorCommon.InternalCodeLength)
-               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
-                                        ModulesTransform.Employee.module, ValidatorCommon.InternalCodeLength))
-               .MustAsync(async (internalCode, token) =>
-               {
-                   return await _employeeRepo.AnyInternalCodeAsync(internalCode, pId) == false;
-               })
-               .WithMessage(internalCode => ValidatorTranform.Exists("internalCode"));
-            }
+               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
+                                        ModulesTransform.Employee.module));
         }
     }
 }
