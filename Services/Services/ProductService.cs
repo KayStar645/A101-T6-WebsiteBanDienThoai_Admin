@@ -4,6 +4,7 @@ using Domain.DTOs;
 using Domain.Entities;
 using Domain.ModelViews;
 using Services.Interfaces;
+using Services.Validators;
 
 namespace Services.Services
 {
@@ -11,11 +12,16 @@ namespace Services.Services
     {
         private readonly IProductRepository _productRepo;
         private readonly IMapper _mapper;
+        private readonly IColorRepository _colorRepo;
+        private readonly ICapacityRepository _capacityRepo;
 
-        public ProductService(IProductRepository productRepository, IMapper mapper)
+        public ProductService(IProductRepository productRepository, IMapper mapper,
+            IColorRepository colorRepository, ICapacityRepository capacity)
         {
             _productRepo = productRepository;
             _mapper = mapper;
+            _colorRepo = colorRepository;
+            _capacityRepo = capacity;
         }
 
         public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
@@ -39,6 +45,15 @@ namespace Services.Services
 
         public async Task<int> Create(ProductDto pCreate)
         {
+            ProductValidator validator = new ProductValidator(_productRepo, _colorRepo, _capacityRepo);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             Product product = _mapper.Map<Product>(pCreate);
 
             var result = await _productRepo.AddAsync(product);
@@ -46,9 +61,18 @@ namespace Services.Services
             return result;
         }
 
-        public async Task<bool> Update(ProductDto pCreate)
+        public async Task<bool> Update(ProductDto pUpdate)
         {
-            Product product = _mapper.Map<Product>(pCreate);
+            ProductValidator validator = new ProductValidator(_productRepo, _colorRepo, _capacityRepo, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
+            Product product = _mapper.Map<Product>(pUpdate);
 
             var result = await _productRepo.UpdateAsync(product);
 

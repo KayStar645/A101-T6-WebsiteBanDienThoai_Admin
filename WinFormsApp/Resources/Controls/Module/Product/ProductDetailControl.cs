@@ -111,56 +111,66 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            ProductDto product = new()
+            try
             {
-                Id = _product.Id,
-                Name = Text_Name.Text,
-                InternalCode = Text_InternalCode.Text,
-                Price = int.Parse(Util.DeleteCommas(Text_Price.Text)),
-                CapacityId = int.Parse(ComboBox_Capacity.SelectedValue!.ToString()!),
-                ColorId = int.Parse(ComboBox_Color.SelectedValue!.ToString()!),
-                Quantity = 0,
-                CategoryId = _product.CategoryId,
-                Images = _product.Images,
-            };
+                string price = Util.DeleteCommas(Text_Price.Text);
 
-            if (_product.Id == 0)
-            {
-                int productId = await _productService.Create(product);
-
-                if (productId == 0)
+                ProductDto product = new()
                 {
-                    return;
+                    Id = _product.Id,
+                    Name = Text_Name.Text,
+                    InternalCode = Text_InternalCode.Text,
+                    Price = long.Parse(string.IsNullOrEmpty(price) ? "0" : price),
+                    CapacityId = int.Parse(ComboBox_Capacity.SelectedValue?.ToString() ?? "0"),
+                    ColorId = int.Parse(ComboBox_Color.SelectedValue?.ToString() ?? "0"),
+                    Quantity = 0,
+                    CategoryId = _product.CategoryId,
+                    Images = _product.Images,
+                };
+
+                if (_product.Id == 0)
+                {
+                    int productId = await _productService.Create(product);
+
+                    if (productId == 0)
+                    {
+                        return;
+                    }
+
+                    List<ProductParametersDto> productParameters = _productParameters.SelectMany(t => t.productParameters!).ToList();
+
+                    foreach (var item in productParameters)
+                    {
+                        item.ProductId = productId;
+
+                        await _productParameterService.Create(item);
+                    }
+                }
+                else
+                {
+                    await _productService.Update(product);
+
+                    List<ProductParametersDto> productParameters = _productParameters.SelectMany(t => t.productParameters!).ToList();
+
+                    foreach (var item in productParameters)
+                    {
+                        item.ProductId = _product.Id;
+
+                        await _productParameterService.Create(item);
+                    }
                 }
 
-                List<ProductParametersDto> productParameters = _productParameters.SelectMany(t => t.productParameters!).ToList();
-
-                foreach (var item in productParameters)
+                Util.LoadControl(this, new ProductControl(new CategoryDto()
                 {
-                    item.ProductId = productId;
-
-                    await _productParameterService.Create(item);
-                }
+                    Id = (int)_product.CategoryId!,
+                    Name = _product.CategoryName
+                }));
             }
-            else
+            catch (Exception ex)
             {
-                await _productService.Update(product);
-
-                List<ProductParametersDto> productParameters = _productParameters.SelectMany(t => t.productParameters!).ToList();
-
-                foreach (var item in productParameters)
-                {
-                    item.ProductId = _product.Id;
-
-                    await _productParameterService.Create(item);
-                }
+                Dialog_Notification.Show(ex.Message);
             }
-
-            Util.LoadControl(this, new ProductControl(new CategoryDto()
-            {
-                Id = (int)_product.CategoryId!,
-                Name = _product.CategoryName
-            }));
+            
         }
 
         /*========================================= PARAMETER =============================================*/

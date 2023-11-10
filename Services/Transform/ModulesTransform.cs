@@ -52,5 +52,16 @@
 
             public const string value = "giá trị thông số ";
         }
+
+        public class Product
+        {
+            public const string module = "sản phẩm ";
+
+            public const string price = "đơn giá ";
+
+            public const string color = "màu sắc ";
+
+            public const string capacity = "dung lượng ";
+        }
     }
 }
