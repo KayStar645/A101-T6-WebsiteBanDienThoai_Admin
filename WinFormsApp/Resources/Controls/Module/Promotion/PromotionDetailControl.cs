@@ -86,7 +86,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             _promotion.Type = (string?)ComboBox_Type.SelectedValue;
             _promotion.Status = (string?)ComboBox_Status.SelectedValue;
             _promotion.PriceMin = int.Parse(Text_MinPrice.Text);
-            _promotion.Discount = int.Parse(Text_Discount.Text); 
+            _promotion.Discount = int.Parse(Text_Discount.Text);
 
             if (_promotion.Id > 0)
             {

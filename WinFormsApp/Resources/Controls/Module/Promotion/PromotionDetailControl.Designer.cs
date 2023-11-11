@@ -254,7 +254,7 @@
             DateTime_Start.CustomFormat = "MM/dd/yyyy HH:mm";
             DateTime_Start.CustomizableEdges = customizableEdges6;
             DateTime_Start.FillColor = Color.White;
-            DateTime_Start.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DateTime_Start.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             DateTime_Start.Format = DateTimePickerFormat.Custom;
             DateTime_Start.Location = new Point(123, 81);
             DateTime_Start.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -309,7 +309,7 @@
             DateTime_End.CustomFormat = "MM/dd/yyyy HH:mm";
             DateTime_End.CustomizableEdges = customizableEdges10;
             DateTime_End.FillColor = Color.White;
-            DateTime_End.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DateTime_End.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             DateTime_End.Format = DateTimePickerFormat.Custom;
             DateTime_End.Location = new Point(653, 81);
             DateTime_End.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -327,9 +327,9 @@
             label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(533, 148);
             label4.Name = "label4";
-            label4.Size = new Size(114, 17);
+            label4.Size = new Size(110, 17);
             label4.TabIndex = 4;
-            label4.Text = "Đơn giá tối  thiểu";
+            label4.Text = "Đơn giá tối thiểu";
             // 
             // Text_MinPrice
             // 

@@ -62,6 +62,16 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                 var result = await _importBillService.GetDetail(_import.Id);
 
                 _import = result;
+                DataGridView_Product.ReadOnly = true;
+                Button_AddProduct.Enabled = false;
+
+                Text_InternalCode.Text = result.InternalCode;
+                DateTime_ImportDate.Value = result.ImportDate;
+                ComboBox_Distributor.Items.Add(result.DistributorName);
+                ComboBox_Distributor.StartIndex = 0;
+                ComboBox_Distributor.Enabled = false;
+                Text_EmployeeName.Text = result.EmployeeInternalCode + "_" + result.EmployeeName;
+                Text_Price.Text = Util.AddCommas(result.Price);
 
                 LoadProduct();
             }
@@ -101,13 +111,13 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             {
                 string[] rowValues = new string[] {
                     "True",
+                    item.Id.ToString(),
+                    item.ProductInternalCode,
                     item.ProductName,
                     item.ColorName,
                     item.CapacityName,
-                    item.Price.ToString(),
-                    item.CapacityName.ToString(),
+                    Util.AddCommas(item.Price, ""),
                     item.Quantity.ToString(),
-                    item.Id.ToString(),
                 };
 
                 DataGridView_Product.Rows.Add(rowValues);

@@ -106,11 +106,17 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             bool selected = bool.Parse(cells["Product_Select"].FormattedValue.ToString()!);
             int id = int.Parse(cells["Id"].Value.ToString()!);
 
+            if (e.ColumnIndex != 0)
+            {
+                return;
+            }
+
             if (selected)
             {
                 int index = _products.FindIndex(t => t.ProductId == id);
 
                 cells["Product_Select"].Value = "False";
+                cells["Quantity"].Value = "0";
 
                 if (index >= 0)
                 {
@@ -120,6 +126,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             else
             {
                 cells["Product_Select"].Value = "True";
+
+
 
                 _products.Add(new DetailImportDto()
                 {
@@ -132,6 +140,32 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                     Price = long.Parse(cells["Price"].Value.ToString()!)
                 });
             }
+        }
+
+        private void DataGridView_Product_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCellCollection cells = DataGridView_Product.CurrentRow.Cells;
+            bool selected = bool.Parse(cells["Product_Select"].FormattedValue.ToString()!);
+            int id = int.Parse(cells["Id"].Value.ToString()!);
+
+            if (e.ColumnIndex == 0)
+            {
+                return;
+            }
+
+            int index = _products.FindIndex(t => t.ProductId == id);
+
+            if (!selected)
+            {
+                return;
+            }
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            _products[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
         }
     }
 }

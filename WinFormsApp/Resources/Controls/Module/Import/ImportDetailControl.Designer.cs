@@ -69,13 +69,13 @@
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
             DataGridView_Product = new Guna.UI2.WinForms.Guna2DataGridView();
             Product_Select = new DataGridViewCheckBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             Product_Name = new DataGridViewTextBoxColumn();
-            Price = new DataGridViewTextBoxColumn();
             ColorName = new DataGridViewTextBoxColumn();
             CapacityName = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
-            Id = new DataGridViewTextBoxColumn();
             DetailId = new DataGridViewTextBoxColumn();
             ProductImage = new DataGridViewTextBoxColumn();
             ImportBillId = new DataGridViewTextBoxColumn();
@@ -319,11 +319,11 @@
             DateTime_ImportDate.BackColor = Color.Transparent;
             DateTime_ImportDate.BorderRadius = 5;
             DateTime_ImportDate.Checked = true;
-            DateTime_ImportDate.CustomFormat = "dd/MM/yyyy HH:mm";
+            DateTime_ImportDate.CustomFormat = "dd/MM/yyyy";
             DateTime_ImportDate.CustomizableEdges = customizableEdges12;
             DateTime_ImportDate.Enabled = false;
             DateTime_ImportDate.FillColor = Color.White;
-            DateTime_ImportDate.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DateTime_ImportDate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             DateTime_ImportDate.Format = DateTimePickerFormat.Custom;
             DateTime_ImportDate.Location = new Point(123, 79);
             DateTime_ImportDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -380,6 +380,7 @@
             // 
             DataGridView_Product.AllowUserToAddRows = false;
             DataGridView_Product.AllowUserToDeleteRows = false;
+            DataGridView_Product.AllowUserToResizeColumns = false;
             DataGridView_Product.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -397,7 +398,7 @@
             DataGridView_Product.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Product.ColumnHeadersHeight = 40;
             DataGridView_Product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, InternalCode, Product_Name, Price, ColorName, CapacityName, Quantity, Id, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
+            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, Id, InternalCode, Product_Name, ColorName, CapacityName, Price, Quantity, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -457,9 +458,17 @@
             Product_Select.TrueValue = "True";
             Product_Select.Width = 40;
             // 
+            // Id
+            // 
+            Id.DataPropertyName = "ProductId";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.Visible = false;
+            // 
             // InternalCode
             // 
-            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             InternalCode.DataPropertyName = "ProductInternalCode";
             InternalCode.DividerWidth = 1;
             InternalCode.FillWeight = 42.0936546F;
@@ -469,7 +478,7 @@
             InternalCode.ReadOnly = true;
             InternalCode.Resizable = DataGridViewTriState.True;
             InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
-            InternalCode.Width = 6;
+            InternalCode.Width = 120;
             // 
             // Product_Name
             // 
@@ -482,47 +491,47 @@
             Product_Name.Name = "Product_Name";
             Product_Name.ReadOnly = true;
             // 
-            // Price
-            // 
-            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            Price.DataPropertyName = "Price";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Price.DefaultCellStyle = dataGridViewCellStyle3;
-            Price.DividerWidth = 1;
-            Price.FillWeight = 42.0936546F;
-            Price.HeaderText = "Giá";
-            Price.MinimumWidth = 6;
-            Price.Name = "Price";
-            Price.ReadOnly = true;
-            Price.Width = 6;
-            // 
             // ColorName
             // 
-            ColorName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColorName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             ColorName.DataPropertyName = "ColorName";
             ColorName.DividerWidth = 1;
             ColorName.FillWeight = 101.474419F;
             ColorName.HeaderText = "Màu";
             ColorName.Name = "ColorName";
             ColorName.ReadOnly = true;
-            ColorName.Width = 5;
             // 
             // CapacityName
             // 
-            CapacityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            CapacityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             CapacityName.DataPropertyName = "CapacityName";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            CapacityName.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            CapacityName.DefaultCellStyle = dataGridViewCellStyle3;
             CapacityName.DividerWidth = 1;
             CapacityName.FillWeight = 101.474419F;
             CapacityName.HeaderText = "Dung lượng";
             CapacityName.Name = "CapacityName";
             CapacityName.ReadOnly = true;
-            CapacityName.Width = 96;
+            CapacityName.Width = 120;
+            // 
+            // Price
+            // 
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Price.DataPropertyName = "Price";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.NullValue = null;
+            Price.DefaultCellStyle = dataGridViewCellStyle4;
+            Price.DividerWidth = 1;
+            Price.FillWeight = 42.0936546F;
+            Price.HeaderText = "Giá";
+            Price.MinimumWidth = 6;
+            Price.Name = "Price";
+            Price.ReadOnly = true;
+            Price.Width = 120;
             // 
             // Quantity
             // 
-            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Quantity.DataPropertyName = "Quantity";
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
             Quantity.DefaultCellStyle = dataGridViewCellStyle5;
@@ -531,15 +540,7 @@
             Quantity.HeaderText = "Số lượng";
             Quantity.MinimumWidth = 6;
             Quantity.Name = "Quantity";
-            Quantity.Width = 79;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "ProductId";
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Visible = false;
+            Quantity.Width = 120;
             // 
             // DetailId
             // 
@@ -621,13 +622,13 @@
         private Guna.UI2.WinForms.Guna2Button Button_Save;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Product;
         private DataGridViewCheckBoxColumn Product_Select;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn Product_Name;
-        private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn ColorName;
         private DataGridViewTextBoxColumn CapacityName;
+        private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn DetailId;
         private DataGridViewTextBoxColumn ProductImage;
         private DataGridViewTextBoxColumn ImportBillId;
