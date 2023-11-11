@@ -1,6 +1,6 @@
 ﻿namespace Services.Transform
 {
-    public class CommonTranform
+    public class CommonTransform
     {
         // Giới tính
         public static string male = "Nam";

@@ -50,7 +50,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 DateTime_End.Value = _promotion.End;
                 ComboBox_Type.SelectedValue = _promotion.Type;
 
-                if(result.Type == Domain.Entities.Promotion.TYPE_PERCENT)
+                if (result.Type == Domain.Entities.Promotion.TYPE_PERCENT)
                 {
                     Text_Discount.Text = _promotion.Percent.ToString();
                     Text_DiscountMax.Text = Util.AddCommas(_promotion.DiscountMax);
@@ -70,7 +70,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
                     DisableAll();
                 }
-                else if(result.Status == Domain.Entities.Promotion.STATUS_CANCEL)
+                else if (result.Status == Domain.Entities.Promotion.STATUS_CANCEL)
                 {
                     Button_Cancel.Visible = false;
                     Button_Save.Visible = false;
@@ -118,30 +118,37 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
             if (_promotion.Type == Domain.Entities.Promotion.TYPE_PERCENT)
             {
-                _promotion.Percent = int.Parse(Text_Discount.Text);
-                _promotion.DiscountMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
+                _promotion.Percent = int.Parse(Text_Discount.Text == string.Empty ? "0" : Text_Discount.Text);
+                _promotion.DiscountMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text == string.Empty ? "0" : Text_DiscountMax.Text));
             }
             else
             {
-                _promotion.Discount = int.Parse(Util.DeleteCommas(Text_Discount.Text));
-                _promotion.PercentMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
+                _promotion.Discount = int.Parse(Util.DeleteCommas(Text_Discount.Text == string.Empty ? "0" : Text_Discount.Text));
+                _promotion.PercentMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text == string.Empty ? "0" : Text_DiscountMax.Text));
             }
         }
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
             GetForm();
-
-            if(_promotion.Id > 0)
+            try
             {
-                await _promotionService.Update(_promotion);
-            }
-            else
-            {
-                await _promotionService.Create(_promotion);
-            }
+                if (_promotion.Id > 0)
+                {
+                    await _promotionService.Update(_promotion);
+                }
+                else
+                {
+                    await _promotionService.Create(_promotion);
+                }
 
-            Util.LoadControl(this, new PromotionControl());
+                Util.LoadControl(this, new PromotionControl());
+                Util.LoadControl(this, new PromotionControl());
+            }
+            catch (Exception ex)
+            {
+                Dialog_Notification.Show(ex.Message);
+            }
         }
 
         private async void Button_Approve_Click(object sender, EventArgs e)
@@ -182,7 +189,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 Label_DiscountMax.Visible = true;
                 Text_DiscountMax.Visible = true;
 
-                if(ComboBox_Type.SelectedValue == Domain.Entities.Promotion.TYPE_DISCOUNT)
+                if (ComboBox_Type.SelectedValue == Domain.Entities.Promotion.TYPE_DISCOUNT)
                 {
                     Label_DiscountMax.Text = "Giảm phần trăm tối đa";
                     Text_DiscountMax.PlaceholderText = "Giảm phần trăm tối đa";

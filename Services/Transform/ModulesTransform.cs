@@ -12,7 +12,11 @@
 
             public const string Phone = "số điện thoại ";
 
-            public const string DateOfBirth = "ngày sinh";
+            public const string DateOfBirth = "ngày sinh ";
+
+            public const string Type = "loại ";
+
+            public const string Status = "trạng thái ";
         }
 
         public class Distributor
@@ -62,6 +66,23 @@
             public const string color = "màu sắc ";
 
             public const string capacity = "dung lượng ";
+        }
+
+        public class Promotion
+        {
+            public const string module = "chương trình khuyến mãi ";
+
+            public const string start = "thời gian bắt đầu ";
+
+            public const string end = "thời gian kết thúc ";
+
+            public const string discount = "giảm giá ";
+
+            public const string percentMax = "% giảm tối đa ";
+
+            public const string percent = "giảm % ";
+
+            public const string discountMax = "tiền giảm tối đa ";
         }
     }
 }
