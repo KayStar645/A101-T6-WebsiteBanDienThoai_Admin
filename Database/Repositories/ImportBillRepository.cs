@@ -31,10 +31,6 @@ namespace Database.Repositories
         protected override List<string> _seachers { get; } = new List<string>()
         {
             "InternalCode",
-            "Price",
-            "Type",
-            "EmployeeId",
-            "DistributorId"
         };
 
         #endregion
@@ -62,7 +58,7 @@ namespace Database.Repositories
                 {
                     foreach (string item in _seachers)
                     {
-                        searchs.Add($"{item} like N'%{pKeyword}%'");
+                        searchs.Add($"IB.{item} like N'%{pKeyword}%'");
                     }
                 }
 

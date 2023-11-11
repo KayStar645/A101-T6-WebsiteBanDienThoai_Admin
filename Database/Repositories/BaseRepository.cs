@@ -63,7 +63,7 @@ namespace Database.Repositories
             {
                 foreach (string item in _seachers)
                 {
-                    searchs.Add($"{item} like N'%{pKeyword}%'");
+                    searchs.Add($"\"{item}\" like N'%{pKeyword}%'");
                 }
             }
             string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";

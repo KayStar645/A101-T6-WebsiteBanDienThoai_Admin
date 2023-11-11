@@ -34,10 +34,6 @@ namespace Database.Repositories
         {
             "InternalCode",
             "Name",
-            "Type",
-            "Status",
-            "Discount",
-            "Percent",
         };
 
         #endregion

@@ -33,10 +33,6 @@ namespace Database.Repositories
         {
             "InternalCode",
             "Name",
-            "Price",
-            "CategoryId",
-            "ColorId",
-            "CapacityId"
         };
 
         protected override List<string> _ranges { get; } = new List<string>()
@@ -89,7 +85,7 @@ namespace Database.Repositories
                     whereCategory = $" and CategoryId = {pCategoryId} ";
                 }   
                 
-                string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
+                string resultSearchs = searchs.Count() > 0 ? $" and (P.{string.Join(" or P.", searchs)})" : "";
 
                 string query = $"select P.Id, P.InternalCode, P.Name, P.Price, P.Quantity, P.Images, " +
                                       $"P.CategoryId, Cg.InternalCode as CategoryInternalCode, Cg.Name as CategoryName, " +
