@@ -22,7 +22,6 @@ namespace Database.Repositories
             "Name",
             "Start",
             "End",
-            "PriceMin",
             "Type",
             "Status",
             "Discount",
@@ -35,7 +34,6 @@ namespace Database.Repositories
         {
             "InternalCode",
             "Name",
-            "PriceMin",
             "Type",
             "Status",
             "Discount",
