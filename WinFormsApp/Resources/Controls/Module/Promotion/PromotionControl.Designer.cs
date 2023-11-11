@@ -398,7 +398,7 @@
             Type.HeaderText = "Loại";
             Type.Name = "Type";
             Type.ReadOnly = true;
-            Type.Width = 80;
+            Type.Width = 120;
             // 
             // Status
             // 

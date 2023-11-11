@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs;
+using Domain.Entities;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
 using WinFormsApp.Services;
@@ -54,13 +55,13 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             Guna2Button button = (Guna2Button)sender;
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.White;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.Black;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.White;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.Black;
 
             _currPage = int.Parse(button.Text);
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
+            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
 
             LoadDataAsync();
         }
@@ -69,12 +70,10 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             _result = await _promotionService.GetList("Name", _currPage, 15, "");
 
-            foreach (var item in _result.list)
+            foreach (PromotionDto item in _result.list)
             {
-                string[] row = new string[]
-                {
-
-                };
+                item.Status = Domain.Entities.Promotion.GetStatusMapping(item.Status).FirstOrDefault().statusName;
+                item.Type = Domain.Entities.Promotion.GetTypeMapping(item.Type).FirstOrDefault().typeName;
             }
 
             DataGridView_Listing.DataSource = _result.list;

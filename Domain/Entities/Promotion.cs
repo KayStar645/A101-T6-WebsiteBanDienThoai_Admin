@@ -44,7 +44,7 @@ namespace Domain.Entities
         [DefaultValue(TYPE_PERCENT)]
         public string? Status { get; set; }
 
-        public (string Key, string Value)[] GetStatusMapping(string? pStatus = null)
+        public static (string status, string statusName)[] GetStatusMapping(string? pStatus = null)
         {
             var statusMapping = new[]
             {
@@ -63,7 +63,7 @@ namespace Domain.Entities
             return statusMapping;
         }
 
-        public (string Key, string Value)[] GetTypeMapping(string? pType = null)
+        public static (string type, string typeName)[] GetTypeMapping(string? pType = null)
         {
             var typeMapping = new[]
             {
@@ -80,7 +80,5 @@ namespace Domain.Entities
 
             return typeMapping;
         }
-
-
     }
 }
