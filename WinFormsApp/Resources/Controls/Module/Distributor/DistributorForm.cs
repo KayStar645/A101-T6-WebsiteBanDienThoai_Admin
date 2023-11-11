@@ -1,4 +1,5 @@
-﻿using Domain.DTOs;
+﻿using Common.UI;
+using Domain.DTOs;
 using Services.Interfaces;
 using SimpleInjector;
 
@@ -9,6 +10,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
         private readonly Container _container;
         private readonly IDistributorService _distributorService;
         DistributorDto formData = new DistributorDto();
+        Dialog _dialog = new();
 
         public DistributorForm(Container container)
         {
@@ -64,7 +66,7 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
             }
             catch (Exception err)
             {
-                Dialog_Notification.Show(err.Message);
+                _dialog.Open(err.Message);
             }
         }
 

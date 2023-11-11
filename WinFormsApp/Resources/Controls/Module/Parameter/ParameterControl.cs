@@ -7,6 +7,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 {
     public partial class ParameterControl : UserControl
     {
+
         ISpecificationsService _specificationsService;
         (List<SpecificationsDto> list, int totalCount, int pageNumber) _result;
         public static Guna2Button _refreshBtn;
