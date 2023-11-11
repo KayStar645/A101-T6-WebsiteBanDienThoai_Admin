@@ -1,4 +1,5 @@
-﻿using Domain.DTOs;
+﻿using Controls.UI;
+using Domain.DTOs;
 using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
@@ -19,15 +20,21 @@ namespace WinFormsApp.Resources.Controls.Module.Product
         {
             InitializeComponent();
 
-            _productService = Program.container.GetInstance<IProductService>();
-            _refreshButton = Button_Refresh;
             _category = category;
 
-            LoadProduct();
+            OnInit();
+        }
+
+        private async void OnInit()
+        {
+            _productService = Program.container.GetInstance<IProductService>();
+            _refreshButton = Button_Refresh;
+
+            await LoadData();
             Paginator();
         }
 
-        private async void LoadProduct()
+        private async Task LoadData()
         {
             _result = await _productService.GetList("Name", _currPage, 15, Text_Search.Text, _category.Id);
 
@@ -36,33 +43,14 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void Paginator()
         {
-            //FlowLayoutPanel_Paginator.Controls.Clear();
-
-            //for (int i = 1; i <= _result.pageNumber; i++)
-            //{
-            //    PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
-
-            //    FlowLayoutPanel_Paginator.Controls.Add(button);
-            //}
-
-            //if (_result.pageNumber > 0)
-            //{
-            //    FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
-            //    FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
-            //}
+            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, onClickPaginator), DockStyle.Right);
         }
 
-        private async void Button_Paginator_Click(object sender, EventArgs e)
+        private async void onClickPaginator(int page)
         {
-            Guna2Button button = (Guna2Button)sender;
+            _currPage = page;
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.White;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.Black;
-
-            _currPage = int.Parse(button.Text);
-
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
+            await LoadData();
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
@@ -87,21 +75,21 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             }
             else if (e.ColumnIndex == 1)
             {
-                //DialogResult dialogResult = Dialog_Confirm.Show();
+                DialogResult dialogResult = Dialog_Confirm.Show();
 
-                //if (dialogResult != DialogResult.Yes)
-                //{
-                //    return;
-                //}
+                if (dialogResult != DialogResult.Yes)
+                {
+                    return;
+                }
 
-                //_productService.Delete(formData.Id);
-                //Button_Refresh.PerformClick();
+                _productService.Delete(formData.Id);
+                Button_Refresh.PerformClick();
             }
         }
 
         private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            LoadProduct();
+            await LoadData();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
@@ -116,7 +104,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
             Paginator();
 
-            LoadProduct();
+            await LoadData();
         }
     }
 }

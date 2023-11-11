@@ -1,5 +1,5 @@
-﻿using Domain.DTOs;
-using Domain.Entities;
+﻿using Controls.UI;
+using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
 using WinFormsApp.Services;
@@ -24,49 +24,28 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             InitializeAsync();
         }
 
-        private void InitializeAsync()
+        private async void InitializeAsync()
         {
             _refreshButton = Button_Refresh;
 
-            LoadDataAsync();
+            await LoadDataAsync();
 
             Paginator();
         }
 
         private void Paginator()
         {
-            //FlowLayoutPanel_Paginator.Controls.Clear();
-
-            //for (int i = 1; i <= _result.pageNumber; i++)
-            //{
-            //    PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
-
-            //    FlowLayoutPanel_Paginator.Controls.Add(button);
-            //}
-
-            //if (_result.pageNumber > 0)
-            //{
-            //    FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-            //    FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
-            //}
+            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
         }
 
-        private async void Button_Paginator_Click(object sender, EventArgs e)
+        private async void Button_Paginator_Click(int page)
         {
-            Guna2Button button = (Guna2Button)sender;
+            _currPage = page;
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.White;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.Black;
-
-            _currPage = int.Parse(button.Text);
-
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = System.Drawing.Color.RoyalBlue;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = System.Drawing.Color.White;
-
-            LoadDataAsync();
+            await LoadDataAsync();
         }
 
-        public async void LoadDataAsync()
+        public async Task LoadDataAsync()
         {
             _result = await _promotionService.GetList("Name", _currPage, 15, "");
 
@@ -84,9 +63,11 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             Util.LoadControl(this, new PromotionDetailControl());
         }
 
-        private void Button_Refresh_Click(object sender, EventArgs e)
+        private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            LoadDataAsync();
+            _currPage = 1;
+            Text_Search.Text = string.Empty;
+            await LoadDataAsync();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
@@ -95,13 +76,13 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             Timer_Debounce.Start();
         }
 
-        private void Timer_Debounce_Tick(object sender, EventArgs e)
+        private async void Timer_Debounce_Tick(object sender, EventArgs e)
         {
             _currPage = 1;
 
             Paginator();
 
-            LoadDataAsync();
+            await LoadDataAsync();
         }
 
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
