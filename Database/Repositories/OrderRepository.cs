@@ -32,10 +32,6 @@ namespace Database.Repositories
         protected override List<string> _seachers { get; } = new List<string>()
         {
            "InternalCode",
-            "Price",
-            "Type",
-            "EmployeeId",
-            "CustomerId"
         };
 
         #endregion
@@ -81,7 +77,7 @@ namespace Database.Repositories
                 {
                     foreach (string item in _seachers)
                     {
-                        searchs.Add($"{item} like N'%{pKeyword}%'");
+                        searchs.Add($"\"{item}\" like N'%{pKeyword}%'");
                     }
                 }
 
@@ -99,18 +95,18 @@ namespace Database.Repositories
 
                 string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
-                string query = $"SELECT O.Id, IB.InternalCode, O.OrderDate, O.Price, O.DiscountPrice, O.SumPrice, " +
+                string query = $"SELECT O.Id, O.InternalCode, O.OrderDate, O.Price, O.DiscountPrice, O.SumPrice, " +
                                       $"E.Id as EmployeeId, E.InternalCode as EmployeeInternalCode, E.Name as EmployeeName, " +
                                       $"C.Id as CustomerId, C.Phone as CustomerPhone, C.Name as CustomerName " +
-                               $"FROM ImportBill AS 0 " +
-                               $"LEFT JOIN Employee AS E ON 0.EmployeeId = E.Id " +
-                               $"LEFT JOIN Customer AS C ON O.CustomerId = D.Id " +
+                               $"FROM \"Order\" AS O " +
+                               $"LEFT JOIN Employee AS E ON O.EmployeeId = E.Id " +
+                               $"LEFT JOIN Customer AS C ON O.CustomerId = C.Id " +
                                $"where {string.Join(" and ", filter)} {resultSearchs} {whereEmployee} {whereCustomer}" +
                                $"order by {pSort} " +
                                $"offset {(pPageNumber - 1) * pPageSize} rows " +
                                $"fetch next {pPageSize} rows only";
 
-                string subQuery = $"SELECT COUNT(Id) FROM {_model} as O " +
+                string subQuery = $"SELECT COUNT(Id) FROM \"{_model}\" as O " +
                                   $"where {string.Join(" and ", filter)} {resultSearchs} {whereEmployee} {whereCustomer};";
                 int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
                                         .ExecuteScalarAsync<int>(subQuery)
@@ -138,9 +134,9 @@ namespace Database.Repositories
                 string query = $"SELECT O.Id, IB.InternalCode, O.OrderDate, O.Price, O.DiscountPrice, O.SumPrice, " +
                                       $"E.Id as EmployeeId, E.InternalCode as EmployeeInternalCode, E.Name as EmployeeName, " +
                                       $"C.Id as CustomerId, C.Phone as CustomerPhone, C.Name as CustomerName " +
-                               $"FROM ImportBill AS 0 " +
+                               $"FROM \"Order\" AS O " +
                                $"LEFT JOIN Employee AS E ON 0.EmployeeId = E.Id " +
-                               $"LEFT JOIN Customer AS C ON O.CustomerId = D.Id " +
+                               $"LEFT JOIN Customer AS C ON O.CustomerId = C.Id " +
                                $"where O.Id = {pId} and O.IsDeleted = 0";
 
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
