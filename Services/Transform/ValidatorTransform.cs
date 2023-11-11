@@ -1,6 +1,6 @@
 ﻿namespace Services.Transform
 {
-    public static class ValidatorTranform
+    public static class ValidatorTransform
     {
         public static string MaximumLength(string name, int max)
         {
@@ -121,6 +121,11 @@
         public static string GreaterThanOrEqualTo(string name, int number)
         {
             return $"Trường {name} ít nhất lớn hơn hoặc bằng {number}!";
+        }
+
+        public static string GreaterThanAndLessThanOrEqualTo(string name, int number1, int number2)
+        {
+            return $"Trường {name} ít nhất lớn hơn {number1} và nhỏ hơn hoặc bằng {number2}!";
         }
 
         public static string GreaterThanToday(string name)

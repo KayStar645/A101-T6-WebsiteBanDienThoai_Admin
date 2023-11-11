@@ -16,34 +16,34 @@ namespace Services.Validators
 
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.Name +
+                .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.Name +
                                         ModulesTransform.Distributor.module))
                 .MaximumLength(ValidatorCommon.NameLength)
-                .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
+                .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.Name +
                              ModulesTransform.Distributor.module, ValidatorCommon.NameLength));
 
             RuleFor(x => x.Address)
                 .MaximumLength(ValidatorCommon.AddressLength)
-                .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Address,
+                .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.Address,
                                                              ValidatorCommon.AddressLength));
 
             RuleFor(x => x.Phone)
                .Must(phoneNumber => string.IsNullOrEmpty(phoneNumber) || phoneNumber.Length == 10)
-               .WithMessage(ValidatorTranform.Length(ModulesTransform.Common.Phone,
+               .WithMessage(ValidatorTransform.Length(ModulesTransform.Common.Phone,
                                                      ValidatorCommon.PhoneLength));
 
             RuleFor(x => x.InternalCode)
                .NotEmpty()
-               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
+               .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Distributor.module))
                .MaximumLength(ValidatorCommon.InternalCodeLength)
-               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
+               .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.Name +
                                         ModulesTransform.Distributor.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
                    return await _distributorRepo.AnyKeyValueAsync(new[] { ("InternalCode", internalCode) }, pId) == false;
                })
-               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
+               .WithMessage(internalCode => ValidatorTransform.Exists(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Distributor.module));
         }
 
