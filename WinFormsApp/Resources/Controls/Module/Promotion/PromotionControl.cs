@@ -28,24 +28,24 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             _refreshButton = Button_Refresh;
 
-            await LoadDataAsync();
-
             Paginator();
+
+            await LoadData();
         }
 
         private void Paginator()
         {
-            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
+            Util.LoadControl(TableLayoutPanel_Paginator, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
         }
 
         private async void Button_Paginator_Click(int page)
         {
             _currPage = page;
 
-            await LoadDataAsync();
+            await LoadData();
         }
 
-        public async Task LoadDataAsync()
+        public async Task LoadData()
         {
             _result = await _promotionService.GetList("Name", _currPage, 15, Text_Search.Text);
 
@@ -67,12 +67,12 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             _currPage = 1;
             Text_Search.Text = string.Empty;
-            await LoadDataAsync();
+
+            await LoadData();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
         {
-            Timer_Debounce.Stop();
             Timer_Debounce.Start();
         }
 
@@ -80,9 +80,10 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             _currPage = 1;
 
+            await LoadData();
             Paginator();
 
-            await LoadDataAsync();
+            Timer_Debounce.Stop();
         }
 
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)

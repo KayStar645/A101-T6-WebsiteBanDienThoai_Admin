@@ -37,32 +37,31 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
-            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
             TableLayoutPanel_Action = new TableLayoutPanel();
             TableLayoutPanel_Header = new TableLayoutPanel();
-            TableLayoutPanel_Container = new TableLayoutPanel();
+            TableLayoutPanel_Paginator = new TableLayoutPanel();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
             edit = new DataGridViewButtonColumn();
-            UserId = new DataGridViewTextBoxColumn();
-            Id = new DataGridViewTextBoxColumn();
             remove = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             _Name = new DataGridViewTextBoxColumn();
             Sex = new DataGridViewTextBoxColumn();
             Birthday = new DataGridViewTextBoxColumn();
             Phone = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
+            UserId = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Action.SuspendLayout();
             TableLayoutPanel_Header.SuspendLayout();
-            TableLayoutPanel_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
             SuspendLayout();
             // 
@@ -70,15 +69,6 @@
             // 
             Timer_Debounce.Interval = 600;
             Timer_Debounce.Tick += Timer_Debounce_Tick;
-            // 
-            // FlowLayoutPanel_Paginator
-            // 
-            FlowLayoutPanel_Paginator.AutoSize = true;
-            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(930, 544);
-            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
-            FlowLayoutPanel_Paginator.Size = new Size(0, 44);
-            FlowLayoutPanel_Paginator.TabIndex = 2;
             // 
             // Dialog_Confirm
             // 
@@ -183,7 +173,7 @@
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Header.Controls.Add(Text_Search, 0, 0);
             TableLayoutPanel_Header.Controls.Add(TableLayoutPanel_Action, 1, 0);
-            TableLayoutPanel_Header.Dock = DockStyle.Fill;
+            TableLayoutPanel_Header.Dock = DockStyle.Top;
             TableLayoutPanel_Header.Location = new Point(0, 0);
             TableLayoutPanel_Header.Margin = new Padding(0);
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
@@ -192,23 +182,17 @@
             TableLayoutPanel_Header.Size = new Size(933, 50);
             TableLayoutPanel_Header.TabIndex = 0;
             // 
-            // TableLayoutPanel_Container
+            // TableLayoutPanel_Paginator
             // 
-            TableLayoutPanel_Container.ColumnCount = 1;
-            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
-            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
-            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
-            TableLayoutPanel_Container.Dock = DockStyle.Fill;
-            TableLayoutPanel_Container.Location = new Point(0, 0);
-            TableLayoutPanel_Container.Margin = new Padding(0);
-            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
-            TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.Size = new Size(933, 591);
-            TableLayoutPanel_Container.TabIndex = 1;
+            TableLayoutPanel_Paginator.ColumnCount = 1;
+            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
+            TableLayoutPanel_Paginator.Location = new Point(0, 541);
+            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
+            TableLayoutPanel_Paginator.RowCount = 1;
+            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Size = new Size(933, 50);
+            TableLayoutPanel_Paginator.TabIndex = 2;
             // 
             // DataGridView_Listing
             // 
@@ -221,8 +205,7 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             DataGridView_Listing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            DataGridView_Listing.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
@@ -232,15 +215,15 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, UserId, Id, remove, InternalCode, _Name, Sex, Birthday, Phone });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle5;
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, _Name, Sex, Birthday, Phone, Id, UserId });
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle6;
             DataGridView_Listing.Dock = DockStyle.Fill;
             DataGridView_Listing.GridColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.Location = new Point(0, 50);
@@ -248,20 +231,20 @@
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
             DataGridView_Listing.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             DataGridView_Listing.RowHeadersVisible = false;
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
             DataGridView_Listing.Size = new Size(933, 491);
-            DataGridView_Listing.TabIndex = 1;
+            DataGridView_Listing.TabIndex = 3;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -301,24 +284,6 @@
             edit.UseColumnTextForButtonValue = true;
             edit.Width = 6;
             // 
-            // UserId
-            // 
-            UserId.DataPropertyName = "UserId";
-            UserId.HeaderText = "Column1";
-            UserId.MinimumWidth = 6;
-            UserId.Name = "UserId";
-            UserId.ReadOnly = true;
-            UserId.Visible = false;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
             // remove
             // 
             remove.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -338,7 +303,8 @@
             // 
             InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             InternalCode.DataPropertyName = "InternalCode";
-            InternalCode.FillWeight = 41.4820366F;
+            InternalCode.DividerWidth = 1;
+            InternalCode.FillWeight = 15.0120726F;
             InternalCode.HeaderText = "Mã nhân viên";
             InternalCode.MinimumWidth = 6;
             InternalCode.Name = "InternalCode";
@@ -350,7 +316,8 @@
             // 
             _Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             _Name.DataPropertyName = "Name";
-            _Name.FillWeight = 41.4820366F;
+            _Name.DividerWidth = 1;
+            _Name.FillWeight = 15.0120726F;
             _Name.HeaderText = "Tên nhân viên";
             _Name.MinimumWidth = 6;
             _Name.Name = "_Name";
@@ -358,9 +325,10 @@
             // 
             // Sex
             // 
-            Sex.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Sex.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Sex.DataPropertyName = "Sex";
-            Sex.FillWeight = 41.4820366F;
+            Sex.DividerWidth = 1;
+            Sex.FillWeight = 15.0120726F;
             Sex.HeaderText = "Giới tính";
             Sex.MinimumWidth = 6;
             Sex.Name = "Sex";
@@ -368,33 +336,58 @@
             // 
             // Birthday
             // 
-            Birthday.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Birthday.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Birthday.DataPropertyName = "Birthday";
-            Birthday.FillWeight = 41.4820366F;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            Birthday.DefaultCellStyle = dataGridViewCellStyle5;
+            Birthday.DividerWidth = 1;
+            Birthday.FillWeight = 15.0120726F;
             Birthday.HeaderText = "Ngày sinh";
             Birthday.MinimumWidth = 6;
             Birthday.Name = "Birthday";
             Birthday.ReadOnly = true;
+            Birthday.Width = 150;
             // 
             // Phone
             // 
+            Phone.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Phone.DataPropertyName = "Phone";
+            Phone.FillWeight = 205.879868F;
             Phone.HeaderText = "Số điện thoại";
             Phone.MinimumWidth = 6;
             Phone.Name = "Phone";
             Phone.ReadOnly = true;
+            Phone.Width = 150;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
+            // UserId
+            // 
+            UserId.DataPropertyName = "UserId";
+            UserId.HeaderText = "UserId";
+            UserId.MinimumWidth = 6;
+            UserId.Name = "UserId";
+            UserId.ReadOnly = true;
+            UserId.Visible = false;
             // 
             // EmployeeControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(TableLayoutPanel_Container);
+            Controls.Add(DataGridView_Listing);
+            Controls.Add(TableLayoutPanel_Paginator);
+            Controls.Add(TableLayoutPanel_Header);
             Name = "EmployeeControl";
             Size = new Size(933, 591);
             TableLayoutPanel_Action.ResumeLayout(false);
             TableLayoutPanel_Header.ResumeLayout(false);
-            TableLayoutPanel_Container.ResumeLayout(false);
-            TableLayoutPanel_Container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
             ResumeLayout(false);
         }
@@ -402,23 +395,22 @@
         #endregion
 
         private System.Windows.Forms.Timer Timer_Debounce;
-        private FlowLayoutPanel FlowLayoutPanel_Paginator;
         private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Confirm;
         private Guna.UI2.WinForms.Guna2Button Button_Create;
         private Guna.UI2.WinForms.Guna2Button Button_Refresh;
         private Guna.UI2.WinForms.Guna2TextBox Text_Search;
         private TableLayoutPanel TableLayoutPanel_Action;
         private TableLayoutPanel TableLayoutPanel_Header;
-        private TableLayoutPanel TableLayoutPanel_Container;
+        private TableLayoutPanel TableLayoutPanel_Paginator;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
         private DataGridViewButtonColumn edit;
-        private DataGridViewTextBoxColumn UserId;
-        private DataGridViewTextBoxColumn Id;
         private DataGridViewButtonColumn remove;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn _Name;
         private DataGridViewTextBoxColumn Sex;
         private DataGridViewTextBoxColumn Birthday;
         private DataGridViewTextBoxColumn Phone;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn UserId;
     }
 }

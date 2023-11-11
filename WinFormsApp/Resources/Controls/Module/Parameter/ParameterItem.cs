@@ -203,8 +203,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             name.DefaultText = "";
             name.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             name.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            name.DisabledState.ForeColor = Color.Black;
             name.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            name.ForeColor = Color.Black;
             name.Dock = DockStyle.Fill;
             name.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             name.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -232,8 +232,8 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             value.DefaultText = "";
             value.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             value.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            value.DisabledState.ForeColor = Color.Black;
             value.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            value.ForeColor = Color.Black;
             value.Dock = DockStyle.Fill;
             value.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             value.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);

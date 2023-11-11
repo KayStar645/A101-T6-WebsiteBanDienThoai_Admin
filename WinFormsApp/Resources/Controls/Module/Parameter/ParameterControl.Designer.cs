@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
             TableLayoutPanel_Header = new TableLayoutPanel();
@@ -43,15 +43,26 @@
             TableLayoutPanel_Action = new TableLayoutPanel();
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
+            TableLayoutPanel_Paginator = new TableLayoutPanel();
             Panel_Container = new Panel();
             Dialog_Notification = new Guna.UI2.WinForms.Guna2MessageDialog();
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
             SuspendLayout();
             // 
+            // Dialog_Notification
+            // 
+            Dialog_Notification.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            Dialog_Notification.Caption = "Thông báo";
+            Dialog_Notification.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Notification.Parent = null;
+            Dialog_Notification.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            Dialog_Notification.Text = null;
+            // 
             // Timer_Debounce
             // 
             Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
             // 
             // Dialog_Confirm
             // 
@@ -102,6 +113,7 @@
             Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges2;
             Text_Search.Size = new Size(234, 40);
             Text_Search.TabIndex = 2;
+            Text_Search.TextChanged += Text_Search_TextChanged;
             // 
             // TableLayoutPanel_Action
             // 
@@ -164,28 +176,32 @@
             Button_Refresh.Text = "Làm mới";
             Button_Refresh.Click += Button_Refresh_Click;
             // 
+            // TableLayoutPanel_Paginator
+            // 
+            TableLayoutPanel_Paginator.ColumnCount = 1;
+            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
+            TableLayoutPanel_Paginator.Location = new Point(0, 609);
+            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
+            TableLayoutPanel_Paginator.RowCount = 1;
+            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Size = new Size(1016, 50);
+            TableLayoutPanel_Paginator.TabIndex = 1;
+            // 
             // Panel_Container
             // 
             Panel_Container.Dock = DockStyle.Fill;
             Panel_Container.Location = new Point(0, 50);
             Panel_Container.Name = "Panel_Container";
-            Panel_Container.Size = new Size(1016, 609);
-            Panel_Container.TabIndex = 4;
-            // 
-            // Dialog_Notification
-            // 
-            Dialog_Notification.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-            Dialog_Notification.Caption = "Thông báo";
-            Dialog_Notification.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
-            Dialog_Notification.Parent = null;
-            Dialog_Notification.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
-            Dialog_Notification.Text = null;
+            Panel_Container.Size = new Size(1016, 559);
+            Panel_Container.TabIndex = 5;
             // 
             // ParameterControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(Panel_Container);
+            Controls.Add(TableLayoutPanel_Paginator);
             Controls.Add(TableLayoutPanel_Header);
             Name = "ParameterControl";
             Size = new Size(1016, 659);
@@ -203,7 +219,8 @@
         private TableLayoutPanel TableLayoutPanel_Action;
         private Guna.UI2.WinForms.Guna2Button Button_Create;
         private Guna.UI2.WinForms.Guna2Button Button_Refresh;
-        private Panel Panel_Container;
         private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
+        private TableLayoutPanel TableLayoutPanel_Paginator;
+        private Panel Panel_Container;
     }
 }

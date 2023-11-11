@@ -45,24 +45,24 @@
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
             TableLayoutPanel_Action = new TableLayoutPanel();
             TableLayoutPanel_Header = new TableLayoutPanel();
-            TableLayoutPanel_Container = new TableLayoutPanel();
+            TableLayoutPanel_Paginator = new TableLayoutPanel();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
             edit = new DataGridViewButtonColumn();
-            Id = new DataGridViewTextBoxColumn();
             remove = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             Phone = new DataGridViewTextBoxColumn();
             _Name = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Action.SuspendLayout();
             TableLayoutPanel_Header.SuspendLayout();
-            TableLayoutPanel_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
             SuspendLayout();
             // 
             // Timer_Debounce
             // 
             Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
             // 
             // Dialog_Confirm
             // 
@@ -118,6 +118,7 @@
             Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges4;
             Text_Search.Size = new Size(234, 40);
             Text_Search.TabIndex = 2;
+            Text_Search.TextChanged += Text_Search_TextChanged;
             // 
             // TableLayoutPanel_Action
             // 
@@ -142,7 +143,7 @@
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Header.Controls.Add(Text_Search, 0, 0);
             TableLayoutPanel_Header.Controls.Add(TableLayoutPanel_Action, 1, 0);
-            TableLayoutPanel_Header.Dock = DockStyle.Fill;
+            TableLayoutPanel_Header.Dock = DockStyle.Top;
             TableLayoutPanel_Header.Location = new Point(0, 0);
             TableLayoutPanel_Header.Margin = new Padding(0);
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
@@ -151,22 +152,17 @@
             TableLayoutPanel_Header.Size = new Size(949, 50);
             TableLayoutPanel_Header.TabIndex = 0;
             // 
-            // TableLayoutPanel_Container
+            // TableLayoutPanel_Paginator
             // 
-            TableLayoutPanel_Container.ColumnCount = 1;
-            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
-            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
-            TableLayoutPanel_Container.Dock = DockStyle.Fill;
-            TableLayoutPanel_Container.Location = new Point(0, 0);
-            TableLayoutPanel_Container.Margin = new Padding(0);
-            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
-            TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.Size = new Size(949, 467);
-            TableLayoutPanel_Container.TabIndex = 1;
+            TableLayoutPanel_Paginator.ColumnCount = 1;
+            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
+            TableLayoutPanel_Paginator.Location = new Point(0, 417);
+            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
+            TableLayoutPanel_Paginator.RowCount = 1;
+            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Size = new Size(949, 50);
+            TableLayoutPanel_Paginator.TabIndex = 2;
             // 
             // DataGridView_Listing
             // 
@@ -179,7 +175,7 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Listing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
@@ -189,7 +185,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, Id, remove, InternalCode, Phone, _Name, Address });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Phone, _Name, Address, Id });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -218,7 +214,7 @@
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
             DataGridView_Listing.Size = new Size(949, 367);
-            DataGridView_Listing.TabIndex = 1;
+            DataGridView_Listing.TabIndex = 3;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -258,15 +254,6 @@
             edit.UseColumnTextForButtonValue = true;
             edit.Width = 6;
             // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
             // remove
             // 
             remove.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -286,7 +273,8 @@
             // 
             InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             InternalCode.DataPropertyName = "InternalCode";
-            InternalCode.FillWeight = 41.4820366F;
+            InternalCode.DividerWidth = 1;
+            InternalCode.FillWeight = 41.437767F;
             InternalCode.HeaderText = "Mã khách hàng";
             InternalCode.MinimumWidth = 6;
             InternalCode.Name = "InternalCode";
@@ -298,7 +286,8 @@
             // 
             Phone.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Phone.DataPropertyName = "Phone";
-            Phone.FillWeight = 41.4820366F;
+            Phone.DividerWidth = 1;
+            Phone.FillWeight = 41.4464951F;
             Phone.HeaderText = "Số điện thoại";
             Phone.MinimumWidth = 6;
             Phone.Name = "Phone";
@@ -308,7 +297,8 @@
             // 
             _Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             _Name.DataPropertyName = "Name";
-            _Name.FillWeight = 41.4820366F;
+            _Name.DividerWidth = 1;
+            _Name.FillWeight = 41.6301842F;
             _Name.HeaderText = "Tên khách hàng";
             _Name.MinimumWidth = 6;
             _Name.Name = "_Name";
@@ -318,22 +308,32 @@
             // 
             Address.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Address.DataPropertyName = "Address";
-            Address.FillWeight = 41.4820366F;
+            Address.FillWeight = 41.41371F;
             Address.HeaderText = "Địa chỉ";
             Address.MinimumWidth = 6;
             Address.Name = "Address";
             Address.ReadOnly = true;
             // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
             // CustomerControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(TableLayoutPanel_Container);
+            Controls.Add(DataGridView_Listing);
+            Controls.Add(TableLayoutPanel_Paginator);
+            Controls.Add(TableLayoutPanel_Header);
             Name = "CustomerControl";
             Size = new Size(949, 467);
             TableLayoutPanel_Action.ResumeLayout(false);
             TableLayoutPanel_Header.ResumeLayout(false);
-            TableLayoutPanel_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
             ResumeLayout(false);
         }
@@ -346,14 +346,14 @@
         private Guna.UI2.WinForms.Guna2TextBox Text_Search;
         private TableLayoutPanel TableLayoutPanel_Action;
         private TableLayoutPanel TableLayoutPanel_Header;
-        private TableLayoutPanel TableLayoutPanel_Container;
+        private TableLayoutPanel TableLayoutPanel_Paginator;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
         private DataGridViewButtonColumn edit;
-        private DataGridViewTextBoxColumn Id;
         private DataGridViewButtonColumn remove;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn Phone;
         private DataGridViewTextBoxColumn _Name;
         private DataGridViewTextBoxColumn Address;
+        private DataGridViewTextBoxColumn Id;
     }
 }

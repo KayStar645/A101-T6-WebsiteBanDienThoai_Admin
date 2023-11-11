@@ -42,33 +42,39 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         private async void OnInit()
         {
             await LoadData();
+            Paginator();
 
-            if (_products.Count > 0)
+            if (_products.Count == 0)
             {
-                foreach (DataGridViewRow item in DataGridView_Product.Rows)
-                {
-                    if (_products.FindIndex(t => t.ProductId == int.Parse(item.Cells["Id"].Value.ToString()!)) == -1)
-                    {
-                        continue;
-                    }
-
-                    item.Cells["Product_Select"].Value = "True";
-                }
+                return;
             }
 
-            Paginator();
+            foreach (DataGridViewRow item in DataGridView_Product.Rows)
+            {
+                if (_products.FindIndex(t => t.ProductId == int.Parse(item.Cells["Id"].Value.ToString()!)) == -1)
+                {
+                    continue;
+                }
+
+                item.Cells["Product_Select"].Value = "True";
+            }
         }
 
         private async Task LoadData()
         {
-            _fetchData = await _productService.GetList("Name", _currPage, 15, Text_Search.Text);
+            _fetchData = await _productService.GetList("Name", _currPage, 10, Text_Search.Text);
+
+            foreach (var item in _fetchData.list)
+            {
+                item.Quantity = 0;
+            }
 
             DataGridView_Product.DataSource = _fetchData.list;
         }
 
         private void Paginator()
         {
-            Util.AddControl(TableLayoutPanel_Pagination, new Paginator(_fetchData.pageNumber, _currPage, onClickPaginator), DockStyle.Right);
+            Util.LoadControl(TableLayoutPanel_Paginator, new Paginator(_fetchData.pageNumber, _currPage, onClickPaginator), DockStyle.Right);
         }
 
         private async void onClickPaginator(int page)
@@ -76,11 +82,22 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             _currPage = page;
 
             await LoadData();
+            Paginator();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
         {
+            Timer_Debounce.Start();
+        }
 
+        private async void Timer_Debounce_Tick(object sender, EventArgs e)
+        {
+            _currPage = 1;
+
+            await LoadData();
+            Paginator();
+
+            Timer_Debounce.Stop();
         }
 
         private void Button_Save_Click(object sender, EventArgs e)
@@ -93,11 +110,6 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void Timer_Debounce_Tick(object sender, EventArgs e)
-        {
-
         }
 
         private void DataGridView_Product_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -126,8 +138,6 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             else
             {
                 cells["Product_Select"].Value = "True";
-
-
 
                 _products.Add(new DetailImportDto()
                 {

@@ -45,11 +45,11 @@
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
             panel1 = new Panel();
             DataGridView_Parameter = new Guna.UI2.WinForms.Guna2DataGridView();
-            DetailSpecification_Id = new DataGridViewTextBoxColumn();
             Select = new DataGridViewCheckBoxColumn();
-            SpecificationsId = new DataGridViewTextBoxColumn();
             Parameter_Name = new DataGridViewTextBoxColumn();
             Parameter_Description = new DataGridViewTextBoxColumn();
+            DetailSpecification_Id = new DataGridViewTextBoxColumn();
+            SpecificationsId = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Header.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
@@ -90,7 +90,7 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.BackColor = Color.White;
+            tableLayoutPanel1.BackColor = SystemColors.Control;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -181,7 +181,7 @@
             DataGridView_Parameter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Parameter.ColumnHeadersHeight = 40;
             DataGridView_Parameter.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Parameter.Columns.AddRange(new DataGridViewColumn[] { DetailSpecification_Id, Select, SpecificationsId, Parameter_Name, Parameter_Description });
+            DataGridView_Parameter.Columns.AddRange(new DataGridViewColumn[] { Select, Parameter_Name, Parameter_Description, DetailSpecification_Id, SpecificationsId });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -233,13 +233,6 @@
             DataGridView_Parameter.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Parameter.CellClick += DataGridView_Parameter_CellClick;
             // 
-            // DetailSpecification_Id
-            // 
-            DetailSpecification_Id.DataPropertyName = "Id";
-            DetailSpecification_Id.HeaderText = "Id";
-            DetailSpecification_Id.Name = "DetailSpecification_Id";
-            DetailSpecification_Id.Visible = false;
-            // 
             // Select
             // 
             Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -249,17 +242,11 @@
             Select.TrueValue = "True";
             Select.Width = 40;
             // 
-            // SpecificationsId
-            // 
-            SpecificationsId.DataPropertyName = "SpecificationsId";
-            SpecificationsId.HeaderText = "SpecificationsId";
-            SpecificationsId.Name = "SpecificationsId";
-            SpecificationsId.Visible = false;
-            // 
             // Parameter_Name
             // 
             Parameter_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Parameter_Name.DataPropertyName = "Name";
+            Parameter_Name.DividerWidth = 1;
             Parameter_Name.FillWeight = 41.4820366F;
             Parameter_Name.HeaderText = "Thông số";
             Parameter_Name.MinimumWidth = 6;
@@ -271,9 +258,24 @@
             // 
             Parameter_Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Parameter_Description.DataPropertyName = "Description";
+            Parameter_Description.DividerWidth = 1;
             Parameter_Description.HeaderText = "Giá trị";
             Parameter_Description.Name = "Parameter_Description";
             Parameter_Description.ReadOnly = true;
+            // 
+            // DetailSpecification_Id
+            // 
+            DetailSpecification_Id.DataPropertyName = "Id";
+            DetailSpecification_Id.HeaderText = "Id";
+            DetailSpecification_Id.Name = "DetailSpecification_Id";
+            DetailSpecification_Id.Visible = false;
+            // 
+            // SpecificationsId
+            // 
+            SpecificationsId.DataPropertyName = "SpecificationsId";
+            SpecificationsId.HeaderText = "SpecificationsId";
+            SpecificationsId.Name = "SpecificationsId";
+            SpecificationsId.Visible = false;
             // 
             // ProductParamDetailForm
             // 
@@ -306,10 +308,10 @@
         private Guna.UI2.WinForms.Guna2Button Button_Save;
         private Guna.UI2.WinForms.Guna2Button Button_Cancel;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Parameter;
-        private DataGridViewTextBoxColumn DetailSpecification_Id;
         private DataGridViewCheckBoxColumn Select;
-        private DataGridViewTextBoxColumn SpecificationsId;
         private DataGridViewTextBoxColumn Parameter_Name;
         private DataGridViewTextBoxColumn Parameter_Description;
+        private DataGridViewTextBoxColumn DetailSpecification_Id;
+        private DataGridViewTextBoxColumn SpecificationsId;
     }
 }

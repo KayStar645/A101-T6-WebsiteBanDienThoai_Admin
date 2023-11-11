@@ -47,11 +47,10 @@
             TableLayoutPanel_Action = new TableLayoutPanel();
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
-            DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
-            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
-            TableLayoutPanel_Container = new TableLayoutPanel();
+            TableLayoutPanel_Paginator = new TableLayoutPanel();
+            DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
             edit = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             Product_Name = new DataGridViewTextBoxColumn();
@@ -68,7 +67,6 @@
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
-            TableLayoutPanel_Container.SuspendLayout();
             SuspendLayout();
             // 
             // TableLayoutPanel_Header
@@ -78,7 +76,7 @@
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Header.Controls.Add(Text_Search, 0, 0);
             TableLayoutPanel_Header.Controls.Add(TableLayoutPanel_Action, 1, 0);
-            TableLayoutPanel_Header.Dock = DockStyle.Fill;
+            TableLayoutPanel_Header.Dock = DockStyle.Top;
             TableLayoutPanel_Header.Location = new Point(0, 0);
             TableLayoutPanel_Header.Margin = new Padding(0);
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
@@ -176,6 +174,32 @@
             Button_Refresh.Text = "Làm mới";
             Button_Refresh.Click += Button_Refresh_Click;
             // 
+            // Dialog_Confirm
+            // 
+            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            Dialog_Confirm.Caption = "Thông báo";
+            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Confirm.Parent = null;
+            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
+            // 
+            // Timer_Debounce
+            // 
+            Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
+            // 
+            // TableLayoutPanel_Paginator
+            // 
+            TableLayoutPanel_Paginator.ColumnCount = 1;
+            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
+            TableLayoutPanel_Paginator.Location = new Point(0, 463);
+            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
+            TableLayoutPanel_Paginator.RowCount = 1;
+            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Size = new Size(990, 50);
+            TableLayoutPanel_Paginator.TabIndex = 1;
+            // 
             // DataGridView_Listing
             // 
             DataGridView_Listing.AllowUserToAddRows = false;
@@ -226,7 +250,7 @@
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
             DataGridView_Listing.Size = new Size(990, 413);
-            DataGridView_Listing.TabIndex = 1;
+            DataGridView_Listing.TabIndex = 2;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -248,48 +272,7 @@
             DataGridView_Listing.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
-            // 
-            // Dialog_Confirm
-            // 
-            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
-            Dialog_Confirm.Caption = "Thông báo";
-            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
-            Dialog_Confirm.Parent = null;
-            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
-            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
-            // 
-            // FlowLayoutPanel_Paginator
-            // 
-            FlowLayoutPanel_Paginator.AutoSize = true;
-            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(987, 466);
-            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
-            FlowLayoutPanel_Paginator.Size = new Size(0, 44);
-            FlowLayoutPanel_Paginator.TabIndex = 2;
-            // 
-            // Timer_Debounce
-            // 
-            Timer_Debounce.Interval = 600;
-            Timer_Debounce.Tick += Timer_Debounce_Tick;
-            // 
-            // TableLayoutPanel_Container
-            // 
-            TableLayoutPanel_Container.ColumnCount = 1;
-            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
-            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
-            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
-            TableLayoutPanel_Container.Dock = DockStyle.Fill;
-            TableLayoutPanel_Container.Location = new Point(0, 0);
-            TableLayoutPanel_Container.Margin = new Padding(0);
-            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
-            TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.Size = new Size(990, 513);
-            TableLayoutPanel_Container.TabIndex = 2;
+            DataGridView_Listing.CellContentClick += DataGridView_Listing_CellClick;
             // 
             // edit
             // 
@@ -432,14 +415,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(TableLayoutPanel_Container);
+            Controls.Add(DataGridView_Listing);
+            Controls.Add(TableLayoutPanel_Paginator);
+            Controls.Add(TableLayoutPanel_Header);
             Name = "PromotionControl";
             Size = new Size(990, 513);
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Action.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
-            TableLayoutPanel_Container.ResumeLayout(false);
-            TableLayoutPanel_Container.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -450,11 +433,10 @@
         private TableLayoutPanel TableLayoutPanel_Action;
         private Guna.UI2.WinForms.Guna2Button Button_Create;
         private Guna.UI2.WinForms.Guna2Button Button_Refresh;
-        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
         private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Confirm;
-        private FlowLayoutPanel FlowLayoutPanel_Paginator;
         private System.Windows.Forms.Timer Timer_Debounce;
-        private TableLayoutPanel TableLayoutPanel_Container;
+        private TableLayoutPanel TableLayoutPanel_Paginator;
+        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
         private DataGridViewButtonColumn edit;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn Product_Name;

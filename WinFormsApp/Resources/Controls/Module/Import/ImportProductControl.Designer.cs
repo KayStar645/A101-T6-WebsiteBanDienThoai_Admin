@@ -51,7 +51,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             Btn_AddNewProduct = new Guna.UI2.WinForms.Guna2Button();
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
-            TableLayoutPanel_Pagination = new TableLayoutPanel();
+            TableLayoutPanel_Paginator = new TableLayoutPanel();
             DataGridView_Product = new Guna.UI2.WinForms.Guna2DataGridView();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
@@ -225,18 +225,18 @@
             Text_Search.TabIndex = 0;
             Text_Search.TextChanged += Text_Search_TextChanged;
             // 
-            // TableLayoutPanel_Pagination
+            // TableLayoutPanel_Paginator
             // 
-            TableLayoutPanel_Pagination.BackColor = Color.White;
-            TableLayoutPanel_Pagination.ColumnCount = 1;
-            TableLayoutPanel_Pagination.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Pagination.Dock = DockStyle.Bottom;
-            TableLayoutPanel_Pagination.Location = new Point(0, 456);
-            TableLayoutPanel_Pagination.Name = "TableLayoutPanel_Pagination";
-            TableLayoutPanel_Pagination.RowCount = 1;
-            TableLayoutPanel_Pagination.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Pagination.Size = new Size(1007, 50);
-            TableLayoutPanel_Pagination.TabIndex = 14;
+            TableLayoutPanel_Paginator.BackColor = Color.White;
+            TableLayoutPanel_Paginator.ColumnCount = 1;
+            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
+            TableLayoutPanel_Paginator.Location = new Point(0, 456);
+            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
+            TableLayoutPanel_Paginator.RowCount = 1;
+            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Size = new Size(1007, 50);
+            TableLayoutPanel_Paginator.TabIndex = 14;
             // 
             // DataGridView_Product
             // 
@@ -404,9 +404,10 @@
             Quantity.DefaultCellStyle = dataGridViewCellStyle4;
             Quantity.DividerWidth = 1;
             Quantity.FillWeight = 0.316279262F;
-            Quantity.HeaderText = "Số lượng";
+            Quantity.HeaderText = "Quantity";
             Quantity.MinimumWidth = 6;
             Quantity.Name = "Quantity";
+            Quantity.Visible = false;
             Quantity.Width = 120;
             // 
             // Id
@@ -468,7 +469,7 @@
             BackColor = Color.RoyalBlue;
             ClientSize = new Size(1007, 556);
             Controls.Add(DataGridView_Product);
-            Controls.Add(TableLayoutPanel_Pagination);
+            Controls.Add(TableLayoutPanel_Paginator);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(TableLayoutPanel_Header);
             Controls.Add(tableLayoutPanel1);
@@ -493,7 +494,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Guna.UI2.WinForms.Guna2TextBox Text_Search;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Product;
-        private TableLayoutPanel TableLayoutPanel_Pagination;
+        private TableLayoutPanel TableLayoutPanel_Paginator;
         private Guna.UI2.WinForms.Guna2Button Btn_AddNewProduct;
         private System.Windows.Forms.Timer Timer_Debounce;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;

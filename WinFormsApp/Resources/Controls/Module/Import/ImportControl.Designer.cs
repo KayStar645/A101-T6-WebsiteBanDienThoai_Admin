@@ -44,46 +44,26 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            TableLayoutPanel_Container = new TableLayoutPanel();
             TableLayoutPanel_Header = new TableLayoutPanel();
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
             TableLayoutPanel_Action = new TableLayoutPanel();
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
+            Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
+            Timer_Debounce = new System.Windows.Forms.Timer(components);
+            TableLayoutPanel_Paginator = new TableLayoutPanel();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
             remove = new DataGridViewButtonColumn();
-            Id = new DataGridViewTextBoxColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             EmployeeName = new DataGridViewTextBoxColumn();
             DistributorInternalCode = new DataGridViewTextBoxColumn();
             ImportDate = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
-            FlowLayoutPanel_Paginator = new FlowLayoutPanel();
-            Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
-            Timer_Debounce = new System.Windows.Forms.Timer(components);
-            TableLayoutPanel_Container.SuspendLayout();
+            Id = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
             SuspendLayout();
-            // 
-            // TableLayoutPanel_Container
-            // 
-            TableLayoutPanel_Container.ColumnCount = 1;
-            TableLayoutPanel_Container.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.Controls.Add(TableLayoutPanel_Header, 0, 0);
-            TableLayoutPanel_Container.Controls.Add(DataGridView_Listing, 0, 1);
-            TableLayoutPanel_Container.Controls.Add(FlowLayoutPanel_Paginator, 0, 2);
-            TableLayoutPanel_Container.Dock = DockStyle.Fill;
-            TableLayoutPanel_Container.Location = new Point(0, 0);
-            TableLayoutPanel_Container.Margin = new Padding(0);
-            TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
-            TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            TableLayoutPanel_Container.Size = new Size(860, 524);
-            TableLayoutPanel_Container.TabIndex = 3;
             // 
             // TableLayoutPanel_Header
             // 
@@ -92,7 +72,7 @@
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Header.Controls.Add(Text_Search, 0, 0);
             TableLayoutPanel_Header.Controls.Add(TableLayoutPanel_Action, 1, 0);
-            TableLayoutPanel_Header.Dock = DockStyle.Fill;
+            TableLayoutPanel_Header.Dock = DockStyle.Top;
             TableLayoutPanel_Header.Location = new Point(0, 0);
             TableLayoutPanel_Header.Margin = new Padding(0);
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
@@ -188,6 +168,32 @@
             Button_Refresh.Text = "Làm mới";
             Button_Refresh.Click += Button_Refresh_Click;
             // 
+            // Dialog_Confirm
+            // 
+            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            Dialog_Confirm.Caption = "Thông báo";
+            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Confirm.Parent = null;
+            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
+            // 
+            // Timer_Debounce
+            // 
+            Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
+            // 
+            // TableLayoutPanel_Paginator
+            // 
+            TableLayoutPanel_Paginator.ColumnCount = 1;
+            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
+            TableLayoutPanel_Paginator.Location = new Point(0, 474);
+            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
+            TableLayoutPanel_Paginator.RowCount = 1;
+            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Size = new Size(860, 50);
+            TableLayoutPanel_Paginator.TabIndex = 2;
+            // 
             // DataGridView_Listing
             // 
             DataGridView_Listing.AllowUserToAddRows = false;
@@ -209,7 +215,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { remove, Id, InternalCode, EmployeeName, DistributorInternalCode, ImportDate, Price });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { remove, InternalCode, EmployeeName, DistributorInternalCode, ImportDate, Price, Id });
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = Color.White;
             dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -238,7 +244,7 @@
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
             DataGridView_Listing.Size = new Size(860, 424);
-            DataGridView_Listing.TabIndex = 1;
+            DataGridView_Listing.TabIndex = 3;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -278,21 +284,13 @@
             remove.UseColumnTextForButtonValue = true;
             remove.Width = 6;
             // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
             // InternalCode
             // 
             InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             InternalCode.DataPropertyName = "InternalCode";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             InternalCode.DefaultCellStyle = dataGridViewCellStyle4;
+            InternalCode.DividerWidth = 1;
             InternalCode.FillWeight = 41.4820366F;
             InternalCode.HeaderText = "Mã đơn nhập";
             InternalCode.MinimumWidth = 6;
@@ -306,6 +304,7 @@
             EmployeeName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             EmployeeName.DefaultCellStyle = dataGridViewCellStyle5;
+            EmployeeName.DividerWidth = 1;
             EmployeeName.HeaderText = "Nhân viên";
             EmployeeName.Name = "EmployeeName";
             EmployeeName.ReadOnly = true;
@@ -314,6 +313,7 @@
             // DistributorInternalCode
             // 
             DistributorInternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            DistributorInternalCode.DividerWidth = 1;
             DistributorInternalCode.HeaderText = "Nhà cung cấp";
             DistributorInternalCode.Name = "DistributorInternalCode";
             DistributorInternalCode.ReadOnly = true;
@@ -325,6 +325,7 @@
             ImportDate.DataPropertyName = "ImportDate";
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
             ImportDate.DefaultCellStyle = dataGridViewCellStyle6;
+            ImportDate.DividerWidth = 1;
             ImportDate.FillWeight = 41.4820366F;
             ImportDate.HeaderText = "Ngày nhập";
             ImportDate.MinimumWidth = 6;
@@ -344,37 +345,24 @@
             Price.ReadOnly = true;
             Price.Width = 120;
             // 
-            // FlowLayoutPanel_Paginator
+            // Id
             // 
-            FlowLayoutPanel_Paginator.AutoSize = true;
-            FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(857, 477);
-            FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
-            FlowLayoutPanel_Paginator.Size = new Size(0, 44);
-            FlowLayoutPanel_Paginator.TabIndex = 2;
-            // 
-            // Dialog_Confirm
-            // 
-            Dialog_Confirm.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
-            Dialog_Confirm.Caption = "Thông báo";
-            Dialog_Confirm.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
-            Dialog_Confirm.Parent = null;
-            Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
-            Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
-            // 
-            // Timer_Debounce
-            // 
-            Timer_Debounce.Interval = 600;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
             // 
             // ImportControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(TableLayoutPanel_Container);
+            Controls.Add(DataGridView_Listing);
+            Controls.Add(TableLayoutPanel_Paginator);
+            Controls.Add(TableLayoutPanel_Header);
             Name = "ImportControl";
             Size = new Size(860, 524);
-            TableLayoutPanel_Container.ResumeLayout(false);
-            TableLayoutPanel_Container.PerformLayout();
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Action.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
@@ -382,23 +370,21 @@
         }
 
         #endregion
-
-        private TableLayoutPanel TableLayoutPanel_Container;
         private TableLayoutPanel TableLayoutPanel_Header;
         private Guna.UI2.WinForms.Guna2TextBox Text_Search;
         private TableLayoutPanel TableLayoutPanel_Action;
         private Guna.UI2.WinForms.Guna2Button Button_Create;
         private Guna.UI2.WinForms.Guna2Button Button_Refresh;
-        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
-        private FlowLayoutPanel FlowLayoutPanel_Paginator;
         private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Confirm;
         private System.Windows.Forms.Timer Timer_Debounce;
+        private TableLayoutPanel TableLayoutPanel_Paginator;
+        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
         private DataGridViewButtonColumn remove;
-        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn EmployeeName;
         private DataGridViewTextBoxColumn DistributorInternalCode;
         private DataGridViewTextBoxColumn ImportDate;
         private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Id;
     }
 }
