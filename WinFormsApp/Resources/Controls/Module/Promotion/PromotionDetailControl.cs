@@ -47,7 +47,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 DateTime_End.Value = _promotion.End;
                 ComboBox_Status.SelectedValue = _promotion.Status;
                 ComboBox_Type.SelectedValue = _promotion.Type;
-                Text_MinPrice.Text = _promotion.PriceMin.ToString();
+                Text_MinPrice.Text = _promotion.PercentMax.ToString();
                 Label_Discount.Text = ComboBox_Type.Text;
                 Text_Discount.Text = _promotion.Discount.ToString();
             }
@@ -85,7 +85,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             _promotion.Start = DateTime_Start.Value;
             _promotion.Type = (string?)ComboBox_Type.SelectedValue;
             _promotion.Status = (string?)ComboBox_Status.SelectedValue;
-            _promotion.PriceMin = int.Parse(Text_MinPrice.Text);
+            _promotion.PercentMax = int.Parse(Text_MinPrice.Text);
             _promotion.Discount = int.Parse(Text_Discount.Text);
 
             if (_promotion.Id > 0)

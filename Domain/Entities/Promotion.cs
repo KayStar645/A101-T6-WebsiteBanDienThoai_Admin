@@ -29,12 +29,16 @@ namespace Domain.Entities
 
         public DateTime End { get; set; }
 
-        [DefaultValue(0)]
-        public long? PriceMin { get; set; }
-
         public long? Discount { get; set; }
 
+        [DefaultValue(0)]
+        public long? PercentMax { get; set; }
+
         public long? Percent { get; set; }
+
+        [DefaultValue(0)]
+        public long? DiscountMax { get; set; }
+
 
         [Column(TypeName = "nvarchar(5)")]
         [DefaultValue(TYPE_PERCENT)]
