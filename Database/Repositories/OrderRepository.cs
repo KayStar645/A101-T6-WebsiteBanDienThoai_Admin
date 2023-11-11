@@ -135,7 +135,7 @@ namespace Database.Repositories
                                       $"E.Id as EmployeeId, E.InternalCode as EmployeeInternalCode, E.Name as EmployeeName, " +
                                       $"C.Id as CustomerId, C.Phone as CustomerPhone, C.Name as CustomerName " +
                                $"FROM \"Order\" AS O " +
-                               $"LEFT JOIN Employee AS E ON 0.EmployeeId = E.Id " +
+                               $"LEFT JOIN Employee AS E ON O.EmployeeId = E.Id " +
                                $"LEFT JOIN Customer AS C ON O.CustomerId = C.Id " +
                                $"where O.Id = {pId} and O.IsDeleted = 0";
 
@@ -153,7 +153,7 @@ namespace Database.Repositories
                                                 $"LEFT JOIN Product AS P ON DO.ProductId = P.Id " +
                                                 $"LEFT JOIN Color AS Cl ON CL.Id = P.ColorId " +
                                                 $"LEFT JOIN Capacity AS Cc ON Cc.Id = P.CapacityId " +
-                                             $"WHERE DO.OrderId = {pId} and D0.IsDeleted = 0";
+                                             $"WHERE DO.OrderId = {pId} and DO.IsDeleted = 0";
 
                         order.Details = (List<DetailOrderDto>?)await connection.QueryAsync<DetailOrderDto>(queryDetail).ConfigureAwait(false);
                     }
