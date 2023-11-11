@@ -1,4 +1,5 @@
-﻿using Domain.DTOs;
+﻿using Common.UI;
+using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
 using Services.Interfaces;
@@ -14,6 +15,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         List<DetailSpecificationsDto> _details;
         SpecificationsDto _parent;
         SpecificationsDto formData = new();
+        Dialog _dialog = new();
 
         public ParameterItem(SpecificationsDto parent)
         {
@@ -105,7 +107,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             }
             catch (Exception ex)
             {
-                Dialog_Notification.Show(ex.Message);
+                _dialog.Open(ex.Message, "OK");
             }
         }
 
@@ -129,7 +131,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             }
             catch (Exception ex)
             {
-                Dialog_Notification.Show(ex.Message);
+                _dialog.Open(ex.Message, "OK");
             }
         }
 

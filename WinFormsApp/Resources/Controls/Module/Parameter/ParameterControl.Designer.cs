@@ -35,6 +35,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
             TableLayoutPanel_Header = new TableLayoutPanel();
@@ -43,6 +44,7 @@
             Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
             Panel_Container = new Panel();
+            Dialog_Notification = new Guna.UI2.WinForms.Guna2MessageDialog();
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
             SuspendLayout();
@@ -170,6 +172,15 @@
             Panel_Container.Size = new Size(1016, 609);
             Panel_Container.TabIndex = 4;
             // 
+            // Dialog_Notification
+            // 
+            Dialog_Notification.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            Dialog_Notification.Caption = "Thông báo";
+            Dialog_Notification.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Notification.Parent = null;
+            Dialog_Notification.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            Dialog_Notification.Text = null;
+            // 
             // ParameterControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -193,5 +204,6 @@
         private Guna.UI2.WinForms.Guna2Button Button_Create;
         private Guna.UI2.WinForms.Guna2Button Button_Refresh;
         private Panel Panel_Container;
+        private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
     }
 }
