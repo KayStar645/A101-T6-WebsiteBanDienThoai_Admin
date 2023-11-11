@@ -58,8 +58,9 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                     item.InternalCode!,
                     item.EmployeeInternalCode + "_" + item.EmployeeName,
                     item.CustomerName!,
-                    item.OrderDate?.ToString("dd/MM/yyyy")!,
+                    item.OrderDate.ToString("dd/MM/yyyy")!,
                     Util.AddCommas(item.Price, ""),
+                    Domain.Entities.Order.GetTypeMapping(item.Type).FirstOrDefault().typename,
                     item.Id.ToString(),
                 };
 

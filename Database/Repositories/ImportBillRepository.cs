@@ -108,7 +108,7 @@ namespace Database.Repositories
             }
             catch (Exception ex)
             {
-                return (null, 0, 0);
+                return (default(List<ImportBillDto>), 0, 0);
             }
         }
 

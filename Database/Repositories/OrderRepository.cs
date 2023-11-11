@@ -49,8 +49,8 @@ namespace Database.Repositories
             try
             {
                 // Câu lệnh cập nhật dữ liệu
-                string query = $"UPDATE {_model} " +
-                               "SET status = @Type " +
+                string query = $"UPDATE \"{_model}\" " +
+                               "SET Type = @Type " +
                                "WHERE Id = @Id";
 
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
@@ -77,7 +77,7 @@ namespace Database.Repositories
                 {
                     foreach (string item in _seachers)
                     {
-                        searchs.Add($"\"{item}\" like N'%{pKeyword}%'");
+                        searchs.Add($"O.{item} like N'%{pKeyword}%'");
                     }
                 }
 
@@ -95,7 +95,7 @@ namespace Database.Repositories
 
                 string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
-                string query = $"SELECT O.Id, O.InternalCode, O.OrderDate, O.Price, O.DiscountPrice, O.SumPrice, " +
+                string query = $"SELECT O.Id, O.InternalCode, O.OrderDate, O.Price, O.DiscountPrice, O.SumPrice, O.Type, " +
                                       $"E.Id as EmployeeId, E.InternalCode as EmployeeInternalCode, E.Name as EmployeeName, " +
                                       $"C.Id as CustomerId, C.Phone as CustomerPhone, C.Name as CustomerName " +
                                $"FROM \"Order\" AS O " +
@@ -123,7 +123,7 @@ namespace Database.Repositories
             }
             catch (Exception ex)
             {
-                return (null, 0, 0);
+                return (default(List<OrderDto>), 0, 0);
             }
         }
 
@@ -131,7 +131,7 @@ namespace Database.Repositories
         {
             try
             {
-                string query = $"SELECT O.Id, IB.InternalCode, O.OrderDate, O.Price, O.DiscountPrice, O.SumPrice, " +
+                string query = $"SELECT O.Id, O.InternalCode, O.OrderDate, O.Price, O.DiscountPrice, O.SumPrice, O.Type, " +
                                       $"E.Id as EmployeeId, E.InternalCode as EmployeeInternalCode, E.Name as EmployeeName, " +
                                       $"C.Id as CustomerId, C.Phone as CustomerPhone, C.Name as CustomerName " +
                                $"FROM \"Order\" AS O " +

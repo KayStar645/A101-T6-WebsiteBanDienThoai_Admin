@@ -8,7 +8,7 @@ namespace Domain.DTOs
 
         public string? InternalCode { get; set; }
 
-        public DateTime? OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public long? Price { get; set; }
 

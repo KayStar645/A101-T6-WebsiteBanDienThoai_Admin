@@ -10,5 +10,7 @@ namespace Services.Interfaces
             int? pPageSize = 30, string? pKeyword = "", int? pEmployeeId = null, int? pCustomerId = null);
 
         Task<bool> ChangeTypeOrder(int pOrderId, string pType);
+
+        Task<bool> Create(OrderDto pOrder);
     }
 }

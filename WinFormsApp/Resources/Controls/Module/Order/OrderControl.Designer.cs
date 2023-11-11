@@ -29,27 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
-            see = new DataGridViewButtonColumn();
-            InternalCode = new DataGridViewTextBoxColumn();
-            Employee = new DataGridViewTextBoxColumn();
-            Customer = new DataGridViewTextBoxColumn();
-            OrderDate = new DataGridViewTextBoxColumn();
-            Price = new DataGridViewTextBoxColumn();
-            Id = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Header = new TableLayoutPanel();
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
             TableLayoutPanel_Action = new TableLayoutPanel();
@@ -57,6 +50,14 @@
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             TableLayoutPanel_Paginator = new TableLayoutPanel();
+            see = new DataGridViewButtonColumn();
+            InternalCode = new DataGridViewTextBoxColumn();
+            Employee = new DataGridViewTextBoxColumn();
+            Customer = new DataGridViewTextBoxColumn();
+            OrderDate = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Type = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
             TableLayoutPanel_Header.SuspendLayout();
             TableLayoutPanel_Action.SuspendLayout();
@@ -67,31 +68,31 @@
             DataGridView_Listing.AllowUserToAddRows = false;
             DataGridView_Listing.AllowUserToDeleteRows = false;
             DataGridView_Listing.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.White;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
-            DataGridView_Listing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            DataGridView_Listing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { see, InternalCode, Employee, Customer, OrderDate, Price, Id });
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = Color.White;
-            dataGridViewCellStyle17.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle17.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.False;
-            DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle17;
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { see, InternalCode, Employee, Customer, OrderDate, Price, Type, Id });
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle8;
             DataGridView_Listing.Dock = DockStyle.Fill;
             DataGridView_Listing.GridColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.Location = new Point(0, 50);
@@ -99,14 +100,14 @@
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
             DataGridView_Listing.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = Color.White;
-            dataGridViewCellStyle18.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle18.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.True;
-            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             DataGridView_Listing.RowHeadersVisible = false;
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -136,92 +137,6 @@
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
             // 
-            // see
-            // 
-            see.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            see.DefaultCellStyle = dataGridViewCellStyle12;
-            see.FillWeight = 20F;
-            see.Frozen = true;
-            see.HeaderText = "";
-            see.MinimumWidth = 6;
-            see.Name = "see";
-            see.ReadOnly = true;
-            see.Text = "Xem";
-            see.UseColumnTextForButtonValue = true;
-            see.Width = 6;
-            // 
-            // InternalCode
-            // 
-            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            InternalCode.DataPropertyName = "InternalCode";
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            InternalCode.DefaultCellStyle = dataGridViewCellStyle13;
-            InternalCode.DividerWidth = 1;
-            InternalCode.FillWeight = 41.4820366F;
-            InternalCode.HeaderText = "Mã đơn hàng";
-            InternalCode.MinimumWidth = 6;
-            InternalCode.Name = "InternalCode";
-            InternalCode.ReadOnly = true;
-            InternalCode.Resizable = DataGridViewTriState.True;
-            InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Employee
-            // 
-            Employee.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            Employee.DefaultCellStyle = dataGridViewCellStyle14;
-            Employee.DividerWidth = 1;
-            Employee.HeaderText = "Nhân viên";
-            Employee.Name = "Employee";
-            Employee.ReadOnly = true;
-            Employee.Width = 220;
-            // 
-            // Customer
-            // 
-            Customer.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Customer.DividerWidth = 1;
-            Customer.HeaderText = "Khách hàng";
-            Customer.Name = "Customer";
-            Customer.ReadOnly = true;
-            Customer.Width = 220;
-            // 
-            // OrderDate
-            // 
-            OrderDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            OrderDate.DataPropertyName = "OrderDate";
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleRight;
-            OrderDate.DefaultCellStyle = dataGridViewCellStyle15;
-            OrderDate.DividerWidth = 1;
-            OrderDate.FillWeight = 41.4820366F;
-            OrderDate.HeaderText = "Ngày nhập";
-            OrderDate.MinimumWidth = 6;
-            OrderDate.Name = "OrderDate";
-            OrderDate.ReadOnly = true;
-            OrderDate.Width = 150;
-            // 
-            // Price
-            // 
-            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Price.DataPropertyName = "Price";
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "{0,0}";
-            Price.DefaultCellStyle = dataGridViewCellStyle16;
-            Price.HeaderText = "Tổng tiền";
-            Price.Name = "Price";
-            Price.ReadOnly = true;
-            Price.Width = 120;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
             // TableLayoutPanel_Header
             // 
             TableLayoutPanel_Header.ColumnCount = 2;
@@ -243,7 +158,7 @@
             Text_Search.Anchor = AnchorStyles.Left;
             Text_Search.Animated = true;
             Text_Search.BorderRadius = 8;
-            Text_Search.CustomizableEdges = customizableEdges5;
+            Text_Search.CustomizableEdges = customizableEdges1;
             Text_Search.DefaultText = "";
             Text_Search.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             Text_Search.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -259,7 +174,7 @@
             Text_Search.PasswordChar = '\0';
             Text_Search.PlaceholderText = "Tìm kiếm...";
             Text_Search.SelectedText = "";
-            Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges2;
             Text_Search.Size = new Size(234, 40);
             Text_Search.TabIndex = 2;
             Text_Search.TextChanged += Text_Search_TextChanged;
@@ -283,7 +198,7 @@
             Button_Refresh.Anchor = AnchorStyles.Right;
             Button_Refresh.AnimatedGIF = true;
             Button_Refresh.BorderRadius = 8;
-            Button_Refresh.CustomizableEdges = customizableEdges7;
+            Button_Refresh.CustomizableEdges = customizableEdges3;
             Button_Refresh.DisabledState.BorderColor = Color.DarkGray;
             Button_Refresh.DisabledState.CustomBorderColor = Color.DarkGray;
             Button_Refresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -294,7 +209,7 @@
             Button_Refresh.Location = new Point(68, 5);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
-            Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges4;
             Button_Refresh.Size = new Size(90, 40);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
@@ -325,6 +240,102 @@
             TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Paginator.Size = new Size(996, 50);
             TableLayoutPanel_Paginator.TabIndex = 5;
+            // 
+            // see
+            // 
+            see.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            see.DefaultCellStyle = dataGridViewCellStyle3;
+            see.FillWeight = 20F;
+            see.Frozen = true;
+            see.HeaderText = "";
+            see.MinimumWidth = 6;
+            see.Name = "see";
+            see.ReadOnly = true;
+            see.Text = "Xem";
+            see.UseColumnTextForButtonValue = true;
+            see.Width = 6;
+            // 
+            // InternalCode
+            // 
+            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            InternalCode.DataPropertyName = "InternalCode";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            InternalCode.DefaultCellStyle = dataGridViewCellStyle4;
+            InternalCode.DividerWidth = 1;
+            InternalCode.FillWeight = 41.4820366F;
+            InternalCode.HeaderText = "Mã đơn hàng";
+            InternalCode.MinimumWidth = 6;
+            InternalCode.Name = "InternalCode";
+            InternalCode.ReadOnly = true;
+            InternalCode.Resizable = DataGridViewTriState.True;
+            InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Employee
+            // 
+            Employee.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            Employee.DefaultCellStyle = dataGridViewCellStyle5;
+            Employee.DividerWidth = 1;
+            Employee.HeaderText = "Nhân viên";
+            Employee.Name = "Employee";
+            Employee.ReadOnly = true;
+            Employee.Width = 220;
+            // 
+            // Customer
+            // 
+            Customer.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Customer.DividerWidth = 1;
+            Customer.HeaderText = "Khách hàng";
+            Customer.Name = "Customer";
+            Customer.ReadOnly = true;
+            Customer.Width = 220;
+            // 
+            // OrderDate
+            // 
+            OrderDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            OrderDate.DataPropertyName = "OrderDate";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
+            OrderDate.DefaultCellStyle = dataGridViewCellStyle6;
+            OrderDate.DividerWidth = 1;
+            OrderDate.FillWeight = 41.4820366F;
+            OrderDate.HeaderText = "Ngày nhập";
+            OrderDate.MinimumWidth = 6;
+            OrderDate.Name = "OrderDate";
+            OrderDate.ReadOnly = true;
+            OrderDate.Width = 150;
+            // 
+            // Price
+            // 
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Price.DataPropertyName = "Price";
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "{0,0}";
+            Price.DefaultCellStyle = dataGridViewCellStyle7;
+            Price.DividerWidth = 1;
+            Price.HeaderText = "Tổng tiền";
+            Price.Name = "Price";
+            Price.ReadOnly = true;
+            Price.Width = 120;
+            // 
+            // Type
+            // 
+            Type.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Type.HeaderText = "Trạng thái";
+            Type.MinimumWidth = 120;
+            Type.Name = "Type";
+            Type.ReadOnly = true;
+            Type.Width = 125;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
             // 
             // OrderControl
             // 
@@ -357,6 +368,7 @@
         private DataGridViewTextBoxColumn Customer;
         private DataGridViewTextBoxColumn OrderDate;
         private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Id;
     }
 }
