@@ -25,18 +25,16 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 
         private async void InitializeAsync()
         {
-            _result = await _employeeService.GetList("Name", 1, 15, "");
-
-            DataGridView_Listing.DataSource = _result.list;
-
             _refreshButton = Button_Refresh;
+
+            await LoadData();
 
             Paginator();
         }
 
         private void Paginator()
         {
-            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
+            Util.LoadControl(TableLayoutPanel_Paginator, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
         }
 
         private async void Button_Paginator_Click(int page)
@@ -99,7 +97,6 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
         {
-            Timer_Debounce.Stop();
             Timer_Debounce.Start();
         }
 
@@ -107,8 +104,10 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
         {
             _currPage = 1;
 
-            Paginator();
             await LoadData();
+            Paginator();
+
+            Timer_Debounce.Stop();
         }
     }
 }

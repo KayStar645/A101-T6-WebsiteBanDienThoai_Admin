@@ -43,7 +43,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void Paginator()
         {
-            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, onClickPaginator), DockStyle.Right);
+            Util.LoadControl(TableLayoutPanel_Paginator, new Paginator(_result.pageNumber, _currPage, onClickPaginator), DockStyle.Right);
         }
 
         private async void onClickPaginator(int page)
@@ -94,7 +94,6 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
         {
-            Timer_Debounce.Stop();
             Timer_Debounce.Start();
         }
 
@@ -102,9 +101,11 @@ namespace WinFormsApp.Resources.Controls.Module.Product
         {
             _currPage = 1;
 
+            await LoadData();
+
             Paginator();
 
-            await LoadData();
+            Timer_Debounce.Stop();
         }
     }
 }

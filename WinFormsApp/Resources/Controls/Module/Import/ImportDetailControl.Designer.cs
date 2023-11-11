@@ -69,7 +69,7 @@
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
             DataGridView_Product = new Guna.UI2.WinForms.Guna2DataGridView();
             Product_Select = new DataGridViewCheckBoxColumn();
-            Id = new DataGridViewTextBoxColumn();
+            ProductId = new DataGridViewTextBoxColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             Product_Name = new DataGridViewTextBoxColumn();
             ColorName = new DataGridViewTextBoxColumn();
@@ -189,6 +189,8 @@
             Text_Price.ShadowDecoration.CustomizableEdges = customizableEdges6;
             Text_Price.Size = new Size(251, 38);
             Text_Price.TabIndex = 5;
+            Text_Price.KeyPress += Text_Price_KeyPress;
+            Text_Price.KeyUp += Text_Price_KeyUp;
             // 
             // label6
             // 
@@ -398,7 +400,7 @@
             DataGridView_Product.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Product.ColumnHeadersHeight = 40;
             DataGridView_Product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, Id, InternalCode, Product_Name, ColorName, CapacityName, Price, Quantity, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
+            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, ProductId, InternalCode, Product_Name, ColorName, CapacityName, Price, Quantity, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -448,6 +450,8 @@
             DataGridView_Product.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            DataGridView_Product.CellClick += DataGridView_Product_CellClick;
+            DataGridView_Product.CellEndEdit += DataGridView_Product_CellEndEdit;
             // 
             // Product_Select
             // 
@@ -458,13 +462,13 @@
             Product_Select.TrueValue = "True";
             Product_Select.Width = 40;
             // 
-            // Id
+            // ProductId
             // 
-            Id.DataPropertyName = "ProductId";
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Visible = false;
+            ProductId.DataPropertyName = "ProductId";
+            ProductId.HeaderText = "ProductId";
+            ProductId.MinimumWidth = 6;
+            ProductId.Name = "ProductId";
+            ProductId.Visible = false;
             // 
             // InternalCode
             // 
@@ -622,7 +626,7 @@
         private Guna.UI2.WinForms.Guna2Button Button_Save;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Product;
         private DataGridViewCheckBoxColumn Product_Select;
-        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn ProductId;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn Product_Name;
         private DataGridViewTextBoxColumn ColorName;

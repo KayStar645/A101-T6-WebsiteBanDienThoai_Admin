@@ -39,6 +39,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             _distributorService = Program.container.GetInstance<IDistributorService>();
 
             DateTime_ImportDate.Value = DateTime.Now;
+            Text_Price.Enabled = false;
 
             await LoadData();
         }
@@ -60,7 +61,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
                 _import = result;
                 DataGridView_Product.ReadOnly = true;
-                Button_AddProduct.Enabled = false;
+                Button_AddProduct.Visible = false;
+                Button_Save.Visible = false;
 
                 Text_InternalCode.Text = result.InternalCode;
                 DateTime_ImportDate.Value = result.ImportDate;
@@ -71,6 +73,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                 Text_Price.Text = Util.AddCommas(result.Price);
 
                 LoadProduct();
+
             }
             else
             {
@@ -97,7 +100,20 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _import.Details = products;
 
+            CalculateBill();
             LoadProduct();
+        }
+
+        private void CalculateBill()
+        {
+            long sum = 0;
+
+            foreach (var item in _import.Details!)
+            {
+                sum += ((long)item.Quantity! * (long)item.Price!);
+            }
+
+            Text_Price.Text = Util.AddCommas(sum);
         }
 
         private void LoadProduct()
@@ -108,7 +124,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             {
                 string[] rowValues = new string[] {
                     "True",
-                    item.Id.ToString(),
+                    item.ProductId.ToString(),
                     item.ProductInternalCode,
                     item.ProductName,
                     item.ColorName,
@@ -127,7 +143,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             _import.EmployeeId = 6;
             _import.InternalCode = Text_InternalCode.Text;
             _import.DistributorId = int.Parse(ComboBox_Distributor.SelectedValue!.ToString()!);
-            _import.Price = int.Parse(Text_Price.Text);
+            _import.Price = long.Parse(Util.DeleteCommas(Text_Price.Text));
             _import.ImportDate = DateTime.Now;
 
 
@@ -142,6 +158,89 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         private void Btn_Back_Click(object sender, EventArgs e)
         {
             Util.LoadControl(this, new ImportControl());
+        }
+
+        private void Text_Price_KeyUp(object sender, KeyEventArgs e)
+        {
+            Util.AddCommasOnKeyUp(sender);
+        }
+
+        private void Text_Price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Util.IsNumber(e);
+        }
+
+        private void DataGridView_Product_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCellCollection cells = DataGridView_Product.CurrentRow.Cells;
+            bool selected = bool.Parse(cells["Product_Select"].FormattedValue.ToString()!);
+            int id = int.Parse(cells["ProductId"].Value.ToString()!);
+
+            if (e.ColumnIndex == 0 || DataGridView_Product.ReadOnly)
+            {
+                return;
+            }
+
+            int index = _import.Details!.FindIndex(t => t.ProductId == id);
+
+            if (!selected)
+            {
+                return;
+            }
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            _import.Details[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
+            CalculateBill();
+        }
+
+        private void DataGridView_Product_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DataGridView_Product.CurrentRow == null)
+            {
+                return;
+            }
+
+            DataGridViewCellCollection cells = DataGridView_Product.CurrentRow.Cells;
+            bool selected = bool.Parse(cells["Product_Select"].FormattedValue.ToString()!);
+            int id = int.Parse(cells["ProductId"].Value.ToString()!);
+
+            if (e.ColumnIndex != 0 || DataGridView_Product.ReadOnly)
+            {
+                return;
+            }
+
+            if (selected)
+            {
+                int index = _import.Details!.FindIndex(t => t.ProductId == id);
+
+                cells["Product_Select"].Value = "False";
+
+                if (index >= 0)
+                {
+                    _import.Details!.RemoveAt(index);
+                }
+            }
+            else
+            {
+                cells["Product_Select"].Value = "True";
+
+                _import.Details!.Add(new DetailImportDto()
+                {
+                    ProductId = id,
+                    ProductInternalCode = cells["InternalCode"].Value.ToString(),
+                    ProductName = cells["Product_Name"].Value.ToString(),
+                    ColorName = cells["ColorName"].Value.ToString(),
+                    CapacityName = cells["CapacityName"].Value.ToString(),
+                    Price = long.Parse(Util.DeleteCommas(cells["Price"].Value.ToString()!)),
+                    Quantity = int.Parse(cells["Quantity"].Value.ToString()!),
+                });
+            }
+
+            CalculateBill();
         }
     }
 }

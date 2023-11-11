@@ -6,11 +6,11 @@ namespace WinFormsApp.Services
 {
     public static class Util
     {
-        public static void LoadControl(Control pBody, Control pControl)
+        public static void LoadControl(Control pBody, Control pControl, DockStyle? dockStyle = DockStyle.Fill)
         {
             pBody.Controls.Clear();
 
-            AddControl(pBody, pControl, DockStyle.Fill);
+            AddControl(pBody, pControl, (DockStyle)dockStyle!);
         }
 
         public static void Collapse(bool collapse, Control container)
@@ -89,24 +89,25 @@ namespace WinFormsApp.Services
                 newStr = "0" + pStr;
             }
             return newStr;
-        }
-
-        public static void LoadComoboBox(Guna2ComboBox pComboBox, DataTable pSource, string pDisplayMember, int pStartIndex = -1)
-        {
-
-            pComboBox.DataSource = pSource;
-            pComboBox.DisplayMember = pDisplayMember;
-            pComboBox.StartIndex = pStartIndex;
-        }
+        } 
 
         public static void AddCommasOnKeyUp(object sender)
         {
-            Guna2TextBox? control = sender as Guna2TextBox;
-            if (control?.Text != string.Empty)
+            Guna2TextBox control = (Guna2TextBox)sender!;
+
+            if (control?.Text == string.Empty)
             {
-                int number = int.Parse(DeleteCommas(control.Text), NumberStyles.AllowThousands);
-                control.Text = string.Format(new CultureInfo("en-US"), "{0:N0}", number);
+                return;
+            }
+
+            try
+            {
+                long number = long.Parse(DeleteCommas(control.Text), NumberStyles.AllowThousands);
+                control.Text = string.Format(new CultureInfo("vi-VN"), "{0:N0}", number);
                 control.Select(control.Text.Length, 0);
+            }
+            catch (Exception)
+            {
             }
         }
 

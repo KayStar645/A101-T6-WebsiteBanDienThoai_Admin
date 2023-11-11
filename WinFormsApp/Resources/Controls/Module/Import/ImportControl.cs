@@ -15,7 +15,6 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
         public ImportControl()
         {
-
             InitializeComponent();
 
             _importService = Program.container.GetInstance<IImportBillService>();
@@ -28,38 +27,38 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _refreshButton = Button_Refresh;
 
-            await LoadDataAsync();
+            await LoadData();
 
             Paginator();
         }
 
         private void Paginator()
         {
-            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
+            Util.LoadControl(TableLayoutPanel_Paginator, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
         }
 
         private async void Button_Paginator_Click(int page)
         {
             _currPage = page;
 
-            await LoadDataAsync();
+            await LoadData();
         }
 
-        public async Task LoadDataAsync()
+        public async Task LoadData()
         {
-            _result = await _importService.GetList("InternalCode", _currPage, 15, "");
+            _result = await _importService.GetList("InternalCode", _currPage, 15, Text_Search.Text);
 
             foreach (var item in _result.list)
             {
                 string[] rows = new string[]
                 {
                     "",
-                    item.Id.ToString(),
                     item.InternalCode,
                     item.EmployeeInternalCode + "_" + item.EmployeeName,
                     item.DistributorInternalCode + "_" + item.DistributorName,
                     item.ImportDate.ToString("dd/MM/yyyy"),
                     Util.AddCommas(item.Price, ""),
+                    item.Id.ToString(),
                 };
 
                 DataGridView_Listing.Rows.Add(rows);
@@ -89,12 +88,12 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             _currPage = 1;
             Text_Search.Text = string.Empty;
 
-            await LoadDataAsync();
+            await LoadData();
+            Paginator();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
         {
-            Timer_Debounce.Stop();
             Timer_Debounce.Start();
         }
 
@@ -102,9 +101,10 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _currPage = 1;
 
+            await LoadData();
             Paginator();
 
-            await LoadDataAsync();
+            Timer_Debounce.Stop();
         }
     }
 }
