@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.UI;
 using Domain.DTOs;
 using Services.Interfaces;
 using WinFormsApp.Services;
@@ -9,6 +10,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
     {
         IPromotionService _promotionService;
         PromotionDto _promotion = new();
+        Dialog _dialog = new();
 
         public PromotionDetailControl()
         {
@@ -32,7 +34,6 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
         private async void LoadInfo()
         {
-            LoadStatus();
             LoadType();
 
             if (_promotion.Id > 0)
@@ -41,32 +42,61 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
                 _promotion = result;
 
+                Label_DiscountMax.Text = ComboBox_Type.Text + " tối đa";
+                Label_Discount.Text = ComboBox_Type.Text;
                 Text_Name.Text = _promotion.Name;
                 Text_InternalCode.Text = _promotion.InternalCode;
+                Text_Status.Text = Domain.Entities.Promotion.GetStatusMapping(_promotion.Status).FirstOrDefault().statusName;
                 DateTime_Start.Value = _promotion.Start;
                 DateTime_End.Value = _promotion.End;
-                ComboBox_Status.SelectedValue = _promotion.Status;
                 ComboBox_Type.SelectedValue = _promotion.Type;
-                Text_MinPrice.Text = _promotion.PriceMin.ToString();
-                Label_Discount.Text = ComboBox_Type.Text;
-                Text_Discount.Text = _promotion.Discount.ToString();
+
+                if(result.Type == Domain.Entities.Promotion.TYPE_PERCENT)
+                {
+                    Text_Discount.Text = _promotion.Percent.ToString();
+                    Text_DiscountMax.Text = Util.AddCommas(_promotion.PercentMax);
+                }
+                else
+                {
+                    Text_Discount.Text = Util.AddCommas(_promotion.Discount);
+                    Text_DiscountMax.Text = Util.AddCommas(_promotion.DiscountMax);
+                }
+
+                if (result.Status == Domain.Entities.Promotion.STATUS_APPROVED)
+                {
+                    Button_Save.Visible = false;
+                    Button_Approve.Visible = false;
+
+                    DisableAll();
+                }
+                else if(result.Status == Domain.Entities.Promotion.STATUS_CANCEL)
+                {
+                    Button_Cancel.Visible = false;
+                    Button_Save.Visible = false;
+                    Button_Approve.Visible = false;
+
+                    DisableAll();
+                }
             }
             else
             {
                 DateTime_Start.Value = DateTime.Now;
                 DateTime_End.Value = DateTime.Now;
-                ComboBox_Status.SelectedValue = Domain.Entities.Promotion.STATUS_DRAFT;
-                ComboBox_Status.Enabled = false;
+                Text_Status.Text = "Nháp";
+                Button_Cancel.Visible = false;
+                Button_Approve.Visible = false;
             }
-
         }
 
-        private void LoadStatus()
+        private void DisableAll()
         {
-            ComboBox_Status.DataSource = Constant.promotionStatuses;
-            ComboBox_Status.DisplayMember = "label";
-            ComboBox_Status.ValueMember = "value";
-            ComboBox_Status.StartIndex = -1;
+            Text_InternalCode.Enabled = false;
+            Text_Name.Enabled = false;
+            Text_Discount.Enabled = false;
+            Text_DiscountMax.Enabled = false;
+            DateTime_End.Enabled = false;
+            DateTime_Start.Enabled = false;
+            ComboBox_Type.Enabled = false;
         }
 
         private void LoadType()
@@ -77,25 +107,52 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             ComboBox_Type.StartIndex = -1;
         }
 
-        private async void Button_Save_Click(object sender, EventArgs e)
+        private void GetForm()
         {
             _promotion.Name = Text_Name.Text;
             _promotion.InternalCode = Text_InternalCode.Text;
             _promotion.End = DateTime_End.Value;
             _promotion.Start = DateTime_Start.Value;
             _promotion.Type = (string?)ComboBox_Type.SelectedValue;
-            _promotion.Status = (string?)ComboBox_Status.SelectedValue;
-            _promotion.PriceMin = int.Parse(Text_MinPrice.Text);
-            _promotion.Discount = int.Parse(Text_Discount.Text);
 
-            if (_promotion.Id > 0)
+            if (_promotion.Type == Domain.Entities.Promotion.TYPE_PERCENT)
             {
-                await _promotionService.Update(_promotion);
+                _promotion.Percent = int.Parse(Text_Discount.Text);
+                _promotion.PercentMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
             }
             else
             {
-                await _promotionService.Create(_promotion);
+                _promotion.Discount = int.Parse(Util.DeleteCommas(Text_Discount.Text));
+                _promotion.DiscountMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
             }
+        }
+
+        private async void Button_Save_Click(object sender, EventArgs e)
+        {
+            GetForm();
+
+            await _promotionService.Create(_promotion);
+
+            Util.LoadControl(this, new PromotionControl());
+        }
+
+        private async void Button_Approve_Click(object sender, EventArgs e)
+        {
+            await _promotionService.Approve(_promotion.Id, Domain.Entities.Promotion.STATUS_APPROVED);
+
+            Util.LoadControl(this, new PromotionControl());
+        }
+
+        private void Button_Cancel_Click(object sender, EventArgs e)
+        {
+            _dialog._OnAgreeClick = OnAgreeCancel;
+
+            _dialog.Open("Bạn có chắc muốn hủy chương trình khuyến mãi này không ?", "yes_no");
+        }
+
+        private async void OnAgreeCancel()
+        {
+            await _promotionService.Approve(_promotion.Id, Domain.Entities.Promotion.STATUS_CANCEL);
 
             Util.LoadControl(this, new PromotionControl());
         }
@@ -110,16 +167,14 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             if (ComboBox_Type.ValueMember != string.Empty && ComboBox_Type.SelectedIndex > -1)
             {
                 Label_Discount.Visible = true;
-
-                Text_Discount.Enabled = true;
-                Text_Discount.PlaceholderForeColor = Color.FromArgb(193, 200, 207);
-                Text_Discount.BorderColor = Color.FromArgb(213, 218, 223);
-                Text_Discount.FillColor = Color.White;
-                Text_Discount.ForeColor = Color.Black;
-                Text_Discount.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-
+                Text_Discount.Visible = true;
                 Label_Discount.Text = ComboBox_Type.Text;
                 Text_Discount.PlaceholderText = ComboBox_Type.Text;
+
+                Label_DiscountMax.Visible = true;
+                Text_DiscountMax.Visible = true;
+                Label_DiscountMax.Text = ComboBox_Type.Text + " tối đa";
+                Text_DiscountMax.PlaceholderText = ComboBox_Type.Text + " tối đa";
             }
         }
     }

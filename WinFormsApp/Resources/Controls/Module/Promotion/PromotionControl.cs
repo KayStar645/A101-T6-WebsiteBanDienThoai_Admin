@@ -47,7 +47,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
         public async Task LoadDataAsync()
         {
-            _result = await _promotionService.GetList("Name", _currPage, 15, "");
+            _result = await _promotionService.GetList("Name", _currPage, 15, Text_Search.Text);
 
             foreach (PromotionDto item in _result.list)
             {

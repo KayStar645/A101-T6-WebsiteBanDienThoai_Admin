@@ -4,9 +4,9 @@
     {
         public delegate void OnButtonClick();
 
-        OnButtonClick _OnCancelClick;
-        OnButtonClick _OnAgreeClick;
-        OnButtonClick _OnOKlClick;
+        public OnButtonClick _OnCancelClick;
+        public OnButtonClick _OnAgreeClick;
+        public OnButtonClick _OnOKlClick;
 
         public Dialog()
         {

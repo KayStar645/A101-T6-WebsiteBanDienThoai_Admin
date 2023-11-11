@@ -13,5 +13,7 @@ namespace Services.Interfaces
         Task<bool> Update(PromotionDto pUpdate);
 
         Task<bool> Delete(int pId);
+
+        Task<bool> Approve(int pId, string type);
     }
 }

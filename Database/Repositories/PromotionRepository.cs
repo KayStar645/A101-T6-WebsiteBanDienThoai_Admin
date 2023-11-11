@@ -22,18 +22,18 @@ namespace Database.Repositories
             "Name",
             "Start",
             "End",
-            "PriceMin",
             "Type",
             "Status",
             "Discount",
             "Percent",
+            "DiscountMax",
+            "PercentMax",
         };
 
         protected override List<string> _seachers { get; } = new List<string>()
         {
             "InternalCode",
             "Name",
-            "PriceMin",
             "Type",
             "Status",
             "Discount",
