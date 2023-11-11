@@ -42,7 +42,6 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
                 _promotion = result;
 
-                Label_DiscountMax.Text = ComboBox_Type.Text + " tối đa";
                 Label_Discount.Text = ComboBox_Type.Text;
                 Text_Name.Text = _promotion.Name;
                 Text_InternalCode.Text = _promotion.InternalCode;
@@ -54,12 +53,14 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 if(result.Type == Domain.Entities.Promotion.TYPE_PERCENT)
                 {
                     Text_Discount.Text = _promotion.Percent.ToString();
-                    Text_DiscountMax.Text = Util.AddCommas(_promotion.PercentMax);
+                    Text_DiscountMax.Text = Util.AddCommas(_promotion.DiscountMax);
+                    Label_DiscountMax.Text = "Giảm giá tối đa";
                 }
                 else
                 {
                     Text_Discount.Text = Util.AddCommas(_promotion.Discount);
-                    Text_DiscountMax.Text = Util.AddCommas(_promotion.DiscountMax);
+                    Text_DiscountMax.Text = Util.AddCommas(_promotion.PercentMax);
+                    Label_DiscountMax.Text = "Giảm phần trăm tối đa";
                 }
 
                 if (result.Status == Domain.Entities.Promotion.STATUS_APPROVED)
@@ -118,12 +119,12 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             if (_promotion.Type == Domain.Entities.Promotion.TYPE_PERCENT)
             {
                 _promotion.Percent = int.Parse(Text_Discount.Text);
-                _promotion.PercentMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
+                _promotion.DiscountMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
             }
             else
             {
                 _promotion.Discount = int.Parse(Util.DeleteCommas(Text_Discount.Text));
-                _promotion.DiscountMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
+                _promotion.PercentMax = int.Parse(Util.DeleteCommas(Text_DiscountMax.Text));
             }
         }
 
@@ -173,8 +174,17 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
                 Label_DiscountMax.Visible = true;
                 Text_DiscountMax.Visible = true;
-                Label_DiscountMax.Text = ComboBox_Type.Text + " tối đa";
-                Text_DiscountMax.PlaceholderText = ComboBox_Type.Text + " tối đa";
+
+                if(ComboBox_Type.SelectedValue == Domain.Entities.Promotion.TYPE_DISCOUNT)
+                {
+                    Label_DiscountMax.Text = "Giảm phần trăm tối đa";
+                    Text_DiscountMax.PlaceholderText = "Giảm phần trăm tối đa";
+                }
+                else
+                {
+                    Label_DiscountMax.Text = "Giảm giá tối đa";
+                    Text_DiscountMax.PlaceholderText = "Giảm giá tối đa";
+                }
             }
         }
     }

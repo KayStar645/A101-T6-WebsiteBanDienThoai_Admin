@@ -1,5 +1,4 @@
-﻿using Common.UI;
-using Domain.DTOs;
+﻿using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
 using Services.Interfaces;
@@ -15,7 +14,6 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
         List<DetailSpecificationsDto> _details;
         SpecificationsDto _parent;
         SpecificationsDto formData = new();
-        Dialog _dialog = new();
 
         public ParameterItem(SpecificationsDto parent)
         {
@@ -105,9 +103,9 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
                 LoadDetail(_parent.Id);
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                _dialog.Open(ex.Message, "OK");
+                Dialog_Notification.Show(err.Message);
             }
         }
 
@@ -129,9 +127,9 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
                 ParameterControl._refreshBtn.PerformClick();
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                _dialog.Open(ex.Message, "OK");
+                Dialog_Notification.Show(err.Message);
             }
         }
 
