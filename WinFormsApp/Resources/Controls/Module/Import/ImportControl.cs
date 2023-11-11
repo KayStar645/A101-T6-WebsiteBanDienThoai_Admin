@@ -1,4 +1,5 @@
-﻿using Domain.DTOs;
+﻿using Controls.UI;
+using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
 using WinFormsApp.Services;
@@ -23,35 +24,28 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             InitializeAsync();
         }
 
-        private void InitializeAsync()
+        private async void InitializeAsync()
         {
             _refreshButton = Button_Refresh;
 
-            LoadDataAsync();
+            await LoadDataAsync();
 
             Paginator();
         }
 
         private void Paginator()
         {
+            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
         }
 
-        private async void Button_Paginator_Click(object sender, EventArgs e)
+        private async void Button_Paginator_Click(int page)
         {
-            Guna2Button button = (Guna2Button)sender;
+            _currPage = page;
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.White;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.Black;
-
-            _currPage = int.Parse(button.Text);
-
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
-
-            LoadDataAsync();
+            await LoadDataAsync();
         }
 
-        public async void LoadDataAsync()
+        public async Task LoadDataAsync()
         {
             _result = await _importService.GetList("InternalCode", _currPage, 15, "");
 
@@ -87,12 +81,15 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
                 Util.LoadControl(this, new ImportDetailControl(id));
             }
-            
+
         }
 
-        private void Button_Refresh_Click(object sender, EventArgs e)
+        private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            LoadDataAsync();
+            _currPage = 1;
+            Text_Search.Text = string.Empty;
+
+            await LoadDataAsync();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
@@ -101,13 +98,13 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             Timer_Debounce.Start();
         }
 
-        private void Timer_Debounce_Tick(object sender, EventArgs e)
+        private async void Timer_Debounce_Tick(object sender, EventArgs e)
         {
             _currPage = 1;
 
             Paginator();
 
-            LoadDataAsync();
+            await LoadDataAsync();
         }
     }
 }

@@ -103,6 +103,7 @@
             // 
             // Text_Search
             // 
+            Text_Search.Anchor = AnchorStyles.Left;
             Text_Search.Animated = true;
             Text_Search.BorderRadius = 8;
             Text_Search.CustomizableEdges = customizableEdges1;
@@ -115,14 +116,14 @@
             Text_Search.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Search.ForeColor = Color.Black;
             Text_Search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Search.Location = new Point(0, 0);
+            Text_Search.Location = new Point(0, 5);
             Text_Search.Margin = new Padding(0);
             Text_Search.Name = "Text_Search";
             Text_Search.PasswordChar = '\0';
             Text_Search.PlaceholderText = "Tìm kiếm...";
             Text_Search.SelectedText = "";
             Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Text_Search.Size = new Size(234, 41);
+            Text_Search.Size = new Size(234, 40);
             Text_Search.TabIndex = 2;
             Text_Search.TextChanged += Text_Search_TextChanged;
             // 
@@ -145,7 +146,7 @@
             // 
             // Button_Create
             // 
-            Button_Create.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Button_Create.Anchor = AnchorStyles.Right;
             Button_Create.AnimatedGIF = true;
             Button_Create.BorderRadius = 8;
             Button_Create.CustomizableEdges = customizableEdges3;
@@ -156,18 +157,18 @@
             Button_Create.FillColor = Color.FromArgb(100, 88, 255);
             Button_Create.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Create.ForeColor = Color.White;
-            Button_Create.Location = new Point(339, 0);
+            Button_Create.Location = new Point(340, 5);
             Button_Create.Margin = new Padding(0);
             Button_Create.Name = "Button_Create";
             Button_Create.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Button_Create.Size = new Size(91, 41);
+            Button_Create.Size = new Size(90, 40);
             Button_Create.TabIndex = 0;
             Button_Create.Text = "Thêm mới";
             Button_Create.Click += Button_Create_Click;
             // 
             // Button_Refresh
             // 
-            Button_Refresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Button_Refresh.Anchor = AnchorStyles.Right;
             Button_Refresh.AnimatedGIF = true;
             Button_Refresh.BorderRadius = 8;
             Button_Refresh.CustomizableEdges = customizableEdges5;
@@ -178,11 +179,11 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(239, 0);
+            Button_Refresh.Location = new Point(240, 5);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Button_Refresh.Size = new Size(91, 41);
+            Button_Refresh.Size = new Size(90, 40);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
             Button_Refresh.Click += Button_Refresh_Click;

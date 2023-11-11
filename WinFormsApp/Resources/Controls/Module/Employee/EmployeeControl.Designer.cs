@@ -75,9 +75,9 @@
             // 
             FlowLayoutPanel_Paginator.AutoSize = true;
             FlowLayoutPanel_Paginator.Dock = DockStyle.Right;
-            FlowLayoutPanel_Paginator.Location = new Point(930, 546);
+            FlowLayoutPanel_Paginator.Location = new Point(930, 544);
             FlowLayoutPanel_Paginator.Name = "FlowLayoutPanel_Paginator";
-            FlowLayoutPanel_Paginator.Size = new Size(0, 42);
+            FlowLayoutPanel_Paginator.Size = new Size(0, 44);
             FlowLayoutPanel_Paginator.TabIndex = 2;
             // 
             // Dialog_Confirm
@@ -91,7 +91,7 @@
             // 
             // Button_Create
             // 
-            Button_Create.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Button_Create.Anchor = AnchorStyles.Right;
             Button_Create.AnimatedGIF = true;
             Button_Create.BorderRadius = 8;
             Button_Create.CustomizableEdges = customizableEdges1;
@@ -102,7 +102,7 @@
             Button_Create.FillColor = Color.FromArgb(100, 88, 255);
             Button_Create.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Create.ForeColor = Color.White;
-            Button_Create.Location = new Point(376, 0);
+            Button_Create.Location = new Point(376, 4);
             Button_Create.Margin = new Padding(0);
             Button_Create.Name = "Button_Create";
             Button_Create.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -113,7 +113,7 @@
             // 
             // Button_Refresh
             // 
-            Button_Refresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Button_Refresh.Anchor = AnchorStyles.Right;
             Button_Refresh.AnimatedGIF = true;
             Button_Refresh.BorderRadius = 8;
             Button_Refresh.CustomizableEdges = customizableEdges3;
@@ -124,7 +124,7 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(276, 0);
+            Button_Refresh.Location = new Point(276, 4);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -135,6 +135,7 @@
             // 
             // Text_Search
             // 
+            Text_Search.Anchor = AnchorStyles.Left;
             Text_Search.Animated = true;
             Text_Search.BorderRadius = 8;
             Text_Search.CustomizableEdges = customizableEdges5;
@@ -147,14 +148,14 @@
             Text_Search.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Search.ForeColor = Color.Black;
             Text_Search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Search.Location = new Point(0, 0);
+            Text_Search.Location = new Point(0, 5);
             Text_Search.Margin = new Padding(0);
             Text_Search.Name = "Text_Search";
             Text_Search.PasswordChar = '\0';
             Text_Search.PlaceholderText = "Tìm kiếm...";
             Text_Search.SelectedText = "";
             Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Text_Search.Size = new Size(234, 41);
+            Text_Search.Size = new Size(234, 40);
             Text_Search.TabIndex = 2;
             Text_Search.TextChanged += Text_Search_TextChanged;
             // 
@@ -172,7 +173,7 @@
             TableLayoutPanel_Action.Name = "TableLayoutPanel_Action";
             TableLayoutPanel_Action.RowCount = 1;
             TableLayoutPanel_Action.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.Size = new Size(467, 55);
+            TableLayoutPanel_Action.Size = new Size(467, 50);
             TableLayoutPanel_Action.TabIndex = 1;
             // 
             // TableLayoutPanel_Header
@@ -188,7 +189,7 @@
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Header.Size = new Size(933, 55);
+            TableLayoutPanel_Header.Size = new Size(933, 50);
             TableLayoutPanel_Header.TabIndex = 0;
             // 
             // TableLayoutPanel_Container
@@ -203,9 +204,9 @@
             TableLayoutPanel_Container.Margin = new Padding(0);
             TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
             TableLayoutPanel_Container.RowCount = 3;
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             TableLayoutPanel_Container.Size = new Size(933, 591);
             TableLayoutPanel_Container.TabIndex = 1;
             // 
@@ -218,7 +219,7 @@
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             DataGridView_Listing.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             DataGridView_Listing.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -235,14 +236,14 @@
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
             DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle5;
             DataGridView_Listing.Dock = DockStyle.Fill;
             DataGridView_Listing.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Listing.Location = new Point(0, 55);
+            DataGridView_Listing.Location = new Point(0, 50);
             DataGridView_Listing.Margin = new Padding(0);
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
@@ -259,7 +260,7 @@
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
-            DataGridView_Listing.Size = new Size(933, 488);
+            DataGridView_Listing.Size = new Size(933, 491);
             DataGridView_Listing.TabIndex = 1;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;

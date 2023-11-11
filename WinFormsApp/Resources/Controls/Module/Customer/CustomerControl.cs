@@ -3,7 +3,7 @@ using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
 using WinFormsApp;
-
+using WinFormsApp.Services;
 
 namespace Controls.Module
 {
@@ -24,17 +24,6 @@ namespace Controls.Module
             InitializeAsync();
         }
 
-        public CustomerControl(List<CustomerDto> customers)
-        {
-            InitializeComponent();
-
-            _customerService = Program.container.GetInstance<ICustomerService>();
-
-            _refreshButton = Button_Refresh;
-
-            LoadData(customers);
-        }
-
         private async void InitializeAsync()
         {
             _result = await _customerService.GetList("Name", 1, 15, "");
@@ -48,43 +37,21 @@ namespace Controls.Module
 
         private void Paginator()
         {
-            //FlowLayoutPanel_Paginator.Controls.Clear();
-
-            //for (int i = 1; i <= _result.pageNumber; i++)
-            //{
-            //	PaginatorButton button = new(i.ToString(), Button_Paginator_Click);
-
-            //	FlowLayoutPanel_Paginator.Controls.Add(button);
-            //}
-
-            //if (_result.pageNumber > 0)
-            //{
-            //	FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-            //	FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
-            //}
+            Util.AddControl(TableLayoutPanel_Container, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
         }
 
-        private async void Button_Paginator_Click(object sender, EventArgs e)
+        private async void Button_Paginator_Click(int page)
         {
-            Guna2Button button = (Guna2Button)sender;
+            _currPage = page;
 
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.White;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.Black;
-
-            _currPage = int.Parse(button.Text);
-
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].BackColor = Color.RoyalBlue;
-            FlowLayoutPanel_Paginator.Controls[_currPage - 1].Controls[0].ForeColor = Color.White;
-
-            _result = await _customerService.GetList("Name", _currPage, 15, "");
-
-
-            LoadData(_result.list);
+            await LoadData();
         }
 
-        public void LoadData(List<CustomerDto> customers)
+        public async Task LoadData()
         {
-            DataGridView_Listing.DataSource = customers;
+            _result = await _customerService.GetList("Name", _currPage, 15, Text_Search.Text);
+
+            DataGridView_Listing.DataSource = _result.list;
         }
 
 
@@ -105,9 +72,10 @@ namespace Controls.Module
 
         private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            _result = await _customerService.GetList("Name", 1, 15, "");
+            _currPage = 1;
+            Text_Search.Text = string.Empty;
 
-            LoadData(_result.list);
+            await LoadData();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
@@ -119,12 +87,10 @@ namespace Controls.Module
         private async void Timer_Debounce_Tick(object sender, EventArgs e)
         {
             _currPage = 1;
+            Text_Search.Text = string.Empty;
 
             Paginator();
-
-            _result = await _customerService.GetList("Name", _currPage, 15, Text_Search.Text);
-
-            LoadData(_result.list);
+            await LoadData();
         }
     }
 }

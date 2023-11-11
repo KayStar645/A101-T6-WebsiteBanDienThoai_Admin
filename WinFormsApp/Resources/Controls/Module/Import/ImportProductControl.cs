@@ -75,7 +75,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _currPage = page;
 
-            LoadData();
+            await LoadData();
         }
 
         private void Text_Search_TextChanged(object sender, EventArgs e)
