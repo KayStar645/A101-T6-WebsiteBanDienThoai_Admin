@@ -132,7 +132,14 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             GetForm();
 
-            await _promotionService.Create(_promotion);
+            if(_promotion.Id > 0)
+            {
+                await _promotionService.Update(_promotion);
+            }
+            else
+            {
+                await _promotionService.Create(_promotion);
+            }
 
             Util.LoadControl(this, new PromotionControl());
         }
