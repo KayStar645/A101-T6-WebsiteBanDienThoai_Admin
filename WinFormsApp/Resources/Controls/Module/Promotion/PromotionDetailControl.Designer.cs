@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -45,13 +51,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges45 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges46 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             tableLayoutPanel1 = new TableLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
+            Button_Approve = new Guna.UI2.WinForms.Guna2Button();
+            Button_Save = new Guna.UI2.WinForms.Guna2Button();
             Btn_Back = new Guna.UI2.WinForms.Guna2ImageButton();
             Label_Heading = new Label();
             TableLayoutPanel_Info = new TableLayoutPanel();
@@ -71,31 +75,108 @@
             Label_Discount = new Label();
             Label_DiscountMax = new Label();
             Text_DiscountMax = new Guna.UI2.WinForms.Guna2TextBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            Button_Save = new Guna.UI2.WinForms.Guna2Button();
-            Button_Approve = new Guna.UI2.WinForms.Guna2Button();
-            Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
+            Dialog_Notification = new Guna.UI2.WinForms.Guna2MessageDialog();
             tableLayoutPanel1.SuspendLayout();
-            TableLayoutPanel_Info.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            TableLayoutPanel_Info.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 44F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 332F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 379F));
             tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 2, 0);
             tableLayoutPanel1.Controls.Add(Btn_Back, 0, 0);
             tableLayoutPanel1.Controls.Add(Label_Heading, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1021, 49);
+            tableLayoutPanel1.Size = new Size(1167, 65);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(Button_Cancel);
+            flowLayoutPanel1.Controls.Add(Button_Approve);
+            flowLayoutPanel1.Controls.Add(Button_Save);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanel1.Location = new Point(788, 0);
+            flowLayoutPanel1.Margin = new Padding(0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(379, 65);
+            flowLayoutPanel1.TabIndex = 6;
+            // 
+            // Button_Cancel
+            // 
+            Button_Cancel.Anchor = AnchorStyles.Right;
+            Button_Cancel.Animated = true;
+            Button_Cancel.AnimatedGIF = true;
+            Button_Cancel.BorderRadius = 8;
+            Button_Cancel.CustomizableEdges = customizableEdges24;
+            Button_Cancel.DisabledState.BorderColor = Color.DarkGray;
+            Button_Cancel.DisabledState.CustomBorderColor = Color.DarkGray;
+            Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Button_Cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Button_Cancel.FillColor = Color.Firebrick;
+            Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Cancel.ForeColor = Color.White;
+            Button_Cancel.Location = new Point(296, 3);
+            Button_Cancel.Name = "Button_Cancel";
+            Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            Button_Cancel.Size = new Size(80, 53);
+            Button_Cancel.TabIndex = 3;
+            Button_Cancel.Text = "Hủy bỏ";
+            Button_Cancel.Click += Button_Cancel_Click;
+            // 
+            // Button_Approve
+            // 
+            Button_Approve.Anchor = AnchorStyles.Right;
+            Button_Approve.Animated = true;
+            Button_Approve.AnimatedGIF = true;
+            Button_Approve.BorderRadius = 8;
+            Button_Approve.CustomizableEdges = customizableEdges26;
+            Button_Approve.DisabledState.BorderColor = Color.DarkGray;
+            Button_Approve.DisabledState.CustomBorderColor = Color.DarkGray;
+            Button_Approve.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Button_Approve.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Button_Approve.FillColor = Color.Green;
+            Button_Approve.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Approve.ForeColor = Color.White;
+            Button_Approve.Location = new Point(210, 3);
+            Button_Approve.Name = "Button_Approve";
+            Button_Approve.ShadowDecoration.CustomizableEdges = customizableEdges27;
+            Button_Approve.Size = new Size(80, 53);
+            Button_Approve.TabIndex = 4;
+            Button_Approve.Text = "Duyệt";
+            Button_Approve.Click += Button_Approve_Click;
+            // 
+            // Button_Save
+            // 
+            Button_Save.Anchor = AnchorStyles.Right;
+            Button_Save.Animated = true;
+            Button_Save.AnimatedGIF = true;
+            Button_Save.BorderRadius = 8;
+            Button_Save.CustomizableEdges = customizableEdges28;
+            Button_Save.DisabledState.BorderColor = Color.DarkGray;
+            Button_Save.DisabledState.CustomBorderColor = Color.DarkGray;
+            Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Button_Save.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Button_Save.FillColor = Color.FromArgb(100, 88, 255);
+            Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Save.ForeColor = Color.White;
+            Button_Save.Location = new Point(124, 3);
+            Button_Save.Name = "Button_Save";
+            Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges29;
+            Button_Save.Size = new Size(80, 53);
+            Button_Save.TabIndex = 2;
+            Button_Save.Text = "Lưu";
+            Button_Save.Click += Button_Save_Click;
             // 
             // Btn_Back
             // 
@@ -106,11 +187,12 @@
             Btn_Back.ImageOffset = new Point(0, 0);
             Btn_Back.ImageRotate = 0F;
             Btn_Back.ImageSize = new Size(30, 30);
-            Btn_Back.Location = new Point(3, 4);
+            Btn_Back.Location = new Point(3, 6);
+            Btn_Back.Margin = new Padding(3, 4, 3, 4);
             Btn_Back.Name = "Btn_Back";
             Btn_Back.PressedState.ImageSize = new Size(30, 30);
             Btn_Back.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            Btn_Back.Size = new Size(38, 40);
+            Btn_Back.Size = new Size(43, 53);
             Btn_Back.TabIndex = 1;
             Btn_Back.Click += Btn_Back_Click;
             // 
@@ -119,19 +201,19 @@
             Label_Heading.Anchor = AnchorStyles.Left;
             Label_Heading.AutoSize = true;
             Label_Heading.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Heading.Location = new Point(47, 14);
+            Label_Heading.Location = new Point(53, 18);
             Label_Heading.Name = "Label_Heading";
-            Label_Heading.Size = new Size(267, 21);
+            Label_Heading.Size = new Size(342, 28);
             Label_Heading.TabIndex = 0;
             Label_Heading.Text = "Thêm mới chương trình khuyến mãi";
             // 
             // TableLayoutPanel_Info
             // 
             TableLayoutPanel_Info.ColumnCount = 5;
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Info.Controls.Add(Text_Discount, 0, 3);
             TableLayoutPanel_Info.Controls.Add(label1, 0, 1);
@@ -150,15 +232,16 @@
             TableLayoutPanel_Info.Controls.Add(Label_DiscountMax, 3, 3);
             TableLayoutPanel_Info.Controls.Add(Text_DiscountMax, 4, 3);
             TableLayoutPanel_Info.Dock = DockStyle.Top;
-            TableLayoutPanel_Info.Location = new Point(0, 49);
+            TableLayoutPanel_Info.Location = new Point(0, 65);
+            TableLayoutPanel_Info.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Info.Name = "TableLayoutPanel_Info";
-            TableLayoutPanel_Info.Padding = new Padding(0, 12, 0, 0);
+            TableLayoutPanel_Info.Padding = new Padding(0, 16, 0, 0);
             TableLayoutPanel_Info.RowCount = 4;
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            TableLayoutPanel_Info.Size = new Size(1021, 245);
+            TableLayoutPanel_Info.Size = new Size(1167, 327);
             TableLayoutPanel_Info.TabIndex = 2;
             // 
             // Text_Discount
@@ -175,13 +258,14 @@
             Text_Discount.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Discount.ForeColor = Color.Black;
             Text_Discount.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Discount.Location = new Point(123, 196);
+            Text_Discount.Location = new Point(140, 261);
+            Text_Discount.Margin = new Padding(3, 5, 3, 5);
             Text_Discount.Name = "Text_Discount";
             Text_Discount.PasswordChar = '\0';
             Text_Discount.PlaceholderText = "Giảm giá";
             Text_Discount.SelectedText = "";
             Text_Discount.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            Text_Discount.Size = new Size(364, 38);
+            Text_Discount.Size = new Size(417, 51);
             Text_Discount.TabIndex = 26;
             Text_Discount.Visible = false;
             // 
@@ -190,9 +274,9 @@
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 90);
+            label1.Location = new Point(3, 120);
             label1.Name = "label1";
-            label1.Size = new Size(55, 17);
+            label1.Size = new Size(69, 23);
             label1.TabIndex = 15;
             label1.Text = "Bắt đầu";
             // 
@@ -208,13 +292,14 @@
             DateTime_Start.FillColor = Color.White;
             DateTime_Start.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             DateTime_Start.Format = DateTimePickerFormat.Custom;
-            DateTime_Start.Location = new Point(123, 81);
+            DateTime_Start.Location = new Point(140, 107);
+            DateTime_Start.Margin = new Padding(3, 4, 3, 4);
             DateTime_Start.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DateTime_Start.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             DateTime_Start.Name = "DateTime_Start";
             DateTime_Start.ShadowDecoration.CustomizableEdges = customizableEdges34;
             DateTime_Start.ShowUpDown = true;
-            DateTime_Start.Size = new Size(364, 36);
+            DateTime_Start.Size = new Size(417, 48);
             DateTime_Start.TabIndex = 16;
             DateTime_Start.Value = new DateTime(2023, 11, 5, 17, 11, 33, 0);
             // 
@@ -223,9 +308,9 @@
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(533, 90);
+            label5.Location = new Point(609, 120);
             label5.Name = "label5";
-            label5.Size = new Size(59, 17);
+            label5.Size = new Size(74, 23);
             label5.TabIndex = 18;
             label5.Text = "Kết thúc";
             // 
@@ -240,12 +325,13 @@
             DateTime_End.FillColor = Color.White;
             DateTime_End.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             DateTime_End.Format = DateTimePickerFormat.Custom;
-            DateTime_End.Location = new Point(653, 81);
+            DateTime_End.Location = new Point(746, 107);
+            DateTime_End.Margin = new Padding(3, 4, 3, 4);
             DateTime_End.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DateTime_End.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             DateTime_End.Name = "DateTime_End";
             DateTime_End.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            DateTime_End.Size = new Size(365, 36);
+            DateTime_End.Size = new Size(418, 48);
             DateTime_End.TabIndex = 17;
             DateTime_End.Value = new DateTime(2023, 11, 5, 17, 11, 40, 0);
             // 
@@ -254,9 +340,9 @@
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(533, 32);
+            label3.Location = new Point(609, 43);
             label3.Name = "label3";
-            label3.Size = new Size(68, 17);
+            label3.Size = new Size(87, 23);
             label3.TabIndex = 1;
             label3.Text = "Tên CTKM";
             // 
@@ -265,9 +351,9 @@
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 32);
+            label2.Location = new Point(3, 43);
             label2.Name = "label2";
-            label2.Size = new Size(66, 17);
+            label2.Size = new Size(86, 23);
             label2.TabIndex = 0;
             label2.Text = "Mã CTKM";
             // 
@@ -285,13 +371,14 @@
             Text_Name.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Name.ForeColor = Color.Black;
             Text_Name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Location = new Point(653, 22);
+            Text_Name.Location = new Point(746, 29);
+            Text_Name.Margin = new Padding(3, 5, 3, 5);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên chương trình khuyến mãi";
             Text_Name.SelectedText = "";
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            Text_Name.Size = new Size(365, 38);
+            Text_Name.Size = new Size(418, 51);
             Text_Name.TabIndex = 3;
             // 
             // Text_InternalCode
@@ -308,13 +395,14 @@
             Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_InternalCode.ForeColor = Color.Black;
             Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(123, 22);
+            Text_InternalCode.Location = new Point(140, 29);
+            Text_InternalCode.Margin = new Padding(3, 5, 3, 5);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
             Text_InternalCode.PlaceholderText = "Mã chương trình khuyến mãi";
             Text_InternalCode.SelectedText = "";
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            Text_InternalCode.Size = new Size(364, 38);
+            Text_InternalCode.Size = new Size(417, 51);
             Text_InternalCode.TabIndex = 2;
             // 
             // label7
@@ -322,9 +410,9 @@
             label7.Anchor = AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(3, 148);
+            label7.Location = new Point(3, 197);
             label7.Name = "label7";
-            label7.Size = new Size(32, 17);
+            label7.Size = new Size(41, 23);
             label7.TabIndex = 10;
             label7.Text = "Loại";
             // 
@@ -341,10 +429,11 @@
             ComboBox_Type.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ComboBox_Type.ForeColor = Color.FromArgb(68, 88, 112);
             ComboBox_Type.ItemHeight = 30;
-            ComboBox_Type.Location = new Point(123, 139);
+            ComboBox_Type.Location = new Point(140, 190);
+            ComboBox_Type.Margin = new Padding(3, 4, 3, 4);
             ComboBox_Type.Name = "ComboBox_Type";
             ComboBox_Type.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            ComboBox_Type.Size = new Size(364, 36);
+            ComboBox_Type.Size = new Size(417, 36);
             ComboBox_Type.Sorted = true;
             ComboBox_Type.TabIndex = 12;
             ComboBox_Type.SelectedIndexChanged += ComboBox_Type_SelectedIndexChanged;
@@ -354,9 +443,9 @@
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(533, 148);
+            label4.Location = new Point(609, 197);
             label4.Name = "label4";
-            label4.Size = new Size(69, 17);
+            label4.Size = new Size(87, 23);
             label4.TabIndex = 22;
             label4.Text = "Trạng thái";
             // 
@@ -375,13 +464,14 @@
             Text_Status.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Status.ForeColor = Color.Black;
             Text_Status.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Status.Location = new Point(653, 138);
+            Text_Status.Location = new Point(746, 183);
+            Text_Status.Margin = new Padding(3, 5, 3, 5);
             Text_Status.Name = "Text_Status";
             Text_Status.PasswordChar = '\0';
             Text_Status.PlaceholderText = "Trạng thái";
             Text_Status.SelectedText = "";
             Text_Status.ShadowDecoration.CustomizableEdges = customizableEdges44;
-            Text_Status.Size = new Size(365, 38);
+            Text_Status.Size = new Size(418, 51);
             Text_Status.TabIndex = 23;
             // 
             // Label_Discount
@@ -389,9 +479,9 @@
             Label_Discount.Anchor = AnchorStyles.Left;
             Label_Discount.AutoSize = true;
             Label_Discount.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Discount.Location = new Point(3, 207);
+            Label_Discount.Location = new Point(3, 275);
             Label_Discount.Name = "Label_Discount";
-            Label_Discount.Size = new Size(61, 17);
+            Label_Discount.Size = new Size(78, 23);
             Label_Discount.TabIndex = 13;
             Label_Discount.Text = "Giảm giá";
             Label_Discount.Visible = false;
@@ -401,9 +491,9 @@
             Label_DiscountMax.Anchor = AnchorStyles.Left;
             Label_DiscountMax.AutoSize = true;
             Label_DiscountMax.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_DiscountMax.Location = new Point(533, 207);
+            Label_DiscountMax.Location = new Point(609, 275);
             Label_DiscountMax.Name = "Label_DiscountMax";
-            Label_DiscountMax.Size = new Size(100, 17);
+            Label_DiscountMax.Size = new Size(127, 23);
             Label_DiscountMax.TabIndex = 25;
             Label_DiscountMax.Text = "Giảm giá tối đa";
             Label_DiscountMax.Visible = false;
@@ -422,112 +512,41 @@
             Text_DiscountMax.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_DiscountMax.ForeColor = Color.Black;
             Text_DiscountMax.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_DiscountMax.Location = new Point(653, 196);
+            Text_DiscountMax.Location = new Point(746, 261);
+            Text_DiscountMax.Margin = new Padding(3, 5, 3, 5);
             Text_DiscountMax.Name = "Text_DiscountMax";
             Text_DiscountMax.PasswordChar = '\0';
             Text_DiscountMax.PlaceholderText = "Giảm giá tối đa";
             Text_DiscountMax.SelectedText = "";
             Text_DiscountMax.ShadowDecoration.CustomizableEdges = customizableEdges46;
-            Text_DiscountMax.Size = new Size(365, 38);
+            Text_DiscountMax.Size = new Size(418, 51);
             Text_DiscountMax.TabIndex = 27;
             Text_DiscountMax.Visible = false;
             // 
-            // flowLayoutPanel1
+            // Dialog_Notification
             // 
-            flowLayoutPanel1.Controls.Add(Button_Cancel);
-            flowLayoutPanel1.Controls.Add(Button_Approve);
-            flowLayoutPanel1.Controls.Add(Button_Save);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(692, 3);
-            flowLayoutPanel1.Margin = new Padding(0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(326, 43);
-            flowLayoutPanel1.TabIndex = 6;
-            // 
-            // Button_Save
-            // 
-            Button_Save.Anchor = AnchorStyles.Right;
-            Button_Save.Animated = true;
-            Button_Save.AnimatedGIF = true;
-            Button_Save.BorderRadius = 8;
-            Button_Save.CustomizableEdges = customizableEdges28;
-            Button_Save.DisabledState.BorderColor = Color.DarkGray;
-            Button_Save.DisabledState.CustomBorderColor = Color.DarkGray;
-            Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Button_Save.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Button_Save.FillColor = Color.FromArgb(100, 88, 255);
-            Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(101, 2);
-            Button_Save.Margin = new Padding(3, 2, 3, 2);
-            Button_Save.Name = "Button_Save";
-            Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges29;
-            Button_Save.Size = new Size(70, 40);
-            Button_Save.TabIndex = 2;
-            Button_Save.Text = "Lưu";
-            Button_Save.Click += Button_Save_Click;
-            // 
-            // Button_Approve
-            // 
-            Button_Approve.Anchor = AnchorStyles.Right;
-            Button_Approve.Animated = true;
-            Button_Approve.AnimatedGIF = true;
-            Button_Approve.BorderRadius = 8;
-            Button_Approve.CustomizableEdges = customizableEdges26;
-            Button_Approve.DisabledState.BorderColor = Color.DarkGray;
-            Button_Approve.DisabledState.CustomBorderColor = Color.DarkGray;
-            Button_Approve.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Button_Approve.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Button_Approve.FillColor = Color.Green;
-            Button_Approve.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_Approve.ForeColor = Color.White;
-            Button_Approve.Location = new Point(177, 2);
-            Button_Approve.Margin = new Padding(3, 2, 3, 2);
-            Button_Approve.Name = "Button_Approve";
-            Button_Approve.ShadowDecoration.CustomizableEdges = customizableEdges27;
-            Button_Approve.Size = new Size(70, 40);
-            Button_Approve.TabIndex = 4;
-            Button_Approve.Text = "Duyệt";
-            Button_Approve.Click += Button_Approve_Click;
-            // 
-            // Button_Cancel
-            // 
-            Button_Cancel.Anchor = AnchorStyles.Right;
-            Button_Cancel.Animated = true;
-            Button_Cancel.AnimatedGIF = true;
-            Button_Cancel.BorderRadius = 8;
-            Button_Cancel.CustomizableEdges = customizableEdges24;
-            Button_Cancel.DisabledState.BorderColor = Color.DarkGray;
-            Button_Cancel.DisabledState.CustomBorderColor = Color.DarkGray;
-            Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Button_Cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Button_Cancel.FillColor = Color.Firebrick;
-            Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_Cancel.ForeColor = Color.White;
-            Button_Cancel.Location = new Point(253, 2);
-            Button_Cancel.Margin = new Padding(3, 2, 3, 2);
-            Button_Cancel.Name = "Button_Cancel";
-            Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges25;
-            Button_Cancel.Size = new Size(70, 40);
-            Button_Cancel.TabIndex = 3;
-            Button_Cancel.Text = "Hủy bỏ";
-            Button_Cancel.Click += Button_Cancel_Click;
+            Dialog_Notification.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            Dialog_Notification.Caption = "Thông báo";
+            Dialog_Notification.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            Dialog_Notification.Parent = null;
+            Dialog_Notification.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            Dialog_Notification.Text = null;
             // 
             // PromotionDetailControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(TableLayoutPanel_Info);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PromotionDetailControl";
-            Size = new Size(1021, 710);
+            Size = new Size(1167, 947);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             TableLayoutPanel_Info.ResumeLayout(false);
             TableLayoutPanel_Info.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -557,5 +576,6 @@
         private Guna.UI2.WinForms.Guna2Button Button_Cancel;
         private Guna.UI2.WinForms.Guna2Button Button_Approve;
         private Guna.UI2.WinForms.Guna2Button Button_Save;
+        private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Notification;
     }
 }

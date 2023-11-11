@@ -1,6 +1,6 @@
 ﻿namespace Services.Transform
 {
-    public static class IdentityTranform
+    public static class IdentityTransform
     {
         public static string UserAlreadyExists(string userName)
         {

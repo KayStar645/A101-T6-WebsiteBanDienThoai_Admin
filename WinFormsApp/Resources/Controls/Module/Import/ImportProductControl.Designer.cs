@@ -53,8 +53,6 @@
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
             TableLayoutPanel_Paginator = new TableLayoutPanel();
             DataGridView_Product = new Guna.UI2.WinForms.Guna2DataGridView();
-            Timer_Debounce = new System.Windows.Forms.Timer(components);
-            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             Product_Select = new DataGridViewCheckBoxColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             Product_Name = new DataGridViewTextBoxColumn();
@@ -69,6 +67,8 @@
             ColorInternalCode = new DataGridViewTextBoxColumn();
             CategoryInternalCode = new DataGridViewTextBoxColumn();
             CategoryId = new DataGridViewTextBoxColumn();
+            Timer_Debounce = new System.Windows.Forms.Timer(components);
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             tableLayoutPanel1.SuspendLayout();
             TableLayoutPanel_Header.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -84,12 +84,12 @@
             tableLayoutPanel1.Controls.Add(Button_Cancel, 0, 0);
             tableLayoutPanel1.Controls.Add(Button_Save, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(0, 506);
+            tableLayoutPanel1.Location = new Point(0, 500);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.Padding = new Padding(8, 0, 8, 0);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1007, 50);
+            tableLayoutPanel1.Size = new Size(1000, 50);
             tableLayoutPanel1.TabIndex = 9;
             // 
             // Button_Cancel
@@ -129,7 +129,7 @@
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
             Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(926, 5);
+            Button_Save.Location = new Point(919, 5);
             Button_Save.Margin = new Padding(3, 2, 3, 2);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -148,7 +148,7 @@
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Header.Size = new Size(1007, 35);
+            TableLayoutPanel_Header.Size = new Size(1000, 35);
             TableLayoutPanel_Header.TabIndex = 12;
             // 
             // Label_Heading
@@ -157,7 +157,7 @@
             Label_Heading.AutoSize = true;
             Label_Heading.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             Label_Heading.ForeColor = Color.White;
-            Label_Heading.Location = new Point(434, 8);
+            Label_Heading.Location = new Point(431, 8);
             Label_Heading.Name = "Label_Heading";
             Label_Heading.Size = new Size(138, 19);
             Label_Heading.TabIndex = 10;
@@ -176,7 +176,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1007, 50);
+            tableLayoutPanel2.Size = new Size(1000, 50);
             tableLayoutPanel2.TabIndex = 13;
             // 
             // Btn_AddNewProduct
@@ -193,7 +193,7 @@
             Btn_AddNewProduct.FillColor = Color.FromArgb(100, 88, 255);
             Btn_AddNewProduct.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Btn_AddNewProduct.ForeColor = Color.White;
-            Btn_AddNewProduct.Location = new Point(855, 5);
+            Btn_AddNewProduct.Location = new Point(848, 5);
             Btn_AddNewProduct.Margin = new Padding(3, 2, 3, 2);
             Btn_AddNewProduct.Name = "Btn_AddNewProduct";
             Btn_AddNewProduct.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -231,11 +231,11 @@
             TableLayoutPanel_Paginator.ColumnCount = 1;
             TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
-            TableLayoutPanel_Paginator.Location = new Point(0, 456);
+            TableLayoutPanel_Paginator.Location = new Point(0, 450);
             TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
             TableLayoutPanel_Paginator.RowCount = 1;
             TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Paginator.Size = new Size(1007, 50);
+            TableLayoutPanel_Paginator.Size = new Size(1000, 50);
             TableLayoutPanel_Paginator.TabIndex = 14;
             // 
             // DataGridView_Product
@@ -288,7 +288,7 @@
             DataGridView_Product.RowHeadersWidth = 51;
             DataGridView_Product.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Product.RowTemplate.Height = 40;
-            DataGridView_Product.Size = new Size(1007, 371);
+            DataGridView_Product.Size = new Size(1000, 365);
             DataGridView_Product.TabIndex = 15;
             DataGridView_Product.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Product.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -313,18 +313,6 @@
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Product.CellClick += DataGridView_Product_CellClick;
             DataGridView_Product.CellEndEdit += DataGridView_Product_CellEndEdit;
-            // 
-            // Timer_Debounce
-            // 
-            Timer_Debounce.Interval = 600;
-            Timer_Debounce.Tick += Timer_Debounce_Tick;
-            // 
-            // guna2BorderlessForm1
-            // 
-            guna2BorderlessForm1.BorderRadius = 12;
-            guna2BorderlessForm1.ContainerControl = this;
-            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // Product_Select
             // 
@@ -462,12 +450,24 @@
             CategoryId.Name = "CategoryId";
             CategoryId.Visible = false;
             // 
+            // Timer_Debounce
+            // 
+            Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
+            // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 12;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // ImportProductControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RoyalBlue;
-            ClientSize = new Size(1007, 556);
+            ClientSize = new Size(1000, 550);
             Controls.Add(DataGridView_Product);
             Controls.Add(TableLayoutPanel_Paginator);
             Controls.Add(tableLayoutPanel2);

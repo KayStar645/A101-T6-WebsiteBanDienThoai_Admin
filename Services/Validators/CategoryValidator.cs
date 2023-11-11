@@ -16,31 +16,31 @@ namespace Services.Validators
 
             RuleFor(x => x.InternalCode)
                .NotEmpty()
-               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
+               .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Category.module))
                .MaximumLength(ValidatorCommon.InternalCodeLength)
-               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.InternalCode +
+               .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Category.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
                    return await _categoryRepo.AnyKeyValueAsync(new[] { ("InternalCode", internalCode) }, pId) == false;
                })
-               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
+               .WithMessage(internalCode => ValidatorTransform.Exists(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Category.module));
 
 
             RuleFor(x => x.Name)
                .NotEmpty()
-               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.Name +
+               .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.Name +
                                         ModulesTransform.Category.module))
                .MaximumLength(ValidatorCommon.NameLength)
-               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
+               .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.Name +
                                         ModulesTransform.Category.module, ValidatorCommon.NameLength))
                .MustAsync(async (name, token) =>
                {
                    return await _categoryRepo.AnyKeyValueAsync(new[] { ("Name", name) }, pId) == false;
                })
-               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.Name +
+               .WithMessage(internalCode => ValidatorTransform.Exists(ModulesTransform.Common.Name +
                                         ModulesTransform.Category.module));
         }
     }

@@ -7,6 +7,7 @@ using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Resources.Controls.Module.Employee;
 using WinFormsApp.Resources.Controls.Module.Import;
+using WinFormsApp.Resources.Controls.Module.Order;
 using WinFormsApp.Resources.Controls.Module.Parameter;
 using WinFormsApp.Resources.Controls.Module.Product;
 using WinFormsApp.Resources.Controls.Module.Promotion;
@@ -276,6 +277,15 @@ namespace WinFormsApp.View.Screen
         {
             Label_Heading.Text = "Nhập hàng";
             Util.LoadControl(Panel_Body, new ImportControl());
+
+            _currPanel = Btn_Import.Tag!.ToString()!.Split("|")[0];
+            LoadMenu();
+        }
+
+        private void Btn_Order_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Đơn hàng";
+            Util.LoadControl(Panel_Body, new OrderControl());
 
             _currPanel = Btn_Import.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
