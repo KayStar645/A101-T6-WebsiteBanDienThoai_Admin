@@ -16,16 +16,16 @@ namespace Services.Validators
 
             RuleFor(x => x.Name)
                .NotEmpty()
-               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.Name +
+               .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.Name +
                                         ModulesTransform.Capacity.module))
                .MaximumLength(ValidatorCommon.NameLength)
-               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
+               .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.Name +
                                         ModulesTransform.Capacity.module, ValidatorCommon.NameLength))
                .MustAsync(async (name, token) =>
                {
                    return await _capacityRepo.AnyKeyValueAsync(new[] { ("Name", name) }, pId) == false;
                })
-               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.Name +
+               .WithMessage(internalCode => ValidatorTransform.Exists(ModulesTransform.Common.Name +
                                         ModulesTransform.Capacity.module));
         }
     }

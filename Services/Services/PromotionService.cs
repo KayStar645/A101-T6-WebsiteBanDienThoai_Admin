@@ -3,6 +3,7 @@ using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
 using Services.Interfaces;
+using Services.Validators;
 
 namespace Services.Services
 {
@@ -38,6 +39,16 @@ namespace Services.Services
         public async Task<bool> Create(PromotionDto pCreate)
         {
             pCreate.Status = Promotion.STATUS_DRAFT;
+
+            PromotionValidator validator = new PromotionValidator(_promotionRepo, pCreate.Start, pCreate.Type);
+            var validationResult = await validator.ValidateAsync(pCreate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var promotion = _mapper.Map<Promotion>(pCreate);
 
             var result = await _promotionRepo.AddAsync(promotion);
@@ -46,7 +57,16 @@ namespace Services.Services
         }
 
         public async Task<bool> Update(PromotionDto pUpdate)
-        { 
+        {
+            PromotionValidator validator = new PromotionValidator(_promotionRepo, pUpdate.Start, pUpdate.Type, false, pUpdate.Id);
+            var validationResult = await validator.ValidateAsync(pUpdate);
+
+            if (validationResult.IsValid == false)
+            {
+                var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
+                throw new Exception(errorMessages);
+            }
+
             var promotion = _mapper.Map<Promotion>(pUpdate);
 
             var result = await _promotionRepo.UpdateAsync(promotion);

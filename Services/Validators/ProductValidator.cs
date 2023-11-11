@@ -22,31 +22,31 @@ namespace Services.Validators
 
             RuleFor(x => x.InternalCode)
                .NotEmpty()
-               .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.InternalCode +
+               .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Product.module))
                .MaximumLength(ValidatorCommon.InternalCodeLength)
-               .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
+               .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.Name +
                                         ModulesTransform.Product.module, ValidatorCommon.InternalCodeLength))
                .MustAsync(async (internalCode, token) =>
                {
                    return await _productRepo.AnyKeyValueAsync(new[] { ("InternalCode", internalCode) }, pId) == false;
                })
-               .WithMessage(internalCode => ValidatorTranform.Exists(ModulesTransform.Common.InternalCode +
+               .WithMessage(internalCode => ValidatorTransform.Exists(ModulesTransform.Common.InternalCode +
                                         ModulesTransform.Product.module));
 
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .WithMessage(ValidatorTranform.Required(ModulesTransform.Common.Name +
+                .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.Name +
                                         ModulesTransform.Product.module))
                 .MaximumLength(ValidatorCommon.NameLength)
-                .WithMessage(ValidatorTranform.MaximumLength(ModulesTransform.Common.Name +
+                .WithMessage(ValidatorTransform.MaximumLength(ModulesTransform.Common.Name +
                              ModulesTransform.Product.module, ValidatorCommon.NameLength));
 
             RuleFor(x => x.Price)
                 .NotEmpty()
-                .WithMessage(ValidatorTranform.Required(ModulesTransform.Product.price))
+                .WithMessage(ValidatorTransform.Required(ModulesTransform.Product.price))
                 .Must(value => long.TryParse(value.ToString(), out _))
-                .WithMessage(ValidatorTranform.MustLong(ModulesTransform.Product.price));
+                .WithMessage(ValidatorTransform.MustLong(ModulesTransform.Product.price));
 
             RuleFor(x => x.ColorId)
                .MustAsync(async (colorId, token) =>
@@ -57,7 +57,7 @@ namespace Services.Validators
                    }
                    return false;
                })
-               .WithMessage(userId => ValidatorTranform.MustIn(ModulesTransform.Product.color));
+               .WithMessage(userId => ValidatorTransform.MustIn(ModulesTransform.Product.color));
 
             RuleFor(x => x.CapacityId)
                .MustAsync(async (capacityId, token) =>
@@ -68,7 +68,7 @@ namespace Services.Validators
                    }
                    return false;
                })
-               .WithMessage(userId => ValidatorTranform.MustIn(ModulesTransform.Product.capacity));
+               .WithMessage(userId => ValidatorTransform.MustIn(ModulesTransform.Product.capacity));
 
         }
     }
