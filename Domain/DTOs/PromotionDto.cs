@@ -12,11 +12,14 @@
 
         public DateTime End { get; set; }
 
-        public long? PriceMin { get; set; }
+        public long? PercentMax { get; set; }
 
         public long? Discount { get; set; }
 
         public long? Percent { get; set; }
+
+        public long? DiscountMax { get; set; }
+
         public string? Type { get; set; }
 
         public string? Status { get; set; }

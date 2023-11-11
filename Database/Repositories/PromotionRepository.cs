@@ -27,6 +27,8 @@ namespace Database.Repositories
             "Status",
             "Discount",
             "Percent",
+            "DiscountMax",
+            "PercentMax",
         };
 
         protected override List<string> _seachers { get; } = new List<string>()
