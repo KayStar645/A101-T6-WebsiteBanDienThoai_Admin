@@ -146,36 +146,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                     ProductName = cells["Product_Name"].Value.ToString(),
                     CapacityName = cells["CapacityName"].Value.ToString(),
                     ColorName = cells["ColorName"].Value.ToString(),
-                    Quantity = cells["Quantity"].Value == null ? 0 : int.Parse(cells["Quantity"].Value.ToString()!),
-                    Price = long.Parse(cells["Price"].Value.ToString()!)
                 });
             }
-        }
-
-        private void DataGridView_Product_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewCellCollection cells = DataGridView_Product.CurrentRow.Cells;
-            bool selected = bool.Parse(cells["Product_Select"].FormattedValue.ToString()!);
-            int id = int.Parse(cells["Id"].Value.ToString()!);
-
-            if (e.ColumnIndex == 0)
-            {
-                return;
-            }
-
-            int index = _products.FindIndex(t => t.ProductId == id);
-
-            if (!selected)
-            {
-                return;
-            }
-
-            if (index == -1)
-            {
-                return;
-            }
-
-            _products[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
         }
     }
 }

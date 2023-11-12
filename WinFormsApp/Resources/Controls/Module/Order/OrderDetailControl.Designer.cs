@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -60,21 +57,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            CapacityId = new DataGridViewTextBoxColumn();
-            ColorId = new DataGridViewTextBoxColumn();
-            ImportBillId = new DataGridViewTextBoxColumn();
-            ProductImage = new DataGridViewTextBoxColumn();
-            DetailId = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            Price = new DataGridViewTextBoxColumn();
-            CapacityName = new DataGridViewTextBoxColumn();
-            ColorName = new DataGridViewTextBoxColumn();
-            Product_Name = new DataGridViewTextBoxColumn();
-            InternalCode = new DataGridViewTextBoxColumn();
-            ProductId = new DataGridViewTextBoxColumn();
-            Product_Select = new DataGridViewCheckBoxColumn();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             Button_Received = new Guna.UI2.WinForms.Guna2Button();
-            ColorInternalCode = new DataGridViewTextBoxColumn();
             DataGridView_Product = new Guna.UI2.WinForms.Guna2DataGridView();
             label1 = new Label();
             TableLayoutPanel_Info = new TableLayoutPanel();
@@ -98,139 +84,27 @@
             Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
             Button_Approve = new Guna.UI2.WinForms.Guna2Button();
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
+            Product_Select = new DataGridViewCheckBoxColumn();
+            ProductId = new DataGridViewTextBoxColumn();
+            InternalCode = new DataGridViewTextBoxColumn();
+            Product_Name = new DataGridViewTextBoxColumn();
+            ColorName = new DataGridViewTextBoxColumn();
+            CapacityName = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            DiscountPrice = new DataGridViewTextBoxColumn();
+            SumPrice = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            DetailId = new DataGridViewTextBoxColumn();
+            ProductImage = new DataGridViewTextBoxColumn();
+            ImportBillId = new DataGridViewTextBoxColumn();
+            ColorId = new DataGridViewTextBoxColumn();
+            ColorInternalCode = new DataGridViewTextBoxColumn();
+            CapacityId = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Product).BeginInit();
             TableLayoutPanel_Info.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // CapacityId
-            // 
-            CapacityId.DataPropertyName = "CapacityId";
-            CapacityId.HeaderText = "CapacityId";
-            CapacityId.Name = "CapacityId";
-            CapacityId.Visible = false;
-            // 
-            // ColorId
-            // 
-            ColorId.DataPropertyName = "ColorId";
-            ColorId.HeaderText = "ColorId";
-            ColorId.Name = "ColorId";
-            ColorId.Visible = false;
-            // 
-            // ImportBillId
-            // 
-            ImportBillId.DataPropertyName = "ImportBillId";
-            ImportBillId.HeaderText = "ImportBillId";
-            ImportBillId.Name = "ImportBillId";
-            ImportBillId.Visible = false;
-            // 
-            // ProductImage
-            // 
-            ProductImage.DataPropertyName = "ProductImage";
-            ProductImage.HeaderText = "ProductImage";
-            ProductImage.Name = "ProductImage";
-            ProductImage.Visible = false;
-            // 
-            // DetailId
-            // 
-            DetailId.DataPropertyName = "Id";
-            DetailId.HeaderText = "DetailId";
-            DetailId.Name = "DetailId";
-            DetailId.Visible = false;
-            // 
-            // Quantity
-            // 
-            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Quantity.DefaultCellStyle = dataGridViewCellStyle1;
-            Quantity.DividerWidth = 1;
-            Quantity.FillWeight = 42.0936546F;
-            Quantity.HeaderText = "Số lượng";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
-            Quantity.Width = 120;
-            // 
-            // Price
-            // 
-            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Price.DataPropertyName = "Price";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = null;
-            Price.DefaultCellStyle = dataGridViewCellStyle2;
-            Price.DividerWidth = 1;
-            Price.FillWeight = 42.0936546F;
-            Price.HeaderText = "Giá";
-            Price.MinimumWidth = 6;
-            Price.Name = "Price";
-            Price.ReadOnly = true;
-            Price.Width = 120;
-            // 
-            // CapacityName
-            // 
-            CapacityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            CapacityName.DataPropertyName = "CapacityName";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            CapacityName.DefaultCellStyle = dataGridViewCellStyle3;
-            CapacityName.DividerWidth = 1;
-            CapacityName.FillWeight = 101.474419F;
-            CapacityName.HeaderText = "Dung lượng";
-            CapacityName.Name = "CapacityName";
-            CapacityName.ReadOnly = true;
-            CapacityName.Width = 120;
-            // 
-            // ColorName
-            // 
-            ColorName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            ColorName.DataPropertyName = "ColorName";
-            ColorName.DividerWidth = 1;
-            ColorName.FillWeight = 101.474419F;
-            ColorName.HeaderText = "Màu";
-            ColorName.Name = "ColorName";
-            ColorName.ReadOnly = true;
-            // 
-            // Product_Name
-            // 
-            Product_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Product_Name.DataPropertyName = "ProductName";
-            Product_Name.DividerWidth = 1;
-            Product_Name.FillWeight = 42.0936546F;
-            Product_Name.HeaderText = "Tên sản phẩm";
-            Product_Name.MinimumWidth = 6;
-            Product_Name.Name = "Product_Name";
-            Product_Name.ReadOnly = true;
-            // 
-            // InternalCode
-            // 
-            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            InternalCode.DataPropertyName = "ProductInternalCode";
-            InternalCode.DividerWidth = 1;
-            InternalCode.FillWeight = 42.0936546F;
-            InternalCode.HeaderText = "Mã sản phẩm";
-            InternalCode.MinimumWidth = 6;
-            InternalCode.Name = "InternalCode";
-            InternalCode.ReadOnly = true;
-            InternalCode.Resizable = DataGridViewTriState.True;
-            InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
-            InternalCode.Width = 120;
-            // 
-            // ProductId
-            // 
-            ProductId.DataPropertyName = "ProductId";
-            ProductId.HeaderText = "ProductId";
-            ProductId.MinimumWidth = 6;
-            ProductId.Name = "ProductId";
-            ProductId.Visible = false;
-            // 
-            // Product_Select
-            // 
-            Product_Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Product_Select.FalseValue = "False";
-            Product_Select.HeaderText = "";
-            Product_Select.Name = "Product_Select";
-            Product_Select.TrueValue = "True";
-            Product_Select.Width = 40;
             // 
             // Button_Received
             // 
@@ -256,36 +130,29 @@
             Button_Received.Visible = false;
             Button_Received.Click += Button_Received_Click;
             // 
-            // ColorInternalCode
-            // 
-            ColorInternalCode.DataPropertyName = "ColorInternalCode";
-            ColorInternalCode.HeaderText = "ColorInternalCode";
-            ColorInternalCode.Name = "ColorInternalCode";
-            ColorInternalCode.Visible = false;
-            // 
             // DataGridView_Product
             // 
             DataGridView_Product.AllowUserToAddRows = false;
             DataGridView_Product.AllowUserToDeleteRows = false;
             DataGridView_Product.AllowUserToResizeColumns = false;
             DataGridView_Product.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            DataGridView_Product.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DataGridView_Product.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            DataGridView_Product.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DataGridView_Product.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Product.ColumnHeadersHeight = 40;
             DataGridView_Product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, ProductId, InternalCode, Product_Name, ColorName, CapacityName, Price, Quantity, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
+            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, ProductId, InternalCode, Product_Name, ColorName, CapacityName, Price, DiscountPrice, SumPrice, Quantity, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -754,6 +621,159 @@
             Button_Save.Visible = false;
             Button_Save.Click += Button_Save_Click;
             // 
+            // Product_Select
+            // 
+            Product_Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Product_Select.FalseValue = "False";
+            Product_Select.HeaderText = "";
+            Product_Select.Name = "Product_Select";
+            Product_Select.TrueValue = "True";
+            Product_Select.Width = 40;
+            // 
+            // ProductId
+            // 
+            ProductId.DataPropertyName = "ProductId";
+            ProductId.HeaderText = "ProductId";
+            ProductId.MinimumWidth = 6;
+            ProductId.Name = "ProductId";
+            ProductId.Visible = false;
+            // 
+            // InternalCode
+            // 
+            InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            InternalCode.DataPropertyName = "ProductInternalCode";
+            InternalCode.DividerWidth = 1;
+            InternalCode.FillWeight = 42.0936546F;
+            InternalCode.HeaderText = "Mã sản phẩm";
+            InternalCode.MinimumWidth = 6;
+            InternalCode.Name = "InternalCode";
+            InternalCode.ReadOnly = true;
+            InternalCode.Resizable = DataGridViewTriState.True;
+            InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
+            InternalCode.Width = 120;
+            // 
+            // Product_Name
+            // 
+            Product_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Product_Name.DataPropertyName = "ProductName";
+            Product_Name.DividerWidth = 1;
+            Product_Name.FillWeight = 42.0936546F;
+            Product_Name.HeaderText = "Tên sản phẩm";
+            Product_Name.MinimumWidth = 6;
+            Product_Name.Name = "Product_Name";
+            Product_Name.ReadOnly = true;
+            // 
+            // ColorName
+            // 
+            ColorName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            ColorName.DataPropertyName = "ColorName";
+            ColorName.DividerWidth = 1;
+            ColorName.FillWeight = 101.474419F;
+            ColorName.HeaderText = "Màu";
+            ColorName.Name = "ColorName";
+            ColorName.ReadOnly = true;
+            // 
+            // CapacityName
+            // 
+            CapacityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CapacityName.DataPropertyName = "CapacityName";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            CapacityName.DefaultCellStyle = dataGridViewCellStyle3;
+            CapacityName.DividerWidth = 1;
+            CapacityName.FillWeight = 101.474419F;
+            CapacityName.HeaderText = "Dung lượng";
+            CapacityName.Name = "CapacityName";
+            CapacityName.ReadOnly = true;
+            CapacityName.Width = 120;
+            // 
+            // Price
+            // 
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Price.DataPropertyName = "Price";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.NullValue = null;
+            Price.DefaultCellStyle = dataGridViewCellStyle4;
+            Price.DividerWidth = 1;
+            Price.FillWeight = 42.0936546F;
+            Price.HeaderText = "Giá";
+            Price.MinimumWidth = 6;
+            Price.Name = "Price";
+            Price.ReadOnly = true;
+            Price.Width = 120;
+            // 
+            // DiscountPrice
+            // 
+            DiscountPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            DiscountPrice.DataPropertyName = "DiscountPrice";
+            DiscountPrice.DividerWidth = 1;
+            DiscountPrice.HeaderText = "Giảm giá";
+            DiscountPrice.Name = "DiscountPrice";
+            DiscountPrice.Width = 120;
+            // 
+            // SumPrice
+            // 
+            SumPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            SumPrice.DataPropertyName = "SumPrice";
+            SumPrice.DividerWidth = 1;
+            SumPrice.HeaderText = "Tổng tiền";
+            SumPrice.Name = "SumPrice";
+            SumPrice.Width = 120;
+            // 
+            // Quantity
+            // 
+            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Quantity.DataPropertyName = "Quantity";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Quantity.DefaultCellStyle = dataGridViewCellStyle5;
+            Quantity.DividerWidth = 1;
+            Quantity.FillWeight = 42.0936546F;
+            Quantity.HeaderText = "Số lượng";
+            Quantity.MinimumWidth = 6;
+            Quantity.Name = "Quantity";
+            Quantity.Width = 120;
+            // 
+            // DetailId
+            // 
+            DetailId.DataPropertyName = "Id";
+            DetailId.HeaderText = "DetailId";
+            DetailId.Name = "DetailId";
+            DetailId.Visible = false;
+            // 
+            // ProductImage
+            // 
+            ProductImage.DataPropertyName = "ProductImage";
+            ProductImage.HeaderText = "ProductImage";
+            ProductImage.Name = "ProductImage";
+            ProductImage.Visible = false;
+            // 
+            // ImportBillId
+            // 
+            ImportBillId.DataPropertyName = "ImportBillId";
+            ImportBillId.HeaderText = "ImportBillId";
+            ImportBillId.Name = "ImportBillId";
+            ImportBillId.Visible = false;
+            // 
+            // ColorId
+            // 
+            ColorId.DataPropertyName = "ColorId";
+            ColorId.HeaderText = "ColorId";
+            ColorId.Name = "ColorId";
+            ColorId.Visible = false;
+            // 
+            // ColorInternalCode
+            // 
+            ColorInternalCode.DataPropertyName = "ColorInternalCode";
+            ColorInternalCode.HeaderText = "ColorInternalCode";
+            ColorInternalCode.Name = "ColorInternalCode";
+            ColorInternalCode.Visible = false;
+            // 
+            // CapacityId
+            // 
+            CapacityId.DataPropertyName = "CapacityId";
+            CapacityId.HeaderText = "CapacityId";
+            CapacityId.Name = "CapacityId";
+            CapacityId.Visible = false;
+            // 
             // OrderDetailControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -773,22 +793,7 @@
         }
 
         #endregion
-
-        private DataGridViewTextBoxColumn CapacityId;
-        private DataGridViewTextBoxColumn ColorId;
-        private DataGridViewTextBoxColumn ImportBillId;
-        private DataGridViewTextBoxColumn ProductImage;
-        private DataGridViewTextBoxColumn DetailId;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn Price;
-        private DataGridViewTextBoxColumn CapacityName;
-        private DataGridViewTextBoxColumn ColorName;
-        private DataGridViewTextBoxColumn Product_Name;
-        private DataGridViewTextBoxColumn InternalCode;
-        private DataGridViewTextBoxColumn ProductId;
-        private DataGridViewCheckBoxColumn Product_Select;
         private Guna.UI2.WinForms.Guna2Button Button_Received;
-        private DataGridViewTextBoxColumn ColorInternalCode;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Product;
         private Label label1;
         private TableLayoutPanel TableLayoutPanel_Info;
@@ -812,5 +817,21 @@
         private Guna.UI2.WinForms.Guna2Button Button_Transport;
         private Guna.UI2.WinForms.Guna2Button Button_Save;
         private FlowLayoutPanel flowLayoutPanel1;
+        private DataGridViewCheckBoxColumn Product_Select;
+        private DataGridViewTextBoxColumn ProductId;
+        private DataGridViewTextBoxColumn InternalCode;
+        private DataGridViewTextBoxColumn Product_Name;
+        private DataGridViewTextBoxColumn ColorName;
+        private DataGridViewTextBoxColumn CapacityName;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn DiscountPrice;
+        private DataGridViewTextBoxColumn SumPrice;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn DetailId;
+        private DataGridViewTextBoxColumn ProductImage;
+        private DataGridViewTextBoxColumn ImportBillId;
+        private DataGridViewTextBoxColumn ColorId;
+        private DataGridViewTextBoxColumn ColorInternalCode;
+        private DataGridViewTextBoxColumn CapacityId;
     }
 }

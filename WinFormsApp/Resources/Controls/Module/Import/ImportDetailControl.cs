@@ -100,7 +100,6 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _import.Details = products;
 
-            CalculateBill();
             LoadProduct();
         }
 
@@ -110,6 +109,11 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
             foreach (var item in _import.Details!)
             {
+                if(item.Quantity == null || item.Price == null)
+                {
+                    continue;
+                }
+
                 sum += ((long)item.Quantity! * (long)item.Price!);
             }
 
@@ -129,8 +133,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                     item.ProductName,
                     item.ColorName,
                     item.CapacityName,
-                    Util.AddCommas(item.Price, ""),
-                    item.Quantity.ToString(),
+                    item.Price != null ? Util.AddCommas(item.Price, "") : "0",
+                    item.Quantity != null ? item.Quantity.ToString() : "0",
                 };
 
                 DataGridView_Product.Rows.Add(rowValues);
@@ -140,7 +144,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            _import.EmployeeId = 1;
+            _import.EmployeeId = 6;
             _import.InternalCode = Text_InternalCode.Text;
             _import.DistributorId = int.Parse(ComboBox_Distributor.SelectedValue!.ToString()!);
             _import.Price = long.Parse(Util.DeleteCommas(Text_Price.Text));
@@ -193,8 +197,23 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                 return;
             }
 
-            _import.Details[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
-            CalculateBill();
+            try
+            {
+                _import.Details[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
+                _import.Details[index].Price = long.Parse(Util.DeleteCommas(cells["Price"].Value.ToString()!));
+
+                if(long.Parse(cells["Price"].Value.ToString()!) > 10)
+                {
+                    cells["Price"].Value = long.Parse(cells["Price"].Value.ToString()!);
+                }
+
+                cells["Quantity"].Value = int.Parse(cells["Quantity"].Value.ToString()!);
+
+                CalculateBill();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void DataGridView_Product_CellClick(object sender, DataGridViewCellEventArgs e)
