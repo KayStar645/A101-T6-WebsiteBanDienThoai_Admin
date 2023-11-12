@@ -145,7 +145,7 @@ namespace Database.Repositories
 
                     if (order != null)
                     {
-                        string queryDetail = $"SELECT DO.Id, DO.Quantity, DO.Price, DO.ProductId, " +
+                        string queryDetail = $"SELECT DO.Id, DO.Quantity, DO.Price, DO.ProductId, DO.DiscountPrice, DO.SumPrice, " +
                                                 $"P.InternalCode AS ProductInternalCode, P.Name AS ProductName, P.Images AS ProductImage, P.ColorId, P.CapacityId, " +
                                                 $"Cl.InternalCode AS ColorInternalCode, Cl.Name AS ColorName, " +
                                                 $"Cc.Name AS CapacityName " +
