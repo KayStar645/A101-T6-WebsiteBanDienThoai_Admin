@@ -156,12 +156,12 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                 //await _orderService.ChangeTypeOrder(_order);
             }
 
-            Util.LoadControl(this, new ImportControl());
+            Util.LoadControl(this, new OrderControl());
         }
 
         private void Btn_Back_Click(object sender, EventArgs e)
         {
-            Util.LoadControl(this, new ImportControl());
+            Util.LoadControl(this, new OrderControl());
         }
 
         private void Text_Price_KeyUp(object sender, KeyEventArgs e)
