@@ -60,7 +60,7 @@ namespace Services.Services
 
             var result = await _detailSpecificationsRepo.UpdateAsync(detailSpecifications);
 
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Delete(int pId)

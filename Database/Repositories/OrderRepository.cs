@@ -166,6 +166,15 @@ namespace Database.Repositories
                 return null;
             }
         }
+
+        public override Task<int> UpdateAsync(Order pModel)
+        {
+            _fields.Remove("Type");
+            _fields.Remove("OrderDate");
+
+            return base.UpdateAsync(pModel);
+        }
+
         #endregion
     }
 }

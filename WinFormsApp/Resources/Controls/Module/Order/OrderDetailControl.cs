@@ -144,7 +144,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            _order.EmployeeId = 6;
+            _order.EmployeeId = 1;
             _order.InternalCode = Text_InternalCode.Text;
             _order.Price = long.Parse(Util.DeleteCommas(Text_Price.Text));
             _order.OrderDate = DateTime.Now;
@@ -153,7 +153,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             if (_order.Id > 0)
             {
                 // Đây là update nè
-                //await _orderService.ChangeTypeOrder(_order);
+                await _orderService.Update(_order);
             }
 
             Util.LoadControl(this, new OrderControl());

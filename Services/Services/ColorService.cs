@@ -68,7 +68,7 @@ namespace Services.Services
 
             var result = await _colorRepo.UpdateAsync(color);
 
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Delete(int pId)

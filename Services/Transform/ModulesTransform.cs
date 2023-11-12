@@ -17,6 +17,10 @@
             public const string Type = "loại ";
 
             public const string Status = "trạng thái ";
+
+            public const string quantity = "số lượng ";
+
+            public const string price = "đơn giá ";
         }
 
         public class Distributor
@@ -61,8 +65,6 @@
         {
             public const string module = "sản phẩm ";
 
-            public const string price = "đơn giá ";
-
             public const string color = "màu sắc ";
 
             public const string capacity = "dung lượng ";
@@ -83,6 +85,20 @@
             public const string percent = "giảm % ";
 
             public const string discountMax = "tiền giảm tối đa ";
+        }
+
+        public class Order
+        {
+            public const string module = "đơn hàng ";
+
+            public const string type = "trạng thái ";
+
+            public const string details = "chi tiết đơn hàng ";
+        }
+
+        public class DetailOrder
+        {
+            public const string module = "chi tiết đơn hàng ";
         }
     }
 }

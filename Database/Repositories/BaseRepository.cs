@@ -158,7 +158,7 @@ namespace Database.Repositories
         }
 
 
-        public virtual async Task<bool> UpdateAsync(T pModel)
+        public virtual async Task<int> UpdateAsync(T pModel)
         {
             try
             {
@@ -201,13 +201,13 @@ namespace Database.Repositories
                     using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                     {
                         var rowsAffected = await connection.ExecuteAsync(query, new { Id = id, pModel }).ConfigureAwait(false);
-                        return rowsAffected > 0;
+                        return rowsAffected;
                     }
                 }
 
-                return false;
+                return 0;
             }
-            catch { return false; }
+            catch { return 0; }
         }
 
 

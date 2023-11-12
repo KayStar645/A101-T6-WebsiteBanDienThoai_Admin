@@ -48,7 +48,7 @@ namespace Database.Repositories
 
         #region FUNCTION
 
-        public async override Task<bool> UpdateAsync(Promotion pModel)
+        public async override Task<int> UpdateAsync(Promotion pModel)
         {
             _fields.Remove("Status");
             return await base.UpdateAsync(pModel);

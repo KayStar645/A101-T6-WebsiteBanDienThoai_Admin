@@ -12,5 +12,7 @@ namespace Services.Interfaces
         Task<bool> ChangeTypeOrder(int pOrderId, string pType);
 
         Task<bool> Create(OrderDto pOrder);
+
+        Task<bool> Update(OrderDto pOrder);
     }
 }
