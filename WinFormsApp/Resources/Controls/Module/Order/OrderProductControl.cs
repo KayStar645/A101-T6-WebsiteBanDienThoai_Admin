@@ -147,7 +147,9 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                     CapacityName = cells["CapacityName"].Value.ToString(),
                     ColorName = cells["ColorName"].Value.ToString(),
                     Quantity = cells["Quantity"].Value == null ? 0 : int.Parse(cells["Quantity"].Value.ToString()!),
-                    Price = long.Parse(cells["Price"].Value.ToString()!)
+                    Price = long.Parse(cells["Price"].Value.ToString()!),
+                    DiscountPrice = 0,
+                    SumPrice = 0,
                 });
             }
         }

@@ -32,8 +32,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -60,6 +60,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             Button_Received = new Guna.UI2.WinForms.Guna2Button();
             DataGridView_Product = new Guna.UI2.WinForms.Guna2DataGridView();
             label1 = new Label();
@@ -92,8 +94,8 @@
             CapacityName = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             DiscountPrice = new DataGridViewTextBoxColumn();
-            SumPrice = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
+            SumPrice = new DataGridViewTextBoxColumn();
             DetailId = new DataGridViewTextBoxColumn();
             ProductImage = new DataGridViewTextBoxColumn();
             ImportBillId = new DataGridViewTextBoxColumn();
@@ -152,29 +154,29 @@
             DataGridView_Product.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Product.ColumnHeadersHeight = 40;
             DataGridView_Product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, ProductId, InternalCode, Product_Name, ColorName, CapacityName, Price, DiscountPrice, SumPrice, Quantity, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            DataGridView_Product.DefaultCellStyle = dataGridViewCellStyle6;
+            DataGridView_Product.Columns.AddRange(new DataGridViewColumn[] { Product_Select, ProductId, InternalCode, Product_Name, ColorName, CapacityName, Price, DiscountPrice, Quantity, SumPrice, DetailId, ProductImage, ImportBillId, ColorId, ColorInternalCode, CapacityId });
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DataGridView_Product.DefaultCellStyle = dataGridViewCellStyle8;
             DataGridView_Product.Dock = DockStyle.Fill;
             DataGridView_Product.GridColor = Color.FromArgb(231, 229, 255);
             DataGridView_Product.Location = new Point(0, 233);
             DataGridView_Product.Margin = new Padding(0);
             DataGridView_Product.Name = "DataGridView_Product";
             DataGridView_Product.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            DataGridView_Product.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            DataGridView_Product.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             DataGridView_Product.RowHeadersVisible = false;
             DataGridView_Product.RowHeadersWidth = 51;
             DataGridView_Product.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -202,6 +204,8 @@
             DataGridView_Product.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            DataGridView_Product.CellClick += DataGridView_Product_CellClick;
+            DataGridView_Product.CellEndEdit += DataGridView_Product_CellEndEdit;
             // 
             // label1
             // 
@@ -705,32 +709,37 @@
             // 
             DiscountPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             DiscountPrice.DataPropertyName = "DiscountPrice";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            DiscountPrice.DefaultCellStyle = dataGridViewCellStyle5;
             DiscountPrice.DividerWidth = 1;
             DiscountPrice.HeaderText = "Giảm giá";
             DiscountPrice.Name = "DiscountPrice";
+            DiscountPrice.ReadOnly = true;
             DiscountPrice.Width = 120;
-            // 
-            // SumPrice
-            // 
-            SumPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            SumPrice.DataPropertyName = "SumPrice";
-            SumPrice.DividerWidth = 1;
-            SumPrice.HeaderText = "Tổng tiền";
-            SumPrice.Name = "SumPrice";
-            SumPrice.Width = 120;
             // 
             // Quantity
             // 
             Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Quantity.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Quantity.DefaultCellStyle = dataGridViewCellStyle6;
             Quantity.DividerWidth = 1;
             Quantity.FillWeight = 42.0936546F;
             Quantity.HeaderText = "Số lượng";
             Quantity.MinimumWidth = 6;
             Quantity.Name = "Quantity";
             Quantity.Width = 120;
+            // 
+            // SumPrice
+            // 
+            SumPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            SumPrice.DataPropertyName = "SumPrice";
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleRight;
+            SumPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            SumPrice.HeaderText = "Tổng tiền";
+            SumPrice.Name = "SumPrice";
+            SumPrice.ReadOnly = true;
+            SumPrice.Width = 120;
             // 
             // DetailId
             // 
@@ -825,8 +834,8 @@
         private DataGridViewTextBoxColumn CapacityName;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn DiscountPrice;
-        private DataGridViewTextBoxColumn SumPrice;
         private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn SumPrice;
         private DataGridViewTextBoxColumn DetailId;
         private DataGridViewTextBoxColumn ProductImage;
         private DataGridViewTextBoxColumn ImportBillId;
