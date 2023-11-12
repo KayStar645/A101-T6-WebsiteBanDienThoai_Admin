@@ -523,14 +523,14 @@
             Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Price.DataPropertyName = "Price";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.Format = "0,0";
+            dataGridViewCellStyle4.NullValue = "0";
             Price.DefaultCellStyle = dataGridViewCellStyle4;
             Price.DividerWidth = 1;
             Price.FillWeight = 42.0936546F;
             Price.HeaderText = "Giá";
             Price.MinimumWidth = 6;
             Price.Name = "Price";
-            Price.ReadOnly = true;
             Price.Width = 120;
             // 
             // Quantity
@@ -538,6 +538,7 @@
             Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Quantity.DataPropertyName = "Quantity";
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = "0";
             Quantity.DefaultCellStyle = dataGridViewCellStyle5;
             Quantity.DividerWidth = 1;
             Quantity.FillWeight = 42.0936546F;
