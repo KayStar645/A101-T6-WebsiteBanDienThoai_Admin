@@ -73,7 +73,7 @@ namespace Services.Services
                     importBill.Id = resultImport;
                     importBill.Price = sumPrice;
                     var update = await _importBillRepo.UpdateAsync(importBill);
-                    if(update == false)
+                    if(update == 0)
                     {
                         flag = false;
                     }    

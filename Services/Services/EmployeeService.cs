@@ -92,7 +92,7 @@ namespace Services.Services
 
             var result = await _employeeRepo.UpdateAsync(employee);
 
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Delete(int pId)

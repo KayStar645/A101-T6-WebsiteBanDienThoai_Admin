@@ -69,7 +69,7 @@ namespace Services.Services
 
             var result = await _capacityRepo.UpdateAsync(capacity);
 
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Delete(int pId)

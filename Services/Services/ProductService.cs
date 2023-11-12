@@ -76,7 +76,7 @@ namespace Services.Services
 
             var result = await _productRepo.UpdateAsync(product);
 
-            return result;
+            return result > 0;
         }
 
         public async Task<bool> Delete(int pId)

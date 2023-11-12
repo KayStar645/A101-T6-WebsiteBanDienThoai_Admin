@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace Database.Interfaces
+﻿namespace Database.Interfaces
 {
     public interface IBaseRepository<T>
     {
@@ -11,7 +9,7 @@ namespace Database.Interfaces
 
         Task<int> AddAsync(T pModel);
 
-        Task<bool> UpdateAsync(T pModel);
+        Task<int> UpdateAsync(T pModel);
 
         Task<bool> DeleteAsync(int pId);
 

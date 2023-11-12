@@ -44,9 +44,9 @@ namespace Services.Validators
 
             RuleFor(x => x.Price)
                 .NotEmpty()
-                .WithMessage(ValidatorTransform.Required(ModulesTransform.Product.price))
+                .WithMessage(ValidatorTransform.Required(ModulesTransform.Common.price))
                 .Must(value => long.TryParse(value.ToString(), out _))
-                .WithMessage(ValidatorTransform.MustLong(ModulesTransform.Product.price));
+                .WithMessage(ValidatorTransform.MustLong(ModulesTransform.Common.price));
 
             RuleFor(x => x.ColorId)
                .MustAsync(async (colorId, token) =>
