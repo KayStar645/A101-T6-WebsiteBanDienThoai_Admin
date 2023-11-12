@@ -132,6 +132,8 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                     item.ColorName,
                     item.CapacityName,
                     Util.AddCommas(item.Price, ""),
+                    Util.AddCommas(item.DiscountPrice, ""),
+                    Util.AddCommas(item.SumPrice, ""),
                     item.Quantity.ToString(),
                 };
 
