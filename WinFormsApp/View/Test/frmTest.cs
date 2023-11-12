@@ -77,7 +77,7 @@ namespace WinFormsApp.View.Test
             var r3 = await _detailSpecificationsService.GetListBySpecificationsIdAsync(2);
 
             int a = 1;
-        }    
+        }
 
         private async Task Test2()
         {
@@ -85,7 +85,7 @@ namespace WinFormsApp.View.Test
 
             int a = 1;
 
-        }    
+        }
 
         private async Task Test()
         {

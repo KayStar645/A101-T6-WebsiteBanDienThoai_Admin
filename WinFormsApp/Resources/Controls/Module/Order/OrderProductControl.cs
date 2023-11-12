@@ -56,7 +56,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                     continue;
                 }
 
-                item.Cells["Product_Select"].Value = "True";
+                item.Cells["ProductSelect"].Value = "True";
             }
         }
 
@@ -115,7 +115,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
         private void DataGridView_Product_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection cells = DataGridView_Product.CurrentRow.Cells;
-            bool selected = bool.Parse(cells["Product_Select"].FormattedValue.ToString()!);
+            bool selected = bool.Parse(cells["ProductSelect"].FormattedValue.ToString()!);
             int id = int.Parse(cells["Id"].Value.ToString()!);
 
             if (e.ColumnIndex != 0)
@@ -127,7 +127,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             {
                 int index = _products.FindIndex(t => t.ProductId == id);
 
-                cells["Product_Select"].Value = "False";
+                cells["ProductSelect"].Value = "False";
                 cells["Quantity"].Value = "0";
 
                 if (index >= 0)
@@ -137,13 +137,13 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             }
             else
             {
-                cells["Product_Select"].Value = "True";
+                cells["ProductSelect"].Value = "True";
 
                 _products.Add(new DetailOrderDto()
                 {
                     ProductId = id,
                     ProductInternalCode = cells["InternalCode"].Value.ToString(),
-                    ProductName = cells["Product_Name"].Value.ToString(),
+                    ProductName = cells["ProductName"].Value.ToString(),
                     CapacityName = cells["CapacityName"].Value.ToString(),
                     ColorName = cells["ColorName"].Value.ToString(),
                     Quantity = cells["Quantity"].Value == null ? 0 : int.Parse(cells["Quantity"].Value.ToString()!),
@@ -155,7 +155,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
         private void DataGridView_Product_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection cells = DataGridView_Product.CurrentRow.Cells;
-            bool selected = bool.Parse(cells["Product_Select"].FormattedValue.ToString()!);
+            bool selected = bool.Parse(cells["ProductSelect"].FormattedValue.ToString()!);
             int id = int.Parse(cells["Id"].Value.ToString()!);
 
             if (e.ColumnIndex == 0)
@@ -176,6 +176,11 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             }
 
             _products[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
+        }
+
+        private void Btn_AddNewProduct_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
