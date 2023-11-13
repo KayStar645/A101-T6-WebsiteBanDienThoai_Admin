@@ -25,6 +25,10 @@ namespace Database.Repositories
 
         protected abstract List<string> _seachers { get; }
 
+
+        // Truyền vào tương ứng key1:value1,key2:value2
+        protected virtual List<string> _filter { get; }
+
         // Chưa làm được
         // Số, thời gian
         // Cận trên, cận dưới
@@ -49,7 +53,7 @@ namespace Database.Repositories
         #region FUNCTION
 
         public virtual async Task<(List<T> list, int totalCount, int pageNumber)> GetAllAsync(List<string> pFields = null, string? pKeyword = "",
-                                            string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10)
+                                            string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10, string? pFilters = null)
         {
             // Lấy những cột nào
             List<string> fields = pFields == null ? _fields.ToList() :
@@ -57,6 +61,18 @@ namespace Database.Repositories
 
             List<string> filter = new List<string>();
             filter.Add($"IsDeleted = 0");
+            if(pFilters != null)
+            {
+                string[] itemFilter = pFilters.Split(',');
+                foreach(string item in itemFilter)
+                {
+                    string[] value = item.Split(":");
+                    if (_filter.Contains(value[0]))
+                    {
+                        filter.Add($"\"{value[0]}\" = N'{value[1]}'");
+                    }    
+                }
+            }    
 
             List<string> searchs = new List<string>();
             if (pKeyword != "")

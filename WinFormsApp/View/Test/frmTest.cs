@@ -17,6 +17,7 @@ namespace WinFormsApp.View.Test
         private readonly IDetailSpecificationsService _detailSpecificationsService;
         private readonly IImportBillService _importBillService;
         private readonly IOrderService _orderService;
+        private readonly IPromotionService _promotionService;
 
 
 
@@ -34,6 +35,7 @@ namespace WinFormsApp.View.Test
             _detailSpecificationsService = _container.GetInstance<IDetailSpecificationsService>();
             _importBillService = _container.GetInstance<IImportBillService>();
             _orderService = _container.GetInstance<IOrderService>();
+            _promotionService = _container.GetInstance<IPromotionService>();
 
             //Test();
 
@@ -43,7 +45,16 @@ namespace WinFormsApp.View.Test
 
             //Test4();
 
-            Test5();
+            //Test5();
+
+            Test6();
+        }
+
+        private async Task Test6()
+        {
+            await _promotionService.ApplyForProduct(1, new List<int> { 1, 2 });
+
+            int a = 1;
         }
 
         private async Task Test5()

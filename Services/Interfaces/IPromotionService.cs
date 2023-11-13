@@ -15,5 +15,7 @@ namespace Services.Interfaces
         Task<bool> Delete(int pId);
 
         Task<bool> Approve(int pId, string type);
+
+        Task<bool> ApplyForProduct(int pId, List<int> pProductsId);
     }
 }

@@ -23,5 +23,7 @@
         public string? Type { get; set; }
 
         public string? Status { get; set; }
+
+        public List<ProductDto>? Products { get; set; }
     }
 }

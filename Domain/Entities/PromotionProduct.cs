@@ -4,9 +4,9 @@ namespace Domain.Entities
 {
     public class PromotionProduct : BaseEntity
     {
-        public int? ProductId { get; set; }
+        public int ProductId { get; set; }
 
-        public int? PromotionId { get; set; }
+        public int PromotionId { get; set; }
 
 
         // Ràng buộc
