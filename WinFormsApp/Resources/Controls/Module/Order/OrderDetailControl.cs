@@ -50,7 +50,6 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                 var result = await _orderService.GetDetail(_order.Id);
 
                 _order = result;
-                DataGridView_Product.ReadOnly = true;
 
                 Text_Customer.Text = result.CustomerName;
                 Text_InternalCode.Text = result.InternalCode;
@@ -71,10 +70,12 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                 else if (result.Type == Domain.Entities.Order.TYPE_APPROVE)
                 {
                     Button_Transport.Visible = true;
+                    DataGridView_Product.ReadOnly = true;
                 }
                 else if (result.Type == Domain.Entities.Order.TYPE_TRANSPORT)
                 {
                     Button_Received.Visible = true;
+                    DataGridView_Product.ReadOnly = true;
                 }
 
             }
@@ -102,17 +103,29 @@ namespace WinFormsApp.Resources.Controls.Module.Order
         {
             _order.Details = products;
 
-            CalculateBill();
             LoadProduct();
+            CalculateBill();
         }
 
         private void CalculateBill()
         {
             long sum = 0;
 
-            foreach (var item in _order.Details!)
+            if (_order.Details != null && _order.Details.Count == 0) {
+                Text_Price.Text = Util.AddCommas(sum);
+
+                return;
+            }
+
+            for (int i = 0; i < _order.Details!.Count; i++)
             {
-                sum += ((long)item.Quantity! * (long)item.Price!);
+                var item = _order.Details[i];
+                long total = ((long)item.Quantity! * (long)item.Price!);
+
+                sum += total;
+                item.SumPrice = total;
+
+                DataGridView_Product.Rows[i].Cells["SumPrice"].Value = Util.AddCommas(total, "");
             }
 
             Text_Price.Text = Util.AddCommas(sum);
@@ -133,8 +146,8 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                     item.CapacityName,
                     Util.AddCommas(item.Price, ""),
                     Util.AddCommas(item.DiscountPrice, ""),
-                    Util.AddCommas(item.SumPrice, ""),
                     item.Quantity.ToString(),
+                    Util.AddCommas(item.SumPrice, ""),
                 };
 
                 DataGridView_Product.Rows.Add(rowValues);
@@ -152,7 +165,6 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
             if (_order.Id > 0)
             {
-                // Đây là update nè
                 await _orderService.Update(_order);
             }
 
@@ -162,16 +174,6 @@ namespace WinFormsApp.Resources.Controls.Module.Order
         private void Btn_Back_Click(object sender, EventArgs e)
         {
             Util.LoadControl(this, new OrderControl());
-        }
-
-        private void Text_Price_KeyUp(object sender, KeyEventArgs e)
-        {
-            Util.AddCommasOnKeyUp(sender);
-        }
-
-        private void Text_Price_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Util.IsNumber(e);
         }
 
         private void DataGridView_Product_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -198,6 +200,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             }
 
             _order.Details[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
+
             CalculateBill();
         }
 
@@ -245,6 +248,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             }
 
             CalculateBill();
+
         }
 
         private async void Button_Approve_Click(object sender, EventArgs e)

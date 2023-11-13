@@ -1,5 +1,8 @@
-﻿using Database.Interfaces;
+﻿using Dapper;
+using Database.Common;
+using Database.Interfaces;
 using Domain.Entities;
+using System.Data.SqlClient;
 
 namespace Database.Repositories
 {
@@ -21,6 +24,7 @@ namespace Database.Repositories
             "SumPrice",
             "ProductId",
             "CustomerId",
+            "OrderId",
         };
 
         protected override List<string> _seachers { get; } = new List<string>()
@@ -29,6 +33,7 @@ namespace Database.Repositories
             "Price",
             "ProductId",
             "CustomerId",
+            "OrderId",
         };
 
         #endregion
@@ -42,7 +47,23 @@ namespace Database.Repositories
 
 
         #region FUNCTION
+        public override async Task<bool> DeleteAsync(int pId)
+        {
+            try
+            {
+                string query = $"DELETE FROM \"{_model}\" " +
+                           $"WHERE Id = @Id";
 
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    var parameters = new { Id = pId };
+                    var rowsAffected = await connection.ExecuteAsync(query, parameters).ConfigureAwait(false);
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch { return false; }
+        }
 
         #endregion
     }

@@ -79,13 +79,13 @@ namespace Services.Services
                             // Áp dụng khuyến mãi
                             var resultPromotionProduct = await PriceAfterApprovePromotionForProduct((int)detailOrder.ProductId);
 
-                            sumPrice[0] += (long)resultPromotionProduct.oldPrice;
+                            sumPrice[0] += (long)(resultPromotionProduct.oldPrice * detailOrder.Quantity);
                             sumPrice[1] += (long)resultPromotionProduct.discount;
-                            sumPrice[2] += sumPrice[0] - sumPrice[1];
+                            sumPrice[2] += (long)((resultPromotionProduct.oldPrice - resultPromotionProduct.discount) * detailOrder.Quantity);
 
-                            detailOrder.Price = sumPrice[0];
-                            detailOrder.DiscountPrice = sumPrice[1];
-                            detailOrder.SumPrice = sumPrice[0] - sumPrice[1];
+                            detailOrder.Price = (long)resultPromotionProduct.oldPrice;
+                            detailOrder.DiscountPrice = (long)resultPromotionProduct.discount;
+                            detailOrder.SumPrice = (detailOrder.Price - detailOrder.DiscountPrice) * detailOrder.Quantity;
 
                             detailOrder.OrderId = resultImport;
                             var detail = _mapper.Map<DetailOrder>(detailOrder);
@@ -146,24 +146,14 @@ namespace Services.Services
                 try
                 {
                     bool flag = true;
-                    // Cập nhật đơn hàng
-                    var order = _mapper.Map<Order>(pOrder);
-                    var resultImport = await _orderRepo.UpdateAsync(order);
-
                     long[] sumPrice = new long[] { 0, 0, 0 }; // Hiện tại, giảm, sau giảm
 
                     do
                     {
-                        if (resultImport == 0)
-                        {
-                            flag = false;
-                            break;
-                        }
-
-                        // Đơn hàng cũ
-                        var oldOrder = await _orderRepo.GetDetailPropertiesAsync(resultImport);
+                        var oldOrder = await _orderRepo.GetDetailPropertiesAsync(pOrder.Id);
 
                         var orderDetailIdComparer = new OrderDetailIdComparer();
+
                         var deleteDetailOrder = oldOrder.Details.Except(pOrder.Details, orderDetailIdComparer).ToList();
                         var updateDetailOrder = pOrder.Details.Intersect(oldOrder.Details, orderDetailIdComparer).ToList();
                         var addDetailOrder = pOrder.Details.Except(oldOrder.Details, orderDetailIdComparer).ToList();
@@ -172,7 +162,7 @@ namespace Services.Services
                         foreach (var detailOrder in deleteDetailOrder)
                         {
                             var resultDetail = await _detailOrderRepo.DeleteAsync(detailOrder.Id);
-                            if (resultDetail)
+                            if (resultDetail == false)
                             {
                                 flag = false;
                                 break;
@@ -186,8 +176,20 @@ namespace Services.Services
                         // Sửa chi tiết
                         foreach (var detailOrder in updateDetailOrder)
                         {
+                            // Áp dụng khuyến mãi
+                            var resultPromotionProduct = await PriceAfterApprovePromotionForProduct((int)detailOrder.ProductId);
+
+                            sumPrice[0] += (long)(resultPromotionProduct.oldPrice * detailOrder.Quantity);
+                            sumPrice[1] += (long)resultPromotionProduct.discount;
+                            sumPrice[2] += (long)((resultPromotionProduct.oldPrice - resultPromotionProduct.discount) * detailOrder.Quantity);
+
+                            detailOrder.Price = (long)resultPromotionProduct.oldPrice;
+                            detailOrder.DiscountPrice = (long)resultPromotionProduct.discount;
+                            detailOrder.SumPrice = (detailOrder.Price - detailOrder.DiscountPrice) * detailOrder.Quantity;
+
                             var detail = _mapper.Map<DetailOrder>(detailOrder);
                             var resultDetail = await _detailOrderRepo.UpdateAsync(detail);
+
                             if (resultDetail == 0)
                             {
                                 flag = false;
@@ -205,20 +207,20 @@ namespace Services.Services
                             // Áp dụng khuyến mãi
                             var resultPromotionProduct = await PriceAfterApprovePromotionForProduct((int)detailOrder.ProductId);
 
-                            sumPrice[0] += (long)resultPromotionProduct.oldPrice;
+                            sumPrice[0] += (long)(resultPromotionProduct.oldPrice * detailOrder.Quantity);
                             sumPrice[1] += (long)resultPromotionProduct.discount;
-                            sumPrice[2] += sumPrice[0] - sumPrice[1];
+                            sumPrice[2] += (long)((resultPromotionProduct.oldPrice - resultPromotionProduct.discount) * detailOrder.Quantity);
 
-                            detailOrder.Price = sumPrice[0];
-                            detailOrder.DiscountPrice = sumPrice[1];
-                            detailOrder.SumPrice = sumPrice[0] - sumPrice[1];
+                            detailOrder.Price = (long)resultPromotionProduct.oldPrice;
+                            detailOrder.DiscountPrice = (long)resultPromotionProduct.discount;
+                            detailOrder.SumPrice = (detailOrder.Price - detailOrder.DiscountPrice) * detailOrder.Quantity;
 
-                            detailOrder.OrderId = resultImport;
+                            detailOrder.OrderId = pOrder.Id;
 
                             var detail = _mapper.Map<DetailOrder>(detailOrder);
                             var resultDetail = await _detailOrderRepo.AddAsync(detail);
 
-                            if (resultDetail < 0)
+                            if (resultDetail == 0)
                             {
                                 flag = false;
                                 break;
@@ -226,6 +228,8 @@ namespace Services.Services
                         }
 
                     } while (false);
+
+                    var order = _mapper.Map<Order>(pOrder);
 
                     order.Price = sumPrice[0];
                     order.DiscountPrice = sumPrice[1];

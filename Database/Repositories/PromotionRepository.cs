@@ -78,7 +78,7 @@ namespace Database.Repositories
 
             string query = $"select P.Id, \"{string.Join("\", \"", _fields)}\" " +
                            $"from Promotion as P, PromotionProduct as PP " +
-                           $"where P.IsDeleted = 0 and p.Id = PP.PromotionId and Status = \"{Promotion.STATUS_APPROVED}\" " +
+                           $"where P.IsDeleted = 0 and p.Id = PP.PromotionId and Status = '{Promotion.STATUS_APPROVED}' " +
                             $"and getdate() between start and \"End\";";
 
             using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
