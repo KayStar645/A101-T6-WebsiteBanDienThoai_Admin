@@ -2,6 +2,7 @@
 using Database.Common;
 using Database.Interfaces;
 using Domain.Entities;
+using Domain.ModelViews;
 using System.Data.SqlClient;
 
 namespace Database.Repositories
@@ -28,6 +29,12 @@ namespace Database.Repositories
             "PromotionId",
         };
 
+        protected override List<string> _filter { get; } = new List<string>()
+        {
+            "ProductId",
+            "PromotionId",
+        };
+
         #endregion
 
         #region CONSTRUCTER
@@ -49,6 +56,24 @@ namespace Database.Repositories
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {
                     var parameters = new { Id = pId };
+                    var rowsAffected = await connection.ExecuteAsync(query, parameters).ConfigureAwait(false);
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch { return false; }
+        }
+
+        public async Task<bool> DeleteAsync(int pPromotionId, int pProductId)
+        {
+            try
+            {
+                string query = $"DELETE {_model} " +
+                           $"WHERE promotionId = @PromotionId and productId = @ProductId";
+
+                using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+                {
+                    var parameters = new { PromotionId = pPromotionId, ProductId = pProductId };
                     var rowsAffected = await connection.ExecuteAsync(query, parameters).ConfigureAwait(false);
 
                     return rowsAffected > 0;

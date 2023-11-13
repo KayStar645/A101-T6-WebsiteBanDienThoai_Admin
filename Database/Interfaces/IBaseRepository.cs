@@ -3,7 +3,7 @@
     public interface IBaseRepository<T>
     {
         Task<(List<T> list, int totalCount, int pageNumber)> GetAllAsync(List<string> pFields = null, string? pKeyword = "",
-                                            string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10);
+                                            string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 10, string? pFilter = null);
 
         Task<T> GetDetailAsync(int pId, List<string> pFields = null);
 
