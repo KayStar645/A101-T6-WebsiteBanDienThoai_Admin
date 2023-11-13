@@ -36,6 +36,10 @@ namespace Services.Services
 
             var promotionDto = _mapper.Map<PromotionDto>(promotion);
 
+            var products = await _promotionProductRepo.GetProductsByPromotionId(pId);
+
+            promotionDto.Products = _mapper.Map<List<ProductDto>>(products);
+
             return promotionDto;
         }
 

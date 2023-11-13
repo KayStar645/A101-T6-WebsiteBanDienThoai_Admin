@@ -46,6 +46,22 @@ namespace Database.Repositories
 
 
         #region FUNCTION
+
+        public async Task<List<Product>> GetProductsByPromotionId(int pPromotionId)
+        {
+            string query = $"SELECT P.Id, \"InternalCode\", \"Name\", \"Images\", " +
+                                    $"\"Price\", \"CategoryId\", \"ColorId\", \"CapacityId\" " +
+                           $"FROM Product AS P " +
+                           $"LEFT JOIN PromotionProduct AS PP ON p.Id = PP.ProductId " +
+                           $"WHERE P.IsDeleted = 0 AND PP.PromotionId = {pPromotionId}";
+
+            using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+            {
+                var result = await connection.QueryAsync<Product>(query).ConfigureAwait(false);
+
+                return result.AsList();
+            }
+        }    
         public override async Task<bool> DeleteAsync(int pId)
         {
             try
