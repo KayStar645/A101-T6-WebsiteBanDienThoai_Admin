@@ -111,7 +111,8 @@ namespace WinFormsApp.Resources.Controls.Module.Order
         {
             long sum = 0;
 
-            if (_order.Details != null && _order.Details.Count == 0) {
+            if (_order.Details != null && _order.Details.Count == 0)
+            {
                 Text_Price.Text = Util.AddCommas(sum);
 
                 return;
@@ -162,13 +163,20 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             _order.Price = long.Parse(Util.DeleteCommas(Text_Price.Text));
             _order.OrderDate = DateTime.Now;
 
-
-            if (_order.Id > 0)
+            try
             {
-                await _orderService.Update(_order);
-            }
 
-            Util.LoadControl(this, new OrderControl());
+                if (_order.Id > 0)
+                {
+                    await _orderService.Update(_order);
+                }
+
+                Util.LoadControl(this, new OrderControl());
+            }
+            catch (Exception ex)
+            {
+                Dialog_Notification.Show(ex.Message);
+            }
         }
 
         private void Btn_Back_Click(object sender, EventArgs e)
