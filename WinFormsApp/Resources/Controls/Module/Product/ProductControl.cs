@@ -39,6 +39,8 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             _result = await _productService.GetList("Name", _currPage, 15, Text_Search.Text, _category.Id);
 
             DataGridView_Listing.DataSource = _result.list;
+
+            DataGridView_Listing.Columns["Quantity"].DisplayIndex = 12;
         }
 
         private void Paginator()

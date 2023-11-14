@@ -73,6 +73,9 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
                 LoadInfo();
                 LoadImage();
+
+                ComboBox_Color.SelectedValue = _product.ColorId;
+                ComboBox_Capacity.SelectedValue = _product.CapacityId;
             }
 
             await LoadParameter();
@@ -83,8 +86,6 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             Text_Name.Text = _product.Name;
             Text_InternalCode.Text = _product.InternalCode;
             Text_Price.Text = Util.AddCommas(_product.Price);
-            ComboBox_Color.SelectedValue = _product.ColorId;
-            ComboBox_Capacity.SelectedValue = _product.CapacityId;
         }
 
         private async Task LoadCapacity()
@@ -92,10 +93,11 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             var result = await _capacityService.GetList();
             var list = result.list;
 
+            ComboBox_Capacity.Sorted = false;
             ComboBox_Capacity.DataSource = list;
             ComboBox_Capacity.ValueMember = "Id";
             ComboBox_Capacity.DisplayMember = "Name";
-            ComboBox_Capacity.StartIndex = -1;
+            ComboBox_Capacity.SelectedIndex = -1;
         }
 
         private async Task LoadColor()
@@ -103,10 +105,11 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             var result = await _colorService.GetList();
             var list = result.list;
 
+            ComboBox_Color.Sorted = false;
             ComboBox_Color.DataSource = list;
             ComboBox_Color.ValueMember = "Id";
             ComboBox_Color.DisplayMember = "Name";
-            ComboBox_Color.StartIndex = -1;
+            ComboBox_Color.SelectedIndex = -1;
         }
 
         private async void Button_Save_Click(object sender, EventArgs e)
@@ -170,7 +173,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             {
                 Dialog_Notification.Show(ex.Message);
             }
-            
+
         }
 
         /*========================================= PARAMETER =============================================*/
@@ -338,6 +341,11 @@ namespace WinFormsApp.Resources.Controls.Module.Product
                 Id = (int)_product.CategoryId!,
                 Name = _product.CategoryName
             }));
+        }
+
+        private void ComboBox_Capacity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
