@@ -139,6 +139,7 @@
             Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges4;
             Text_Search.Size = new Size(278, 36);
             Text_Search.TabIndex = 0;
+            Text_Search.TextChanged += Text_Search_TextChanged;
             // 
             // tableLayoutPanel2
             // 
@@ -202,6 +203,7 @@
             Button_Cancel.Size = new Size(70, 40);
             Button_Cancel.TabIndex = 2;
             Button_Cancel.Text = "Hủy";
+            Button_Cancel.Click += Button_Cancel_Click;
             // 
             // Button_Save
             // 
@@ -224,6 +226,7 @@
             Button_Save.Size = new Size(70, 40);
             Button_Save.TabIndex = 1;
             Button_Save.Text = "Lưu";
+            Button_Save.Click += Button_Save_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -245,6 +248,7 @@
             // Timer_Debounce
             // 
             Timer_Debounce.Interval = 600;
+            Timer_Debounce.Tick += Timer_Debounce_Tick;
             // 
             // DataGridView_Product
             // 
@@ -319,6 +323,7 @@
             DataGridView_Product.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            DataGridView_Product.CellClick += DataGridView_Product_CellClick;
             // 
             // Product_Select
             // 
@@ -470,6 +475,7 @@
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PromotionProductControl";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PromotionProductControl";
             tableLayoutPanel2.ResumeLayout(false);
             TableLayoutPanel_Header.ResumeLayout(false);

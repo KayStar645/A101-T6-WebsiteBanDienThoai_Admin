@@ -9,11 +9,9 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 {
     public partial class PromotionDetailControl : UserControl
     {
-        IProductService _productService;
         IPromotionService _promotionService;
         PromotionDto _promotion = new();
         Dialog _dialog = new();
-        List<ProductVM> products = new();
 
         public PromotionDetailControl()
         {
@@ -35,7 +33,6 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             LoadType();
 
-            _productService = Program.container.GetInstance<IProductService>();
             _promotionService = Program.container.GetInstance<IPromotionService>();
 
             if (_promotion.Id > 0)
@@ -106,14 +103,24 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
         private async void LoadProduct()
         {
-            if (_promotion.Id == 0)
+            DataGridView_Product.Rows.Clear();
+
+            if (_promotion.Products == null) return;
+
+            foreach (ProductVM item in _promotion.Products!)
             {
-            }
-            else
-            {
-                DataGridView_Product.ReadOnly = true;
-                DataGridView_Product.DataSource = _promotion.Products;
-                products = _promotion.Products;
+                string[] rowValues = new string[] {
+                    "True",
+                    item.InternalCode,
+                    item.Name,
+                    item.ColorName,
+                    item.CapacityName,
+                    Util.AddCommas(item.Price, ""),
+                    item.Quantity.ToString(),
+                    item.Id.ToString(),
+                };
+
+                DataGridView_Product.Rows.Add(rowValues);
             }
         }
 
@@ -153,7 +160,6 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 if (_promotion.Id > 0)
                 {
                     await _promotionService.Update(_promotion);
-                    await _promotionService.ApplyForProduct(_promotion.Id, products.Select(t => t.Id).ToList());
                 }
                 else
                 {
@@ -171,7 +177,10 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
         private async void Button_Approve_Click(object sender, EventArgs e)
         {
+            await _promotionService.Update(_promotion);
             await _promotionService.Approve(_promotion.Id, Domain.Entities.Promotion.STATUS_APPROVED);
+            await _promotionService.ApplyForProduct(_promotion.Id, _promotion.Products.Select(t => t.Id).ToList());
+
 
             Util.LoadControl(this, new PromotionControl());
         }
@@ -264,7 +273,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             if(_promotion.Id > 0)
             {
-                Util.LoadForm(new PromotionProductControl(OnSaveProduct), true);
+                Util.LoadForm(new PromotionProductControl(OnSaveProduct, _promotion.Products), true);
             }
             else
             {
