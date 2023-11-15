@@ -156,7 +156,14 @@ namespace Database.Repositories
                             values.Add($"N'{DateTimeConvertToString(datetime)}'");
                             continue;
                         }
-                        values.Add($"N'{property.GetValue(pModel)}'");
+                        if(property?.GetValue(pModel) != null)
+                        {
+                            values.Add($"N'{property.GetValue(pModel)}'");
+                        }
+                        else
+                        {
+                            values.Add($"null");
+                        }
                     }
                 }
 
@@ -205,7 +212,10 @@ namespace Database.Repositories
                                 values.Add($"\"{fieldName}\" = N'{DateTimeConvertToString(datetime)}'");
                                 continue;
                             }
-                            values.Add($"\"{fieldName}\" = N'{property.GetValue(pModel)}'");
+                            if (property?.GetValue(pModel) != null)
+                            {
+                                values.Add($"\"{fieldName}\" = N'{property.GetValue(pModel)}'");
+                            }
                         }
                     }
 

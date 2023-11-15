@@ -54,6 +54,11 @@ namespace Services.Services
                 throw new Exception(errorMessages);
             }
 
+            if (pCreate.CapacityId == 0)
+            {
+                pCreate.CapacityId = null;
+            }
+
             Product product = _mapper.Map<Product>(pCreate);
 
             var result = await _productRepo.AddAsync(product);
@@ -70,6 +75,11 @@ namespace Services.Services
             {
                 var errorMessages = validationResult.Errors.Select(x => x.ErrorMessage).FirstOrDefault();
                 throw new Exception(errorMessages);
+            }
+
+            if (pUpdate.CapacityId == 0)
+            {
+                pUpdate.CapacityId = null;
             }
 
             Product product = _mapper.Map<Product>(pUpdate);

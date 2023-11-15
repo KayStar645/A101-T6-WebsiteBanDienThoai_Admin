@@ -75,7 +75,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
                 LoadImage();
 
                 ComboBox_Color.SelectedValue = _product.ColorId;
-                ComboBox_Capacity.SelectedValue = _product.CapacityId;
+                ComboBox_Capacity.SelectedValue = _product.CapacityId ?? 0;
             }
 
             await LoadParameter();
