@@ -1,8 +1,8 @@
 ﻿using Dapper;
 using Database.Common;
 using Database.Interfaces;
+using Domain.DTOs.More;
 using Domain.Entities;
-using Domain.ModelViews;
 using System.Data.SqlClient;
 
 namespace Database.Repositories
@@ -47,17 +47,22 @@ namespace Database.Repositories
 
         #region FUNCTION
 
-        public async Task<List<Product>> GetProductsByPromotionId(int pPromotionId)
+        public async Task<List<ProductPropertiesDto>> GetProductsByPromotionId(int pPromotionId)
         {
-            string query = $"SELECT P.Id, \"InternalCode\", \"Name\", \"Images\", " +
-                                    $"\"Price\", \"CategoryId\", \"ColorId\", \"CapacityId\" " +
-                           $"FROM Product AS P " +
-                           $"LEFT JOIN PromotionProduct AS PP ON p.Id = PP.ProductId " +
+            string query = $"select P.Id, P.InternalCode, P.Name, P.Price, P.Quantity, P.Images, " +
+                                    $"P.CategoryId, Cg.InternalCode as CategoryInternalCode, Cg.Name as CategoryName, " +
+                                    $"P.ColorId, Cl.InternalCode as ColorInternalCode, Cl.Name as ColorName, " +
+                                    $"P.CapacityId, Cc.Name as CapacityName " +
+                           $"from Product as P " +
+                           $"left join Capacity as Cc on P.CapacityId = Cc.Id " +
+                           $"left join Category as Cg on P.CategoryId = Cg.Id " +
+                           $"left join Color as Cl on P.ColorId = Cl.Id " +
+                           $"LEFT JOIN PromotionProduct AS PP ON P.Id = PP.ProductId " +
                            $"WHERE P.IsDeleted = 0 AND PP.PromotionId = {pPromotionId}";
 
             using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
             {
-                var result = await connection.QueryAsync<Product>(query).ConfigureAwait(false);
+                var result = await connection.QueryAsync<ProductPropertiesDto>(query).ConfigureAwait(false);
 
                 return result.AsList();
             }

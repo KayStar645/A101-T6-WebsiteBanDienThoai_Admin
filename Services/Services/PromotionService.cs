@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Database.Interfaces;
 using Domain.DTOs;
+using Domain.DTOs.More;
 using Domain.Entities;
+using Domain.ModelViews;
 using Services.Interfaces;
 using Services.Validators;
 using System.Transactions;
@@ -38,7 +40,7 @@ namespace Services.Services
 
             var products = await _promotionProductRepo.GetProductsByPromotionId(pId);
 
-            promotionDto.Products = _mapper.Map<List<ProductDto>>(products);
+            promotionDto.Products = _mapper.Map<List<ProductVM>>(products);
 
             return promotionDto;
         }

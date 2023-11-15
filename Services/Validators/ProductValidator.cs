@@ -51,7 +51,7 @@ namespace Services.Validators
             RuleFor(x => x.ColorId)
                .MustAsync(async (colorId, token) =>
                {
-                   if (colorId != 0)
+                   if (colorId != 0 && colorId != null)
                    {
                        return await _colorRepo.AnyIdAsync<Domain.Entities.Color>((int)colorId) == false;
                    }
@@ -62,11 +62,11 @@ namespace Services.Validators
             RuleFor(x => x.CapacityId)
                .MustAsync(async (capacityId, token) =>
                {
-                   if (capacityId != 0)
+                   if (capacityId != 0 && capacityId != null)
                    {
                        return await _capacityRepo.AnyIdAsync<Capacity>((int)capacityId) == false;
                    }
-                   return false;
+                   return true;
                })
                .WithMessage(userId => ValidatorTransform.MustIn(ModulesTransform.Product.capacity));
 
