@@ -1,6 +1,6 @@
-﻿namespace WinFormsApp.Resources.Controls.Module.Import
+﻿namespace WinFormsApp.Resources.Controls.Module.Promotion
 {
-    partial class ImportProductControl
+    partial class PromotionProductControl
     {
         /// <summary>
         /// Required designer variable.
@@ -43,15 +43,17 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
-            Button_Save = new Guna.UI2.WinForms.Guna2Button();
-            TableLayoutPanel_Header = new TableLayoutPanel();
-            Label_Heading = new Label();
-            tableLayoutPanel2 = new TableLayoutPanel();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            TableLayoutPanel_Paginator = new TableLayoutPanel();
             Btn_AddNewProduct = new Guna.UI2.WinForms.Guna2Button();
             Text_Search = new Guna.UI2.WinForms.Guna2TextBox();
-            TableLayoutPanel_Paginator = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            Label_Heading = new Label();
+            TableLayoutPanel_Header = new TableLayoutPanel();
+            Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
+            Button_Save = new Guna.UI2.WinForms.Guna2Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            Timer_Debounce = new System.Windows.Forms.Timer(components);
             DataGridView_Product = new Guna.UI2.WinForms.Guna2DataGridView();
             Product_Select = new DataGridViewCheckBoxColumn();
             InternalCode = new DataGridViewTextBoxColumn();
@@ -67,13 +69,161 @@
             ColorInternalCode = new DataGridViewTextBoxColumn();
             CategoryInternalCode = new DataGridViewTextBoxColumn();
             CategoryId = new DataGridViewTextBoxColumn();
-            Timer_Debounce = new System.Windows.Forms.Timer(components);
-            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
-            tableLayoutPanel1.SuspendLayout();
-            TableLayoutPanel_Header.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            TableLayoutPanel_Header.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Product).BeginInit();
             SuspendLayout();
+            // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 12;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // TableLayoutPanel_Paginator
+            // 
+            TableLayoutPanel_Paginator.BackColor = Color.White;
+            TableLayoutPanel_Paginator.ColumnCount = 1;
+            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
+            TableLayoutPanel_Paginator.Location = new Point(0, 530);
+            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
+            TableLayoutPanel_Paginator.RowCount = 1;
+            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel_Paginator.Size = new Size(800, 50);
+            TableLayoutPanel_Paginator.TabIndex = 19;
+            // 
+            // Btn_AddNewProduct
+            // 
+            Btn_AddNewProduct.Anchor = AnchorStyles.Right;
+            Btn_AddNewProduct.Animated = true;
+            Btn_AddNewProduct.AnimatedGIF = true;
+            Btn_AddNewProduct.BorderRadius = 8;
+            Btn_AddNewProduct.CustomizableEdges = customizableEdges1;
+            Btn_AddNewProduct.DisabledState.BorderColor = Color.DarkGray;
+            Btn_AddNewProduct.DisabledState.CustomBorderColor = Color.DarkGray;
+            Btn_AddNewProduct.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Btn_AddNewProduct.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Btn_AddNewProduct.FillColor = Color.FromArgb(100, 88, 255);
+            Btn_AddNewProduct.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Btn_AddNewProduct.ForeColor = Color.White;
+            Btn_AddNewProduct.Location = new Point(648, 5);
+            Btn_AddNewProduct.Margin = new Padding(3, 2, 3, 2);
+            Btn_AddNewProduct.Name = "Btn_AddNewProduct";
+            Btn_AddNewProduct.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            Btn_AddNewProduct.Size = new Size(149, 40);
+            Btn_AddNewProduct.TabIndex = 2;
+            Btn_AddNewProduct.Text = "Thêm mới sản phẩm";
+            // 
+            // Text_Search
+            // 
+            Text_Search.Anchor = AnchorStyles.Left;
+            Text_Search.BorderRadius = 5;
+            Text_Search.CustomizableEdges = customizableEdges3;
+            Text_Search.DefaultText = "";
+            Text_Search.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            Text_Search.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            Text_Search.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            Text_Search.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Text_Search.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_Search.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Text_Search.ForeColor = Color.Black;
+            Text_Search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Text_Search.Location = new Point(3, 7);
+            Text_Search.Name = "Text_Search";
+            Text_Search.PasswordChar = '\0';
+            Text_Search.PlaceholderText = "Tìm kiếm";
+            Text_Search.SelectedText = "";
+            Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            Text_Search.Size = new Size(278, 36);
+            Text_Search.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.BackColor = Color.White;
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 161F));
+            tableLayoutPanel2.Controls.Add(Btn_AddNewProduct, 0, 0);
+            tableLayoutPanel2.Controls.Add(Text_Search, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Top;
+            tableLayoutPanel2.Location = new Point(0, 35);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(800, 50);
+            tableLayoutPanel2.TabIndex = 18;
+            // 
+            // Label_Heading
+            // 
+            Label_Heading.Anchor = AnchorStyles.None;
+            Label_Heading.AutoSize = true;
+            Label_Heading.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_Heading.ForeColor = Color.White;
+            Label_Heading.Location = new Point(331, 8);
+            Label_Heading.Name = "Label_Heading";
+            Label_Heading.Size = new Size(138, 19);
+            Label_Heading.TabIndex = 10;
+            Label_Heading.Text = "Danh sách sản phẩm";
+            // 
+            // TableLayoutPanel_Header
+            // 
+            TableLayoutPanel_Header.ColumnCount = 1;
+            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Header.Controls.Add(Label_Heading, 0, 0);
+            TableLayoutPanel_Header.Dock = DockStyle.Top;
+            TableLayoutPanel_Header.Location = new Point(0, 0);
+            TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
+            TableLayoutPanel_Header.RowCount = 1;
+            TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanel_Header.Size = new Size(800, 35);
+            TableLayoutPanel_Header.TabIndex = 17;
+            // 
+            // Button_Cancel
+            // 
+            Button_Cancel.Anchor = AnchorStyles.Left;
+            Button_Cancel.Animated = true;
+            Button_Cancel.AnimatedGIF = true;
+            Button_Cancel.BorderRadius = 8;
+            Button_Cancel.CustomizableEdges = customizableEdges5;
+            Button_Cancel.DisabledState.BorderColor = Color.DarkGray;
+            Button_Cancel.DisabledState.CustomBorderColor = Color.DarkGray;
+            Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Button_Cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Button_Cancel.FillColor = Color.DarkGray;
+            Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Cancel.ForeColor = Color.White;
+            Button_Cancel.Location = new Point(11, 5);
+            Button_Cancel.Margin = new Padding(3, 2, 3, 2);
+            Button_Cancel.Name = "Button_Cancel";
+            Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            Button_Cancel.Size = new Size(70, 40);
+            Button_Cancel.TabIndex = 2;
+            Button_Cancel.Text = "Hủy";
+            // 
+            // Button_Save
+            // 
+            Button_Save.Anchor = AnchorStyles.Right;
+            Button_Save.Animated = true;
+            Button_Save.AnimatedGIF = true;
+            Button_Save.BorderRadius = 8;
+            Button_Save.CustomizableEdges = customizableEdges7;
+            Button_Save.DisabledState.BorderColor = Color.DarkGray;
+            Button_Save.DisabledState.CustomBorderColor = Color.DarkGray;
+            Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Button_Save.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Button_Save.FillColor = Color.FromArgb(100, 88, 255);
+            Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Save.ForeColor = Color.White;
+            Button_Save.Location = new Point(719, 5);
+            Button_Save.Margin = new Padding(3, 2, 3, 2);
+            Button_Save.Name = "Button_Save";
+            Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            Button_Save.Size = new Size(70, 40);
+            Button_Save.TabIndex = 1;
+            Button_Save.Text = "Lưu";
             // 
             // tableLayoutPanel1
             // 
@@ -90,153 +240,11 @@
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Size = new Size(800, 50);
-            tableLayoutPanel1.TabIndex = 9;
+            tableLayoutPanel1.TabIndex = 16;
             // 
-            // Button_Cancel
+            // Timer_Debounce
             // 
-            Button_Cancel.Anchor = AnchorStyles.Left;
-            Button_Cancel.Animated = true;
-            Button_Cancel.AnimatedGIF = true;
-            Button_Cancel.BorderRadius = 8;
-            Button_Cancel.CustomizableEdges = customizableEdges1;
-            Button_Cancel.DisabledState.BorderColor = Color.DarkGray;
-            Button_Cancel.DisabledState.CustomBorderColor = Color.DarkGray;
-            Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Button_Cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Button_Cancel.FillColor = Color.DarkGray;
-            Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_Cancel.ForeColor = Color.White;
-            Button_Cancel.Location = new Point(11, 5);
-            Button_Cancel.Margin = new Padding(3, 2, 3, 2);
-            Button_Cancel.Name = "Button_Cancel";
-            Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Button_Cancel.Size = new Size(70, 40);
-            Button_Cancel.TabIndex = 2;
-            Button_Cancel.Text = "Hủy";
-            Button_Cancel.Click += Button_Cancel_Click;
-            // 
-            // Button_Save
-            // 
-            Button_Save.Anchor = AnchorStyles.Right;
-            Button_Save.Animated = true;
-            Button_Save.AnimatedGIF = true;
-            Button_Save.BorderRadius = 8;
-            Button_Save.CustomizableEdges = customizableEdges3;
-            Button_Save.DisabledState.BorderColor = Color.DarkGray;
-            Button_Save.DisabledState.CustomBorderColor = Color.DarkGray;
-            Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Button_Save.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Button_Save.FillColor = Color.FromArgb(100, 88, 255);
-            Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(719, 5);
-            Button_Save.Margin = new Padding(3, 2, 3, 2);
-            Button_Save.Name = "Button_Save";
-            Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Button_Save.Size = new Size(70, 40);
-            Button_Save.TabIndex = 1;
-            Button_Save.Text = "Lưu";
-            Button_Save.Click += Button_Save_Click;
-            // 
-            // TableLayoutPanel_Header
-            // 
-            TableLayoutPanel_Header.ColumnCount = 1;
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
-            TableLayoutPanel_Header.Controls.Add(Label_Heading, 0, 0);
-            TableLayoutPanel_Header.Dock = DockStyle.Top;
-            TableLayoutPanel_Header.Location = new Point(0, 0);
-            TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
-            TableLayoutPanel_Header.RowCount = 1;
-            TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Header.Size = new Size(800, 35);
-            TableLayoutPanel_Header.TabIndex = 12;
-            // 
-            // Label_Heading
-            // 
-            Label_Heading.Anchor = AnchorStyles.None;
-            Label_Heading.AutoSize = true;
-            Label_Heading.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Heading.ForeColor = Color.White;
-            Label_Heading.Location = new Point(331, 8);
-            Label_Heading.Name = "Label_Heading";
-            Label_Heading.Size = new Size(138, 19);
-            Label_Heading.TabIndex = 10;
-            Label_Heading.Text = "Danh sách sản phẩm";
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.BackColor = Color.White;
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 161F));
-            tableLayoutPanel2.Controls.Add(Btn_AddNewProduct, 0, 0);
-            tableLayoutPanel2.Controls.Add(Text_Search, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(0, 35);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(800, 50);
-            tableLayoutPanel2.TabIndex = 13;
-            // 
-            // Btn_AddNewProduct
-            // 
-            Btn_AddNewProduct.Anchor = AnchorStyles.Right;
-            Btn_AddNewProduct.Animated = true;
-            Btn_AddNewProduct.AnimatedGIF = true;
-            Btn_AddNewProduct.BorderRadius = 8;
-            Btn_AddNewProduct.CustomizableEdges = customizableEdges5;
-            Btn_AddNewProduct.DisabledState.BorderColor = Color.DarkGray;
-            Btn_AddNewProduct.DisabledState.CustomBorderColor = Color.DarkGray;
-            Btn_AddNewProduct.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Btn_AddNewProduct.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Btn_AddNewProduct.FillColor = Color.FromArgb(100, 88, 255);
-            Btn_AddNewProduct.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Btn_AddNewProduct.ForeColor = Color.White;
-            Btn_AddNewProduct.Location = new Point(648, 5);
-            Btn_AddNewProduct.Margin = new Padding(3, 2, 3, 2);
-            Btn_AddNewProduct.Name = "Btn_AddNewProduct";
-            Btn_AddNewProduct.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Btn_AddNewProduct.Size = new Size(149, 40);
-            Btn_AddNewProduct.TabIndex = 2;
-            Btn_AddNewProduct.Text = "Thêm mới sản phẩm";
-            // 
-            // Text_Search
-            // 
-            Text_Search.Anchor = AnchorStyles.Left;
-            Text_Search.BorderRadius = 5;
-            Text_Search.CustomizableEdges = customizableEdges7;
-            Text_Search.DefaultText = "";
-            Text_Search.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            Text_Search.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            Text_Search.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            Text_Search.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            Text_Search.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Search.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Text_Search.ForeColor = Color.Black;
-            Text_Search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Search.Location = new Point(3, 7);
-            Text_Search.Name = "Text_Search";
-            Text_Search.PasswordChar = '\0';
-            Text_Search.PlaceholderText = "Tìm kiếm";
-            Text_Search.SelectedText = "";
-            Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            Text_Search.Size = new Size(278, 36);
-            Text_Search.TabIndex = 0;
-            Text_Search.TextChanged += Text_Search_TextChanged;
-            // 
-            // TableLayoutPanel_Paginator
-            // 
-            TableLayoutPanel_Paginator.BackColor = Color.White;
-            TableLayoutPanel_Paginator.ColumnCount = 1;
-            TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
-            TableLayoutPanel_Paginator.Location = new Point(0, 530);
-            TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
-            TableLayoutPanel_Paginator.RowCount = 1;
-            TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Paginator.Size = new Size(800, 50);
-            TableLayoutPanel_Paginator.TabIndex = 14;
+            Timer_Debounce.Interval = 600;
             // 
             // DataGridView_Product
             // 
@@ -289,7 +297,7 @@
             DataGridView_Product.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Product.RowTemplate.Height = 40;
             DataGridView_Product.Size = new Size(800, 445);
-            DataGridView_Product.TabIndex = 15;
+            DataGridView_Product.TabIndex = 21;
             DataGridView_Product.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Product.ThemeStyle.AlternatingRowsStyle.Font = null;
             DataGridView_Product.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -311,7 +319,6 @@
             DataGridView_Product.ThemeStyle.RowsStyle.Height = 40;
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Product.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            DataGridView_Product.CellClick += DataGridView_Product_CellClick;
             // 
             // Product_Select
             // 
@@ -450,19 +457,7 @@
             CategoryId.Name = "CategoryId";
             CategoryId.Visible = false;
             // 
-            // Timer_Debounce
-            // 
-            Timer_Debounce.Interval = 600;
-            Timer_Debounce.Tick += Timer_Debounce_Tick;
-            // 
-            // guna2BorderlessForm1
-            // 
-            guna2BorderlessForm1.BorderRadius = 12;
-            guna2BorderlessForm1.ContainerControl = this;
-            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // ImportProductControl
+            // PromotionProductControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -474,30 +469,30 @@
             Controls.Add(TableLayoutPanel_Header);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ImportProductControl";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "ImportProductControl";
-            tableLayoutPanel1.ResumeLayout(false);
+            Name = "PromotionProductControl";
+            Text = "PromotionProductControl";
+            tableLayoutPanel2.ResumeLayout(false);
             TableLayoutPanel_Header.ResumeLayout(false);
             TableLayoutPanel_Header.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Product).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private TableLayoutPanel TableLayoutPanel_Paginator;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Guna.UI2.WinForms.Guna2Button Btn_AddNewProduct;
+        private Guna.UI2.WinForms.Guna2TextBox Text_Search;
+        private TableLayoutPanel TableLayoutPanel_Header;
+        private Label Label_Heading;
         private TableLayoutPanel tableLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Button Button_Cancel;
         private Guna.UI2.WinForms.Guna2Button Button_Save;
-        private TableLayoutPanel TableLayoutPanel_Header;
-        private Label Label_Heading;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Guna.UI2.WinForms.Guna2TextBox Text_Search;
-        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Product;
-        private TableLayoutPanel TableLayoutPanel_Paginator;
-        private Guna.UI2.WinForms.Guna2Button Btn_AddNewProduct;
         private System.Windows.Forms.Timer Timer_Debounce;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Product;
         private DataGridViewCheckBoxColumn Product_Select;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn Product_Name;

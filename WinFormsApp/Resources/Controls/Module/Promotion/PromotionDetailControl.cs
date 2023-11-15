@@ -1,6 +1,7 @@
 ﻿using Common;
 using Common.UI;
 using Domain.DTOs;
+using Domain.ModelViews;
 using Services.Interfaces;
 using WinFormsApp.Services;
 
@@ -8,15 +9,15 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 {
     public partial class PromotionDetailControl : UserControl
     {
+        IProductService _productService;
         IPromotionService _promotionService;
         PromotionDto _promotion = new();
         Dialog _dialog = new();
+        List<ProductVM> products = new();
 
         public PromotionDetailControl()
         {
             InitializeComponent();
-
-            _promotionService = Program.container.GetInstance<IPromotionService>();
 
             LoadInfo();
         }
@@ -27,14 +28,15 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
             _promotion.Id = promotionId;
 
-            _promotionService = Program.container.GetInstance<IPromotionService>();
-
             LoadInfo();
         }
 
         private async void LoadInfo()
         {
             LoadType();
+
+            _productService = Program.container.GetInstance<IProductService>();
+            _promotionService = Program.container.GetInstance<IPromotionService>();
 
             if (_promotion.Id > 0)
             {
@@ -87,6 +89,8 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 Button_Cancel.Visible = false;
                 Button_Approve.Visible = false;
             }
+
+            LoadProduct();
         }
 
         private void DisableAll()
@@ -98,6 +102,19 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             DateTime_End.Enabled = false;
             DateTime_Start.Enabled = false;
             ComboBox_Type.Enabled = false;
+        }
+
+        private async void LoadProduct()
+        {
+            if (_promotion.Id == 0)
+            {
+            }
+            else
+            {
+                DataGridView_Product.ReadOnly = true;
+                DataGridView_Product.DataSource = _promotion.Products;
+                products = _promotion.Products;
+            }
         }
 
         private void LoadType()
@@ -136,6 +153,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 if (_promotion.Id > 0)
                 {
                     await _promotionService.Update(_promotion);
+                    await _promotionService.ApplyForProduct(_promotion.Id, products.Select(t => t.Id).ToList());
                 }
                 else
                 {
@@ -200,6 +218,65 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                     Text_DiscountMax.PlaceholderText = "Giảm giá tối đa";
                 }
             }
+        }
+
+        private async void DataGridView_Product_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 0)
+            {
+                return;
+            }
+
+            DataGridViewCellCollection cells = DataGridView_Product.CurrentRow.Cells;
+            int id = int.Parse(cells["Id"].Value.ToString()!);
+            bool check = bool.Parse(cells["ProductSelect"].FormattedValue.ToString()!);
+
+
+            if (check)
+            {
+                int index = _promotion.Products!.FindIndex(t => t.Id == id);
+
+                cells["ProductSelect"].Value = "False";
+
+                if (index >= 0)
+                {
+                    _promotion.Products!.RemoveAt(index);
+                }
+            }
+            else
+            {
+                cells["ProductSelect"].Value = "True";
+
+                _promotion.Products!.Add(new ProductVM()
+                {
+                    Id = id,
+                    InternalCode = cells["InternalCode"].Value.ToString(),
+                    Name = cells["Product_Name"].Value.ToString(),
+                    ColorName = cells["ColorName"].Value.ToString(),
+                    CapacityName = cells["CapacityName"].Value.ToString(),
+                    Price = long.Parse(Util.DeleteCommas(cells["Price"].Value.ToString()!)),
+                    Quantity = int.Parse(cells["Quantity"].Value.ToString()!),
+                });
+            }
+        }
+
+        private void Button_AddProduct_Click(object sender, EventArgs e)
+        {
+            if(_promotion.Id > 0)
+            {
+                Util.LoadForm(new PromotionProductControl(OnSaveProduct), true);
+            }
+            else
+            {
+                Util.LoadForm(new PromotionProductControl(OnSaveProduct), true);
+            }
+        }
+
+        private void OnSaveProduct(List<ProductVM> products)
+        {
+            _promotion.Products = products;
+
+            LoadProduct();
         }
     }
 }
