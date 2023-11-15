@@ -1,4 +1,7 @@
-﻿namespace Domain.DTOs
+﻿using Domain.DTOs.More;
+using Domain.ModelViews;
+
+namespace Domain.DTOs
 {
     public class PromotionDto
     {
@@ -24,6 +27,6 @@
 
         public string? Status { get; set; }
 
-        public List<ProductDto>? Products { get; set; }
+        public List<ProductVM>? Products { get; set; }
     }
 }
