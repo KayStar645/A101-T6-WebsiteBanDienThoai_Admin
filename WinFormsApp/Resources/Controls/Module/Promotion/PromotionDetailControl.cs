@@ -163,8 +163,9 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                 }
                 else
                 {
-                    await _promotionService.Create(_promotion);
+                    _promotion.Id = await _promotionService.Create(_promotion);
                 }
+                await _promotionService.ApplyForProduct(_promotion.Id, _promotion.Products.Select(t => t.Id).ToList());
 
                 Util.LoadControl(this, new PromotionControl());
                 Util.LoadControl(this, new PromotionControl());
@@ -179,7 +180,6 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             await _promotionService.Update(_promotion);
             await _promotionService.Approve(_promotion.Id, Domain.Entities.Promotion.STATUS_APPROVED);
-            await _promotionService.ApplyForProduct(_promotion.Id, _promotion.Products.Select(t => t.Id).ToList());
 
 
             Util.LoadControl(this, new PromotionControl());

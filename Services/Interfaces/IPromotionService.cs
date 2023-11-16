@@ -8,7 +8,7 @@ namespace Services.Interfaces
 
         Task<PromotionDto> GetDetail(int pId);
 
-        Task<bool> Create(PromotionDto pCreate);
+        Task<int> Create(PromotionDto pCreate);
 
         Task<bool> Update(PromotionDto pUpdate);
 
