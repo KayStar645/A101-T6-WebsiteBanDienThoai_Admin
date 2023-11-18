@@ -144,7 +144,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
                     Id = id,
                     InternalCode = cells["InternalCode"].Value.ToString(),
                     Name = cells["Product_Name"].Value.ToString(),
-                    CapacityName = cells["CapacityName"].Value.ToString(),
+                    CapacityName = cells["CapacityName"]?.Value?.ToString(),
                     ColorName = cells["ColorName"].Value.ToString(),
                     Price = long.Parse(Util.DeleteCommas(cells["Price"].Value.ToString()!)),
                 });

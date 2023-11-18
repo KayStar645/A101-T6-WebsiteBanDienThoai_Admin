@@ -45,7 +45,7 @@ namespace Services.Services
             return promotionDto;
         }
 
-        public async Task<bool> Create(PromotionDto pCreate)
+        public async Task<int> Create(PromotionDto pCreate)
         {
             pCreate.Status = Promotion.STATUS_DRAFT;
 
@@ -62,7 +62,7 @@ namespace Services.Services
 
             var result = await _promotionRepo.AddAsync(promotion);
 
-            return result > 0;
+            return result;
         }
 
         public async Task<bool> Update(PromotionDto pUpdate)
