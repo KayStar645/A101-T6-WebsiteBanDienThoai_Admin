@@ -415,6 +415,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             Controls.Add(Panel_Parameter);
             Controls.Add(Btn_ParameterHeader);
             Controls.Add(Panel_Images);

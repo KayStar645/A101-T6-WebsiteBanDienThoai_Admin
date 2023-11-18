@@ -310,7 +310,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             catch (Exception)
             {
             }
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
             return pictureBox;
         }

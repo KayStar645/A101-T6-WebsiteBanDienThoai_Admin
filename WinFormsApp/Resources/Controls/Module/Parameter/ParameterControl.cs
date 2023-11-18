@@ -51,7 +51,7 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
 
         private async Task LoadData()
         {
-            _result = await _specificationsService.GetList("Name", _currPage, 15, Text_Search.Text);
+            _result = await _specificationsService.GetList("Name", _currPage, 10, Text_Search.Text);
 
             Panel_Container.Controls.Clear();
 

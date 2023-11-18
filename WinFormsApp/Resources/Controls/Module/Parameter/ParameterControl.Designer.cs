@@ -190,6 +190,7 @@
             // 
             // Panel_Container
             // 
+            Panel_Container.AutoScroll = true;
             Panel_Container.Dock = DockStyle.Fill;
             Panel_Container.Location = new Point(0, 50);
             Panel_Container.Name = "Panel_Container";
