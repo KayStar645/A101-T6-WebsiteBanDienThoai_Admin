@@ -144,8 +144,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                     ProductId = id,
                     ProductInternalCode = cells["InternalCode"].Value.ToString(),
                     ProductName = cells["Product_Name"].Value.ToString(),
-                    CapacityName = cells["CapacityName"].Value.ToString(),
-                    ColorName = cells["ColorName"].Value.ToString(),
+                    CapacityName = cells["CapacityName"].Value?.ToString(),
+                    ColorName = cells["ColorName"].Value?.ToString(),
                 });
             }
         }
