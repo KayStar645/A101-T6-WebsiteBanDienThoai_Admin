@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs;
+using Services.Common;
 using Services.Interfaces;
 using WinFormsApp.Resources.Controls.Module.Import;
 using WinFormsApp.Services;
@@ -39,6 +40,8 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
             DateTime_ImportDate.Value = DateTime.Now;
             Text_Price.Enabled = false;
+            Text_EmployeeName.Enabled = false;
+            Text_EmployeeName.Text = ServiceCommon.AuthRespone.UserName;
 
             await LoadData();
         }
@@ -158,7 +161,6 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            _order.EmployeeId = 1;
             _order.InternalCode = Text_InternalCode.Text;
             _order.Price = long.Parse(Util.DeleteCommas(Text_Price.Text));
             _order.OrderDate = DateTime.Now;
@@ -261,6 +263,9 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
         private async void Button_Approve_Click(object sender, EventArgs e)
         {
+            _order.EmployeeId = ServiceCommon.AuthRespone.Id;
+
+            await _orderService.Update(_order);
             await _orderService.ChangeTypeOrder(_order.Id, Domain.Entities.Order.TYPE_APPROVE);
 
             Util.LoadControl(this, new OrderControl());

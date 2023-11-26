@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs;
+using Services.Common;
 using Services.Interfaces;
 using WinFormsApp.Services;
 
@@ -40,6 +41,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
             DateTime_ImportDate.Value = DateTime.Now;
             Text_Price.Enabled = false;
+            Text_EmployeeName.Enabled = false;
+            Text_EmployeeName.Text = ServiceCommon.AuthRespone.UserName;
 
             await LoadData();
         }
@@ -144,7 +147,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
-            _import.EmployeeId = 1;
+            _import.EmployeeId = ServiceCommon.AuthRespone.Id;
             _import.InternalCode = Text_InternalCode.Text;
             _import.DistributorId = int.Parse(ComboBox_Distributor.SelectedValue!.ToString()!);
             _import.Price = long.Parse(Util.DeleteCommas(Text_Price.Text));
