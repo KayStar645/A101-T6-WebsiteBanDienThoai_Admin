@@ -92,9 +92,9 @@
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(3, 32);
+            label3.Location = new Point(3, 42);
             label3.Name = "label3";
-            label3.Size = new Size(90, 17);
+            label3.Size = new Size(114, 23);
             label3.TabIndex = 1;
             label3.Text = "Mã đơn nhập";
             // 
@@ -112,13 +112,14 @@
             Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_InternalCode.ForeColor = Color.Black;
             Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(123, 21);
+            Text_InternalCode.Location = new Point(140, 28);
+            Text_InternalCode.Margin = new Padding(3, 5, 3, 5);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
             Text_InternalCode.PlaceholderText = "Mã đơn nhập";
             Text_InternalCode.SelectedText = "";
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Text_InternalCode.Size = new Size(251, 38);
+            Text_InternalCode.Size = new Size(287, 51);
             Text_InternalCode.TabIndex = 3;
             // 
             // label2
@@ -126,9 +127,9 @@
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(420, 32);
+            label2.Location = new Point(479, 42);
             label2.Name = "label2";
-            label2.Size = new Size(70, 17);
+            label2.Size = new Size(89, 23);
             label2.TabIndex = 0;
             label2.Text = "Nhân viên";
             // 
@@ -147,13 +148,14 @@
             Text_EmployeeName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_EmployeeName.ForeColor = Color.Black;
             Text_EmployeeName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_EmployeeName.Location = new Point(540, 21);
+            Text_EmployeeName.Location = new Point(616, 28);
+            Text_EmployeeName.Margin = new Padding(3, 5, 3, 5);
             Text_EmployeeName.Name = "Text_EmployeeName";
             Text_EmployeeName.PasswordChar = '\0';
             Text_EmployeeName.PlaceholderText = "Nhân viên";
             Text_EmployeeName.SelectedText = "";
             Text_EmployeeName.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Text_EmployeeName.Size = new Size(251, 38);
+            Text_EmployeeName.Size = new Size(288, 51);
             Text_EmployeeName.TabIndex = 2;
             // 
             // label4
@@ -161,9 +163,9 @@
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(420, 89);
+            label4.Location = new Point(479, 118);
             label4.Name = "label4";
-            label4.Size = new Size(66, 17);
+            label4.Size = new Size(83, 23);
             label4.TabIndex = 4;
             label4.Text = "Tổng tiền";
             // 
@@ -181,13 +183,14 @@
             Text_Price.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Price.ForeColor = Color.Black;
             Text_Price.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Price.Location = new Point(540, 78);
+            Text_Price.Location = new Point(616, 104);
+            Text_Price.Margin = new Padding(3, 5, 3, 5);
             Text_Price.Name = "Text_Price";
             Text_Price.PasswordChar = '\0';
             Text_Price.PlaceholderText = "Tổng tiền";
             Text_Price.SelectedText = "";
             Text_Price.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Text_Price.Size = new Size(251, 38);
+            Text_Price.Size = new Size(288, 51);
             Text_Price.TabIndex = 5;
             Text_Price.KeyPress += Text_Price_KeyPress;
             Text_Price.KeyUp += Text_Price_KeyUp;
@@ -197,9 +200,9 @@
             label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(3, 146);
+            label6.Location = new Point(3, 195);
             label6.Name = "label6";
-            label6.Size = new Size(92, 17);
+            label6.Size = new Size(117, 23);
             label6.TabIndex = 19;
             label6.Text = "Nhà cung cấp";
             // 
@@ -216,10 +219,11 @@
             ComboBox_Distributor.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ComboBox_Distributor.ForeColor = Color.FromArgb(68, 88, 112);
             ComboBox_Distributor.ItemHeight = 30;
-            ComboBox_Distributor.Location = new Point(123, 137);
+            ComboBox_Distributor.Location = new Point(140, 188);
+            ComboBox_Distributor.Margin = new Padding(3, 4, 3, 4);
             ComboBox_Distributor.Name = "ComboBox_Distributor";
             ComboBox_Distributor.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            ComboBox_Distributor.Size = new Size(251, 36);
+            ComboBox_Distributor.Size = new Size(287, 36);
             ComboBox_Distributor.Sorted = true;
             ComboBox_Distributor.TabIndex = 20;
             // 
@@ -232,11 +236,12 @@
             Btn_Back.ImageOffset = new Point(0, 0);
             Btn_Back.ImageRotate = 0F;
             Btn_Back.ImageSize = new Size(30, 30);
-            Btn_Back.Location = new Point(3, 4);
+            Btn_Back.Location = new Point(3, 6);
+            Btn_Back.Margin = new Padding(3, 4, 3, 4);
             Btn_Back.Name = "Btn_Back";
             Btn_Back.PressedState.ImageSize = new Size(30, 30);
             Btn_Back.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            Btn_Back.Size = new Size(38, 40);
+            Btn_Back.Size = new Size(43, 53);
             Btn_Back.TabIndex = 1;
             Btn_Back.Click += Btn_Back_Click;
             // 
@@ -254,11 +259,10 @@
             Button_AddProduct.FillColor = Color.FromArgb(100, 88, 255);
             Button_AddProduct.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_AddProduct.ForeColor = Color.White;
-            Button_AddProduct.Location = new Point(576, 4);
-            Button_AddProduct.Margin = new Padding(3, 2, 3, 2);
+            Button_AddProduct.Location = new Point(658, 6);
             Button_AddProduct.Name = "Button_AddProduct";
             Button_AddProduct.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            Button_AddProduct.Size = new Size(127, 40);
+            Button_AddProduct.Size = new Size(145, 53);
             Button_AddProduct.TabIndex = 2;
             Button_AddProduct.Text = "Thêm sản phẩm";
             Button_AddProduct.Click += Button_AddProduct_Click;
@@ -268,19 +272,19 @@
             Label_Heading.Anchor = AnchorStyles.Left;
             Label_Heading.AutoSize = true;
             Label_Heading.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Heading.Location = new Point(47, 14);
+            Label_Heading.Location = new Point(53, 18);
             Label_Heading.Name = "Label_Heading";
-            Label_Heading.Size = new Size(156, 21);
+            Label_Heading.Size = new Size(199, 28);
             Label_Heading.TabIndex = 0;
             Label_Heading.Text = "Thêm mới đơn nhập";
             // 
             // TableLayoutPanel_Info
             // 
             TableLayoutPanel_Info.ColumnCount = 5;
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Info.Controls.Add(label6, 0, 2);
             TableLayoutPanel_Info.Controls.Add(ComboBox_Distributor, 1, 2);
@@ -293,14 +297,15 @@
             TableLayoutPanel_Info.Controls.Add(DateTime_ImportDate, 1, 1);
             TableLayoutPanel_Info.Controls.Add(Text_EmployeeName, 4, 0);
             TableLayoutPanel_Info.Dock = DockStyle.Top;
-            TableLayoutPanel_Info.Location = new Point(0, 49);
+            TableLayoutPanel_Info.Location = new Point(0, 65);
+            TableLayoutPanel_Info.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Info.Name = "TableLayoutPanel_Info";
-            TableLayoutPanel_Info.Padding = new Padding(0, 12, 0, 0);
+            TableLayoutPanel_Info.Padding = new Padding(0, 16, 0, 0);
             TableLayoutPanel_Info.RowCount = 3;
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            TableLayoutPanel_Info.Size = new Size(794, 184);
+            TableLayoutPanel_Info.Size = new Size(907, 245);
             TableLayoutPanel_Info.TabIndex = 4;
             // 
             // label1
@@ -308,9 +313,9 @@
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 89);
+            label1.Location = new Point(3, 118);
             label1.Name = "label1";
-            label1.Size = new Size(75, 17);
+            label1.Size = new Size(95, 23);
             label1.TabIndex = 15;
             label1.Text = "Ngày nhập";
             // 
@@ -327,32 +332,34 @@
             DateTime_ImportDate.FillColor = Color.White;
             DateTime_ImportDate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             DateTime_ImportDate.Format = DateTimePickerFormat.Custom;
-            DateTime_ImportDate.Location = new Point(123, 79);
+            DateTime_ImportDate.Location = new Point(140, 106);
+            DateTime_ImportDate.Margin = new Padding(3, 4, 3, 4);
             DateTime_ImportDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DateTime_ImportDate.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             DateTime_ImportDate.Name = "DateTime_ImportDate";
             DateTime_ImportDate.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            DateTime_ImportDate.Size = new Size(251, 36);
+            DateTime_ImportDate.Size = new Size(287, 48);
             DateTime_ImportDate.TabIndex = 16;
             DateTime_ImportDate.Value = new DateTime(2023, 11, 5, 17, 11, 33, 0);
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 44F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 186F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 88F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 213F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 101F));
             tableLayoutPanel1.Controls.Add(Btn_Back, 0, 0);
             tableLayoutPanel1.Controls.Add(Button_AddProduct, 2, 0);
             tableLayoutPanel1.Controls.Add(Button_Save, 2, 0);
             tableLayoutPanel1.Controls.Add(Label_Heading, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(794, 49);
+            tableLayoutPanel1.Size = new Size(907, 65);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // Button_Save
@@ -369,11 +376,10 @@
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
             Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(721, 4);
-            Button_Save.Margin = new Padding(3, 2, 3, 2);
+            Button_Save.Location = new Point(824, 6);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            Button_Save.Size = new Size(70, 40);
+            Button_Save.Size = new Size(80, 53);
             Button_Save.TabIndex = 3;
             Button_Save.Text = "Lưu";
             Button_Save.Click += Button_Save_Click;
@@ -411,7 +417,7 @@
             DataGridView_Product.DefaultCellStyle = dataGridViewCellStyle6;
             DataGridView_Product.Dock = DockStyle.Fill;
             DataGridView_Product.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Product.Location = new Point(0, 233);
+            DataGridView_Product.Location = new Point(0, 310);
             DataGridView_Product.Margin = new Padding(0);
             DataGridView_Product.Name = "DataGridView_Product";
             DataGridView_Product.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -427,7 +433,7 @@
             DataGridView_Product.RowHeadersWidth = 51;
             DataGridView_Product.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Product.RowTemplate.Height = 40;
-            DataGridView_Product.Size = new Size(794, 392);
+            DataGridView_Product.Size = new Size(907, 523);
             DataGridView_Product.TabIndex = 8;
             DataGridView_Product.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Product.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -458,6 +464,7 @@
             Product_Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Product_Select.FalseValue = "False";
             Product_Select.HeaderText = "";
+            Product_Select.MinimumWidth = 6;
             Product_Select.Name = "Product_Select";
             Product_Select.TrueValue = "True";
             Product_Select.Width = 40;
@@ -502,8 +509,10 @@
             ColorName.DividerWidth = 1;
             ColorName.FillWeight = 101.474419F;
             ColorName.HeaderText = "Màu";
+            ColorName.MinimumWidth = 6;
             ColorName.Name = "ColorName";
             ColorName.ReadOnly = true;
+            ColorName.Width = 125;
             // 
             // CapacityName
             // 
@@ -514,6 +523,7 @@
             CapacityName.DividerWidth = 1;
             CapacityName.FillWeight = 101.474419F;
             CapacityName.HeaderText = "Dung lượng";
+            CapacityName.MinimumWidth = 6;
             CapacityName.Name = "CapacityName";
             CapacityName.ReadOnly = true;
             CapacityName.Width = 120;
@@ -551,6 +561,7 @@
             // 
             DetailId.DataPropertyName = "Id";
             DetailId.HeaderText = "DetailId";
+            DetailId.MinimumWidth = 6;
             DetailId.Name = "DetailId";
             DetailId.Visible = false;
             // 
@@ -558,6 +569,7 @@
             // 
             ProductImage.DataPropertyName = "ProductImage";
             ProductImage.HeaderText = "ProductImage";
+            ProductImage.MinimumWidth = 6;
             ProductImage.Name = "ProductImage";
             ProductImage.Visible = false;
             // 
@@ -565,6 +577,7 @@
             // 
             ImportBillId.DataPropertyName = "ImportBillId";
             ImportBillId.HeaderText = "ImportBillId";
+            ImportBillId.MinimumWidth = 6;
             ImportBillId.Name = "ImportBillId";
             ImportBillId.Visible = false;
             // 
@@ -572,6 +585,7 @@
             // 
             ColorId.DataPropertyName = "ColorId";
             ColorId.HeaderText = "ColorId";
+            ColorId.MinimumWidth = 6;
             ColorId.Name = "ColorId";
             ColorId.Visible = false;
             // 
@@ -579,6 +593,7 @@
             // 
             ColorInternalCode.DataPropertyName = "ColorInternalCode";
             ColorInternalCode.HeaderText = "ColorInternalCode";
+            ColorInternalCode.MinimumWidth = 6;
             ColorInternalCode.Name = "ColorInternalCode";
             ColorInternalCode.Visible = false;
             // 
@@ -586,18 +601,20 @@
             // 
             CapacityId.DataPropertyName = "CapacityId";
             CapacityId.HeaderText = "CapacityId";
+            CapacityId.MinimumWidth = 6;
             CapacityId.Name = "CapacityId";
             CapacityId.Visible = false;
             // 
             // ImportDetailControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DataGridView_Product);
             Controls.Add(TableLayoutPanel_Info);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ImportDetailControl";
-            Size = new Size(794, 625);
+            Size = new Size(907, 833);
             TableLayoutPanel_Info.ResumeLayout(false);
             TableLayoutPanel_Info.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);

@@ -148,6 +148,33 @@ namespace Database.Repositories
             }
         }
 
+
+        public async Task<string> RangeInternalCode()
+        {
+            var query = "SELECT InternalCode FROM [ImportBill]";
+            IEnumerable<string> internalCodes = new List<string>();
+
+            using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
+            {
+                internalCodes = await connection.QueryAsync<string>(query).ConfigureAwait(false);
+            }
+
+            int max = 0;
+            foreach (var internalCode in internalCodes)
+            {
+                int number = int.Parse(internalCode.Substring(9));
+                max = Math.Max(max, number);
+            }
+            max++;
+            string code = max.ToString();
+            while (code.Length < 7)
+            {
+                code = "0" + code;
+            }
+            DateTime currentDate = DateTime.Now;
+
+            return "NH" + currentDate.ToString("yyMMdd") + "-" + code;
+        }    
         #endregion
     }
 }

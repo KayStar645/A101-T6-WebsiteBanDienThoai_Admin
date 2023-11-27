@@ -23,6 +23,11 @@ namespace Services.Services
             _productRepo = productRepo;
         }
 
+        public async Task<string> RangeInternalCode()
+        {
+            return await _importBillRepo.RangeInternalCode();
+        }
+
         public async Task<bool> Create(ImportBillDto pImportBill)
         {
             using (var transaction = new TransactionScope())
