@@ -39,6 +39,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             _importBillService = Program.container.GetInstance<IImportBillService>();
             _distributorService = Program.container.GetInstance<IDistributorService>();
 
+            Text_InternalCode.Enabled = false;
+            Text_InternalCode.Text = await _importBillService.RangeInternalCode();
             DateTime_ImportDate.Value = DateTime.Now;
             Text_Price.Enabled = false;
             Text_EmployeeName.Enabled = false;
@@ -112,7 +114,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
 
             foreach (var item in _import.Details!)
             {
-                if(item.Quantity == null || item.Price == null)
+                if (item.Quantity == null || item.Price == null)
                 {
                     continue;
                 }
@@ -205,7 +207,7 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                 _import.Details[index].Quantity = int.Parse(cells["Quantity"].Value.ToString()!);
                 _import.Details[index].Price = long.Parse(Util.DeleteCommas(cells["Price"].Value.ToString()!));
 
-                if(long.Parse(cells["Price"].Value.ToString()!) > 10)
+                if (long.Parse(cells["Price"].Value.ToString()!) > 10)
                 {
                     cells["Price"].Value = long.Parse(cells["Price"].Value.ToString()!);
                 }
