@@ -77,6 +77,8 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
 
                     DisableAll();
                 }
+
+                Label_Heading.Text = "Chi tiết chương trình khuyến mãi " + result.InternalCode;
             }
             else
             {

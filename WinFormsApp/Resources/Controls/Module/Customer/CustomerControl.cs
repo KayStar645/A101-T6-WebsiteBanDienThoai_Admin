@@ -4,7 +4,6 @@ using Guna.UI2.WinForms;
 using Services.Interfaces;
 using WinFormsApp;
 using WinFormsApp.Resources.Controls.Module.Customer;
-using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Services;
 
 namespace Controls.Module

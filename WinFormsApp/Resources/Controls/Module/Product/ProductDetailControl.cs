@@ -69,7 +69,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
                 var result = await _productService.GetDetail(_product.Id);
 
                 _product = result;
-                Label_Heading.Text = "Cập nhập" + _product.Name;
+                Label_Heading.Text = "Cập nhập sản phẩm " + _product.Name;
 
                 LoadInfo();
                 LoadImage();

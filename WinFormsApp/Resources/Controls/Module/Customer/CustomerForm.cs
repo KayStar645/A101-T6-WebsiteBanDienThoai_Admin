@@ -28,6 +28,8 @@ namespace WinFormsApp.Resources.Controls.Module.Customer
             Text_Name.Text = formData.Name;
             Text_PhoneNumber.Text = formData.Phone;
             Text_Address.Text = formData.Phone;
+
+            Label_Heading.Text = "Cập nhập khách hàng " + formData.Name;
         }
 
         private async void Button_Save_Click(object sender, EventArgs e)

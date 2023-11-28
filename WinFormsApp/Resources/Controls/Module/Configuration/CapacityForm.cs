@@ -33,6 +33,7 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             ClearForm();
 
             Text_Name.Text = _formData.Name;
+            Label_Heading.Text = "Cập nhập dung lượng " + _formData.Name;
         }
 
         private void ClearForm()
@@ -58,7 +59,7 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
                 ConfigurationControl._refreahCapacityButton.PerformClick();
 
                 Close();
-            }    
+            }
             catch (Exception ex)
             {
                 Dialog_Notification.Show(ex.Message);
