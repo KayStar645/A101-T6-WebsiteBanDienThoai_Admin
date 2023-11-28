@@ -189,12 +189,12 @@
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.Padding = new Padding(8, 12, 4, 0);
             tableLayoutPanel3.RowCount = 6;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Size = new Size(514, 355);
             tableLayoutPanel3.TabIndex = 6;
             // 
@@ -203,7 +203,7 @@
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(11, 32);
+            label2.Location = new Point(11, 30);
             label2.Name = "label2";
             label2.Size = new Size(94, 19);
             label2.TabIndex = 0;
@@ -223,7 +223,7 @@
             Text_InternalCode.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             Text_InternalCode.ForeColor = Color.Black;
             Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(131, 24);
+            Text_InternalCode.Location = new Point(131, 21);
             Text_InternalCode.Margin = new Padding(3, 4, 3, 4);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
@@ -238,7 +238,7 @@
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(11, 92);
+            label3.Location = new Point(11, 85);
             label3.Name = "label3";
             label3.Size = new Size(96, 19);
             label3.TabIndex = 2;
@@ -259,7 +259,7 @@
             Text_Name.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             Text_Name.ForeColor = Color.Black;
             Text_Name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Location = new Point(131, 84);
+            Text_Name.Location = new Point(131, 76);
             Text_Name.Margin = new Padding(3, 4, 3, 4);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
@@ -274,7 +274,7 @@
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(11, 152);
+            label4.Location = new Point(11, 140);
             label4.Name = "label4";
             label4.Size = new Size(65, 19);
             label4.TabIndex = 4;
@@ -285,7 +285,7 @@
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(11, 212);
+            label5.Location = new Point(11, 195);
             label5.Name = "label5";
             label5.Size = new Size(72, 19);
             label5.TabIndex = 5;
@@ -296,7 +296,7 @@
             label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(11, 272);
+            label6.Location = new Point(11, 250);
             label6.Name = "label6";
             label6.Size = new Size(93, 19);
             label6.TabIndex = 15;
@@ -317,7 +317,7 @@
             Text_Phone.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             Text_Phone.ForeColor = Color.Black;
             Text_Phone.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Phone.Location = new Point(131, 264);
+            Text_Phone.Location = new Point(131, 241);
             Text_Phone.Margin = new Padding(3, 4, 3, 4);
             Text_Phone.Name = "Text_Phone";
             Text_Phone.PasswordChar = '\0';
@@ -338,7 +338,7 @@
             DateTime_Birthday.FillColor = Color.White;
             DateTime_Birthday.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             DateTime_Birthday.Format = DateTimePickerFormat.Custom;
-            DateTime_Birthday.Location = new Point(131, 204);
+            DateTime_Birthday.Location = new Point(131, 186);
             DateTime_Birthday.Margin = new Padding(3, 2, 3, 2);
             DateTime_Birthday.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DateTime_Birthday.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -363,7 +363,7 @@
             ComboBox_Gender.ForeColor = Color.FromArgb(68, 88, 112);
             ComboBox_Gender.ItemHeight = 30;
             ComboBox_Gender.Items.AddRange(new object[] { "Nam", "Nữ", "Khác" });
-            ComboBox_Gender.Location = new Point(131, 144);
+            ComboBox_Gender.Location = new Point(131, 131);
             ComboBox_Gender.Name = "ComboBox_Gender";
             ComboBox_Gender.ShadowDecoration.CustomizableEdges = customizableEdges10;
             ComboBox_Gender.Size = new Size(376, 36);

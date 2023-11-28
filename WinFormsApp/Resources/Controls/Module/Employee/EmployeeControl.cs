@@ -61,12 +61,12 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
             DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
             EmployeeDto formData = new()
             {
-                Id = int.Parse(selected["Id"].FormattedValue.ToString()),
-                InternalCode = selected["InternalCode"].FormattedValue.ToString(),
-                Name = selected["_Name"].FormattedValue.ToString(),
-                Sex = selected["Sex"].FormattedValue.ToString(),
-                Birthday = DateTime.Parse(selected["Birthday"].FormattedValue.ToString()),
-                Phone = selected["Phone"].FormattedValue.ToString(),
+                Id = int.Parse(selected["Id"].Value.ToString()),
+                InternalCode = selected["InternalCode"].Value.ToString(),
+                Name = selected["_Name"].Value.ToString(),
+                Sex = selected["Sex"].Value.ToString(),
+                Birthday = DateTime.Parse(selected["Birthday"].Value.ToString()),
+                Phone = selected["Phone"].Value.ToString(),
             };
 
             if (e.ColumnIndex == 0)
