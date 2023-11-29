@@ -116,9 +116,6 @@ namespace WinFormsApp.Services
             int day = date.Day;
             int month = date.Month;
             int year = date.Year;
-            int hour = date.Hour;
-            int minute = date.Minute;
-            int second = date.Second;
 
             string nDate = year + "-" + month + "-" + day;
 
@@ -139,6 +136,50 @@ namespace WinFormsApp.Services
             {
                 parent.Controls.RemoveAt(0);
             }
+        }
+
+        public static bool CheckPermission(Control control, List<string> permissions)
+        {
+            if(control.Tag == null)
+            {
+                return false;
+            }
+
+            string[] tags = control.Tag.ToString()!.Split("|");
+
+            if (tags.Length < 1)
+            {
+                return true;
+            }
+
+            if (tags[0] != null && tags[0] == "parent")
+            {
+                string[] childPermissions = tags[1].Split(",");
+                int count = 0;
+
+                foreach (var item in childPermissions)
+                {
+
+                    if (permissions.Contains(item))
+                    {
+                        count++;
+                    }
+                }
+
+                if (count == 0)
+                {
+                    return false;
+                }
+            }
+            else if (tags.Length > 1 && tags[1] != null)
+            {
+                if (!permissions.Contains(tags[1]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

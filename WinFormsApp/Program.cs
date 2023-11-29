@@ -105,7 +105,7 @@ namespace WinFormsApp
             container.Register<IRoleService, RoleService>();
 
             admin = new Admin();
-            login = new Login(container);
+            login = new Login();
 
             //Application.Run(admin);
             Application.Run(login);

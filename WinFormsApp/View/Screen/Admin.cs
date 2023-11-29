@@ -11,6 +11,8 @@ using WinFormsApp.Resources.Controls.Module.Order;
 using WinFormsApp.Resources.Controls.Module.Parameter;
 using WinFormsApp.Resources.Controls.Module.Product;
 using WinFormsApp.Resources.Controls.Module.Promotion;
+using WinFormsApp.Resources.Controls.Module.Role;
+using WinFormsApp.Resources.Controls.Module.User;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.View.Screen
@@ -18,17 +20,80 @@ namespace WinFormsApp.View.Screen
     public partial class Admin : Form
     {
         string _currPanel;
+        IPermissionService _permissionService;
+        List<string> _permissions;
+
         public static Button _refreshCategoryBtn = new();
 
         public Admin()
         {
             InitializeComponent();
 
-            LoadCategory();
+            OnInit();
+
+        }
+
+        public void OnInit()
+        {
+            _permissionService = Program.container.GetInstance<IPermissionService>();
 
             Util.LoadControl(Panel_Body, new DistributorControl());
 
             _refreshCategoryBtn.Click += _refreshCategoryBtn_Click;
+
+            _permissions = _permissionService.GetRequiredPermissions();
+
+            CheckPermission();
+
+            LoadCategory();
+        }
+
+        private void CheckPermission()
+        {
+            var masterDataControls = Panel_MaterData.Controls;
+            var productControls = Panel_Product.Controls;
+            var systemControls = Panel_System.Controls;
+            var businessControls = Panel_Business.Controls;
+
+            for (int i = 0; i < masterDataControls.Count; i++)
+            {
+                Guna2Button btn = (Guna2Button)masterDataControls[i];
+
+                if (!Util.CheckPermission(btn, _permissions))
+                {
+                    Panel_MaterData.Controls.Remove(btn);
+                }
+            }
+
+            for (int i = 0; i < productControls.Count; i++)
+            {
+                Guna2Button btn = (Guna2Button)productControls[i];
+
+                if (!Util.CheckPermission(btn, _permissions))
+                {
+                    Panel_Product.Controls.Remove(btn);
+                }
+            }
+
+            for (int i = 0; i < systemControls.Count; i++)
+            {
+                Guna2Button btn = (Guna2Button)systemControls[i];
+
+                if (!Util.CheckPermission(btn, _permissions))
+                {
+                    Panel_System.Controls.Remove(btn);
+                }
+            }
+
+            for (int i = 0; i < businessControls.Count; i++)
+            {
+                Guna2Button btn = (Guna2Button)businessControls[i];
+
+                if (!Util.CheckPermission(btn, _permissions))
+                {
+                    Panel_Business.Controls.Remove(btn);
+                }
+            }
         }
 
         private void _refreshCategoryBtn_Click(object? sender, EventArgs e)
@@ -183,26 +248,33 @@ namespace WinFormsApp.View.Screen
 
         public async void LoadCategory()
         {
-            ICategoryService _categoryService = Program.container.GetInstance<ICategoryService>();
-            var _result = await _categoryService.GetList();
-
-            Util.RemoveChildFrom(Panel_Product, 1);
-
-            Util.Collapse(true, Panel_Product);
-
-            foreach (var item in _result.list)
+            try
             {
-                Guna2Button btn = CategoryButton(item);
+                ICategoryService _categoryService = Program.container.GetInstance<ICategoryService>();
+                var _result = await _categoryService.GetList();
 
-                Util.AddControl(Panel_Product, btn, DockStyle.Top);
+                Util.RemoveChildFrom(Panel_Product, 1);
 
-                int panelHeight = Panel_Product.Height + 40;
+                Util.Collapse(true, Panel_Product);
 
-                Panel_Product.MaximumSize = new Size(248, panelHeight);
-                Panel_Product.Height = panelHeight;
+                foreach (var item in _result.list)
+                {
+                    Guna2Button btn = CategoryButton(item);
+
+                    Util.AddControl(Panel_Product, btn, DockStyle.Top);
+
+                    int panelHeight = Panel_Product.Height + 40;
+
+                    Panel_Product.MaximumSize = new Size(248, panelHeight);
+                    Panel_Product.Height = panelHeight;
+                }
+
+                Btn_Product.SendToBack();
             }
+            catch (Exception)
+            {
 
-            Btn_Product.SendToBack();
+            }
         }
 
         private Guna2Button CategoryButton(CategoryDto category)
@@ -288,6 +360,24 @@ namespace WinFormsApp.View.Screen
             Util.LoadControl(Panel_Body, new OrderControl());
 
             _currPanel = Btn_Import.Tag!.ToString()!.Split("|")[0];
+            LoadMenu();
+        }
+
+        private void Btn_Role_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Vai trò";
+            Util.LoadControl(Panel_Body, new RoleControl());
+
+            _currPanel = Btn_Role.Tag!.ToString()!.Split("|")[0];
+            LoadMenu();
+        }
+
+        private void Btn_User_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Người dùng";
+            Util.LoadControl(Panel_Body, new UserAssignRoleControl());
+
+            _currPanel = Btn_User.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
     }
