@@ -1,8 +1,8 @@
 ﻿using Database.Interfaces;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
 using System.Reflection;
 
 namespace Services.Services
@@ -45,31 +45,29 @@ namespace Services.Services
 
         public async Task<List<string>> Create(List<string> pPermissions)
         {
-            foreach (var permission in pPermissions)
+            try
             {
-                var per = await _permissionRepo.FindByName(permission);
-
-                if (per.Count == 0)
+                foreach (var permission in pPermissions)
                 {
-                    await _permissionRepo.AddAsync(new Permission
+                    var per = await _permissionRepo.FindByName(permission);
+
+                    if (per.Count == 0)
                     {
-                        Name = permission
-                    });
+                        await _permissionRepo.AddAsync(new Permission
+                        {
+                            Name = permission
+                        });
+                    }
                 }
+
+                var permissions = await _permissionRepo.GetAllAsync();
+
+                return permissions.list.Select(x => x.Name).ToList();
             }
-
-            var permissions = await _permissionRepo.GetAllAsync();
-
-            return permissions.list.Select(x => x.Name).ToList();
-        }
-
-        public bool CheckPermission(string pScreen)
-        {
-            //if (!_currentUser.Permissions.Contains(requiredPermission))
-            //{
-            //    throw new UnauthorizedAccessException("User does not have the required permission.");
-            //}
-            return false;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

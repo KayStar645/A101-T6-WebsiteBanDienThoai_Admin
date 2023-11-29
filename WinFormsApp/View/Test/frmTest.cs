@@ -55,27 +55,29 @@ namespace WinFormsApp.View.Test
             //Test6();
 
             TestIdentities();
+            int a = 1;
         }
 
         private async Task TestIdentities()
         {
-            //var x = _permissionService.GetRequiredPermissions();
+            var x = _permissionService.GetRequiredPermissions();
 
-            //var y = await _permissionService.Create(x);
+            var y = await _permissionService.Create(x);
 
-            //var role = await _roleService.Create(new RoleVM
-            //{
-            //    Name = "Quyền của Thuận",
-            //    PermissionsName = x
-            //});
+            var role = await _roleService.Update(new RoleVM
+            {
+                Id = 4,
+                Name = "Quyền của Thuận",
+                PermissionsName = x
+            });
 
             //var roles = await _roleService.GetList();
 
-            //var c = await _roleService.AssignRoles(new AssignRoleVM
-            //{
-            //    UserId = 1,
-            //    RoleId = 4
-            //});
+            var c = await _roleService.AssignRoles(new AssignRoleVM
+            {
+                UserId = 1,
+                RoleId = 4
+            });
 
 
 

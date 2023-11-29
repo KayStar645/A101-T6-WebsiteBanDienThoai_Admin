@@ -2,10 +2,11 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Domain.ModelViews;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
 using System.Transactions;
 
@@ -27,6 +28,10 @@ namespace Services.Services
         [RequirePermission("Promotion.View")]
         public async Task<(List<PromotionDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
+            if (CustomMiddleware.CheckPermission("Promotion.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _promotionRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<PromotionDto>>(result.list);
@@ -37,6 +42,10 @@ namespace Services.Services
         [RequirePermission("Promotion.View")]
         public async Task<PromotionDto> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Promotion.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var promotion = await _promotionRepo.GetDetailAsync(pId);
 
             var promotionDto = _mapper.Map<PromotionDto>(promotion);
@@ -51,6 +60,10 @@ namespace Services.Services
         [RequirePermission("Promotion.Create")]
         public async Task<int> Create(PromotionDto pCreate)
         {
+            if (CustomMiddleware.CheckPermission("Promotion.Create") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             pCreate.Status = Promotion.STATUS_DRAFT;
 
             PromotionValidator validator = new PromotionValidator(_promotionRepo, pCreate.Start, pCreate.Type);
@@ -72,6 +85,10 @@ namespace Services.Services
         [RequirePermission("Promotion.Update")]
         public async Task<bool> Update(PromotionDto pUpdate)
         {
+            if (CustomMiddleware.CheckPermission("Promotion.Update") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             PromotionValidator validator = new PromotionValidator(_promotionRepo, pUpdate.Start, pUpdate.Type, false, pUpdate.Id);
             var validationResult = await validator.ValidateAsync(pUpdate);
 
@@ -91,6 +108,10 @@ namespace Services.Services
         [RequirePermission("Promotion.Delete")]
         public async Task<bool> Delete(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Promotion.Delete") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _promotionRepo.DeleteAsync(pId);
 
             return result;
@@ -99,6 +120,10 @@ namespace Services.Services
         [RequirePermission("Promotion.Approve")]
         public async Task<bool> Approve(int pId, string type)
         {
+            if (CustomMiddleware.CheckPermission("Promotion.Approve") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _promotionRepo.ApproveAsync(pId, type);
 
             return result;
@@ -107,6 +132,10 @@ namespace Services.Services
         [RequirePermission("Promotion.Apply")]
         public async Task<bool> ApplyForProduct(int pId, List<int> pProductsId)
         {
+            if (CustomMiddleware.CheckPermission("Promotion.Apply") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             using (var transaction = new TransactionScope())
             {
                 try

@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using Database.Interfaces;
 using Domain.DTOs;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
 
 namespace Services.Services
@@ -22,6 +23,10 @@ namespace Services.Services
         [RequirePermission("Color.View")]
         public async Task<(List<ColorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
+            if (CustomMiddleware.CheckPermission("Color.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _colorRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<ColorDto>>(result.list);
@@ -32,6 +37,10 @@ namespace Services.Services
         [RequirePermission("Color.View")]
         public async Task<ColorDto> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Color.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var color = await _colorRepo.GetDetailAsync(pId);
 
             var ColorDto = _mapper.Map<ColorDto>(color);
@@ -42,6 +51,10 @@ namespace Services.Services
         [RequirePermission("Color.Create")]
         public async Task<bool> Create(ColorDto pCreate)
         {
+            if (CustomMiddleware.CheckPermission("Color.Create") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             ColorValidator validator = new ColorValidator(_colorRepo);
             var validationResult = await validator.ValidateAsync(pCreate);
 
@@ -61,6 +74,10 @@ namespace Services.Services
         [RequirePermission("Color.Update")]
         public async Task<bool> Update(ColorDto pUpdate)
         {
+            if (CustomMiddleware.CheckPermission("Color.Update") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             ColorValidator validator = new ColorValidator(_colorRepo, false, pUpdate.Id);
             var validationResult = await validator.ValidateAsync(pUpdate);
 
@@ -80,6 +97,10 @@ namespace Services.Services
         [RequirePermission("Color.Delete")]
         public async Task<bool> Delete(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Color.Delete") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _colorRepo.DeleteAsync(pId);
 
             return result;

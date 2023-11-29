@@ -2,9 +2,10 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
 
 namespace Services.Services
@@ -23,6 +24,10 @@ namespace Services.Services
         [RequirePermission("Category.View")]
         public async Task<(List<CategoryDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
+            if (CustomMiddleware.CheckPermission("Category.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _categoryRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<CategoryDto>>(result.list);
@@ -33,6 +38,10 @@ namespace Services.Services
         [RequirePermission("Category.View")]
         public async Task<CategoryDto> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Category.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var category = await _categoryRepo.GetDetailAsync(pId);
 
             var categoryDto = _mapper.Map<CategoryDto>(category);
@@ -43,6 +52,10 @@ namespace Services.Services
         [RequirePermission("Category.Create")]
         public async Task<bool> Create(CategoryDto pCreate)
         {
+            if (CustomMiddleware.CheckPermission("Category.Create") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             CategoryValidator validator = new CategoryValidator(_categoryRepo);
             var validationResult = await validator.ValidateAsync(pCreate);
 
@@ -62,6 +75,10 @@ namespace Services.Services
         [RequirePermission("Category.Update")]
         public async Task<bool> Update(CategoryDto pUpdate)
         {
+            if (CustomMiddleware.CheckPermission("Category.Update") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             CategoryValidator validator = new CategoryValidator(_categoryRepo, false, pUpdate.Id);
             var validationResult = await validator.ValidateAsync(pUpdate);
 
@@ -81,6 +98,10 @@ namespace Services.Services
         [RequirePermission("Category.Delete")]
         public async Task<bool> Delete(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Category.Delete") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _categoryRepo.DeleteAsync(pId);
 
             return result;

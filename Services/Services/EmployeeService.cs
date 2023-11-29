@@ -2,9 +2,10 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
 using System.Transactions;
 
@@ -26,6 +27,10 @@ namespace Services.Services
         [RequirePermission("Employee.View")]
         public async Task<(List<EmployeeDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
+            if (CustomMiddleware.CheckPermission("Employee.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _employeeRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<EmployeeDto>>(result.list);
@@ -36,6 +41,10 @@ namespace Services.Services
         [RequirePermission("Employee.View")]
         public async Task<EmployeeDto> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Employee.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var employee = await _employeeRepo.GetDetailAsync(pId);
 
             var employeeDto = _mapper.Map<EmployeeDto>(employee);
@@ -46,6 +55,10 @@ namespace Services.Services
         [RequirePermission("Employee.Create")]
         public async Task<bool> Create(EmployeeDto pCreate)
         {
+            if (CustomMiddleware.CheckPermission("Employee.Create") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             EmployeeValidator validator = new EmployeeValidator(_employeeRepo, true);
             var validationResult = await validator.ValidateAsync(pCreate);
 
@@ -85,6 +98,10 @@ namespace Services.Services
         [RequirePermission("Employee.Update")]
         public async Task<bool> Update(EmployeeDto pUpdate)
         {
+            if (CustomMiddleware.CheckPermission("Employee.Update") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             EmployeeValidator validator = new EmployeeValidator(_employeeRepo, false, pUpdate.Id);
             var validationResult = await validator.ValidateAsync(pUpdate);
 
@@ -104,6 +121,10 @@ namespace Services.Services
         [RequirePermission("Employee.Delete")]
         public async Task<bool> Delete(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Employee.Delete") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _employeeRepo.DeleteAsync(pId);
 
             return result;
