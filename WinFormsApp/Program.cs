@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Services.Interfaces;
+using Services.Interfaces.GoogleDrive;
 using Services.Profiles;
 using Services.Services;
+using Services.Services.GoogleDrive;
 using SimpleInjector;
 using WinFormsApp.View.Auth;
 using WinFormsApp.View.Screen;
@@ -103,6 +105,7 @@ namespace WinFormsApp
             container.Register<IOrderService, OrderService>();
             container.Register<IPermissionService, PermissionService>();
             container.Register<IRoleService, RoleService>();
+            container.Register<IGoogleDriveService, GoogleDriveService>();
 
             admin = new Admin();
             login = new Login(container);

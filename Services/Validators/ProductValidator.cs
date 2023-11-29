@@ -4,6 +4,7 @@ using Domain.Entities;
 using FluentValidation;
 using Services.Common;
 using Services.Transform;
+using Color = Domain.Entities.Color;
 
 namespace Services.Validators
 {
@@ -53,7 +54,7 @@ namespace Services.Validators
                {
                    if (colorId != 0 && colorId != null)
                    {
-                       return await _colorRepo.AnyIdAsync<Domain.Entities.Color>((int)colorId) == false;
+                       return await _colorRepo.AnyIdAsync<Color>((int)colorId) == false;
                    }
                    return false;
                })
