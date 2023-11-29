@@ -8,7 +8,6 @@ using Services.Interfaces.Common;
 using Services.Middleware;
 using Services.Transform;
 using Services.Validators;
-using System.Reflection;
 using System.Transactions;
 
 namespace Services.Services
@@ -29,7 +28,7 @@ namespace Services.Services
         [RequirePermission("Promotion.View")]
         public async Task<(List<PromotionDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Promotion.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -43,7 +42,7 @@ namespace Services.Services
         [RequirePermission("Promotion.View")]
         public async Task<PromotionDto> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Promotion.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -61,7 +60,7 @@ namespace Services.Services
         [RequirePermission("Promotion.Create")]
         public async Task<int> Create(PromotionDto pCreate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Promotion.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -86,7 +85,7 @@ namespace Services.Services
         [RequirePermission("Promotion.Update")]
         public async Task<bool> Update(PromotionDto pUpdate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Promotion.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -109,7 +108,7 @@ namespace Services.Services
         [RequirePermission("Promotion.Delete")]
         public async Task<bool> Delete(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Promotion.Delete") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -121,7 +120,7 @@ namespace Services.Services
         [RequirePermission("Promotion.Approve")]
         public async Task<bool> Approve(int pId, string type)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Promotion.Approve") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -133,7 +132,7 @@ namespace Services.Services
         [RequirePermission("Promotion.Apply")]
         public async Task<bool> ApplyForProduct(int pId, List<int> pProductsId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Promotion.Apply") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

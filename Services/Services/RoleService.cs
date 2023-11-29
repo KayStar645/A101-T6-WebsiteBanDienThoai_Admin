@@ -5,7 +5,6 @@ using Domain.ModelViews;
 using Services.Interfaces;
 using Services.Middleware;
 using Services.Transform;
-using System.Reflection;
 using System.Transactions;
 
 namespace Services.Services
@@ -26,7 +25,7 @@ namespace Services.Services
         [RequirePermission("Role.View")]
         public async Task<List<Role>> GetList()
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Role.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -38,7 +37,7 @@ namespace Services.Services
         [RequirePermission("Role.View")]
         public async Task<RoleVM> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Role.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -53,7 +52,7 @@ namespace Services.Services
         [RequirePermission("Role.Create")]
         public async Task<RoleVM> Create(RoleVM pCreate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Role.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -84,7 +83,7 @@ namespace Services.Services
         [RequirePermission("Role.Update")]
         public async Task<RoleVM> Update(RoleVM pCreate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Role.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -129,7 +128,7 @@ namespace Services.Services
         [RequirePermission("Role.Assign")]
         public async Task<RoleVM> AssignRoles(AssignRoleVM pRequest)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Role.Assign") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -149,9 +148,10 @@ namespace Services.Services
             return await GetDetail(pRequest.RoleId);
         }
 
+        [RequirePermission("Role.Assign")]
         public async Task<RoleVM> RevokeRole(AssignRoleVM pRequest)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Role.Assign") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

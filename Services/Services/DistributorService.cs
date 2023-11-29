@@ -7,7 +7,6 @@ using Services.Interfaces.Common;
 using Services.Middleware;
 using Services.Transform;
 using Services.Validators;
-using System.Reflection;
 
 namespace Services.Services
 {
@@ -25,7 +24,7 @@ namespace Services.Services
         [RequirePermission("Distributor.View")]
         public async Task<(List<DistributorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Distributor.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -40,7 +39,7 @@ namespace Services.Services
         [RequirePermission("Distributor.View")]
         public async Task<DistributorDto> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Distributor.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -54,7 +53,7 @@ namespace Services.Services
         [RequirePermission("Distributor.Create")]
         public async Task<bool> Create(DistributorDto pCreate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Distributor.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

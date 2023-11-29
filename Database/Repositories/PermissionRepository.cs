@@ -38,7 +38,7 @@ namespace Database.Repositories
         #region FUNCTION
         public async Task<List<string>> FindByName(string pName)
         {
-            string query = $"SELECT Name FROM Permission WHERE Name =N\'{pName}'";
+            string query = $"SELECT Name FROM Permission WHERE Name = N\'{pName}'";
 
             using(var connect = new SqlConnection(DatabaseCommon.ConnectionString))
             {

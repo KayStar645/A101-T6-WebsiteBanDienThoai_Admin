@@ -6,7 +6,6 @@ using Services.Interfaces;
 using Services.Interfaces.Common;
 using Services.Middleware;
 using Services.Transform;
-using System.Reflection;
 using System.Transactions;
 
 namespace Services.Services
@@ -35,7 +34,7 @@ namespace Services.Services
         [RequirePermission("ImportBill.Create")]
         public async Task<bool> Create(ImportBillDto pImportBill)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("ImportBill.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -110,7 +109,7 @@ namespace Services.Services
         [RequirePermission("ImportBill.View")]
         public async Task<ImportBillDto> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("ImportBill.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -123,7 +122,7 @@ namespace Services.Services
         public async Task<(List<ImportBillDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pEmployeeId = null, int? pDistributorId = null)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("ImportBill.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

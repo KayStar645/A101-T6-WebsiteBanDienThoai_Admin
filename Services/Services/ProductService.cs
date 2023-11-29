@@ -8,7 +8,6 @@ using Services.Interfaces.Common;
 using Services.Middleware;
 using Services.Transform;
 using Services.Validators;
-using System.Reflection;
 
 namespace Services.Services
 {
@@ -32,7 +31,7 @@ namespace Services.Services
         public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pCategoryId = null)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Product.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -46,7 +45,7 @@ namespace Services.Services
         [RequirePermission("Product.View")]
         public async Task<DetailProductVM> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Product.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -60,7 +59,7 @@ namespace Services.Services
         [RequirePermission("Product.Create")]
         public async Task<int> Create(ProductDto pCreate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Product.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -88,7 +87,7 @@ namespace Services.Services
         [RequirePermission("Product.Update")]
         public async Task<bool> Update(ProductDto pUpdate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Product.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -116,7 +115,7 @@ namespace Services.Services
         [RequirePermission("Product.Delete")]
         public async Task<bool> Delete(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Product.Delete") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

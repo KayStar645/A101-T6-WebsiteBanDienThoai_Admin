@@ -2,16 +2,14 @@
 using Database.Common;
 using Database.Interfaces;
 using Domain.DTOs;
-using Domain.Entities;
-using Domain.ModelViews;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Services.Common;
 using Services.Constants;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -34,8 +32,13 @@ namespace Services.Services
             _employeeRepo = employeeRepository;
         }
 
+        [RequirePermission("Account.Create")]
         public async Task<int> CreateAccount(UserDto pUser)
         {
+            if (CustomMiddleware.CheckPermission("Account.Create") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             try
             {
                 var hashedPassword = _passwordHasher.HashPassword(pUser, pUser.Password);

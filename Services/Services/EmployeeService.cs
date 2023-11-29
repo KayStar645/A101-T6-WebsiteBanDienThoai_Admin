@@ -7,7 +7,6 @@ using Services.Interfaces.Common;
 using Services.Middleware;
 using Services.Transform;
 using Services.Validators;
-using System.Reflection;
 using System.Transactions;
 
 namespace Services.Services
@@ -28,7 +27,7 @@ namespace Services.Services
         [RequirePermission("Employee.View")]
         public async Task<(List<EmployeeDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Employee.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -42,7 +41,7 @@ namespace Services.Services
         [RequirePermission("Employee.View")]
         public async Task<EmployeeDto> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Employee.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -56,7 +55,7 @@ namespace Services.Services
         [RequirePermission("Employee.Create")]
         public async Task<bool> Create(EmployeeDto pCreate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Employee.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -99,7 +98,7 @@ namespace Services.Services
         [RequirePermission("Employee.Update")]
         public async Task<bool> Update(EmployeeDto pUpdate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Employee.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -122,7 +121,7 @@ namespace Services.Services
         [RequirePermission("Employee.Delete")]
         public async Task<bool> Delete(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Employee.Delete") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

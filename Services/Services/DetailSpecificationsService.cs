@@ -7,7 +7,6 @@ using Services.Interfaces.Common;
 using Services.Middleware;
 using Services.Transform;
 using Services.Validators;
-using System.Reflection;
 
 namespace Services.Services
 {
@@ -62,7 +61,7 @@ namespace Services.Services
         [RequirePermission("Specifications.Update")]
         public async Task<bool> Update(DetailSpecificationsDto pUpdate)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Specifications.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -85,7 +84,7 @@ namespace Services.Services
         [RequirePermission("Specifications.Delete")]
         public async Task<bool> Delete(int pId)
         {
-            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            if (CustomMiddleware.CheckPermission("Specifications.Delete") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
