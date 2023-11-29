@@ -82,7 +82,7 @@ namespace Services.Services
         }
 
         [RequirePermission("Role.Update")]
-        public async Task<RoleVM> Update(RoleVM pCreate)
+        public async Task<RoleVM> Update(RoleVM pUpdate)
         {
             //if (CustomMiddleware.CheckPermission("Role.Update") == false)
             //{
@@ -92,30 +92,30 @@ namespace Services.Services
             {
                 try
                 {
-                    var mapRole = _mapper.Map<Role>(pCreate);
+                    var mapRole = _mapper.Map<Role>(pUpdate);
 
                     var result = await _roleRepo.UpdateAsync(mapRole);
 
-                    var role = await GetDetail(result);
+                    var role = await GetDetail(pUpdate.Id);
 
-                    if(pCreate.PermissionsName != null)
+                    if(pUpdate.PermissionsName != null)
                     {
-                        var deletePermission = role.PermissionsName.Except(pCreate.PermissionsName);
-                        var addPermission = pCreate.PermissionsName.Except(role.PermissionsName);
+                        var deletePermission = role.PermissionsName.Except(pUpdate.PermissionsName);
+                        var addPermission = pUpdate.PermissionsName.Except(role.PermissionsName);
 
                         foreach(var del in deletePermission)
                         {
-                            await _roleRepo.DeleteRolePer(result, del);
+                            await _roleRepo.DeleteRolePer(pUpdate.Id, del);
                         }
 
                         foreach(var add in addPermission)
                         {
-                            await _roleRepo.AddRolePer(result, add);
+                            await _roleRepo.AddRolePer(pUpdate.Id, add);
                         }    
                     }    
 
                     transaction.Complete();
-                    return pCreate;
+                    return pUpdate;
                 }
                 catch (Exception ex)
                 {
