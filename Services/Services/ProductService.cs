@@ -87,7 +87,7 @@ namespace Services.Services
                 var url = await _googleDriveService.UploadFilesToGoogleDrive(new UploadVM
                 {
                     FilePath = image,
-                    FileName = $"products/{pCreate.Id}-{pCreate.Name}/{Guid.NewGuid()}"
+                    FileName = $"{pCreate.CategoryId}/{pCreate.Id}-{pCreate.Name}/{Guid.NewGuid()}"
                 });
                 images.Add(url);
             }
@@ -130,7 +130,7 @@ namespace Services.Services
                     url = await _googleDriveService.UploadFilesToGoogleDrive(new UploadVM
                     {
                         FilePath = image,
-                        FileName = $"products/{pUpdate.Id}-{pUpdate.Name}/{Guid.NewGuid()}"
+                        FileName = $"{pUpdate.CategoryId}/{pUpdate.Id}-{pUpdate.Name}/{Guid.NewGuid()}"
                     });
                 }
                 images.Add(url);
