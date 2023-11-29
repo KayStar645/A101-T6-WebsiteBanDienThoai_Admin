@@ -18,6 +18,8 @@ namespace WinFormsApp.View.Test
         private readonly IImportBillService _importBillService;
         private readonly IOrderService _orderService;
         private readonly IPromotionService _promotionService;
+        private readonly IPermissionService _permissionService;
+        private readonly IRoleService _roleService;
 
 
 
@@ -37,6 +39,9 @@ namespace WinFormsApp.View.Test
             _orderService = _container.GetInstance<IOrderService>();
             _promotionService = _container.GetInstance<IPromotionService>();
 
+            _permissionService = _container.GetInstance<IPermissionService>();
+            _roleService = _container.GetInstance<IRoleService>();
+
             //Test();
 
             //Test2();
@@ -47,7 +52,32 @@ namespace WinFormsApp.View.Test
 
             //Test5();
 
-            Test6();
+            //Test6();
+
+            TestIdentities();
+        }
+
+        private async Task TestIdentities()
+        {
+            //var x = _permissionService.GetRequiredPermissions();
+
+            //var y = await _permissionService.Create(x);
+
+            //var role = await _roleService.Create(new RoleVM
+            //{
+            //    Name = "Quyền của Thuận",
+            //    PermissionsName = x
+            //});
+
+            //var roles = await _roleService.GetList();
+
+            var c = await _roleService.AssignRoles(new AssignRoleVM
+            {
+                UserId = 1,
+                RoleId = 4
+            });
+
+            int a = 1;
         }
 
         private async Task Test6()

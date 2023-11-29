@@ -2,13 +2,15 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Domain.ModelViews;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 
 namespace Services.Services
 {
-    public class ProductService : IProductService
+    public class ProductService : IProductService, IService
     {
         private readonly IProductRepository _productRepo;
         private readonly IMapper _mapper;
@@ -24,6 +26,7 @@ namespace Services.Services
             _capacityRepo = capacity;
         }
 
+        [RequirePermission("Product.View")]
         public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pCategoryId = null)
         {
@@ -34,6 +37,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Product.View")]
         public async Task<DetailProductVM> GetDetail(int pId)
         {
             var detailProduct = await _productRepo.GetDetailPropertiesAsync(pId);
@@ -43,6 +47,7 @@ namespace Services.Services
             return mapDetail;
         }
 
+        [RequirePermission("Product.Create")]
         public async Task<int> Create(ProductDto pCreate)
         {
             ProductValidator validator = new ProductValidator(_productRepo, _colorRepo, _capacityRepo);
@@ -66,6 +71,7 @@ namespace Services.Services
             return result;
         }
 
+        [RequirePermission("Product.Update")]
         public async Task<bool> Update(ProductDto pUpdate)
         {
             ProductValidator validator = new ProductValidator(_productRepo, _colorRepo, _capacityRepo, pUpdate.Id);
@@ -89,6 +95,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Product.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _productRepo.DeleteAsync(pId);

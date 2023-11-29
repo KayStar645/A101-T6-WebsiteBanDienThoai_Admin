@@ -1,6 +1,5 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
-using SimpleInjector;
 
 namespace WinFormsApp.Resources.Controls.Module.Configuration
 {

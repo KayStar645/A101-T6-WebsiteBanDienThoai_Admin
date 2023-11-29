@@ -1,17 +1,15 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using FluentValidation;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace Services.Services
 {
-    public class DistributorService : IDistributorService
+    public class DistributorService : IDistributorService, IService
     {
         private readonly IDistributorRepository _distributorRepo;
         private readonly IMapper _mapper;
@@ -22,6 +20,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Distributor.View")]
         public async Task<(List<DistributorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _distributorRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -31,6 +30,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Distributor.View")]
         public async Task<DistributorDto> GetDetail(int pId)
         {
             var distributor = await _distributorRepo.GetDetailAsync(pId);
@@ -40,6 +40,7 @@ namespace Services.Services
             return distributorDto;
         }
 
+        [RequirePermission("Distributor.Create")]
         public async Task<bool> Create(DistributorDto pCreate)
         {
             DistributorValidator validator = new DistributorValidator(_distributorRepo, true);
@@ -58,6 +59,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Distributor.Update")]
         public async Task<bool> Update(DistributorDto pUpdate)
         {
 
@@ -77,6 +79,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Distributor.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _distributorRepo.DeleteAsync(pId);

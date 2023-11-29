@@ -124,9 +124,9 @@ namespace Database.Repositories
                     return result;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return default(T);
+                throw ex;
             }
         }
 
@@ -177,7 +177,10 @@ namespace Database.Repositories
                     return insertedId;
                 }
             }
-            catch { return 0; }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 
@@ -233,7 +236,10 @@ namespace Database.Repositories
 
                 return 0;
             }
-            catch { return 0; }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 
@@ -253,7 +259,10 @@ namespace Database.Repositories
                     return rowsAffected > 0;
                 }
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private string DateTimeConvertToString(DateTime pDate)
@@ -287,7 +296,10 @@ namespace Database.Repositories
                     return count > 0;
                 }
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public virtual async Task<bool> AnyIdAsync<Entity>(int pId)
@@ -305,7 +317,10 @@ namespace Database.Repositories
                     return count > 0;
                 }
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 

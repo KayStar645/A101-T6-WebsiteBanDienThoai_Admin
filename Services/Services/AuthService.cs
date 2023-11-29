@@ -7,13 +7,14 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Services.Constants;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
 namespace Services.Services
 {
-    public class AuthService : IAuthService
+    public class AuthService : IAuthService, IService
     {
         private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;

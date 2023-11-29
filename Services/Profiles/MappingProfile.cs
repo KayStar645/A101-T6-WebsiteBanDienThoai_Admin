@@ -37,6 +37,8 @@ namespace Services.Profiles
             CreateMap<Order, OrderDto>().ReverseMap();
             CreateMap<DetailOrder, DetailOrderDto>().ReverseMap();
 
+            CreateMap<Role, RoleVM>().ReverseMap();
+
         }
 
         private class StringToListTypeConverter : ITypeConverter<string, List<string>>
