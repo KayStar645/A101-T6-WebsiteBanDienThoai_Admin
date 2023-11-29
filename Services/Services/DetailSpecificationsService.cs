@@ -2,10 +2,12 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
+using System.Reflection;
 
 namespace Services.Services
 {
@@ -23,6 +25,10 @@ namespace Services.Services
         [RequirePermission("Specifications.View")]
         public async Task<List<DetailSpecificationsDto>> GetListBySpecificationsIdAsync(int pSpecificationsId)
         {
+            if (CustomMiddleware.CheckPermission("Specifications.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _detailSpecificationsRepo.GetBySpecificationsIdAsync(pSpecificationsId);
 
             var list = _mapper.Map<List<DetailSpecificationsDto>>(result);
@@ -33,6 +39,10 @@ namespace Services.Services
         [RequirePermission("Specifications.Create")]
         public async Task<bool> Create(DetailSpecificationsDto pCreate)
         {
+            if (CustomMiddleware.CheckPermission("Specifications.Create") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             DetailSpecificationsValidator validator = new DetailSpecificationsValidator(_detailSpecificationsRepo, pCreate.Description);
             var validationResult = await validator.ValidateAsync(pCreate);
 
@@ -52,6 +62,10 @@ namespace Services.Services
         [RequirePermission("Specifications.Update")]
         public async Task<bool> Update(DetailSpecificationsDto pUpdate)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             DetailSpecificationsValidator validator = new DetailSpecificationsValidator(_detailSpecificationsRepo, pUpdate.Description, pUpdate.Id);
             var validationResult = await validator.ValidateAsync(pUpdate);
 
@@ -71,6 +85,10 @@ namespace Services.Services
         [RequirePermission("Specifications.Delete")]
         public async Task<bool> Delete(int pId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _detailSpecificationsRepo.DeleteAsync(pId);
 
             return result;

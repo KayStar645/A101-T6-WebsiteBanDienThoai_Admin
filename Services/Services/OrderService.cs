@@ -2,11 +2,13 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Common;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
+using System.Reflection;
 using System.Transactions;
 
 namespace Services.Services
@@ -33,6 +35,10 @@ namespace Services.Services
         [RequirePermission("Order.View")]
         public async Task<OrderDto> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _orderRepo.GetDetailPropertiesAsync(pId);
 
             return result;
@@ -42,6 +48,10 @@ namespace Services.Services
         public async Task<(List<OrderDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pEmployeeId = null, int? pCustomerId = null)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _orderRepo.GetAllPropertiesAsync(pKeyword, pSort, pPageNumber, pPageSize, pEmployeeId, pCustomerId);
 
             return result;
@@ -53,6 +63,10 @@ namespace Services.Services
         [RequirePermission("ImportBill.Create")]
         public async Task<bool> Create(OrderDto pOrder)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             OrderValidator validator = new OrderValidator(_orderRepo, _detailOrderRepo);
             var validationResult = await validator.ValidateAsync(pOrder);
 
@@ -133,6 +147,10 @@ namespace Services.Services
         [RequirePermission("ImportBill.Update")]
         public async Task<bool> Update(OrderDto pOrder)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             OrderValidator validator = new OrderValidator(_orderRepo, _detailOrderRepo, false, pOrder.Id);
             var validationResult = await validator.ValidateAsync(pOrder);
 
@@ -266,6 +284,10 @@ namespace Services.Services
         [RequirePermission("ImportBill.Approve")]
         public async Task<bool> ChangeTypeOrder(int pOrderId, string pType)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _orderRepo.ChangeTypeOrderAsync(pOrderId, pType);
 
             return result;
@@ -274,6 +296,10 @@ namespace Services.Services
         // Áp dụng chương trình khuyến mãi cho 1 sản phẩm
         private async Task<(PromotionDto promotion, long? oldPrice, long? discount)> PriceAfterApprovePromotionForProduct(int pProductId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var product = await _productRepo.GetDetailAsync(pProductId);
             long? price = product.Price ?? 0;
 

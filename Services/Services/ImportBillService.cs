@@ -2,9 +2,11 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
+using System.Reflection;
 using System.Transactions;
 
 namespace Services.Services
@@ -33,6 +35,10 @@ namespace Services.Services
         [RequirePermission("ImportBill.Create")]
         public async Task<bool> Create(ImportBillDto pImportBill)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             using (var transaction = new TransactionScope())
             {
                 try
@@ -104,6 +110,10 @@ namespace Services.Services
         [RequirePermission("ImportBill.View")]
         public async Task<ImportBillDto> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _importBillRepo.GetDetailPropertiesAsync(pId);
 
             return result;
@@ -113,6 +123,10 @@ namespace Services.Services
         public async Task<(List<ImportBillDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pEmployeeId = null, int? pDistributorId = null)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _importBillRepo.GetAllPropertiesAsync(pKeyword, pSort, pPageNumber, pPageSize, pEmployeeId, pDistributorId);
 
             return result;

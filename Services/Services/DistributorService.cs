@@ -2,10 +2,12 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
+using System.Reflection;
 
 namespace Services.Services
 {
@@ -23,6 +25,11 @@ namespace Services.Services
         [RequirePermission("Distributor.View")]
         public async Task<(List<DistributorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
+
             var result = await _distributorRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
 
             var list = _mapper.Map<List<DistributorDto>>(result.list);
@@ -33,6 +40,10 @@ namespace Services.Services
         [RequirePermission("Distributor.View")]
         public async Task<DistributorDto> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var distributor = await _distributorRepo.GetDetailAsync(pId);
 
             var distributorDto = _mapper.Map<DistributorDto>(distributor);
@@ -43,6 +54,10 @@ namespace Services.Services
         [RequirePermission("Distributor.Create")]
         public async Task<bool> Create(DistributorDto pCreate)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             DistributorValidator validator = new DistributorValidator(_distributorRepo, true);
             var validationResult = await validator.ValidateAsync(pCreate);
 
@@ -62,6 +77,10 @@ namespace Services.Services
         [RequirePermission("Distributor.Update")]
         public async Task<bool> Update(DistributorDto pUpdate)
         {
+            if (CustomMiddleware.CheckPermission("Distributor.Update") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
 
             DistributorValidator validator = new DistributorValidator(_distributorRepo, false, pUpdate.Id);
             var validationResult = await validator.ValidateAsync(pUpdate);
@@ -82,6 +101,10 @@ namespace Services.Services
         [RequirePermission("Distributor.Delete")]
         public async Task<bool> Delete(int pId)
         {
+            if (CustomMiddleware.CheckPermission("Distributor.Delete") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _distributorRepo.DeleteAsync(pId);
 
             return result;

@@ -2,11 +2,13 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
-using Domain.Identities;
 using Domain.ModelViews;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
+using Services.Transform;
 using Services.Validators;
+using System.Reflection;
 
 namespace Services.Services
 {
@@ -30,6 +32,10 @@ namespace Services.Services
         public async Task<(List<ProductVM> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pCategoryId = null)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _productRepo.GetAllPropertiesAsync(pKeyword, pSort, pPageNumber, pPageSize, pCategoryId);
 
             var list = _mapper.Map<List<ProductVM>>(result.list);
@@ -40,6 +46,10 @@ namespace Services.Services
         [RequirePermission("Product.View")]
         public async Task<DetailProductVM> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var detailProduct = await _productRepo.GetDetailPropertiesAsync(pId);
 
             var mapDetail = _mapper.Map<DetailProductVM>(detailProduct);
@@ -50,6 +60,10 @@ namespace Services.Services
         [RequirePermission("Product.Create")]
         public async Task<int> Create(ProductDto pCreate)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             ProductValidator validator = new ProductValidator(_productRepo, _colorRepo, _capacityRepo);
             var validationResult = await validator.ValidateAsync(pCreate);
 
@@ -74,6 +88,10 @@ namespace Services.Services
         [RequirePermission("Product.Update")]
         public async Task<bool> Update(ProductDto pUpdate)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             ProductValidator validator = new ProductValidator(_productRepo, _colorRepo, _capacityRepo, pUpdate.Id);
             var validationResult = await validator.ValidateAsync(pUpdate);
 
@@ -98,6 +116,10 @@ namespace Services.Services
         [RequirePermission("Product.Delete")]
         public async Task<bool> Delete(int pId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var result = await _productRepo.DeleteAsync(pId);
 
             return result;

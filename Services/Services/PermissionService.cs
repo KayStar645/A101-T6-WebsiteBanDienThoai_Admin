@@ -1,8 +1,8 @@
 ﻿using Database.Interfaces;
 using Domain.Entities;
-using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Middleware;
 using System.Reflection;
 
 namespace Services.Services
@@ -61,15 +61,6 @@ namespace Services.Services
             var permissions = await _permissionRepo.GetAllAsync();
 
             return permissions.list.Select(x => x.Name).ToList();
-        }
-
-        public bool CheckPermission(string pScreen)
-        {
-            //if (!_currentUser.Permissions.Contains(requiredPermission))
-            //{
-            //    throw new UnauthorizedAccessException("User does not have the required permission.");
-            //}
-            return false;
         }
     }
 }

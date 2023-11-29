@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Database.Interfaces;
 using Domain.Entities;
-using Domain.Identities;
 using Domain.ModelViews;
 using Services.Interfaces;
+using Services.Middleware;
+using Services.Transform;
+using System.Reflection;
 using System.Transactions;
 
 namespace Services.Services
@@ -24,6 +26,10 @@ namespace Services.Services
         [RequirePermission("Role.View")]
         public async Task<List<Role>> GetList()
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var roles = await _roleRepo.GetAllAsync();
 
             return roles.list;
@@ -32,6 +38,10 @@ namespace Services.Services
         [RequirePermission("Role.View")]
         public async Task<RoleVM> GetDetail(int pId)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var role = await _roleRepo.GetDetailAsync(pId);
 
             var mapRole = _mapper.Map<RoleVM>(role);
@@ -43,6 +53,10 @@ namespace Services.Services
         [RequirePermission("Role.Create")]
         public async Task<RoleVM> Create(RoleVM pCreate)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             using (var transaction = new TransactionScope())
             {
                 try
@@ -70,6 +84,10 @@ namespace Services.Services
         [RequirePermission("Role.Update")]
         public async Task<RoleVM> Update(RoleVM pCreate)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             using (var transaction = new TransactionScope())
             {
                 try
@@ -111,6 +129,10 @@ namespace Services.Services
         [RequirePermission("Role.Assign")]
         public async Task<RoleVM> AssignRoles(AssignRoleVM pRequest)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var exists = await _roleRepo.AnyKeyValueAsync(new[] { 
                 ("RoleId", pRequest.RoleId.ToString()),
                 ("UserId", pRequest.UserId.ToString())
@@ -129,6 +151,10 @@ namespace Services.Services
 
         public async Task<RoleVM> RevokeRole(AssignRoleVM pRequest)
         {
+            if (CustomMiddleware.CheckPermission(MethodBase.GetCurrentMethod()) == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
             var exists = await _roleRepo.AnyKeyValueAsync(new[] {
                 ("RoleId", pRequest.RoleId.ToString()),
                 ("UserId", pRequest.UserId.ToString())

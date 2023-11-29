@@ -59,9 +59,9 @@ namespace WinFormsApp.View.Test
 
         private async Task TestIdentities()
         {
-            //var x = _permissionService.GetRequiredPermissions();
+            var x = _permissionService.GetRequiredPermissions();
 
-            //var y = await _permissionService.Create(x);
+            var y = await _permissionService.Create(x);
 
             //var role = await _roleService.Create(new RoleVM
             //{
