@@ -71,11 +71,13 @@ namespace WinFormsApp.View.Test
 
             //var roles = await _roleService.GetList();
 
-            var c = await _roleService.AssignRoles(new AssignRoleVM
-            {
-                UserId = 1,
-                RoleId = 4
-            });
+            //var c = await _roleService.AssignRoles(new AssignRoleVM
+            //{
+            //    UserId = 1,
+            //    RoleId = 4
+            //});
+
+
 
             int a = 1;
         }
