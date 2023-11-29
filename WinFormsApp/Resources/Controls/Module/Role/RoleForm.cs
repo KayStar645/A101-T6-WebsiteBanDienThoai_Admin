@@ -1,6 +1,9 @@
-﻿using Guna.UI2.WinForms;
+﻿using Common.Type;
+using Domain.ModelViews;
+using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
 using Services.Interfaces;
+using System.Linq;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Role
@@ -9,13 +12,14 @@ namespace WinFormsApp.Resources.Controls.Module.Role
     {
         IRoleService _RoleService;
         IPermissionService _PermissionService;
-        Dictionary<string, List<string>> _GroupPermissions = new();
-        List<string> _Permissions = new();
-        int _id = 0;
+        RoleVM _RoleVM = new();
+        Dictionary<string, List<Option>> _GroupPermissions = new();
 
         public RoleForm()
         {
             InitializeComponent();
+
+            _RoleVM.Id = 0;
 
             OnInit();
         }
@@ -24,21 +28,30 @@ namespace WinFormsApp.Resources.Controls.Module.Role
         {
             InitializeComponent();
 
-            _id = id;
+            _RoleVM.Id = id;
 
             OnInit();
         }
 
-        private void OnInit()
+        private async void OnInit()
         {
             _RoleService = Program.container.GetInstance<IRoleService>();
             _PermissionService = Program.container.GetInstance<IPermissionService>();
 
-            GroupPermission(_PermissionService.GetRequiredPermissions());
 
             DesktopLocation = new Point((Screen.PrimaryScreen!.Bounds.Width - Width), 0);
             Height = Screen.PrimaryScreen.Bounds.Height;
 
+            if (_RoleVM.Id > 0)
+            {
+                _RoleVM = await _RoleService.GetDetail(_RoleVM.Id);
+            }
+            else
+            {
+                _RoleVM.PermissionsName = new List<string>();
+            }
+
+            GroupPermission(_PermissionService.GetRequiredPermissions());
             LoadData();
         }
 
@@ -53,18 +66,52 @@ namespace WinFormsApp.Resources.Controls.Module.Role
 
                 if (!_GroupPermissions.ContainsKey(type))
                 {
-                    _GroupPermissions[type] = new List<string>();
+                    _GroupPermissions[type] = new List<Option>();
                 }
 
-                _GroupPermissions[type].Add(action);
+                if (_RoleVM.Id > 0)
+                {
+                    if (_RoleVM.PermissionsName != null && _RoleVM.PermissionsName.Contains(item))
+                    {
+                        _GroupPermissions[type].Add(new Option()
+                        {
+                            label = action,
+                            value = "True"
+                        });
+                    }
+                    else
+                    {
+                        _GroupPermissions[type].Add(new Option()
+                        {
+                            label = action,
+                            value = "False"
+                        });
+                    }
+                }
+                else
+                {
+                    _GroupPermissions[type].Add(new Option()
+                    {
+                        label = action,
+                        value = "False"
+                    });
+                }
             }
         }
 
         private void LoadData()
         {
-            Label_Heading.Text = "Cập nhập quyền ";
+            if (_RoleVM.Id > 0)
+            {
+                Label_Heading.Text = "Cập nhập quyền " + _RoleVM.Name;
+                Text_Name.Text = _RoleVM.Name;
+            }
+            else
+            {
+                Label_Heading.Text = "Thêm mới quyền";
+            }
 
-            foreach (KeyValuePair<string, List<string>> item in _GroupPermissions)
+            foreach (KeyValuePair<string, List<Option>> item in _GroupPermissions)
             {
                 Panel child = RoleItem(item);
 
@@ -74,19 +121,17 @@ namespace WinFormsApp.Resources.Controls.Module.Role
 
         private async void Button_Save_Click(object sender, EventArgs e)
         {
+            _RoleVM.Name = Text_Name.Text;
+
             try
             {
-                if(_id > 0)
+                if(_RoleVM.Id > 0)
                 {
-
+                    await _RoleService.Update(_RoleVM);
                 }
                 else
                 {
-                    await _RoleService.Create(new Domain.ModelViews.RoleVM()
-                    {
-                        Name = Text_Name.Text,
-                        PermissionsName = _Permissions
-                    });
+                    await _RoleService.Create(_RoleVM);
                 }
 
                 Close();
@@ -103,7 +148,7 @@ namespace WinFormsApp.Resources.Controls.Module.Role
             Close();
         }
 
-        private Panel RoleItem(KeyValuePair<string, List<string>> item)
+        private Panel RoleItem(KeyValuePair<string, List<Option>> item)
         {
             Panel role = new();
 
@@ -121,7 +166,7 @@ namespace WinFormsApp.Resources.Controls.Module.Role
             return role;
         }
 
-        private Guna2DataGridView RoleItems(KeyValuePair<string, List<string>> item)
+        private Guna2DataGridView RoleItems(KeyValuePair<string, List<Option>> item)
         {
             Guna2DataGridView DataGridView_Listing = new();
             DataGridViewCellStyle dataGridViewCellStyle1 = new();
@@ -232,13 +277,13 @@ namespace WinFormsApp.Resources.Controls.Module.Role
 
             DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
 
-            foreach (var value in item.Value)
+            foreach (var option in item.Value)
             {
                 DataGridView_Listing.Rows.Add(new string[]
                 {
-                    "False",
+                    option.value,
                     item.Key,
-                    value,
+                    option.label,
                 });
             }
 
@@ -301,13 +346,13 @@ namespace WinFormsApp.Resources.Controls.Module.Role
             {
                 cells["SelectRole"].Value = "False";
 
-                _Permissions.Remove(permission);
+                _RoleVM.PermissionsName.Remove(permission);
             }
             else
             {
                 cells["SelectRole"].Value = "True";
 
-                _Permissions.Add(permission);
+                _RoleVM.PermissionsName.Add(permission);
             }
         }
     }

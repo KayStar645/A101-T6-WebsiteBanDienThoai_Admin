@@ -44,31 +44,11 @@ namespace WinFormsApp.Resources.Controls.Module.Role
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
-            //RoleDto formData = new()
-            //{
-            //    Id = int.Parse(selected["Id"].Value.ToString()),
-            //    InternalCode = selected["InternalCode"].Value.ToString(),
-            //    Name = selected["_Name"].Value.ToString(),
-            //    Sex = selected["Sex"].Value.ToString(),
-            //    Birthday = DateTime.Parse(selected["Birthday"].Value.ToString()),
-            //    Phone = selected["Phone"].Value.ToString(),
-            //};
 
-            //if (e.ColumnIndex == 0)
-            //{
-            //    Util.LoadForm(new RoleForm(formData), true);
-            //}
-            //else if (e.ColumnIndex == 1)
-            //{
-            //    DialogResult dialogResult = Dialog_Confirm.Show();
-
-            //    if (dialogResult != DialogResult.Yes)
-            //    {
-            //        return;
-            //    }
-
-            //    Button_Refresh.PerformClick();
-            //}
+            if (e.ColumnIndex == 0)
+            {
+                Util.LoadForm(new RoleForm(int.Parse(selected["Id"].Value.ToString())), true);
+            }
         }
 
         private async void Button_Refresh_Click(object sender, EventArgs e)

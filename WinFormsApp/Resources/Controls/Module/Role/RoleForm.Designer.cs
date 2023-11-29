@@ -65,7 +65,7 @@
             Label_Heading.Anchor = AnchorStyles.None;
             Label_Heading.AutoSize = true;
             Label_Heading.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Heading.Location = new Point(179, 8);
+            Label_Heading.Location = new Point(227, 8);
             Label_Heading.Name = "Label_Heading";
             Label_Heading.Size = new Size(115, 19);
             Label_Heading.TabIndex = 0;
@@ -84,7 +84,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(474, 35);
+            tableLayoutPanel2.Size = new Size(570, 35);
             tableLayoutPanel2.TabIndex = 8;
             // 
             // tableLayoutPanel4
@@ -102,7 +102,7 @@
             tableLayoutPanel4.Padding = new Padding(7, 0, 7, 0);
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(474, 49);
+            tableLayoutPanel4.Size = new Size(570, 49);
             tableLayoutPanel4.TabIndex = 7;
             // 
             // Button_Cancel
@@ -142,7 +142,7 @@
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
             Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(394, 4);
+            Button_Save.Location = new Point(490, 4);
             Button_Save.Margin = new Padding(3, 2, 3, 2);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -176,7 +176,7 @@
             TableLayoutPanel_Body.RowCount = 2;
             TableLayoutPanel_Body.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
             TableLayoutPanel_Body.RowStyles.Add(new RowStyle(SizeType.Percent, 100.000008F));
-            TableLayoutPanel_Body.Size = new Size(474, 536);
+            TableLayoutPanel_Body.Size = new Size(570, 536);
             TableLayoutPanel_Body.TabIndex = 9;
             // 
             // Text_Name
@@ -194,13 +194,13 @@
             Text_Name.ForeColor = Color.Black;
             Text_Name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             Text_Name.Location = new Point(123, 9);
-            Text_Name.Margin = new Padding(3, 4, 3, 4);
+            Text_Name.Margin = new Padding(3, 4, 8, 4);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên quyền";
             Text_Name.SelectedText = "";
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Text_Name.Size = new Size(348, 36);
+            Text_Name.Size = new Size(439, 36);
             Text_Name.TabIndex = 12;
             // 
             // label2
@@ -222,14 +222,14 @@
             Panel_Body.Location = new Point(0, 55);
             Panel_Body.Margin = new Padding(0);
             Panel_Body.Name = "Panel_Body";
-            Panel_Body.Size = new Size(474, 481);
+            Panel_Body.Size = new Size(570, 481);
             Panel_Body.TabIndex = 10;
             // 
             // RoleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(474, 620);
+            ClientSize = new Size(570, 620);
             Controls.Add(TableLayoutPanel_Body);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel4);
