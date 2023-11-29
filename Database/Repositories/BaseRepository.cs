@@ -229,7 +229,7 @@ namespace Database.Repositories
 
                     using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                     {
-                        var rowsAffected = await connection.ExecuteAsync(query, new { Id = id, pModel }).ConfigureAwait(false);
+                        var rowsAffected = await connection.ExecuteAsync(query, new { Id = id });
                         return rowsAffected;
                     }
                 }
@@ -309,6 +309,7 @@ namespace Database.Repositories
                 var query = $"SELECT COUNT(Id) " +
                             $"FROM \"{typeof(Entity)}\" " +
                             $"WHERE IsDeleted = 0 and Id = N'{pId}'";
+                query = query.Replace("Domain.Entities.", "");
 
                 using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
                 {

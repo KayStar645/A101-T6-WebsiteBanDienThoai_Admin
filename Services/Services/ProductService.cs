@@ -5,6 +5,7 @@ using Domain.Entities;
 using Domain.ModelViews;
 using Services.Interfaces;
 using Services.Interfaces.Common;
+using Services.Interfaces.GoogleDrive;
 using Services.Middleware;
 using Services.Transform;
 using Services.Validators;
@@ -17,14 +18,16 @@ namespace Services.Services
         private readonly IMapper _mapper;
         private readonly IColorRepository _colorRepo;
         private readonly ICapacityRepository _capacityRepo;
+        private readonly IGoogleDriveService _googleDriveService;
 
         public ProductService(IProductRepository productRepository, IMapper mapper,
-            IColorRepository colorRepository, ICapacityRepository capacity)
+            IColorRepository colorRepository, ICapacityRepository capacity, IGoogleDriveService googleDriveService)
         {
             _productRepo = productRepository;
             _mapper = mapper;
             _colorRepo = colorRepository;
             _capacityRepo = capacity;
+            _googleDriveService = googleDriveService;
         }
 
         [RequirePermission("Product.View")]
@@ -77,6 +80,19 @@ namespace Services.Services
                 pCreate.CapacityId = null;
             }
 
+            // Lưu hình ảnh trước nè
+            var images = new List<string>();
+            foreach(var image in pCreate.Images)
+            {
+                var url = await _googleDriveService.UploadFilesToGoogleDrive(new UploadVM
+                {
+                    FilePath = image,
+                    FileName = $"products/{pCreate.Id}-{pCreate.Name}/{Guid.NewGuid()}"
+                });
+                images.Add(url);
+            }
+
+            pCreate.Images = images;
             Product product = _mapper.Map<Product>(pCreate);
 
             var result = await _productRepo.AddAsync(product);
@@ -104,7 +120,23 @@ namespace Services.Services
             {
                 pUpdate.CapacityId = null;
             }
+            // Lưu hình ảnh trước nè
+            var images = new List<string>();
+            foreach (var image in pUpdate.Images)
+            {
+                var url = image;
+                if(image.StartsWith("https://drive.google.com/uc?id=") == false)
+                {
+                    url = await _googleDriveService.UploadFilesToGoogleDrive(new UploadVM
+                    {
+                        FilePath = image,
+                        FileName = $"products/{pUpdate.Id}-{pUpdate.Name}/{Guid.NewGuid()}"
+                    });
+                }
+                images.Add(url);
+            }
 
+            pUpdate.Images = images;
             Product product = _mapper.Map<Product>(pUpdate);
 
             var result = await _productRepo.UpdateAsync(product);
