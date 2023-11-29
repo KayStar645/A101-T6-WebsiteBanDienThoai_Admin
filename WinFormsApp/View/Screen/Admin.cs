@@ -7,6 +7,7 @@ using Services.Interfaces;
 using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Resources.Controls.Module.Employee;
+using WinFormsApp.Resources.Controls.Module.Home;
 using WinFormsApp.Resources.Controls.Module.Import;
 using WinFormsApp.Resources.Controls.Module.Order;
 using WinFormsApp.Resources.Controls.Module.Parameter;
@@ -21,7 +22,6 @@ namespace WinFormsApp.View.Screen
     public partial class Admin : Form
     {
         string _currPanel;
-        IPermissionService _permissionService;
         List<string> _permissions;
 
         public static Button _refreshCategoryBtn = new();
@@ -30,19 +30,15 @@ namespace WinFormsApp.View.Screen
         {
             InitializeComponent();
 
-            OnInit();
+            Btn_Home.PerformClick();
 
+            OnInit();
         }
 
         public void OnInit()
         {
-            _permissionService = Program.container.GetInstance<IPermissionService>();
-
-            Util.LoadControl(Panel_Body, new DistributorControl());
-
-            _refreshCategoryBtn.Click += _refreshCategoryBtn_Click;
-
             _permissions = ServiceCommon.AuthRespone.Permission;
+            _refreshCategoryBtn.Click += _refreshCategoryBtn_Click;
 
             CheckPermission();
 
@@ -379,6 +375,15 @@ namespace WinFormsApp.View.Screen
             Util.LoadControl(Panel_Body, new UserAssignRoleControl());
 
             _currPanel = Btn_User.Tag!.ToString()!.Split("|")[0];
+            LoadMenu();
+        }
+
+        private void Btn_Home_Click(object sender, EventArgs e)
+        {
+            Label_Heading.Text = "Thống kế";
+            Util.LoadControl(Panel_Body, new HomeControl());
+
+            _currPanel = Btn_Home.Tag!.ToString()!.Split("|")[0];
             LoadMenu();
         }
     }
