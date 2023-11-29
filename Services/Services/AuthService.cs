@@ -2,18 +2,23 @@
 using Database.Common;
 using Database.Interfaces;
 using Domain.DTOs;
+using Domain.Entities;
+using Domain.ModelViews;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Services.Common;
 using Services.Constants;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
 namespace Services.Services
 {
-    public class AuthService : IAuthService
+    public class AuthService : IAuthService, IService
     {
         private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
@@ -70,6 +75,18 @@ namespace Services.Services
                     LibrarySettings.Default.UserName = result.UserName;
                     LibrarySettings.Default.Token = token;
 
+                    var employee = jwtSecurityToken.Claims
+                                                .Where(claim => claim.Type == CONSTANT_CLAIM_TYPES.User)
+                                                .Select(claim => claim.Value).FirstOrDefault();
+                    LibrarySettings.Default.Employee = employee;
+
+
+                    var permissionClaim = jwtSecurityToken.Claims
+                                                .Where(claim => claim.Type == CONSTANT_CLAIM_TYPES.Permission)
+                                                .Select(claim => claim.Value)
+                                                .ToList();
+                    LibrarySettings.Default.Permission = string.Join(",", permissionClaim);
+
                     LibrarySettings.Default.Save();
 
                     return true;
@@ -90,11 +107,8 @@ namespace Services.Services
 
         private async Task<JwtSecurityToken> GenerateToken(Domain.Entities.User user)
         {
-            //var roles = await _userRepo.GetRolesAsync(user);
-            //var permissions = await _userRepo.GetPermissionsAsync(user);
-
-            //var roleClaims = roles.Select(role => new Claim(ClaimTypes.Role, role.Name));
-            //var permissionClaims = permissions.Select(permission => new Claim(CONSTANT_CLAIM_TYPES.Permission, permission.Name));
+            var permissions = await _userRepo.GetPermissionsByUserAsync(user.UserName);
+            var permissionClaims = permissions.Select(permission => new Claim(CONSTANT_CLAIM_TYPES.Permission, permission));
 
             // Lấy nhân viên
             var employee = await _employeeRepo.FindByInternalCodesync(user.UserName);
@@ -106,9 +120,8 @@ namespace Services.Services
                 new Claim(CONSTANT_CLAIM_TYPES.Uid, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(CONSTANT_CLAIM_TYPES.User, userObject),
-            };
-            //.Union(permissionClaims)
-            //.Union(roleClaims);
+            }
+            .Union(permissionClaims);
 
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(DatabaseCommon.JwtSettings_Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);

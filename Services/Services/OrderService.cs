@@ -2,14 +2,16 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Common;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 using System.Transactions;
 
 namespace Services.Services
 {
-    public class OrderService : IOrderService
+    public class OrderService : IOrderService, IService
     {
         private readonly IOrderRepository _orderRepo;
         private readonly IMapper _mapper;
@@ -28,6 +30,7 @@ namespace Services.Services
             _promotionRepo = promotionRepository;
         }
 
+        [RequirePermission("Order.View")]
         public async Task<OrderDto> GetDetail(int pId)
         {
             var result = await _orderRepo.GetDetailPropertiesAsync(pId);
@@ -35,6 +38,7 @@ namespace Services.Services
             return result;
         }
 
+        [RequirePermission("ImportBill.View")]
         public async Task<(List<OrderDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pEmployeeId = null, int? pCustomerId = null)
         {
@@ -46,6 +50,7 @@ namespace Services.Services
 
         // Create Order: Khách đặt hàng, type = O
         // Chỉ cần cần chọn sp, số lượng, giá sẽ tự tính
+        [RequirePermission("ImportBill.Create")]
         public async Task<bool> Create(OrderDto pOrder)
         {
             OrderValidator validator = new OrderValidator(_orderRepo, _detailOrderRepo);
@@ -125,6 +130,7 @@ namespace Services.Services
             }
         }
 
+        [RequirePermission("ImportBill.Update")]
         public async Task<bool> Update(OrderDto pOrder)
         {
             OrderValidator validator = new OrderValidator(_orderRepo, _detailOrderRepo, false, pOrder.Id);
@@ -252,11 +258,12 @@ namespace Services.Services
                     return false;
                 }
             }
-        }    
+        }
 
 
         // Approve Order: Nhân viên thay đổi trạng thái đơn hàng, type = O -> A -> T -> E
         // Hủy đơn hàng: Nhân viên hoặc khách hủy, type = O -> C
+        [RequirePermission("ImportBill.Approve")]
         public async Task<bool> ChangeTypeOrder(int pOrderId, string pType)
         {
             var result = await _orderRepo.ChangeTypeOrderAsync(pOrderId, pType);

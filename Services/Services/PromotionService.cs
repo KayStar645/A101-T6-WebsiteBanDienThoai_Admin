@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
 using Database.Interfaces;
 using Domain.DTOs;
-using Domain.DTOs.More;
 using Domain.Entities;
+using Domain.Identities;
 using Domain.ModelViews;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 using System.Transactions;
 
 namespace Services.Services
 {
-    public class PromotionService : IPromotionService
+    public class PromotionService : IPromotionService, IService
     {
         private readonly IPromotionRepository _promotionRepo;
         private readonly IPromotionProductRepository _promotionProductRepo;
@@ -23,6 +24,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Promotion.View")]
         public async Task<(List<PromotionDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _promotionRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -32,6 +34,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Promotion.View")]
         public async Task<PromotionDto> GetDetail(int pId)
         {
             var promotion = await _promotionRepo.GetDetailAsync(pId);
@@ -45,6 +48,7 @@ namespace Services.Services
             return promotionDto;
         }
 
+        [RequirePermission("Promotion.Create")]
         public async Task<int> Create(PromotionDto pCreate)
         {
             pCreate.Status = Promotion.STATUS_DRAFT;
@@ -65,6 +69,7 @@ namespace Services.Services
             return result;
         }
 
+        [RequirePermission("Promotion.Update")]
         public async Task<bool> Update(PromotionDto pUpdate)
         {
             PromotionValidator validator = new PromotionValidator(_promotionRepo, pUpdate.Start, pUpdate.Type, false, pUpdate.Id);
@@ -83,6 +88,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Promotion.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _promotionRepo.DeleteAsync(pId);
@@ -90,6 +96,7 @@ namespace Services.Services
             return result;
         }
 
+        [RequirePermission("Promotion.Approve")]
         public async Task<bool> Approve(int pId, string type)
         {
             var result = await _promotionRepo.ApproveAsync(pId, type);
@@ -97,6 +104,7 @@ namespace Services.Services
             return result;
         }
 
+        [RequirePermission("Promotion.Apply")]
         public async Task<bool> ApplyForProduct(int pId, List<int> pProductsId)
         {
             using (var transaction = new TransactionScope())

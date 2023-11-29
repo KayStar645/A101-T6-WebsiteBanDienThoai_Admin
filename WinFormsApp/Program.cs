@@ -61,6 +61,8 @@ namespace WinFormsApp
             container.Register<IPromotionProductRepository, PromotionProductRepository>();
             container.Register<IOrderRepository, OrderRepository>();
             container.Register<IDetailOrderRepository, DetailOrderRepository>();
+            container.Register<IPermissionRepository, PermissionRepository>();
+            container.Register<IRoleRepository, RoleRepository>();
 
             // Đăng ký mapper
             container.Register<IMapper>(() =>
@@ -99,6 +101,8 @@ namespace WinFormsApp
             container.Register<IPromotionService, PromotionService>();
             container.Register<IPromotionProductService, PromotionProductService>();
             container.Register<IOrderService, OrderService>();
+            container.Register<IPermissionService, PermissionService>();
+            container.Register<IRoleService, RoleService>();
 
             admin = new Admin();
             login = new Login(container);

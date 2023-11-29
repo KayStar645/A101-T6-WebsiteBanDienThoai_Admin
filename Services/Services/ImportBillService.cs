@@ -2,12 +2,14 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using System.Transactions;
 
 namespace Services.Services
 {
-    public class ImportBillService : IImportBillService
+    public class ImportBillService : IImportBillService, IService
     {
         private readonly IImportBillRepository _importBillRepo;
         private readonly IMapper _mapper;
@@ -28,6 +30,7 @@ namespace Services.Services
             return await _importBillRepo.RangeInternalCode();
         }
 
+        [RequirePermission("ImportBill.Create")]
         public async Task<bool> Create(ImportBillDto pImportBill)
         {
             using (var transaction = new TransactionScope())
@@ -98,6 +101,7 @@ namespace Services.Services
             }
         }
 
+        [RequirePermission("ImportBill.View")]
         public async Task<ImportBillDto> GetDetail(int pId)
         {
             var result = await _importBillRepo.GetDetailPropertiesAsync(pId);
@@ -105,6 +109,7 @@ namespace Services.Services
             return result;
         }
 
+        [RequirePermission("ImportBill.View")]
         public async Task<(List<ImportBillDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pEmployeeId = null, int? pDistributorId = null)
         {

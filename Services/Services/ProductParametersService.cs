@@ -3,10 +3,11 @@ using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 
 namespace Services.Services
 {
-    public class ProductParametersService : IProductParametersService
+    public class ProductParametersService : IProductParametersService, IService
     {
 
         private readonly IProductParametersRepository _productParametersRepo;

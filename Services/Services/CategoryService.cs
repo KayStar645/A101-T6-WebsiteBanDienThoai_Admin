@@ -2,12 +2,14 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 
 namespace Services.Services
 {
-    public class CategoryService : ICategoryService
+    public class CategoryService : ICategoryService, IService
     {
         private readonly ICategoryRepository _categoryRepo;
         private readonly IMapper _mapper;
@@ -18,6 +20,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Category.View")]
         public async Task<(List<CategoryDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _categoryRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -27,6 +30,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Category.View")]
         public async Task<CategoryDto> GetDetail(int pId)
         {
             var category = await _categoryRepo.GetDetailAsync(pId);
@@ -36,6 +40,7 @@ namespace Services.Services
             return categoryDto;
         }
 
+        [RequirePermission("Category.Create")]
         public async Task<bool> Create(CategoryDto pCreate)
         {
             CategoryValidator validator = new CategoryValidator(_categoryRepo);
@@ -54,6 +59,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Category.Update")]
         public async Task<bool> Update(CategoryDto pUpdate)
         {
             CategoryValidator validator = new CategoryValidator(_categoryRepo, false, pUpdate.Id);
@@ -72,6 +78,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Category.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _categoryRepo.DeleteAsync(pId);

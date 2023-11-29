@@ -58,5 +58,29 @@ namespace Services {
                 this["Token"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Permission {
+            get {
+                return ((string)(this["Permission"]));
+            }
+            set {
+                this["Permission"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Employee {
+            get {
+                return ((string)(this["Employee"]));
+            }
+            set {
+                this["Employee"] = value;
+            }
+        }
     }
 }

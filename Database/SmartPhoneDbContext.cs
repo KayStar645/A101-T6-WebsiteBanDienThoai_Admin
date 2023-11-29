@@ -48,5 +48,14 @@ namespace Database
 
         //public DbSet<DetailOrder> DetailOrder { get; set; }
 
+        //public DbSet<Role> Role { get; set; }
+        
+        //public DbSet<UserRole> UserRole { get; set; }
+
+        //public DbSet<Permission> Permission { get; set; }
+
+
+        //public DbSet<RolePermission> RolePermission { get; set; }
+
     }
 }

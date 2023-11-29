@@ -3,10 +3,11 @@ using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 
 namespace Services.Services
 {
-    public class PromotionProductService : IPromotionProductService
+    public class PromotionProductService : IPromotionProductService, IService
     {
         private readonly IPromotionProductRepository _promotionProductRepo;
         private readonly IMapper _mapper;

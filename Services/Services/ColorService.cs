@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Database.Interfaces;
 using Domain.DTOs;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 
 namespace Services.Services
 {
-    public class ColorService : IColorService
+    public class ColorService : IColorService, IService
     {
         private readonly IColorRepository _colorRepo;
         private readonly IMapper _mapper;
@@ -17,6 +19,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Color.View")]
         public async Task<(List<ColorDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _colorRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -26,6 +29,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Color.View")]
         public async Task<ColorDto> GetDetail(int pId)
         {
             var color = await _colorRepo.GetDetailAsync(pId);
@@ -35,6 +39,7 @@ namespace Services.Services
             return ColorDto;
         }
 
+        [RequirePermission("Color.Create")]
         public async Task<bool> Create(ColorDto pCreate)
         {
             ColorValidator validator = new ColorValidator(_colorRepo);
@@ -53,6 +58,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Color.Update")]
         public async Task<bool> Update(ColorDto pUpdate)
         {
             ColorValidator validator = new ColorValidator(_colorRepo, false, pUpdate.Id);
@@ -71,6 +77,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Color.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _colorRepo.DeleteAsync(pId);

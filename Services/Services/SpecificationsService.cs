@@ -2,13 +2,14 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
-using System.ComponentModel.DataAnnotations;
 
 namespace Services.Services
 {
-    public class SpecificationsService : ISpecificationsService
+    public class SpecificationsService : ISpecificationsService, IService
     {
         private readonly ISpecificationsRepository _specificationsRepo;
         private readonly IMapper _mapper;
@@ -19,6 +20,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Specifications.View")]
         public async Task<(List<SpecificationsDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _specificationsRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -28,6 +30,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Specifications.Create")]
         public async Task<int> Create(SpecificationsDto pCreate)
         {
 
@@ -47,6 +50,7 @@ namespace Services.Services
             return result;
         }
 
+        [RequirePermission("Specifications.Update")]
         public async Task<bool> Update(SpecificationsDto pUpdate)
         {
             SpecificationsValidator validator = new SpecificationsValidator(_specificationsRepo, pUpdate.Id);
@@ -65,6 +69,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Specifications.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _specificationsRepo.DeleteAsync(pId);

@@ -2,11 +2,13 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 
 namespace Services.Services
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService : ICustomerService, IService
     {
         private readonly ICustomerRepository _customerRepo;
         private readonly IMapper _mapper;
@@ -17,6 +19,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Customer.View")]
         public async Task<(List<CustomerDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _customerRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -26,6 +29,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Customer.View")]
         public async Task<CustomerDto> GetDetail(int pId)
         {
             var customer = await _customerRepo.GetDetailAsync(pId);

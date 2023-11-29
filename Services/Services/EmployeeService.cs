@@ -2,13 +2,15 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 using System.Transactions;
 
 namespace Services.Services
 {
-    public class EmployeeService : IEmployeeService
+    public class EmployeeService : IEmployeeService, IService
     {
         private readonly IEmployeeRepository _employeeRepo;
         private readonly IMapper _mapper;
@@ -21,6 +23,7 @@ namespace Services.Services
             _authService = authService;
         }
 
+        [RequirePermission("Employee.View")]
         public async Task<(List<EmployeeDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _employeeRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -30,6 +33,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Employee.View")]
         public async Task<EmployeeDto> GetDetail(int pId)
         {
             var employee = await _employeeRepo.GetDetailAsync(pId);
@@ -39,6 +43,7 @@ namespace Services.Services
             return employeeDto;
         }
 
+        [RequirePermission("Employee.Create")]
         public async Task<bool> Create(EmployeeDto pCreate)
         {
             EmployeeValidator validator = new EmployeeValidator(_employeeRepo, true);
@@ -77,6 +82,7 @@ namespace Services.Services
         }
 
 
+        [RequirePermission("Employee.Update")]
         public async Task<bool> Update(EmployeeDto pUpdate)
         {
             EmployeeValidator validator = new EmployeeValidator(_employeeRepo, false, pUpdate.Id);
@@ -95,6 +101,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Employee.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _employeeRepo.DeleteAsync(pId);

@@ -2,12 +2,14 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 
 namespace Services.Services
 {
-    public class DetailSpecificationsService : IDetailSpecificationsService
+    public class DetailSpecificationsService : IDetailSpecificationsService, IService
     {
         private readonly IDetailSpecificationsRepository _detailSpecificationsRepo;
         private readonly IMapper _mapper;
@@ -18,6 +20,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Specifications.View")]
         public async Task<List<DetailSpecificationsDto>> GetListBySpecificationsIdAsync(int pSpecificationsId)
         {
             var result = await _detailSpecificationsRepo.GetBySpecificationsIdAsync(pSpecificationsId);
@@ -27,6 +30,7 @@ namespace Services.Services
             return list;
         }
 
+        [RequirePermission("Specifications.Create")]
         public async Task<bool> Create(DetailSpecificationsDto pCreate)
         {
             DetailSpecificationsValidator validator = new DetailSpecificationsValidator(_detailSpecificationsRepo, pCreate.Description);
@@ -45,6 +49,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Specifications.Update")]
         public async Task<bool> Update(DetailSpecificationsDto pUpdate)
         {
             DetailSpecificationsValidator validator = new DetailSpecificationsValidator(_detailSpecificationsRepo, pUpdate.Description, pUpdate.Id);
@@ -63,6 +68,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Specifications.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _detailSpecificationsRepo.DeleteAsync(pId);

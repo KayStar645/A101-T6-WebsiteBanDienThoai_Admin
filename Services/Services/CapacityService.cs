@@ -2,12 +2,14 @@
 using Database.Interfaces;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Identities;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Validators;
 
 namespace Services.Services
 {
-    public class CapacityService : ICapacityService
+    public class CapacityService : ICapacityService, IService
     {
         private readonly ICapacityRepository _capacityRepo;
         private readonly IMapper _mapper;
@@ -18,6 +20,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        [RequirePermission("Capacity.View")]
         public async Task<(List<CapacityDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
             var result = await _capacityRepo.GetAllAsync(null, pKeyword, pSort, pPageNumber, pPageSize);
@@ -27,6 +30,7 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
+        [RequirePermission("Capacity.View")]
         public async Task<CapacityDto> GetDetail(int pId)
         {
             var capacity = await _capacityRepo.GetDetailAsync(pId);
@@ -36,6 +40,7 @@ namespace Services.Services
             return capacityDto;
         }
 
+        [RequirePermission("Capacity.Create")]
         public async Task<bool> Create(CapacityDto pCreate)
         {
             CapacityValidator validator = new CapacityValidator(_capacityRepo);
@@ -54,6 +59,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Capacity.Update")]
         public async Task<bool> Update(CapacityDto pUpdate)
         {
             CapacityValidator validator = new CapacityValidator(_capacityRepo, false, pUpdate.Id);
@@ -72,6 +78,7 @@ namespace Services.Services
             return result > 0;
         }
 
+        [RequirePermission("Capacity.Delete")]
         public async Task<bool> Delete(int pId)
         {
             var result = await _capacityRepo.DeleteAsync(pId);

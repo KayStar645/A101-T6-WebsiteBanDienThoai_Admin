@@ -57,6 +57,21 @@ namespace Database.Repositories
             }
         }
 
+        public async Task<List<string>> GetPermissionsByUserAsync(string pUserName)
+        {
+            string query = $"SELECT p.Name " +
+                           $"FROM [User] as u " +
+                           $"LEFT JOIN UserRole as ur on  ur.UserId = u.Id " +
+                           $"LEFT JOIN RolePermission as rp on rp.RoleId = ur.RoleId " +
+                           $"LEFT JOIN Permission as p on p.Id = rp.PermissionId " +
+                           $"WHERE UserName = N'{pUserName}'";
+            using (var connect = new SqlConnection(DatabaseCommon.ConnectionString))
+            {
+                var result = await connect.QueryAsync<string>(query).ConfigureAwait(false);
+                return result.AsList();
+            }
+        }
+
         #endregion
     }
 }

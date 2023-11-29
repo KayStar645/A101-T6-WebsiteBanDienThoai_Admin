@@ -1,4 +1,6 @@
-﻿namespace Domain.ModelViews
+﻿using Domain.DTOs;
+
+namespace Domain.ModelViews
 {
     public class AuthVM
     {
@@ -7,5 +9,9 @@
         public string? UserName { get; set; }
 
         public string? Token { get; set; }
+
+        public List<string> Permission {  get; set; }
+
+        public EmployeeDto Employee { get; set; }
     }
 }
