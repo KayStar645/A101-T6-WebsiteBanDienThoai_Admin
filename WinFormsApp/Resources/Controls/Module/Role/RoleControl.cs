@@ -1,8 +1,6 @@
 ﻿using Controls.UI;
-using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
-using WinFormsApp.Resources.Controls.Module.Role;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Role
@@ -11,6 +9,7 @@ namespace WinFormsApp.Resources.Controls.Module.Role
     {
         private readonly IRoleService _RoleService;
         public static Guna2Button _refreshButton = new Guna2Button();
+        List<Domain.Entities.Role> _result;
         int _currPage = 1;
 
         public RoleControl()
@@ -20,6 +19,7 @@ namespace WinFormsApp.Resources.Controls.Module.Role
 
             _RoleService = Program.container.GetInstance<IRoleService>();
             _refreshButton = Button_Refresh;
+
             InitializeAsync();
         }
 
@@ -28,13 +28,6 @@ namespace WinFormsApp.Resources.Controls.Module.Role
             _refreshButton = Button_Refresh;
 
             await LoadData();
-
-            Paginator();
-        }
-
-        private void Paginator()
-        {
-            Util.LoadControl(TableLayoutPanel_Paginator, new Paginator(_result.pageNumber, _currPage, Button_Paginator_Click), DockStyle.Right);
         }
 
         private async void Button_Paginator_Click(int page)
@@ -46,9 +39,9 @@ namespace WinFormsApp.Resources.Controls.Module.Role
 
         public async Task LoadData()
         {
-            _result = await _RoleService.GetList("Name", _currPage, 15, Text_Search.Text);
+            //_result = await _RoleService.GetList();
 
-            DataGridView_Listing.DataSource = _result.list;
+            //DataGridView_Listing.DataSource = _result;
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
@@ -59,32 +52,31 @@ namespace WinFormsApp.Resources.Controls.Module.Role
         private void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection selected = DataGridView_Listing.CurrentRow.Cells;
-            RoleDto formData = new()
-            {
-                Id = int.Parse(selected["Id"].Value.ToString()),
-                InternalCode = selected["InternalCode"].Value.ToString(),
-                Name = selected["_Name"].Value.ToString(),
-                Sex = selected["Sex"].Value.ToString(),
-                Birthday = DateTime.Parse(selected["Birthday"].Value.ToString()),
-                Phone = selected["Phone"].Value.ToString(),
-            };
+            //RoleDto formData = new()
+            //{
+            //    Id = int.Parse(selected["Id"].Value.ToString()),
+            //    InternalCode = selected["InternalCode"].Value.ToString(),
+            //    Name = selected["_Name"].Value.ToString(),
+            //    Sex = selected["Sex"].Value.ToString(),
+            //    Birthday = DateTime.Parse(selected["Birthday"].Value.ToString()),
+            //    Phone = selected["Phone"].Value.ToString(),
+            //};
 
-            if (e.ColumnIndex == 0)
-            {
-                Util.LoadForm(new RoleForm(formData), true);
-            }
-            else if (e.ColumnIndex == 1)
-            {
-                DialogResult dialogResult = Dialog_Confirm.Show();
+            //if (e.ColumnIndex == 0)
+            //{
+            //    Util.LoadForm(new RoleForm(formData), true);
+            //}
+            //else if (e.ColumnIndex == 1)
+            //{
+            //    DialogResult dialogResult = Dialog_Confirm.Show();
 
-                if (dialogResult != DialogResult.Yes)
-                {
-                    return;
-                }
+            //    if (dialogResult != DialogResult.Yes)
+            //    {
+            //        return;
+            //    }
 
-                _RoleService.Delete(formData.Id);
-                Button_Refresh.PerformClick();
-            }
+            //    Button_Refresh.PerformClick();
+            //}
         }
 
         private async void Button_Refresh_Click(object sender, EventArgs e)
@@ -105,7 +97,6 @@ namespace WinFormsApp.Resources.Controls.Module.Role
             _currPage = 1;
 
             await LoadData();
-            Paginator();
 
             Timer_Debounce.Stop();
         }

@@ -71,7 +71,7 @@ namespace WinFormsApp.View.Test
                 PermissionsName = x
             });
 
-            //var roles = await _roleService.GetList();
+            var roles = await _roleService.GetList();
 
             var c = await _roleService.AssignRoles(new AssignRoleVM
             {

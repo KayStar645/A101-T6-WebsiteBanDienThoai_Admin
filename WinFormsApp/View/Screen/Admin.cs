@@ -43,7 +43,7 @@ namespace WinFormsApp.View.Screen
 
             _permissions = _permissionService.GetRequiredPermissions();
 
-            CheckPermission();
+            //CheckPermission();
 
             LoadCategory();
         }

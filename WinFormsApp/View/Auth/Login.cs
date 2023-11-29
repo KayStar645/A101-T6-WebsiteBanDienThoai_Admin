@@ -27,6 +27,8 @@ namespace WinFormsApp.View.Auth
             {
                 MyThread thread = new();
 
+
+
                 thread.CloseThisOpenThat(this, Program.admin);
             }
             else

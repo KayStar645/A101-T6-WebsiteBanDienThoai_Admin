@@ -325,6 +325,7 @@
             Button_Create.Size = new Size(91, 41);
             Button_Create.TabIndex = 0;
             Button_Create.Text = "Thêm mới";
+            Button_Create.Click += Button_Create_Click;
             // 
             // Button_Refresh
             // 
@@ -346,6 +347,7 @@
             Button_Refresh.Size = new Size(91, 41);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
+            Button_Refresh.Click += Button_Create_Click;
             // 
             // Dialog_Confirm
             // 

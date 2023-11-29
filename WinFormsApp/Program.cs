@@ -108,8 +108,8 @@ namespace WinFormsApp
             login = new Login();
 
             //Application.Run(admin);
-            //Application.Run(login);
-            Application.Run(new frmTest(container));
+            Application.Run(login);
+            //Application.Run(new frmTest(container));
         }
     }
 
