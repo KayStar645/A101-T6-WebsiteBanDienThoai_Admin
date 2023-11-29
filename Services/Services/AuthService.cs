@@ -2,6 +2,7 @@
 using Database.Common;
 using Database.Interfaces;
 using Domain.DTOs;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -30,6 +31,32 @@ namespace Services.Services
             _mapper = mapper;
             _passwordHasher = passwordHasher;
             _employeeRepo = employeeRepository;
+        }
+
+        [RequirePermission("Account.View")]
+        public async Task<List<UserDto>> GetList()
+        {
+            if (CustomMiddleware.CheckPermission("Account.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
+            var result = await _userRepo.GetAllAsync();
+
+            return _mapper.Map<List<UserDto>>(result);
+        }
+
+        [RequirePermission("Account.View")]
+        public async Task<UserDto> GetDetail(string pUserName)
+        {
+            if (CustomMiddleware.CheckPermission("Account.View") == false)
+            {
+                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            }
+            var result = await _userRepo.FindByNameAsync(pUserName);
+            var userDto = _mapper.Map<UserDto>(result);
+            userDto.Roles = await _userRepo.GetRoleByUserName(pUserName);
+
+            return _mapper.Map<UserDto>(result);
         }
 
         [RequirePermission("Account.Create")]

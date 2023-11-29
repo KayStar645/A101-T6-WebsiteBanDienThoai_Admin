@@ -6,5 +6,6 @@ namespace Database.Interfaces
     {
         Task<User> FindByNameAsync(string pUserName);
         Task<List<string>> GetPermissionsByUserAsync(string pUserName);
+        Task<List<string>> GetRoleByUserName(string pUserName);
     }
 }
