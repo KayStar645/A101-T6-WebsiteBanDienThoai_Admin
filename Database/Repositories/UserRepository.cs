@@ -72,6 +72,21 @@ namespace Database.Repositories
             }
         }
 
+        public async Task<List<string>> GetRoleByUserName(string pUserName)
+        {
+            string query = $"SELECT r.Name " +
+                           $"FROM Role as r " +
+                           $"LEFT JOIN UserRole as ur on ur.RoleId = r.Id " +
+                           $"LEFT JOIN [User] as u on u.Id = ur.UserId " +
+                           $"WHERE u.UserName = N'{pUserName}'";
+            using(var connect = new SqlConnection(DatabaseCommon.ConnectionString))
+            {
+                var result = await connect.QueryAsync<string>(query).ConfigureAwait(false);
+                
+                return result.AsList();
+            }    
+        }
+
         #endregion
     }
 }
