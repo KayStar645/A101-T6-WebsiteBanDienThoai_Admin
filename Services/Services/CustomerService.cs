@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Database.Interfaces;
 using Domain.DTOs;
+using Domain.Entities;
 using Domain.Identities;
 using Services.Interfaces;
 using Services.Interfaces.Common;
@@ -37,6 +38,15 @@ namespace Services.Services
 
             return customerDto;
 
+        }
+        public async Task<bool> Update(CustomerDto pUpdate)
+        {
+
+            var category = _mapper.Map<Customer>(pUpdate);
+
+            var result = await _customerRepo.UpdateAsync(category);
+
+            return result > 0;
         }
 
         // Không có tạo customer mà là khi mua hàng thì sẽ auto add vào

@@ -33,6 +33,8 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
 
             Text_Name.Text = _formData.Name;
             Text_InternalCode.Text = _formData.InternalCode;
+
+            Label_Heading.Text = "Cập nhập màu " + _formData.Name;
         }
 
         private void ClearForm()

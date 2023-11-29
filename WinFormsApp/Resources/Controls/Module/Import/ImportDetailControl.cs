@@ -77,6 +77,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
                 Text_EmployeeName.Text = result.EmployeeInternalCode + "_" + result.EmployeeName;
                 Text_Price.Text = Util.AddCommas(result.Price);
 
+                Label_Heading.Text = "Chi tiết đơn nhập " + result.InternalCode;
+
                 LoadProduct();
 
             }

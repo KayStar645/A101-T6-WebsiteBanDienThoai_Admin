@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             FormBorderLess_Distributor = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
+            Label_Heading = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
             Button_Save = new Guna.UI2.WinForms.Guna2Button();
@@ -85,7 +85,7 @@
             tableLayoutPanel2.BackColor = Color.FromArgb(100, 88, 255);
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 76.11203F));
-            tableLayoutPanel2.Controls.Add(label1, 0, 0);
+            tableLayoutPanel2.Controls.Add(Label_Heading, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Top;
             tableLayoutPanel2.ForeColor = Color.White;
             tableLayoutPanel2.Location = new Point(0, 0);
@@ -96,16 +96,16 @@
             tableLayoutPanel2.Size = new Size(583, 35);
             tableLayoutPanel2.TabIndex = 4;
             // 
-            // label1
+            // Label_Heading
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(211, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(161, 19);
-            label1.TabIndex = 0;
-            label1.Text = "Thêm mới nhà cung cấp";
+            Label_Heading.Anchor = AnchorStyles.None;
+            Label_Heading.AutoSize = true;
+            Label_Heading.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_Heading.Location = new Point(211, 8);
+            Label_Heading.Name = "Label_Heading";
+            Label_Heading.Size = new Size(161, 19);
+            Label_Heading.TabIndex = 0;
+            Label_Heading.Text = "Thêm mới nhà cung cấp";
             // 
             // tableLayoutPanel4
             // 
@@ -131,7 +131,7 @@
             Button_Cancel.Animated = true;
             Button_Cancel.AnimatedGIF = true;
             Button_Cancel.BorderRadius = 8;
-            Button_Cancel.CustomizableEdges = customizableEdges13;
+            Button_Cancel.CustomizableEdges = customizableEdges17;
             Button_Cancel.DisabledState.BorderColor = Color.DarkGray;
             Button_Cancel.DisabledState.CustomBorderColor = Color.DarkGray;
             Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -142,7 +142,7 @@
             Button_Cancel.Location = new Point(10, 5);
             Button_Cancel.Margin = new Padding(3, 2, 3, 2);
             Button_Cancel.Name = "Button_Cancel";
-            Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges18;
             Button_Cancel.Size = new Size(70, 40);
             Button_Cancel.TabIndex = 1;
             Button_Cancel.Text = "Hủy";
@@ -154,7 +154,7 @@
             Button_Save.Animated = true;
             Button_Save.AnimatedGIF = true;
             Button_Save.BorderRadius = 8;
-            Button_Save.CustomizableEdges = customizableEdges15;
+            Button_Save.CustomizableEdges = customizableEdges19;
             Button_Save.DisabledState.BorderColor = Color.DarkGray;
             Button_Save.DisabledState.CustomBorderColor = Color.DarkGray;
             Button_Save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -165,7 +165,7 @@
             Button_Save.Location = new Point(503, 5);
             Button_Save.Margin = new Padding(3, 2, 3, 2);
             Button_Save.Name = "Button_Save";
-            Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges20;
             Button_Save.Size = new Size(70, 40);
             Button_Save.TabIndex = 0;
             Button_Save.Text = "Lưu";
@@ -217,7 +217,7 @@
             guna2ImageButton4.Margin = new Padding(3, 2, 3, 2);
             guna2ImageButton4.Name = "guna2ImageButton4";
             guna2ImageButton4.PressedState.ImageSize = new Size(25, 25);
-            guna2ImageButton4.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            guna2ImageButton4.ShadowDecoration.CustomizableEdges = customizableEdges21;
             guna2ImageButton4.Size = new Size(22, 48);
             guna2ImageButton4.TabIndex = 14;
             // 
@@ -235,7 +235,7 @@
             // 
             Text_InternalCode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             Text_InternalCode.BorderRadius = 8;
-            Text_InternalCode.CustomizableEdges = customizableEdges2;
+            Text_InternalCode.CustomizableEdges = customizableEdges22;
             Text_InternalCode.DefaultText = "";
             Text_InternalCode.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             Text_InternalCode.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -251,7 +251,7 @@
             Text_InternalCode.PasswordChar = '\0';
             Text_InternalCode.PlaceholderText = "Mã nhà cung cấp";
             Text_InternalCode.SelectedText = "";
-            Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges23;
             Text_InternalCode.Size = new Size(417, 44);
             Text_InternalCode.TabIndex = 1;
             // 
@@ -270,7 +270,7 @@
             Text_Name.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             Text_Name.Animated = true;
             Text_Name.BorderRadius = 8;
-            Text_Name.CustomizableEdges = customizableEdges4;
+            Text_Name.CustomizableEdges = customizableEdges24;
             Text_Name.DefaultText = "";
             Text_Name.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             Text_Name.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -286,7 +286,7 @@
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên nhà cung cấp";
             Text_Name.SelectedText = "";
-            Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges25;
             Text_Name.Size = new Size(417, 44);
             Text_Name.TabIndex = 3;
             // 
@@ -317,7 +317,7 @@
             Text_Address.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             Text_Address.Animated = true;
             Text_Address.BorderRadius = 8;
-            Text_Address.CustomizableEdges = customizableEdges6;
+            Text_Address.CustomizableEdges = customizableEdges26;
             Text_Address.DefaultText = "";
             Text_Address.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             Text_Address.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -333,7 +333,7 @@
             Text_Address.PasswordChar = '\0';
             Text_Address.PlaceholderText = "Địa chỉ";
             Text_Address.SelectedText = "";
-            Text_Address.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            Text_Address.ShadowDecoration.CustomizableEdges = customizableEdges27;
             Text_Address.Size = new Size(417, 44);
             Text_Address.TabIndex = 7;
             // 
@@ -342,7 +342,7 @@
             Text_Phone.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             Text_Phone.Animated = true;
             Text_Phone.BorderRadius = 8;
-            Text_Phone.CustomizableEdges = customizableEdges8;
+            Text_Phone.CustomizableEdges = customizableEdges28;
             Text_Phone.DefaultText = "";
             Text_Phone.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             Text_Phone.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -358,7 +358,7 @@
             Text_Phone.PasswordChar = '\0';
             Text_Phone.PlaceholderText = "Số điện thoại";
             Text_Phone.SelectedText = "";
-            Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            Text_Phone.ShadowDecoration.CustomizableEdges = customizableEdges29;
             Text_Phone.Size = new Size(417, 44);
             Text_Phone.TabIndex = 8;
             // 
@@ -375,7 +375,7 @@
             guna2ImageButton1.Margin = new Padding(3, 2, 3, 2);
             guna2ImageButton1.Name = "guna2ImageButton1";
             guna2ImageButton1.PressedState.ImageSize = new Size(25, 25);
-            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2ImageButton1.Size = new Size(22, 48);
             guna2ImageButton1.TabIndex = 11;
             // 
@@ -392,7 +392,7 @@
             guna2ImageButton2.Margin = new Padding(3, 2, 3, 2);
             guna2ImageButton2.Name = "guna2ImageButton2";
             guna2ImageButton2.PressedState.ImageSize = new Size(25, 25);
-            guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            guna2ImageButton2.ShadowDecoration.CustomizableEdges = customizableEdges31;
             guna2ImageButton2.Size = new Size(22, 48);
             guna2ImageButton2.TabIndex = 12;
             // 
@@ -409,7 +409,7 @@
             guna2ImageButton3.Margin = new Padding(3, 2, 3, 2);
             guna2ImageButton3.Name = "guna2ImageButton3";
             guna2ImageButton3.PressedState.ImageSize = new Size(25, 25);
-            guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2ImageButton3.ShadowDecoration.CustomizableEdges = customizableEdges32;
             guna2ImageButton3.Size = new Size(22, 48);
             guna2ImageButton3.TabIndex = 13;
             // 
@@ -450,7 +450,7 @@
         private Guna.UI2.WinForms.Guna2Button Button_Cancel;
         private Guna.UI2.WinForms.Guna2Button Button_Save;
         private TableLayoutPanel tableLayoutPanel2;
-        private Label label1;
+        private Label Label_Heading;
         private TableLayoutPanel tableLayoutPanel3;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton4;
         private Label label2;

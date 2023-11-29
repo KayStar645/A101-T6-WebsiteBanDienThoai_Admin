@@ -48,6 +48,8 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _result = await _importService.GetList("InternalCode", _currPage, 15, Text_Search.Text);
 
+            DataGridView_Listing.Rows.Clear();
+
             foreach (var item in _result.list)
             {
                 string[] rows = new string[]

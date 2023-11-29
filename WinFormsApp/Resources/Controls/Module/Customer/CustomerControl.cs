@@ -3,6 +3,7 @@ using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
 using WinFormsApp;
+using WinFormsApp.Resources.Controls.Module.Customer;
 using WinFormsApp.Services;
 
 namespace Controls.Module
@@ -66,6 +67,11 @@ namespace Controls.Module
                 Name = selected["_Name"].FormattedValue.ToString(),
                 Address = selected["Address"].FormattedValue.ToString(),
             };
+
+            if (e.ColumnIndex == 0)
+            {
+                Util.LoadForm(new CustomerForm(formData), true);
+            }
 
             Button_Refresh.PerformClick();
         }

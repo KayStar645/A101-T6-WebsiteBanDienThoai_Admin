@@ -81,6 +81,7 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                     DataGridView_Product.ReadOnly = true;
                 }
 
+                Label_Heading.Text = "Chi tiết đơn hàng " + result.InternalCode;
             }
             else
             {

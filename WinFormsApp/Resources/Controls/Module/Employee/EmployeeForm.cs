@@ -36,6 +36,8 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
             ComboBox_Gender.Text = formData.Sex;
             DateTime_Birthday.Text = formData.Birthday.ToString();
             Text_Phone.Text = formData.Phone;
+
+            Label_Heading.Text = "Cập nhập nhân viên " + formData.Name;
         }
 
         private void ClearForm()

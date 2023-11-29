@@ -35,10 +35,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
@@ -48,10 +47,9 @@
             TableLayoutPanel_Paginator = new TableLayoutPanel();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
             edit = new DataGridViewButtonColumn();
-            remove = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
-            Phone = new DataGridViewTextBoxColumn();
             _Name = new DataGridViewTextBoxColumn();
+            Phone = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Action.SuspendLayout();
@@ -93,6 +91,7 @@
             Button_Refresh.Size = new Size(90, 40);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
+            Button_Refresh.Click += Button_Refresh_Click;
             // 
             // Text_Search
             // 
@@ -124,7 +123,7 @@
             // 
             TableLayoutPanel_Action.ColumnCount = 3;
             TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 116F));
             TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
             TableLayoutPanel_Action.Controls.Add(Button_Refresh, 2, 0);
             TableLayoutPanel_Action.Dock = DockStyle.Fill;
@@ -185,15 +184,15 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, remove, InternalCode, Phone, _Name, Address, Id });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle5;
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, InternalCode, _Name, Phone, Address, Id });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle4;
             DataGridView_Listing.Dock = DockStyle.Fill;
             DataGridView_Listing.GridColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.Location = new Point(0, 50);
@@ -201,14 +200,14 @@
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
             DataGridView_Listing.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            DataGridView_Listing.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             DataGridView_Listing.RowHeadersVisible = false;
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -254,21 +253,6 @@
             edit.UseColumnTextForButtonValue = true;
             edit.Width = 6;
             // 
-            // remove
-            // 
-            remove.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            remove.DefaultCellStyle = dataGridViewCellStyle4;
-            remove.FillWeight = 20F;
-            remove.HeaderText = "";
-            remove.MinimumWidth = 6;
-            remove.Name = "remove";
-            remove.ReadOnly = true;
-            remove.Text = "Xóa";
-            remove.UseColumnTextForButtonValue = true;
-            remove.Width = 6;
-            // 
             // InternalCode
             // 
             InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -282,17 +266,6 @@
             InternalCode.Resizable = DataGridViewTriState.True;
             InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
-            // Phone
-            // 
-            Phone.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Phone.DataPropertyName = "Phone";
-            Phone.DividerWidth = 1;
-            Phone.FillWeight = 41.4464951F;
-            Phone.HeaderText = "Số điện thoại";
-            Phone.MinimumWidth = 6;
-            Phone.Name = "Phone";
-            Phone.ReadOnly = true;
-            // 
             // _Name
             // 
             _Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -303,6 +276,17 @@
             _Name.MinimumWidth = 6;
             _Name.Name = "_Name";
             _Name.ReadOnly = true;
+            // 
+            // Phone
+            // 
+            Phone.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Phone.DataPropertyName = "Phone";
+            Phone.DividerWidth = 1;
+            Phone.FillWeight = 41.4464951F;
+            Phone.HeaderText = "Số điện thoại";
+            Phone.MinimumWidth = 6;
+            Phone.Name = "Phone";
+            Phone.ReadOnly = true;
             // 
             // Address
             // 
@@ -349,10 +333,9 @@
         private TableLayoutPanel TableLayoutPanel_Paginator;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
         private DataGridViewButtonColumn edit;
-        private DataGridViewButtonColumn remove;
         private DataGridViewTextBoxColumn InternalCode;
-        private DataGridViewTextBoxColumn Phone;
         private DataGridViewTextBoxColumn _Name;
+        private DataGridViewTextBoxColumn Phone;
         private DataGridViewTextBoxColumn Address;
         private DataGridViewTextBoxColumn Id;
     }

@@ -38,6 +38,8 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
             Text_Name.Text = formData.Name;
             Text_Address.Text = formData.Address;
             Text_Phone.Text = formData.Phone;
+
+            Label_Heading.Text = "Cập nhập nhà cung cấp " + formData.Name;
         }
 
         private async void Button_Save_Click(object sender, EventArgs e)
