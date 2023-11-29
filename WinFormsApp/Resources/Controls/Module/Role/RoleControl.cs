@@ -10,7 +10,6 @@ namespace WinFormsApp.Resources.Controls.Module.Role
         private readonly IRoleService _RoleService;
         public static Guna2Button _refreshButton = new Guna2Button();
         List<Domain.Entities.Role> _result;
-        int _currPage = 1;
 
         public RoleControl()
         {
@@ -30,18 +29,11 @@ namespace WinFormsApp.Resources.Controls.Module.Role
             await LoadData();
         }
 
-        private async void Button_Paginator_Click(int page)
-        {
-            _currPage = page;
-
-            await LoadData();
-        }
-
         public async Task LoadData()
         {
-            //_result = await _RoleService.GetList();
+            _result = await _RoleService.GetList();
 
-            //DataGridView_Listing.DataSource = _result;
+            DataGridView_Listing.DataSource = _result;
         }
 
         private void Button_Create_Click(object sender, EventArgs e)
@@ -81,9 +73,6 @@ namespace WinFormsApp.Resources.Controls.Module.Role
 
         private async void Button_Refresh_Click(object sender, EventArgs e)
         {
-            _currPage = 1;
-            Text_Search.Text = string.Empty;
-
             await LoadData();
         }
 
@@ -94,8 +83,6 @@ namespace WinFormsApp.Resources.Controls.Module.Role
 
         private async void Timer_Debounce_Tick(object sender, EventArgs e)
         {
-            _currPage = 1;
-
             await LoadData();
 
             Timer_Debounce.Stop();
