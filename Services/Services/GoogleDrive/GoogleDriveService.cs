@@ -90,7 +90,6 @@ namespace Services.Services.GoogleDrive
                             // Xây dựng đường dẫn đầy đủ
                             string fileId = uploadFile.Id;
                             string downloadUrl = $"{_path}{fileId}";
-                            string result = _path + pRequest.FileName + fileExtension;
 
                             return downloadUrl;
                         }

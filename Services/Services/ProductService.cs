@@ -124,14 +124,19 @@ namespace Services.Services
             var images = new List<string>();
             foreach (var image in pUpdate.Images)
             {
-                var url = await _googleDriveService.UploadFilesToGoogleDrive(new UploadVM
+                var url = image;
+                if(image.StartsWith("https://drive.google.com/uc?id=") == false)
                 {
-                    FilePath = image,
-                    FileName = $"products/{pUpdate.Id}-{pUpdate.Name}/{Guid.NewGuid()}"
-                });
+                    url = await _googleDriveService.UploadFilesToGoogleDrive(new UploadVM
+                    {
+                        FilePath = image,
+                        FileName = $"products/{pUpdate.Id}-{pUpdate.Name}/{Guid.NewGuid()}"
+                    });
+                }
                 images.Add(url);
             }
 
+            pUpdate.Images = images;
             Product product = _mapper.Map<Product>(pUpdate);
 
             var result = await _productRepo.UpdateAsync(product);
