@@ -3,13 +3,14 @@ using Database.Interfaces;
 using Domain.Entities;
 using Domain.ModelViews;
 using Services.Interfaces;
+using Services.Interfaces.Common;
 using Services.Middleware;
 using Services.Transform;
 using System.Transactions;
 
 namespace Services.Services
 {
-    public class RoleService : IRoleService
+    public class RoleService : IRoleService, IService
     {
         private readonly IRoleRepository _roleRepo;
         private readonly IPermissionRepository _permissionRepo;
@@ -83,11 +84,11 @@ namespace Services.Services
         [RequirePermission("Role.Update")]
         public async Task<RoleVM> Update(RoleVM pCreate)
         {
-            if (CustomMiddleware.CheckPermission("Role.Update") == false)
-            {
-                throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
-            }
-            using (var transaction = new TransactionScope())
+            //if (CustomMiddleware.CheckPermission("Role.Update") == false)
+            //{
+            //    throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
+            //}
+            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
                 try
                 {

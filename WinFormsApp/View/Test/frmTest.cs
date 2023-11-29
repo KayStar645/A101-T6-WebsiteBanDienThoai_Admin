@@ -2,6 +2,7 @@
 using Domain.ModelViews;
 using Services.Common;
 using Services.Interfaces;
+using Services.Interfaces.GoogleDrive;
 using SimpleInjector;
 
 namespace WinFormsApp.View.Test
@@ -20,6 +21,7 @@ namespace WinFormsApp.View.Test
         private readonly IPromotionService _promotionService;
         private readonly IPermissionService _permissionService;
         private readonly IRoleService _roleService;
+        private readonly IGoogleDriveService _googleDriveService;
 
 
 
@@ -41,6 +43,7 @@ namespace WinFormsApp.View.Test
 
             _permissionService = _container.GetInstance<IPermissionService>();
             _roleService = _container.GetInstance<IRoleService>();
+            _googleDriveService = _container.GetInstance<IGoogleDriveService>();
 
             //Test();
 
@@ -55,14 +58,25 @@ namespace WinFormsApp.View.Test
             //Test6();
 
             TestIdentities();
+
+            //TestUpload();
             int a = 1;
         }
+
+        private async Task TestUpload()
+        {
+            var x = await _googleDriveService.UploadFilesToGoogleDrive(new UploadVM
+            {
+                FilePath = "https://image.nhandan.vn/Uploaded/2023/unqxwpejw/2023_09_24/anh-dep-giao-thong-1626.jpg",
+                FileName = "test/1/abc"
+            });
+        }    
 
         private async Task TestIdentities()
         {
             var x = _permissionService.GetRequiredPermissions();
 
-            var y = await _permissionService.Create(x);
+            //var y = await _permissionService.Create(x);
 
             var role = await _roleService.Update(new RoleVM
             {
