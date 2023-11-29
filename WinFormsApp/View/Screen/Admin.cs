@@ -2,6 +2,7 @@
 using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
+using Services.Common;
 using Services.Interfaces;
 using WinFormsApp.Resources.Controls.Module.Configuration;
 using WinFormsApp.Resources.Controls.Module.Distributor;
@@ -41,9 +42,9 @@ namespace WinFormsApp.View.Screen
 
             _refreshCategoryBtn.Click += _refreshCategoryBtn_Click;
 
-            _permissions = _permissionService.GetRequiredPermissions();
+            _permissions = ServiceCommon.AuthRespone.Permission;
 
-            //CheckPermission();
+            CheckPermission();
 
             LoadCategory();
         }
