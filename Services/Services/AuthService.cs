@@ -42,7 +42,7 @@ namespace Services.Services
             }
             var result = await _userRepo.GetAllAsync();
 
-            return _mapper.Map<List<UserDto>>(result);
+            return _mapper.Map<List<UserDto>>(result.list);
         }
 
         [RequirePermission("Account.View")]

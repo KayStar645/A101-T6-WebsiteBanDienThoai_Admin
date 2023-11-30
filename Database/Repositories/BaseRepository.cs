@@ -85,13 +85,13 @@ namespace Database.Repositories
             string resultSearchs = searchs.Count() > 0 ? $" and ({string.Join(" or ", searchs)})" : "";
 
             string query = $"select Id, \"{string.Join("\", \"", fields)}\" " +
-                           $"from {_model} " +
+                           $"from \"{_model}\" " +
                            $"where {string.Join(" and ", filter)} {resultSearchs} " +
                            $"order by {pSort} " +
                            $"offset {(pPageNumber - 1) * pPageSize} rows " +
                            $"fetch next {pPageSize} rows only";
 
-            string subQuery = $"SELECT COUNT(Id) FROM {_model} where {string.Join(" and ", filter)} {resultSearchs};";
+            string subQuery = $"SELECT COUNT(Id) FROM \"{_model}\" where {string.Join(" and ", filter)} {resultSearchs};";
             int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
                                     .ExecuteScalarAsync<int>(subQuery)
                                     .ConfigureAwait(false);
