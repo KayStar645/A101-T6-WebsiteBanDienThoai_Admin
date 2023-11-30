@@ -31,8 +31,6 @@
             components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
@@ -40,7 +38,6 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Timer_Debounce = new System.Windows.Forms.Timer(components);
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
-            Button_Create = new Guna.UI2.WinForms.Guna2Button();
             Button_Refresh = new Guna.UI2.WinForms.Guna2Button();
             TableLayoutPanel_Action = new TableLayoutPanel();
             TableLayoutPanel_Header = new TableLayoutPanel();
@@ -67,36 +64,13 @@
             Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
             // 
-            // Button_Create
-            // 
-            Button_Create.AllowDrop = true;
-            Button_Create.Anchor = AnchorStyles.Right;
-            Button_Create.AnimatedGIF = true;
-            Button_Create.BorderRadius = 8;
-            Button_Create.CustomizableEdges = customizableEdges1;
-            Button_Create.DisabledState.BorderColor = Color.DarkGray;
-            Button_Create.DisabledState.CustomBorderColor = Color.DarkGray;
-            Button_Create.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Button_Create.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Button_Create.FillColor = Color.FromArgb(100, 88, 255);
-            Button_Create.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_Create.ForeColor = Color.White;
-            Button_Create.Location = new Point(297, 5);
-            Button_Create.Margin = new Padding(0);
-            Button_Create.Name = "Button_Create";
-            Button_Create.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Button_Create.Size = new Size(90, 40);
-            Button_Create.TabIndex = 0;
-            Button_Create.Text = "Thêm mới";
-            Button_Create.Click += Button_Create_Click;
-            // 
             // Button_Refresh
             // 
             Button_Refresh.AllowDrop = true;
             Button_Refresh.Anchor = AnchorStyles.Right;
             Button_Refresh.AnimatedGIF = true;
             Button_Refresh.BorderRadius = 8;
-            Button_Refresh.CustomizableEdges = customizableEdges3;
+            Button_Refresh.CustomizableEdges = customizableEdges1;
             Button_Refresh.DisabledState.BorderColor = Color.DarkGray;
             Button_Refresh.DisabledState.CustomBorderColor = Color.DarkGray;
             Button_Refresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -104,10 +78,10 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(197, 5);
+            Button_Refresh.Location = new Point(297, 5);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
-            Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges2;
             Button_Refresh.Size = new Size(90, 40);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
@@ -119,8 +93,7 @@
             TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
             TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            TableLayoutPanel_Action.Controls.Add(Button_Create, 2, 0);
-            TableLayoutPanel_Action.Controls.Add(Button_Refresh, 1, 0);
+            TableLayoutPanel_Action.Controls.Add(Button_Refresh, 2, 0);
             TableLayoutPanel_Action.Dock = DockStyle.Fill;
             TableLayoutPanel_Action.Location = new Point(387, 0);
             TableLayoutPanel_Action.Margin = new Padding(0);
@@ -279,7 +252,6 @@
         #endregion
         private System.Windows.Forms.Timer Timer_Debounce;
         private Guna.UI2.WinForms.Guna2MessageDialog Dialog_Confirm;
-        private Guna.UI2.WinForms.Guna2Button Button_Create;
         private Guna.UI2.WinForms.Guna2Button Button_Refresh;
         private TableLayoutPanel TableLayoutPanel_Action;
         private TableLayoutPanel TableLayoutPanel_Header;

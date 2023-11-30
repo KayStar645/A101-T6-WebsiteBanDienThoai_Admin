@@ -43,17 +43,17 @@
             Text_Name = new Guna.UI2.WinForms.Guna2TextBox();
             label1 = new Label();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
-            SelectRole = new DataGridViewCheckBoxColumn();
-            UserName = new DataGridViewTextBoxColumn();
-            UserRoles = new DataGridViewTextBoxColumn();
-            RolePermissions = new DataGridViewTextBoxColumn();
-            Id = new DataGridViewTextBoxColumn();
-            IsDeleted = new DataGridViewTextBoxColumn();
             Label_Heading = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             Button_Cancel = new Guna.UI2.WinForms.Guna2Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             FormBorderLess_Distributor = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            SelectRole = new DataGridViewCheckBoxColumn();
+            RoleName = new DataGridViewTextBoxColumn();
+            UserRoles = new DataGridViewTextBoxColumn();
+            RolePermissions = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
+            IsDeleted = new DataGridViewTextBoxColumn();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).BeginInit();
             tableLayoutPanel4.SuspendLayout();
@@ -161,7 +161,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { SelectRole, UserName, UserRoles, RolePermissions, Id, IsDeleted });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { SelectRole, RoleName, UserRoles, RolePermissions, Id, IsDeleted });
             tableLayoutPanel3.SetColumnSpan(DataGridView_Listing, 2);
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -214,57 +214,6 @@
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
-            // 
-            // SelectRole
-            // 
-            SelectRole.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            SelectRole.FalseValue = "False";
-            SelectRole.HeaderText = "";
-            SelectRole.Name = "SelectRole";
-            SelectRole.ReadOnly = true;
-            SelectRole.TrueValue = "True";
-            SelectRole.Width = 40;
-            // 
-            // UserName
-            // 
-            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            UserName.DataPropertyName = "Name";
-            UserName.DividerWidth = 1;
-            UserName.HeaderText = "Vai trò";
-            UserName.Name = "UserName";
-            UserName.ReadOnly = true;
-            // 
-            // UserRoles
-            // 
-            UserRoles.DataPropertyName = "UserRoles";
-            UserRoles.HeaderText = "UserRoles";
-            UserRoles.Name = "UserRoles";
-            UserRoles.ReadOnly = true;
-            UserRoles.Visible = false;
-            // 
-            // RolePermissions
-            // 
-            RolePermissions.DataPropertyName = "RolePermissions";
-            RolePermissions.HeaderText = "RolePermission";
-            RolePermissions.Name = "RolePermissions";
-            RolePermissions.ReadOnly = true;
-            RolePermissions.Visible = false;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
-            // IsDeleted
-            // 
-            IsDeleted.DataPropertyName = "IsDeleted";
-            IsDeleted.HeaderText = "IsDeleted";
-            IsDeleted.Name = "IsDeleted";
-            IsDeleted.ReadOnly = true;
-            IsDeleted.Visible = false;
             // 
             // Label_Heading
             // 
@@ -343,6 +292,57 @@
             FormBorderLess_Distributor.DockIndicatorTransparencyValue = 0.6D;
             FormBorderLess_Distributor.TransparentWhileDrag = true;
             // 
+            // SelectRole
+            // 
+            SelectRole.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            SelectRole.FalseValue = "False";
+            SelectRole.HeaderText = "";
+            SelectRole.Name = "SelectRole";
+            SelectRole.ReadOnly = true;
+            SelectRole.TrueValue = "True";
+            SelectRole.Width = 40;
+            // 
+            // RoleName
+            // 
+            RoleName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RoleName.DataPropertyName = "Name";
+            RoleName.DividerWidth = 1;
+            RoleName.HeaderText = "Vai trò";
+            RoleName.Name = "RoleName";
+            RoleName.ReadOnly = true;
+            // 
+            // UserRoles
+            // 
+            UserRoles.DataPropertyName = "UserRoles";
+            UserRoles.HeaderText = "UserRoles";
+            UserRoles.Name = "UserRoles";
+            UserRoles.ReadOnly = true;
+            UserRoles.Visible = false;
+            // 
+            // RolePermissions
+            // 
+            RolePermissions.DataPropertyName = "RolePermissions";
+            RolePermissions.HeaderText = "RolePermission";
+            RolePermissions.Name = "RolePermissions";
+            RolePermissions.ReadOnly = true;
+            RolePermissions.Visible = false;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
+            // IsDeleted
+            // 
+            IsDeleted.DataPropertyName = "IsDeleted";
+            IsDeleted.HeaderText = "IsDeleted";
+            IsDeleted.Name = "IsDeleted";
+            IsDeleted.ReadOnly = true;
+            IsDeleted.Visible = false;
+            // 
             // UserAssignRoleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -378,7 +378,7 @@
         private Label label1;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
         private DataGridViewCheckBoxColumn SelectRole;
-        private DataGridViewTextBoxColumn UserName;
+        private DataGridViewTextBoxColumn RoleName;
         private DataGridViewTextBoxColumn UserRoles;
         private DataGridViewTextBoxColumn RolePermissions;
         private DataGridViewTextBoxColumn Id;

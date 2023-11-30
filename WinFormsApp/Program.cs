@@ -65,6 +65,7 @@ namespace WinFormsApp
             container.Register<IDetailOrderRepository, DetailOrderRepository>();
             container.Register<IPermissionRepository, PermissionRepository>();
             container.Register<IRoleRepository, RoleRepository>();
+            container.Register<IUserRoleRepository, UserRoleRepository>();
 
             // Đăng ký mapper
             container.Register<IMapper>(() =>
@@ -107,11 +108,9 @@ namespace WinFormsApp
             container.Register<IRoleService, RoleService>();
             container.Register<IGoogleDriveService, GoogleDriveService>();
 
-            admin = new Admin();
             login = new Login();
 
-            Application.Run(admin);
-            //Application.Run(login);
+            Application.Run(login);
             //Application.Run(new frmTest(container));
         }
     }

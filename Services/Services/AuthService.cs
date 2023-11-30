@@ -61,7 +61,7 @@ namespace Services.Services
             var userDto = _mapper.Map<UserDto>(result);
             userDto.Roles = await _userRepo.GetRoleByUserName(pUserName);
 
-            return _mapper.Map<UserDto>(result);
+            return userDto;
         }
 
         [RequirePermission("Account.Create")]

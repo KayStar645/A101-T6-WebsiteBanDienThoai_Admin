@@ -76,22 +76,22 @@ namespace WinFormsApp.View.Test
         {
             var x = _permissionService.GetRequiredPermissions();
 
-            //var y = await _permissionService.Create(x);
+            var y = await _permissionService.Create(x);
 
-            var role = await _roleService.Update(new RoleVM
-            {
-                Id = 4,
-                Name = "Quyền của Thuận",
-                PermissionsName = x
-            });
+            //var role = await _roleService.Update(new RoleVM
+            //{
+            //    Id = 4,
+            //    Name = "Quyền của Thuận",
+            //    PermissionsName = x
+            //});
 
-            var roles = await _roleService.GetList();
+            //var roles = await _roleService.GetList();
 
-            var c = await _roleService.AssignRoles(new AssignRoleVM
-            {
-                UserId = 1,
-                RoleId = 4
-            });
+            //var c = await _roleService.AssignRoles(new AssignRoleVM
+            //{
+            //    UserId = 1,
+            //    RoleId = 4
+            //});
 
 
 

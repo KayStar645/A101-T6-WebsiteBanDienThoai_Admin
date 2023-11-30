@@ -50,7 +50,7 @@ namespace WinFormsApp.Resources.Controls.Module.User
             {
                 foreach (DataGridViewRow item in DataGridView_Listing.Rows)
                 {
-                    string role = item.Cells["Name"].Value.ToString()!;
+                    string role = item.Cells["RoleName"].Value.ToString()!;
 
                     if (_user.Roles.Contains(role))
                     {
@@ -82,7 +82,7 @@ namespace WinFormsApp.Resources.Controls.Module.User
 
         private async void DataGridView_Listing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex != 0) 
+            if(e.ColumnIndex != 0) 
             {
                 return;
             }

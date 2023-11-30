@@ -138,7 +138,7 @@ namespace WinFormsApp.Services
             }
         }
 
-        public static bool CheckPermission(Control control, List<string> permissions)
+        public static bool CheckControlPermission(Control control, List<string> permissions)
         {
             if(control.Tag == null)
             {
@@ -180,6 +180,11 @@ namespace WinFormsApp.Services
             }
 
             return true;
+        }
+
+        public static bool CheckPermission(string perrmission, List<string> permissions)
+        {
+            return permissions.Contains(perrmission);
         }
     }
 }

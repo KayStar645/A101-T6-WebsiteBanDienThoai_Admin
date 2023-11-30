@@ -334,7 +334,7 @@
             Btn_User.ShadowDecoration.CustomizableEdges = customizableEdges2;
             Btn_User.Size = new Size(248, 40);
             Btn_User.TabIndex = 18;
-            Btn_User.Tag = "panel_system";
+            Btn_User.Tag = "panel_system|Account.View";
             Btn_User.Text = "Người dùng";
             Btn_User.TextAlign = HorizontalAlignment.Left;
             Btn_User.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -477,7 +477,7 @@
             Btn_System.ShadowDecoration.CustomizableEdges = customizableEdges10;
             Btn_System.Size = new Size(248, 40);
             Btn_System.TabIndex = 9;
-            Btn_System.Tag = "parent|Employee.View,Customer.View,Role.View";
+            Btn_System.Tag = "parent|Employee.View,Customer.View,Role.View,Account.View";
             Btn_System.Text = "Hệ thống";
             Btn_System.TextAlign = HorizontalAlignment.Left;
             Btn_System.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -778,7 +778,7 @@
             Btn_Configuration.ShadowDecoration.CustomizableEdges = customizableEdges30;
             Btn_Configuration.Size = new Size(248, 40);
             Btn_Configuration.TabIndex = 19;
-            Btn_Configuration.Tag = "panel_masterData";
+            Btn_Configuration.Tag = "panel_masterData|Configuration.View";
             Btn_Configuration.Text = "Cấu hình";
             Btn_Configuration.TextAlign = HorizontalAlignment.Left;
             Btn_Configuration.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -850,7 +850,7 @@
             Btn_MasterData.ShadowDecoration.CustomizableEdges = customizableEdges34;
             Btn_MasterData.Size = new Size(248, 40);
             Btn_MasterData.TabIndex = 9;
-            Btn_MasterData.Tag = "parent|Distributor.View,Specifications.View";
+            Btn_MasterData.Tag = "parent|Distributor.View,Specifications.View,Configuration.View";
             Btn_MasterData.Text = "Dữ liệu nguồn";
             Btn_MasterData.TextAlign = HorizontalAlignment.Left;
             Btn_MasterData.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;

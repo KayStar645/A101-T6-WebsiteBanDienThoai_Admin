@@ -15,12 +15,15 @@ namespace Services.Services
         private readonly IRoleRepository _roleRepo;
         private readonly IPermissionRepository _permissionRepo;
         private readonly IMapper _mapper;
+        private readonly IUserRoleRepository _userRoleRepo;
 
-        public RoleService(IRoleRepository roleRepo, IPermissionRepository permissionRepo, IMapper mapper)
+
+        public RoleService(IRoleRepository roleRepo, IPermissionRepository permissionRepo, IMapper mapper, IUserRoleRepository userRoleRepo)
         {
             _roleRepo = roleRepo;
             _permissionRepo = permissionRepo;
             _mapper = mapper;
+            _userRoleRepo = userRoleRepo;
         }
 
         [RequirePermission("Role.View")]
@@ -133,7 +136,7 @@ namespace Services.Services
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
-            var exists = await _roleRepo.AnyKeyValueAsync(new[] { 
+            var exists = await _userRoleRepo.AnyKeyValueAsync(new[] { 
                 ("RoleId", pRequest.RoleId.ToString()),
                 ("UserId", pRequest.UserId.ToString())
             });
@@ -156,7 +159,7 @@ namespace Services.Services
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
-            var exists = await _roleRepo.AnyKeyValueAsync(new[] {
+            var exists = await _userRoleRepo.AnyKeyValueAsync(new[] {
                 ("RoleId", pRequest.RoleId.ToString()),
                 ("UserId", pRequest.UserId.ToString())
             });

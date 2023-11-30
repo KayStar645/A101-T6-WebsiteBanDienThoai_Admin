@@ -21,10 +21,10 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        [RequirePermission("Category.View")]
+        [RequirePermission("Configuration.View")]
         public async Task<(List<CategoryDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
-            if (CustomMiddleware.CheckPermission("Category.View") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -35,10 +35,10 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
-        [RequirePermission("Category.View")]
+        [RequirePermission("Configuration.View")]
         public async Task<CategoryDto> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission("Category.View") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -49,10 +49,10 @@ namespace Services.Services
             return categoryDto;
         }
 
-        [RequirePermission("Category.Create")]
+        [RequirePermission("Configuration.Create")]
         public async Task<bool> Create(CategoryDto pCreate)
         {
-            if (CustomMiddleware.CheckPermission("Category.Create") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -72,10 +72,10 @@ namespace Services.Services
             return result > 0;
         }
 
-        [RequirePermission("Category.Update")]
+        [RequirePermission("Configuration.Update")]
         public async Task<bool> Update(CategoryDto pUpdate)
         {
-            if (CustomMiddleware.CheckPermission("Category.Update") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -95,10 +95,10 @@ namespace Services.Services
             return result > 0;
         }
 
-        [RequirePermission("Category.Delete")]
+        [RequirePermission("Configuration.Delete")]
         public async Task<bool> Delete(int pId)
         {
-            if (CustomMiddleware.CheckPermission("Category.Delete") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.Delete") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

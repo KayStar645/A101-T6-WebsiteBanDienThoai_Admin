@@ -21,10 +21,10 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        [RequirePermission("Capacity.View")]
+        [RequirePermission("Configuration.View")]
         public async Task<(List<CapacityDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1, int? pPageSize = 30, string? pKeyword = "")
         {
-            if (CustomMiddleware.CheckPermission("Capacity.View") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -35,10 +35,10 @@ namespace Services.Services
             return (list, result.totalCount, result.pageNumber);
         }
 
-        [RequirePermission("Capacity.View")]
+        [RequirePermission("Configuration.View")]
         public async Task<CapacityDto> GetDetail(int pId)
         {
-            if (CustomMiddleware.CheckPermission("Capacity.View") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -49,10 +49,10 @@ namespace Services.Services
             return capacityDto;
         }
 
-        [RequirePermission("Capacity.Create")]
+        [RequirePermission("Configuration.Create")]
         public async Task<bool> Create(CapacityDto pCreate)
         {
-            if (CustomMiddleware.CheckPermission("Capacity.Create") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -72,10 +72,10 @@ namespace Services.Services
             return result > 0;
         }
 
-        [RequirePermission("Capacity.Update")]
+        [RequirePermission("Configuration.Update")]
         public async Task<bool> Update(CapacityDto pUpdate)
         {
-            if (CustomMiddleware.CheckPermission("Capacity.Update") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -95,10 +95,10 @@ namespace Services.Services
             return result > 0;
         }
 
-        [RequirePermission("Capacity.Delete")]
+        [RequirePermission("Configuration.Delete")]
         public async Task<bool> Delete(int pId)
         {
-            if (CustomMiddleware.CheckPermission("Capacity.Delete") == false)
+            if (CustomMiddleware.CheckPermission("Configuration.Delete") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

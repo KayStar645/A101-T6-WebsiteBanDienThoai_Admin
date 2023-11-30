@@ -27,7 +27,9 @@ namespace WinFormsApp.View.Auth
             {
                 MyThread thread = new();
 
+                Program.admin = new Screen.Admin();
 
+                await Program.admin.LoadCategory();
 
                 thread.CloseThisOpenThat(this, Program.admin);
             }

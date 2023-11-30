@@ -38,8 +38,8 @@ namespace Database.Repositories
         #region FUNCTION
         public async Task<int> AssignRoles(UserRole userRole)
         {
-            string query = $"INSERT INTO UserRole (UserId, RoleId) " +
-                           $"OUTPUT INSERTED.Id VALUES({userRole.UserId}, {userRole.RoleId})";
+            string query = $"INSERT INTO UserRole (UserId, RoleId, IsDeleted) " +
+                           $"OUTPUT INSERTED.Id VALUES({userRole.UserId}, {userRole.RoleId}, 0)";
 
             using (var connect = new SqlConnection(DatabaseCommon.ConnectionString))
             {

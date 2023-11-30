@@ -43,11 +43,11 @@ namespace Services.Services
             return result;
         }
 
-        [RequirePermission("ImportBill.View")]
+        [RequirePermission("Order.View")]
         public async Task<(List<OrderDto> list, int totalCount, int pageNumber)> GetList(string? pSort = "Id", int? pPageNumber = 1,
             int? pPageSize = 30, string? pKeyword = "", int? pEmployeeId = null, int? pCustomerId = null)
         {
-            if (CustomMiddleware.CheckPermission("ImportBill.View") == false)
+            if (CustomMiddleware.CheckPermission("Order.View") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -59,10 +59,10 @@ namespace Services.Services
 
         // Create Order: Khách đặt hàng, type = O
         // Chỉ cần cần chọn sp, số lượng, giá sẽ tự tính
-        [RequirePermission("ImportBill.Create")]
+        [RequirePermission("Order.Create")]
         public async Task<bool> Create(OrderDto pOrder)
         {
-            if (CustomMiddleware.CheckPermission("ImportBill.Create") == false)
+            if (CustomMiddleware.CheckPermission("Order.Create") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -143,10 +143,10 @@ namespace Services.Services
             }
         }
 
-        [RequirePermission("ImportBill.Update")]
+        [RequirePermission("Order.Update")]
         public async Task<bool> Update(OrderDto pOrder)
         {
-            if (CustomMiddleware.CheckPermission("ImportBill.Update") == false)
+            if (CustomMiddleware.CheckPermission("Order.Update") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
@@ -280,10 +280,10 @@ namespace Services.Services
 
         // Approve Order: Nhân viên thay đổi trạng thái đơn hàng, type = O -> A -> T -> E
         // Hủy đơn hàng: Nhân viên hoặc khách hủy, type = O -> C
-        [RequirePermission("ImportBill.Approve")]
+        [RequirePermission("Order.Approve")]
         public async Task<bool> ChangeTypeOrder(int pOrderId, string pType)
         {
-            if (CustomMiddleware.CheckPermission("ImportBill.Approve") == false)
+            if (CustomMiddleware.CheckPermission("Order.Approve") == false)
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }

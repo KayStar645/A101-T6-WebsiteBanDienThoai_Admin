@@ -92,12 +92,21 @@ namespace Database.Repositories
                            $"fetch next {pPageSize} rows only";
 
             string subQuery = $"SELECT COUNT(Id) FROM \"{_model}\" where {string.Join(" and ", filter)} {resultSearchs};";
-            int totalCount = await new SqlConnection(DatabaseCommon.ConnectionString)
-                                    .ExecuteScalarAsync<int>(subQuery)
-                                    .ConfigureAwait(false);
+
+            int totalCount = 0;
+
+            using (var conn = new SqlConnection(DatabaseCommon.ConnectionString))
+            {
+                await conn.OpenAsync().ConfigureAwait(false);
+                int result = await conn.ExecuteScalarAsync<int>(subQuery).ConfigureAwait(false);
+
+                totalCount = result;
+            }
 
             using (var connection = new SqlConnection(DatabaseCommon.ConnectionString))
             {
+                await connection.OpenAsync().ConfigureAwait(false);
+
                 var result = await connection.QueryAsync<T>(query).ConfigureAwait(false);
 
                 decimal pageNumber = Math.Ceiling((decimal)totalCount / (decimal)pPageSize);

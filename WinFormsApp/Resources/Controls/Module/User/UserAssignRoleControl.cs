@@ -74,17 +74,6 @@ namespace WinFormsApp.Resources.Controls.Module.User
             {
                 Util.LoadForm(new UserAssignRoleForm(name), true);
             }
-            else if (e.ColumnIndex == 1)
-            {
-                DialogResult dialogResult = Dialog_Confirm.Show();
-
-                if (dialogResult != DialogResult.Yes)
-                {
-                    return;
-                }
-
-                Button_Refresh.PerformClick();
-            }
         }
     }
 }
