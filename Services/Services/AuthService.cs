@@ -41,8 +41,13 @@ namespace Services.Services
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
             var result = await _userRepo.GetAllAsync();
+            var users = _mapper.Map<List<UserDto>>(result.list);
+            foreach (var user in users)
+            {
+                user.Roles = await _userRepo.GetRoleByUserName(user.UserName);
+            }    
 
-            return _mapper.Map<List<UserDto>>(result.list);
+            return users;
         }
 
         [RequirePermission("Account.View")]
