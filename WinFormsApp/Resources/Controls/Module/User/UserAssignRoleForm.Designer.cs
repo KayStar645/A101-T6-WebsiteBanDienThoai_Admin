@@ -283,7 +283,7 @@
             tableLayoutPanel4.ColumnCount = 2;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(Button_Cancel, 0, 0);
+            tableLayoutPanel4.Controls.Add(Button_Cancel, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Bottom;
             tableLayoutPanel4.Location = new Point(0, 504);
             tableLayoutPanel4.Margin = new Padding(0);
@@ -296,7 +296,7 @@
             // 
             // Button_Cancel
             // 
-            Button_Cancel.Anchor = AnchorStyles.Left;
+            Button_Cancel.Anchor = AnchorStyles.Right;
             Button_Cancel.Animated = true;
             Button_Cancel.AnimatedGIF = true;
             Button_Cancel.BorderRadius = 8;
@@ -305,16 +305,16 @@
             Button_Cancel.DisabledState.CustomBorderColor = Color.DarkGray;
             Button_Cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             Button_Cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Button_Cancel.FillColor = Color.DarkGray;
+            Button_Cancel.FillColor = Color.RoyalBlue;
             Button_Cancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Cancel.ForeColor = Color.White;
-            Button_Cancel.Location = new Point(10, 4);
+            Button_Cancel.Location = new Point(410, 4);
             Button_Cancel.Margin = new Padding(3, 2, 3, 2);
             Button_Cancel.Name = "Button_Cancel";
             Button_Cancel.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Button_Cancel.Size = new Size(70, 40);
+            Button_Cancel.Size = new Size(91, 40);
             Button_Cancel.TabIndex = 1;
-            Button_Cancel.Text = "Hủy";
+            Button_Cancel.Text = "Hoàn tất";
             Button_Cancel.Click += Button_Cancel_Click;
             // 
             // tableLayoutPanel2
