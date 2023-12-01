@@ -175,6 +175,26 @@ namespace Database.Repositories
             return base.UpdateAsync(pModel);
         }
 
+        public async Task UpdateQuantityProductWhenTransportOrder(int pOrderId, bool isTransport)
+        {
+            string oper = isTransport ? "-" : "+";
+            string where = "";
+            if(isTransport == false)
+            {
+                where = " and O.Type = N'T'";
+            }    
+
+            string query = $"UPDATE P SET P.Quantity = P.Quantity {oper} D.Quantity " +
+                           $"FROM Product as P " +
+                           $"INNER JOIN DetailOrder D ON P.Id = D.ProductId " +
+                           $"INNER JOIN [Order] O ON D.OrderId = O.Id " +
+                           $"WHERE O.Id = {pOrderId}{where}";
+            using(var connect = new SqlConnection (DatabaseCommon.ConnectionString))
+            {
+                var result = await connect.ExecuteScalarAsync(query).ConfigureAwait(false);
+            }
+        }
+
         #endregion
     }
 }

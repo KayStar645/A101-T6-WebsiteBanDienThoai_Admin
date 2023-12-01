@@ -287,9 +287,42 @@ namespace Services.Services
             {
                 throw new UnauthorizedAccessException(IdentityTransform.ForbiddenException());
             }
-            var result = await _orderRepo.ChangeTypeOrderAsync(pOrderId, pType);
 
-            return result;
+            using (var transaction = new TransactionScope())
+            {
+                try
+                {
+                    // Cập nhật lại nhân viên duyệt đơn hàng
+                    var oldOrder = await _orderRepo.GetDetailPropertiesAsync(pOrderId);
+                    oldOrder.EmployeeId = ServiceCommon.AuthRespone.Id;
+
+                    var order = _mapper.Map<Order>(oldOrder);
+                    var update = await _orderRepo.UpdateAsync(order);
+
+                    if (pType == Order.TYPE_TRANSPORT)
+                    {
+                        // Giảm số lượng của tất cả sản phẩm trong đơn hàng này
+                        await _orderRepo.UpdateQuantityProductWhenTransportOrder(pOrderId, true);
+                    }
+
+                    if (pType == Order.TYPE_CANNEL)
+                    {
+                        // Nếu trạng thái trước đó của đơn hàng là T (Đang vận chuyển) - Đã kiểm tra trong Repo
+                        // Tăng số lượng của tất cả sản phẩm này lên lại
+                        await _orderRepo.UpdateQuantityProductWhenTransportOrder(pOrderId, false);
+                    }
+
+
+                    var result = await _orderRepo.ChangeTypeOrderAsync(pOrderId, pType);
+                    transaction.Complete();
+                    return result;
+                }   
+                catch
+                {
+                    transaction.Dispose();
+                    return false;
+                }
+            }    
         }
 
         // Áp dụng chương trình khuyến mãi cho 1 sản phẩm

@@ -12,5 +12,7 @@ namespace Database.Interfaces
                                         int? pPageSize = 10, int? pEmployeeId = null, int? pCustomerId = null);
 
         Task<OrderDto> GetDetailPropertiesAsync(int pId);
+
+        Task UpdateQuantityProductWhenTransportOrder(int pOrderId, bool isTransport);
     }
 }

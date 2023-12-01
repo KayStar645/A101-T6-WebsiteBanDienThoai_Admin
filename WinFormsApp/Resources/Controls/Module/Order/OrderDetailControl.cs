@@ -1,7 +1,6 @@
 ﻿using Domain.DTOs;
 using Services.Common;
 using Services.Interfaces;
-using WinFormsApp.Resources.Controls.Module.Import;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Order
@@ -87,11 +86,13 @@ namespace WinFormsApp.Resources.Controls.Module.Order
                 else if (result.Type == Domain.Entities.Order.TYPE_APPROVE)
                 {
                     Button_Transport.Visible = true;
+                    Button_Cancel.Visible = true;
                     DataGridView_Product.ReadOnly = true;
                 }
                 else if (result.Type == Domain.Entities.Order.TYPE_TRANSPORT)
                 {
                     Button_Received.Visible = true;
+                    Button_Cancel.Visible = true;
                     DataGridView_Product.ReadOnly = true;
                 }
 
@@ -278,9 +279,6 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
         private async void Button_Approve_Click(object sender, EventArgs e)
         {
-            _order.EmployeeId = ServiceCommon.AuthRespone.Id;
-
-            await _orderService.Update(_order);
             await _orderService.ChangeTypeOrder(_order.Id, Domain.Entities.Order.TYPE_APPROVE);
 
             Util.LoadControl(this, new OrderControl());
@@ -295,8 +293,6 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
         private async void Button_Cancel_Click(object sender, EventArgs e)
         {
-            _order.EmployeeId = ServiceCommon.AuthRespone.Id;
-            await _orderService.Update(_order);
             await _orderService.ChangeTypeOrder(_order.Id, Domain.Entities.Order.TYPE_CANNEL);
 
             Util.LoadControl(this, new OrderControl());
