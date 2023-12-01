@@ -72,18 +72,19 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 44F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 134F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 153F));
             tableLayoutPanel1.Controls.Add(Btn_Back, 0, 0);
             tableLayoutPanel1.Controls.Add(Button_Save, 2, 0);
             tableLayoutPanel1.Controls.Add(Label_Heading, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(986, 50);
+            tableLayoutPanel1.Size = new Size(1127, 67);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // Btn_Back
@@ -95,11 +96,12 @@
             Btn_Back.ImageOffset = new Point(0, 0);
             Btn_Back.ImageRotate = 0F;
             Btn_Back.ImageSize = new Size(30, 30);
-            Btn_Back.Location = new Point(3, 5);
+            Btn_Back.Location = new Point(3, 7);
+            Btn_Back.Margin = new Padding(3, 4, 3, 4);
             Btn_Back.Name = "Btn_Back";
             Btn_Back.PressedState.ImageSize = new Size(30, 30);
             Btn_Back.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            Btn_Back.Size = new Size(38, 40);
+            Btn_Back.Size = new Size(43, 53);
             Btn_Back.TabIndex = 1;
             Btn_Back.Click += Btn_Back_Click;
             // 
@@ -117,11 +119,10 @@
             Button_Save.FillColor = Color.FromArgb(100, 88, 255);
             Button_Save.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Save.ForeColor = Color.White;
-            Button_Save.Location = new Point(913, 5);
-            Button_Save.Margin = new Padding(3, 2, 3, 2);
+            Button_Save.Location = new Point(1044, 7);
             Button_Save.Name = "Button_Save";
             Button_Save.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            Button_Save.Size = new Size(70, 40);
+            Button_Save.Size = new Size(80, 53);
             Button_Save.TabIndex = 2;
             Button_Save.Text = "Lưu";
             Button_Save.Click += Button_Save_Click;
@@ -131,19 +132,19 @@
             Label_Heading.Anchor = AnchorStyles.Left;
             Label_Heading.AutoSize = true;
             Label_Heading.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Heading.Location = new Point(47, 14);
+            Label_Heading.Location = new Point(53, 19);
             Label_Heading.Name = "Label_Heading";
-            Label_Heading.Size = new Size(156, 21);
+            Label_Heading.Size = new Size(200, 28);
             Label_Heading.TabIndex = 0;
             Label_Heading.Text = "Thêm mới sản phẩm";
             // 
             // TableLayoutPanel_Info
             // 
             TableLayoutPanel_Info.ColumnCount = 5;
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
+            TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             TableLayoutPanel_Info.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Info.Controls.Add(label4, 0, 2);
             TableLayoutPanel_Info.Controls.Add(Text_Price, 1, 2);
@@ -156,14 +157,15 @@
             TableLayoutPanel_Info.Controls.Add(Text_Name, 1, 0);
             TableLayoutPanel_Info.Controls.Add(ComboBox_Capacity, 4, 1);
             TableLayoutPanel_Info.Dock = DockStyle.Top;
-            TableLayoutPanel_Info.Location = new Point(0, 50);
+            TableLayoutPanel_Info.Location = new Point(0, 67);
+            TableLayoutPanel_Info.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Info.Name = "TableLayoutPanel_Info";
-            TableLayoutPanel_Info.Padding = new Padding(0, 12, 0, 0);
+            TableLayoutPanel_Info.Padding = new Padding(0, 16, 0, 0);
             TableLayoutPanel_Info.RowCount = 3;
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableLayoutPanel_Info.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            TableLayoutPanel_Info.Size = new Size(986, 173);
+            TableLayoutPanel_Info.Size = new Size(1127, 231);
             TableLayoutPanel_Info.TabIndex = 1;
             // 
             // label4
@@ -171,9 +173,9 @@
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(3, 137);
+            label4.Location = new Point(3, 183);
             label4.Name = "label4";
-            label4.Size = new Size(55, 17);
+            label4.Size = new Size(70, 23);
             label4.TabIndex = 4;
             label4.Text = "Đơn giá";
             // 
@@ -191,14 +193,14 @@
             Text_Price.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Price.ForeColor = Color.Black;
             Text_Price.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Price.Location = new Point(123, 126);
-            Text_Price.Margin = new Padding(3, 4, 3, 4);
+            Text_Price.Location = new Point(140, 169);
+            Text_Price.Margin = new Padding(3, 5, 3, 5);
             Text_Price.Name = "Text_Price";
             Text_Price.PasswordChar = '\0';
             Text_Price.PlaceholderText = "Đơn giá";
             Text_Price.SelectedText = "";
             Text_Price.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            Text_Price.Size = new Size(347, 38);
+            Text_Price.Size = new Size(397, 51);
             Text_Price.TabIndex = 5;
             // 
             // label8
@@ -206,9 +208,9 @@
             label8.Anchor = AnchorStyles.Left;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(516, 137);
+            label8.Location = new Point(589, 183);
             label8.Name = "label8";
-            label8.Size = new Size(35, 17);
+            label8.Size = new Size(45, 23);
             label8.TabIndex = 13;
             label8.Text = "Màu";
             // 
@@ -217,9 +219,9 @@
             label7.Anchor = AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(516, 83);
+            label7.Location = new Point(589, 111);
             label7.Name = "label7";
-            label7.Size = new Size(80, 17);
+            label7.Size = new Size(102, 23);
             label7.TabIndex = 10;
             label7.Text = "Dung lượng";
             // 
@@ -236,10 +238,11 @@
             ComboBox_Color.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ComboBox_Color.ForeColor = Color.FromArgb(68, 88, 112);
             ComboBox_Color.ItemHeight = 30;
-            ComboBox_Color.Location = new Point(636, 127);
+            ComboBox_Color.Location = new Point(726, 176);
+            ComboBox_Color.Margin = new Padding(3, 4, 3, 4);
             ComboBox_Color.Name = "ComboBox_Color";
             ComboBox_Color.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            ComboBox_Color.Size = new Size(347, 36);
+            ComboBox_Color.Size = new Size(398, 36);
             ComboBox_Color.Sorted = true;
             ComboBox_Color.TabIndex = 14;
             // 
@@ -248,9 +251,9 @@
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(3, 30);
+            label3.Location = new Point(3, 40);
             label3.Name = "label3";
-            label3.Size = new Size(93, 17);
+            label3.Size = new Size(116, 23);
             label3.TabIndex = 1;
             label3.Text = "Tên sản phẩm";
             // 
@@ -259,9 +262,9 @@
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 83);
+            label2.Location = new Point(3, 111);
             label2.Name = "label2";
-            label2.Size = new Size(91, 17);
+            label2.Size = new Size(115, 23);
             label2.TabIndex = 0;
             label2.Text = "Mã sản phẩm";
             // 
@@ -279,14 +282,14 @@
             Text_InternalCode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_InternalCode.ForeColor = Color.Black;
             Text_InternalCode.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_InternalCode.Location = new Point(123, 72);
-            Text_InternalCode.Margin = new Padding(3, 4, 3, 4);
+            Text_InternalCode.Location = new Point(140, 97);
+            Text_InternalCode.Margin = new Padding(3, 5, 3, 5);
             Text_InternalCode.Name = "Text_InternalCode";
             Text_InternalCode.PasswordChar = '\0';
             Text_InternalCode.PlaceholderText = "Mã sản phẩm";
             Text_InternalCode.SelectedText = "";
             Text_InternalCode.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            Text_InternalCode.Size = new Size(347, 38);
+            Text_InternalCode.Size = new Size(397, 51);
             Text_InternalCode.TabIndex = 2;
             // 
             // Text_Name
@@ -304,14 +307,14 @@
             Text_Name.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Name.ForeColor = Color.Black;
             Text_Name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Name.Location = new Point(123, 19);
-            Text_Name.Margin = new Padding(3, 4, 3, 4);
+            Text_Name.Location = new Point(140, 26);
+            Text_Name.Margin = new Padding(3, 5, 3, 5);
             Text_Name.Name = "Text_Name";
             Text_Name.PasswordChar = '\0';
             Text_Name.PlaceholderText = "Tên sản phẩm";
             Text_Name.SelectedText = "";
             Text_Name.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            Text_Name.Size = new Size(860, 38);
+            Text_Name.Size = new Size(984, 51);
             Text_Name.TabIndex = 3;
             // 
             // ComboBox_Capacity
@@ -327,10 +330,11 @@
             ComboBox_Capacity.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ComboBox_Capacity.ForeColor = Color.FromArgb(68, 88, 112);
             ComboBox_Capacity.ItemHeight = 30;
-            ComboBox_Capacity.Location = new Point(636, 73);
+            ComboBox_Capacity.Location = new Point(726, 104);
+            ComboBox_Capacity.Margin = new Padding(3, 4, 3, 4);
             ComboBox_Capacity.Name = "ComboBox_Capacity";
             ComboBox_Capacity.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            ComboBox_Capacity.Size = new Size(347, 36);
+            ComboBox_Capacity.Size = new Size(398, 36);
             ComboBox_Capacity.Sorted = true;
             ComboBox_Capacity.TabIndex = 15;
             ComboBox_Capacity.SelectedIndexChanged += ComboBox_Capacity_SelectedIndexChanged;
@@ -339,10 +343,11 @@
             // 
             Panel_Parameter.AutoSize = true;
             Panel_Parameter.Dock = DockStyle.Top;
-            Panel_Parameter.Location = new Point(0, 504);
+            Panel_Parameter.Location = new Point(0, 672);
+            Panel_Parameter.Margin = new Padding(3, 4, 3, 4);
             Panel_Parameter.Name = "Panel_Parameter";
-            Panel_Parameter.Padding = new Padding(0, 0, 0, 12);
-            Panel_Parameter.Size = new Size(986, 12);
+            Panel_Parameter.Padding = new Padding(0, 0, 0, 16);
+            Panel_Parameter.Size = new Size(1127, 16);
             Panel_Parameter.TabIndex = 4;
             // 
             // Btn_ParameterHeader
@@ -358,11 +363,12 @@
             Btn_ParameterHeader.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Btn_ParameterHeader.ForeColor = Color.White;
             Btn_ParameterHeader.HoverState.FillColor = Color.FromArgb(100, 88, 255);
-            Btn_ParameterHeader.Location = new Point(0, 464);
+            Btn_ParameterHeader.Location = new Point(0, 619);
+            Btn_ParameterHeader.Margin = new Padding(3, 4, 3, 4);
             Btn_ParameterHeader.Name = "Btn_ParameterHeader";
             Btn_ParameterHeader.PressedColor = Color.FromArgb(100, 88, 255);
             Btn_ParameterHeader.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            Btn_ParameterHeader.Size = new Size(986, 40);
+            Btn_ParameterHeader.Size = new Size(1127, 53);
             Btn_ParameterHeader.TabIndex = 5;
             Btn_ParameterHeader.Text = "Thông số kỹ thuật";
             Btn_ParameterHeader.TextAlign = HorizontalAlignment.Left;
@@ -380,13 +386,14 @@
             Btn_Image.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Btn_Image.ForeColor = Color.White;
             Btn_Image.HoverState.FillColor = Color.FromArgb(100, 88, 255);
-            Btn_Image.Image = Properties.Resources.white_arrow_right;
+            Btn_Image.Image = Properties.Resources.plus;
             Btn_Image.ImageAlign = HorizontalAlignment.Right;
-            Btn_Image.Location = new Point(0, 223);
+            Btn_Image.Location = new Point(0, 298);
+            Btn_Image.Margin = new Padding(3, 4, 3, 4);
             Btn_Image.Name = "Btn_Image";
             Btn_Image.PressedColor = Color.FromArgb(100, 88, 255);
             Btn_Image.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            Btn_Image.Size = new Size(986, 40);
+            Btn_Image.Size = new Size(1127, 53);
             Btn_Image.TabIndex = 6;
             Btn_Image.Text = "Hình ảnh";
             Btn_Image.TextAlign = HorizontalAlignment.Left;
@@ -396,10 +403,11 @@
             // 
             Panel_Images.AutoScroll = true;
             Panel_Images.Dock = DockStyle.Top;
-            Panel_Images.Location = new Point(0, 263);
+            Panel_Images.Location = new Point(0, 351);
+            Panel_Images.Margin = new Padding(3, 4, 3, 4);
             Panel_Images.Name = "Panel_Images";
-            Panel_Images.Padding = new Padding(0, 0, 0, 12);
-            Panel_Images.Size = new Size(986, 201);
+            Panel_Images.Padding = new Padding(0, 0, 0, 16);
+            Panel_Images.Size = new Size(1127, 268);
             Panel_Images.TabIndex = 7;
             // 
             // Dialog_Notification
@@ -413,7 +421,7 @@
             // 
             // ProductDetailControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             Controls.Add(Panel_Parameter);
@@ -422,8 +430,9 @@
             Controls.Add(Btn_Image);
             Controls.Add(TableLayoutPanel_Info);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ProductDetailControl";
-            Size = new Size(986, 970);
+            Size = new Size(1127, 1293);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             TableLayoutPanel_Info.ResumeLayout(false);
