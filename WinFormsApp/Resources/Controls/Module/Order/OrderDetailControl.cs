@@ -281,6 +281,8 @@ namespace WinFormsApp.Resources.Controls.Module.Order
 
         private async void Button_Cancel_Click(object sender, EventArgs e)
         {
+            _order.EmployeeId = ServiceCommon.AuthRespone.Id;
+            await _orderService.Update(_order);
             await _orderService.ChangeTypeOrder(_order.Id, Domain.Entities.Order.TYPE_CANNEL);
 
             Util.LoadControl(this, new OrderControl());
