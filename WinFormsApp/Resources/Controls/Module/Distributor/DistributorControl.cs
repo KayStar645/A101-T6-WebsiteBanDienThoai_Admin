@@ -36,6 +36,11 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
                 Button_Edit.Text = "Xem";
             }
 
+            if (!Util.CheckPermission("Configuration.Create"))
+            {
+                Button_Create.Visible = false;
+            }
+
             if (!Util.CheckPermission("Configuration.Delete"))
             {
                 DataGridView_Listing.Columns.RemoveAt(1);

@@ -47,6 +47,12 @@ namespace WinFormsApp.Resources.Controls.Module.Import
             Text_EmployeeName.Text = ServiceCommon.AuthRespone.UserName;
 
             await LoadData();
+
+            if (!Util.CheckPermission("ImportBill.Update"))
+            {
+                Button_Save.Visible = false;
+                Button_AddProduct.Visible = false;
+            }
         }
 
         private async void LoadDistributor()

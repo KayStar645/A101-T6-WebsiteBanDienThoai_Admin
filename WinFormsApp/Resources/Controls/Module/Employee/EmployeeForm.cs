@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Employee
 {
@@ -14,17 +15,29 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
             InitializeComponent();
 
             _employeeService = Program.container.GetInstance<IEmployeeService>();
+
+            OnInit();
         }
 
         public EmployeeForm(EmployeeDto formData)
         {
             InitializeComponent();
 
+            OnInit();
+
             _employeeService = Program.container.GetInstance<IEmployeeService>();
 
             this.formData = formData;
 
             this.LoadData();
+        }
+
+        private void OnInit()
+        {
+            if (!Util.CheckPermission("Employee.Update"))
+            {
+                Button_Save.Visible = false;
+            }
         }
 
         public void LoadData()

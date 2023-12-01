@@ -27,6 +27,16 @@ namespace WinFormsApp.Resources.Controls.Module.Import
         {
             _refreshButton = Button_Refresh;
 
+            if (!Util.CheckPermission("ImportBill.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+
+            if (!Util.CheckPermission("ImportBill.Create"))
+            {
+                Button_Create.Visible = false;
+            }
+
             await LoadData();
 
             Paginator();

@@ -33,7 +33,7 @@ namespace WinFormsApp.Resources.Controls.Module.Customer
             Text_InternalCode.Text = formData.InternalCode;
             Text_Name.Text = formData.Name;
             Text_PhoneNumber.Text = formData.Phone;
-            Text_Address.Text = formData.Phone;
+            Text_Address.Text = formData.Address;
 
             Label_Heading.Text = "Cập nhập khách hàng " + formData.Name;
         }

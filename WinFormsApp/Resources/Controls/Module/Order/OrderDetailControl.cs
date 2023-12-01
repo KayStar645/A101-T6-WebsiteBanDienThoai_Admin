@@ -43,6 +43,17 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             Text_EmployeeName.Enabled = false;
             Text_EmployeeName.Text = ServiceCommon.AuthRespone.UserName;
 
+            if (!Util.CheckPermission("Order.Update"))
+            {
+                Button_Save.Visible = false;
+                Button_AddProduct.Visible = false;
+            }
+
+            if (!Util.CheckPermission("Order.Approve"))
+            {
+                Button_Approve.Visible = false;
+            }
+
             await LoadData();
         }
 

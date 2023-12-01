@@ -25,6 +25,19 @@ namespace WinFormsApp.Resources.Controls.Module.Employee
 
         private async void InitializeAsync()
         {
+            if (!Util.CheckPermission("Employee.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+            if (!Util.CheckPermission("Employee.Create"))
+            {
+                Button_Create.Visible = false;
+            }
+            if (!Util.CheckPermission("Employee.Delete"))
+            {
+                DataGridView_Listing.Columns.RemoveAt(1);
+            }
+
             _refreshButton = Button_Refresh;
 
             await LoadData();

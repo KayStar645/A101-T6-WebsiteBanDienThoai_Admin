@@ -21,11 +21,18 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             _refreshButton = Button_Refresh;
 
             InitializeAsync();
+
+
         }
 
         private async void InitializeAsync()
         {
             _refreshButton = Button_Refresh;
+
+            if (!Util.CheckPermission("Order.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
 
             await LoadData();
 
