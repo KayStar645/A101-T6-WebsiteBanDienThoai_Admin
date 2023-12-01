@@ -44,7 +44,7 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
             await LoadData();
             Paginator();
 
-            if (_productIds.Count == 0)
+            if (_productIds == null || _productIds.Count == 0)
             {
                 return;
             }
