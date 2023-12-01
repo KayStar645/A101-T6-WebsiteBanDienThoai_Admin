@@ -1,6 +1,5 @@
 ﻿using Controls.Type;
 using Domain.DTOs;
-using Domain.Entities;
 using Domain.ModelViews;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
@@ -284,6 +283,7 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private void LoadImage()
         {
+            Panel_Images.Controls.Clear();
             foreach (var item in (_product.Images ?? new List<string>()))
             {
                 Panel_Images.Controls.Add(ProductImageBlock(item));
@@ -292,9 +292,15 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private Panel ProductImageBlock(string url)
         {
-            Panel panel = new();
+            Panel panel = new Panel();
 
-            panel.Controls.Add(ProductImage(url));
+            PictureBox pictureBox = ProductImage(url);
+            panel.Controls.Add(pictureBox);
+
+            // Thêm nút xóa vào mỗi Panel
+            Button deleteButton = CreateDeleteButton(url);
+            panel.Controls.Add(deleteButton);
+
             panel.Dock = DockStyle.Left;
             panel.Location = new Point(0, 0);
             panel.Padding = new Padding(0, 0, 12, 0);
@@ -306,44 +312,52 @@ namespace WinFormsApp.Resources.Controls.Module.Product
 
         private PictureBox ProductImage(string url)
         {
-            PictureBox pictureBox = new();
+            PictureBox pictureBox = new PictureBox();
 
             pictureBox.Dock = DockStyle.Fill;
-            pictureBox.Location = new Point(0, 0);
             pictureBox.Margin = new Padding(3, 3, 12, 3);
             pictureBox.Padding = new Padding(0, 0, 12, 0);
-            pictureBox.Size = new Size(135, 170);
-            pictureBox.TabIndex = 1;
-            pictureBox.TabStop = false;
-            try
-            {
-                pictureBox.Load(url);
-            }
-            catch (Exception)
-            {
-            }
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+
+            pictureBox.Load(url);
 
             return pictureBox;
         }
 
-        private void Btn_Image_Click(object sender, EventArgs e)
+        private Button CreateDeleteButton(string imageUrl)
         {
-            if (_product.Images!.Count > 0)
-            {
-                Util.LoadForm(new ProductImageForm(_product.Images, OnSaveImage), true);
-            }
-            else
-            {
-                Util.LoadForm(new ProductImageForm(OnSaveImage), true);
-            }
+            Button deleteButton = new Button();
+            deleteButton.Text = "Xóa";
+            deleteButton.Height = 36;
+            deleteButton.Dock = DockStyle.Bottom;
+
+            deleteButton.Click += (sender, e) => DeleteImage(imageUrl);
+
+            return deleteButton;
         }
 
-        private void OnSaveImage(List<string> images)
+        private void DeleteImage(string imageUrl)
         {
-            _product.Images = images;
-
+            _product.Images.Remove(imageUrl);
             LoadImage();
+        }
+
+
+        private void Btn_Image_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openImage = new OpenFileDialog();
+            openImage.Filter = "Image files (*.jpg, *.jpeg, *.png, *.gif, *.bmp)|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All files (*.*)|*.*";
+            DialogResult result = openImage.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                if (_product.Images.Contains(openImage.FileName) == false)
+                {
+                    _product.Images.Add(openImage.FileName);
+
+                    LoadImage();
+                }
+            }
         }
 
         private void Btn_Back_Click(object sender, EventArgs e)
