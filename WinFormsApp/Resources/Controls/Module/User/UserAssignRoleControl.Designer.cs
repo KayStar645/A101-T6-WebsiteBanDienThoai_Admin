@@ -42,7 +42,7 @@
             TableLayoutPanel_Action = new TableLayoutPanel();
             TableLayoutPanel_Header = new TableLayoutPanel();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
-            Edit = new DataGridViewButtonColumn();
+            Button_Edit = new DataGridViewButtonColumn();
             Id = new DataGridViewTextBoxColumn();
             UserName = new DataGridViewTextBoxColumn();
             Password = new DataGridViewTextBoxColumn();
@@ -139,7 +139,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { Edit, Id, UserName, Password });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { Button_Edit, Id, UserName, Password });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -192,18 +192,18 @@
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
             // 
-            // Edit
+            // Button_Edit
             // 
-            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Edit.HeaderText = "";
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.ReadOnly = true;
-            Edit.Resizable = DataGridViewTriState.True;
-            Edit.SortMode = DataGridViewColumnSortMode.Automatic;
-            Edit.Text = "Sửa";
-            Edit.UseColumnTextForButtonValue = true;
-            Edit.Width = 40;
+            Button_Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Button_Edit.HeaderText = "";
+            Button_Edit.MinimumWidth = 6;
+            Button_Edit.Name = "Button_Edit";
+            Button_Edit.ReadOnly = true;
+            Button_Edit.Resizable = DataGridViewTriState.True;
+            Button_Edit.SortMode = DataGridViewColumnSortMode.Automatic;
+            Button_Edit.Text = "Sửa";
+            Button_Edit.UseColumnTextForButtonValue = true;
+            Button_Edit.Width = 40;
             // 
             // Id
             // 
@@ -261,7 +261,7 @@
         private TableLayoutPanel TableLayoutPanel_Action;
         private TableLayoutPanel TableLayoutPanel_Header;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
-        private DataGridViewButtonColumn Edit;
+        private DataGridViewButtonColumn Button_Edit;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn Password;

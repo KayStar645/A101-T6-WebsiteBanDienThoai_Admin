@@ -29,6 +29,11 @@ namespace WinFormsApp.Resources.Controls.Module.User
             _refreshButton = Button_Refresh;
 
 
+            if (!Util.CheckPermission("Role.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+
             await LoadData();
         }
 

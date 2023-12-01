@@ -39,6 +39,11 @@ namespace WinFormsApp.Resources.Controls.Module.Role
             _PermissionService = Program.container.GetInstance<IPermissionService>();
 
 
+            if (!Util.CheckPermission("Role.Update"))
+            {
+                Button_Save.Visible = false;
+            }
+
             DesktopLocation = new Point((Screen.PrimaryScreen!.Bounds.Width - Width), 0);
             Height = Screen.PrimaryScreen.Bounds.Height;
 

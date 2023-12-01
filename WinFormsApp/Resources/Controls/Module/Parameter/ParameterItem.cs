@@ -276,6 +276,12 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             btn.Text = "Lưu";
             btn.Click += Button_Create_Click;
 
+
+            if (!Util.CheckPermission("Specifications.Update"))
+            {
+                btn.Enabled = false;
+            }
+
             return btn;
         }
 
@@ -303,6 +309,11 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             btn.Text = "Xóa";
             btn.Click += Btn_ChildRemove_Click;
             btn.Tag = id;
+
+            if (!Util.CheckPermission("Specifications.Delete"))
+            {
+                btn.Enabled = false;
+            }
 
             return btn;
         }

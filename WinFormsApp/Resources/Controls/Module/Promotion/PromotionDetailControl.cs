@@ -33,6 +33,18 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             LoadType();
 
+            if (!Util.CheckPermission("Promotion.Update"))
+            {
+                Button_Save.Visible = false;
+                Button_AddProduct.Visible = false;
+            }
+
+            if (!Util.CheckPermission("Promotion.Approve"))
+            {
+                Button_Cancel.Visible = false;
+                Button_Approve.Visible = false;
+            }
+
             _promotionService = Program.container.GetInstance<IPromotionService>();
 
             if (_promotion.Id > 0)

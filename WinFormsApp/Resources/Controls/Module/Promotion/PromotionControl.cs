@@ -28,6 +28,16 @@ namespace WinFormsApp.Resources.Controls.Module.Promotion
         {
             _refreshButton = Button_Refresh;
 
+            if (!Util.CheckPermission("Promotion.Create"))
+            {
+                Button_Create.Visible = false;
+            }
+
+            if (!Util.CheckPermission("Promotion.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+
             Paginator();
 
             await LoadData();

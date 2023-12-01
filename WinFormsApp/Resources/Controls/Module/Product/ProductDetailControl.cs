@@ -59,6 +59,12 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             _capacityService = Program.container.GetInstance<ICapacityService>();
             _colorService = Program.container.GetInstance<IColorService>();
 
+            if (!Util.CheckPermission("Product.Update"))
+            {
+                Button_Save.Visible = false;
+                Btn_Image.Enabled = false;
+            }
+
             await LoadCapacity();
             await LoadColor();
 
@@ -241,6 +247,12 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             btn.Tag = parameterId + "|" + index;
             btn.TextAlign = HorizontalAlignment.Left;
             btn.Click += Btn_DetailParameter_Click;
+
+
+            if (!Util.CheckPermission("Product.Update"))
+            {
+                btn.Enabled = false;
+            }
 
             return btn;
         }

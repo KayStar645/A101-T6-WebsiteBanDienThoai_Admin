@@ -26,6 +26,16 @@ namespace WinFormsApp.Resources.Controls.Module.Role
         {
             _refreshButton = Button_Refresh;
 
+            if (!Util.CheckPermission("Role.Create"))
+            {
+                Button_Create.Visible = false;
+            }
+
+            if (!Util.CheckPermission("Role.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+
             await LoadData();
         }
 

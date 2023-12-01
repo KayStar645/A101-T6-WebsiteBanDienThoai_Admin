@@ -30,6 +30,21 @@ namespace WinFormsApp.Resources.Controls.Module.Product
             _productService = Program.container.GetInstance<IProductService>();
             _refreshButton = Button_Refresh;
 
+            if (!Util.CheckPermission("Product.Create"))
+            {
+                Button_Create.Visible = false;
+            }
+
+            if (!Util.CheckPermission("Product.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+
+            if (!Util.CheckPermission("Product.Delete"))
+            {
+                DataGridView_Listing.Columns.RemoveAt(1);
+            }
+
             await LoadData();
             Paginator();
         }

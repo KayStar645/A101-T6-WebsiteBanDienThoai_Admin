@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.User
 {
@@ -36,6 +37,11 @@ namespace WinFormsApp.Resources.Controls.Module.User
 
         public async void OnInit()
         {
+            if (!Util.CheckPermission("Account.Update"))
+            {
+                DataGridView_Listing.ReadOnly = true;
+            }
+
             await LoadData();
             await LoadRole();
         }
@@ -91,7 +97,13 @@ namespace WinFormsApp.Resources.Controls.Module.User
             bool check = bool.Parse(cells["SelectRole"].FormattedValue.ToString());
             int id = int.Parse(cells["Id"].Value.ToString());
 
-            if(check)
+
+            if (!Util.CheckPermission("Account.Update"))
+            {
+                return;
+            }
+
+            if (check)
             {
                 await _RoleService.RevokeRole(new Domain.ModelViews.AssignRoleVM()
                 {

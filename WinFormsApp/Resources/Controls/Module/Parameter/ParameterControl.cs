@@ -26,6 +26,12 @@ namespace WinFormsApp.Resources.Controls.Module.Parameter
             _specificationsService = Program.container.GetInstance<ISpecificationsService>();
             _refreshBtn = Button_Refresh;
 
+
+            if (!Util.CheckPermission("Specifications.Create"))
+            {
+                Button_Create.Visible = false;
+            }
+
             await LoadData();
             Paginator();
         }

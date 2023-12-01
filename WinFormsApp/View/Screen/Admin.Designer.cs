@@ -81,7 +81,6 @@
             Resize_Admin = new Guna.UI2.WinForms.Guna2ResizeForm(components);
             DragControl_Admin = new Guna.UI2.WinForms.Guna2DragControl(components);
             TableLayoutPanel_Header = new TableLayoutPanel();
-            Label_Logout = new Label();
             guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -153,7 +152,6 @@
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
-            TableLayoutPanel_Header.Controls.Add(Label_Logout, 0, 0);
             TableLayoutPanel_Header.Controls.Add(guna2ControlBox1, 4, 0);
             TableLayoutPanel_Header.Controls.Add(guna2ControlBox2, 3, 0);
             TableLayoutPanel_Header.Controls.Add(guna2ControlBox3, 2, 0);
@@ -166,20 +164,6 @@
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanel_Header.Size = new Size(1030, 47);
             TableLayoutPanel_Header.TabIndex = 0;
-            // 
-            // Label_Logout
-            // 
-            Label_Logout.Anchor = AnchorStyles.Left;
-            Label_Logout.AutoSize = true;
-            Label_Logout.Cursor = Cursors.Hand;
-            Label_Logout.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            Label_Logout.ForeColor = Color.White;
-            Label_Logout.Location = new Point(3, 12);
-            Label_Logout.Name = "Label_Logout";
-            Label_Logout.Size = new Size(90, 23);
-            Label_Logout.TabIndex = 10;
-            Label_Logout.Text = "Đăng xuất";
-            Label_Logout.Click += Label_Logout_Click;
             // 
             // guna2ControlBox1
             // 
@@ -985,6 +969,5 @@
         private Guna.UI2.WinForms.Guna2Button Btn_Role;
         private Guna.UI2.WinForms.Guna2Button Btn_User;
         private Guna.UI2.WinForms.Guna2ImageButton Btn_Home;
-        private Label Label_Logout;
     }
 }
