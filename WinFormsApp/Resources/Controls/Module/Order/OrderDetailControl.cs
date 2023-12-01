@@ -52,6 +52,9 @@ namespace WinFormsApp.Resources.Controls.Module.Order
             if (!Util.CheckPermission("Order.Approve"))
             {
                 Button_Approve.Visible = false;
+                Button_Cancel.Visible = false;
+                Button_Received.Visible = false;
+                Button_Transport.Visible = false;
             }
 
             await LoadData();
