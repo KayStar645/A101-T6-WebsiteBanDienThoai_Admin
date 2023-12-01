@@ -1,6 +1,7 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
 using SimpleInjector;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Distributor
 {
@@ -17,6 +18,8 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
             InitializeComponent();
 
             _distributorService = _container.GetInstance<IDistributorService>();
+
+            OnInit();
         }
 
         public DistributorForm(Container container, DistributorDto formData)
@@ -29,7 +32,17 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
 
             this.formData = formData;
 
-            this.LoadData();
+            LoadData();
+
+            OnInit();
+        }
+
+        private void OnInit()
+        {
+            if (!Util.CheckPermission("Configuration.Update"))
+            {
+                Button_Save.Visible = false;
+            }
         }
 
         public void LoadData()

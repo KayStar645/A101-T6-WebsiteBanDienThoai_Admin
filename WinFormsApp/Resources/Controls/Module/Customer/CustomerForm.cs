@@ -2,6 +2,7 @@
 using Domain.DTOs;
 using Services.Interfaces;
 using WinFormsApp.Resources.Controls.Module.Customer;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Customer
 {
@@ -20,6 +21,11 @@ namespace WinFormsApp.Resources.Controls.Module.Customer
             this.formData = formData;
 
             LoadData();
+
+            if (!Util.CheckPermission("Configuration.Update"))
+            {
+                Button_Save.Visible = false;
+            }
         }
 
         public void LoadData()

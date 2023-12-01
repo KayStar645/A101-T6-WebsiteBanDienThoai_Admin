@@ -81,6 +81,7 @@
             Resize_Admin = new Guna.UI2.WinForms.Guna2ResizeForm(components);
             DragControl_Admin = new Guna.UI2.WinForms.Guna2DragControl(components);
             TableLayoutPanel_Header = new TableLayoutPanel();
+            Label_Logout = new Label();
             guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -147,22 +148,38 @@
             // TableLayoutPanel_Header
             // 
             TableLayoutPanel_Header.ColumnCount = 5;
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
             TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
+            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
+            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
+            TableLayoutPanel_Header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
+            TableLayoutPanel_Header.Controls.Add(Label_Logout, 0, 0);
             TableLayoutPanel_Header.Controls.Add(guna2ControlBox1, 4, 0);
             TableLayoutPanel_Header.Controls.Add(guna2ControlBox2, 3, 0);
             TableLayoutPanel_Header.Controls.Add(guna2ControlBox3, 2, 0);
             TableLayoutPanel_Header.Controls.Add(Label_Heading, 1, 0);
             TableLayoutPanel_Header.Dock = DockStyle.Top;
-            TableLayoutPanel_Header.Location = new Point(8, 0);
+            TableLayoutPanel_Header.Location = new Point(9, 0);
+            TableLayoutPanel_Header.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Header.Size = new Size(901, 35);
+            TableLayoutPanel_Header.Size = new Size(1030, 47);
             TableLayoutPanel_Header.TabIndex = 0;
+            // 
+            // Label_Logout
+            // 
+            Label_Logout.Anchor = AnchorStyles.Left;
+            Label_Logout.AutoSize = true;
+            Label_Logout.Cursor = Cursors.Hand;
+            Label_Logout.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            Label_Logout.ForeColor = Color.White;
+            Label_Logout.Location = new Point(3, 12);
+            Label_Logout.Name = "Label_Logout";
+            Label_Logout.Size = new Size(90, 23);
+            Label_Logout.TabIndex = 10;
+            Label_Logout.Text = "Đăng xuất";
+            Label_Logout.Click += Label_Logout_Click;
             // 
             // guna2ControlBox1
             // 
@@ -172,11 +189,11 @@
             guna2ControlBox1.CustomizableEdges = customizableEdges42;
             guna2ControlBox1.FillColor = Color.Transparent;
             guna2ControlBox1.IconColor = Color.White;
-            guna2ControlBox1.Location = new Point(861, 0);
+            guna2ControlBox1.Location = new Point(984, 0);
             guna2ControlBox1.Margin = new Padding(0);
             guna2ControlBox1.Name = "guna2ControlBox1";
             guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges43;
-            guna2ControlBox1.Size = new Size(40, 35);
+            guna2ControlBox1.Size = new Size(46, 47);
             guna2ControlBox1.TabIndex = 6;
             // 
             // guna2ControlBox2
@@ -188,11 +205,11 @@
             guna2ControlBox2.CustomizableEdges = customizableEdges44;
             guna2ControlBox2.FillColor = Color.Transparent;
             guna2ControlBox2.IconColor = Color.White;
-            guna2ControlBox2.Location = new Point(821, 0);
+            guna2ControlBox2.Location = new Point(938, 0);
             guna2ControlBox2.Margin = new Padding(0);
             guna2ControlBox2.Name = "guna2ControlBox2";
             guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges45;
-            guna2ControlBox2.Size = new Size(40, 35);
+            guna2ControlBox2.Size = new Size(46, 47);
             guna2ControlBox2.TabIndex = 7;
             // 
             // guna2ControlBox3
@@ -204,11 +221,11 @@
             guna2ControlBox3.CustomizableEdges = customizableEdges46;
             guna2ControlBox3.FillColor = Color.Transparent;
             guna2ControlBox3.IconColor = Color.White;
-            guna2ControlBox3.Location = new Point(781, 0);
+            guna2ControlBox3.Location = new Point(892, 0);
             guna2ControlBox3.Margin = new Padding(0);
             guna2ControlBox3.Name = "guna2ControlBox3";
             guna2ControlBox3.ShadowDecoration.CustomizableEdges = customizableEdges47;
-            guna2ControlBox3.Size = new Size(40, 35);
+            guna2ControlBox3.Size = new Size(46, 47);
             guna2ControlBox3.TabIndex = 8;
             // 
             // Label_Heading
@@ -217,9 +234,9 @@
             Label_Heading.AutoSize = true;
             Label_Heading.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             Label_Heading.ForeColor = Color.White;
-            Label_Heading.Location = new Point(402, 8);
+            Label_Heading.Location = new Point(456, 12);
             Label_Heading.Name = "Label_Heading";
-            Label_Heading.Size = new Size(96, 19);
+            Label_Heading.Size = new Size(117, 23);
             Label_Heading.TabIndex = 9;
             Label_Heading.Text = "Nhà cung cấp";
             // 
@@ -254,20 +271,22 @@
             // TableLayoutPanel_Body
             // 
             TableLayoutPanel_Body.ColumnCount = 2;
-            TableLayoutPanel_Body.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 266F));
+            TableLayoutPanel_Body.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 304F));
             TableLayoutPanel_Body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             TableLayoutPanel_Body.Controls.Add(Panel_Sidebar, 0, 0);
             TableLayoutPanel_Body.Controls.Add(Panel_Body, 1, 0);
             TableLayoutPanel_Body.Dock = DockStyle.Fill;
-            TableLayoutPanel_Body.Location = new Point(8, 35);
+            TableLayoutPanel_Body.Location = new Point(9, 47);
+            TableLayoutPanel_Body.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Body.Name = "TableLayoutPanel_Body";
             TableLayoutPanel_Body.RowCount = 1;
             TableLayoutPanel_Body.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Body.Size = new Size(901, 728);
+            TableLayoutPanel_Body.Size = new Size(1030, 970);
             TableLayoutPanel_Body.TabIndex = 10;
             // 
             // Panel_Sidebar
             // 
+            Panel_Sidebar.AutoScroll = true;
             Panel_Sidebar.BorderRadius = 12;
             Panel_Sidebar.Controls.Add(Panel_System);
             Panel_Sidebar.Controls.Add(Panel_Business);
@@ -280,9 +299,9 @@
             Panel_Sidebar.Location = new Point(0, 0);
             Panel_Sidebar.Margin = new Padding(0);
             Panel_Sidebar.Name = "Panel_Sidebar";
-            Panel_Sidebar.Padding = new Padding(8);
+            Panel_Sidebar.Padding = new Padding(9, 11, 9, 11);
             Panel_Sidebar.ShadowDecoration.CustomizableEdges = customizableEdges41;
-            Panel_Sidebar.Size = new Size(266, 728);
+            Panel_Sidebar.Size = new Size(304, 970);
             Panel_Sidebar.TabIndex = 11;
             // 
             // Panel_System
@@ -295,13 +314,13 @@
             Panel_System.Controls.Add(Btn_System);
             Panel_System.CustomizableEdges = customizableEdges11;
             Panel_System.Dock = DockStyle.Top;
-            Panel_System.Location = new Point(8, 443);
-            Panel_System.Margin = new Padding(2);
-            Panel_System.MaximumSize = new Size(248, 200);
-            Panel_System.MinimumSize = new Size(248, 40);
+            Panel_System.Location = new Point(9, 590);
+            Panel_System.Margin = new Padding(2, 3, 2, 3);
+            Panel_System.MaximumSize = new Size(283, 267);
+            Panel_System.MinimumSize = new Size(283, 53);
             Panel_System.Name = "Panel_System";
             Panel_System.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            Panel_System.Size = new Size(248, 200);
+            Panel_System.Size = new Size(283, 267);
             Panel_System.TabIndex = 20;
             // 
             // Btn_User
@@ -325,14 +344,14 @@
             Btn_User.HoverState.FillColor = Color.WhiteSmoke;
             Btn_User.ImageAlign = HorizontalAlignment.Left;
             Btn_User.ImageSize = new Size(10, 10);
-            Btn_User.Location = new Point(0, 160);
+            Btn_User.Location = new Point(0, 212);
             Btn_User.Margin = new Padding(0);
             Btn_User.Name = "Btn_User";
-            Btn_User.Padding = new Padding(26, 0, 0, 0);
+            Btn_User.Padding = new Padding(30, 0, 0, 0);
             Btn_User.PressedColor = Color.RoyalBlue;
             Btn_User.PressedDepth = 100;
             Btn_User.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Btn_User.Size = new Size(248, 40);
+            Btn_User.Size = new Size(283, 53);
             Btn_User.TabIndex = 18;
             Btn_User.Tag = "panel_system|Account.View";
             Btn_User.Text = "Người dùng";
@@ -361,14 +380,14 @@
             Btn_Role.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Role.ImageAlign = HorizontalAlignment.Left;
             Btn_Role.ImageSize = new Size(10, 10);
-            Btn_Role.Location = new Point(0, 120);
+            Btn_Role.Location = new Point(0, 159);
             Btn_Role.Margin = new Padding(0);
             Btn_Role.Name = "Btn_Role";
-            Btn_Role.Padding = new Padding(26, 0, 0, 0);
+            Btn_Role.Padding = new Padding(30, 0, 0, 0);
             Btn_Role.PressedColor = Color.RoyalBlue;
             Btn_Role.PressedDepth = 100;
             Btn_Role.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Btn_Role.Size = new Size(248, 40);
+            Btn_Role.Size = new Size(283, 53);
             Btn_Role.TabIndex = 17;
             Btn_Role.Tag = "panel_system|Role.View";
             Btn_Role.Text = "Vai trò";
@@ -397,14 +416,14 @@
             Btn_Customer.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Customer.ImageAlign = HorizontalAlignment.Left;
             Btn_Customer.ImageSize = new Size(10, 10);
-            Btn_Customer.Location = new Point(0, 80);
+            Btn_Customer.Location = new Point(0, 106);
             Btn_Customer.Margin = new Padding(0);
             Btn_Customer.Name = "Btn_Customer";
-            Btn_Customer.Padding = new Padding(26, 0, 0, 0);
+            Btn_Customer.Padding = new Padding(30, 0, 0, 0);
             Btn_Customer.PressedColor = Color.RoyalBlue;
             Btn_Customer.PressedDepth = 100;
             Btn_Customer.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Btn_Customer.Size = new Size(248, 40);
+            Btn_Customer.Size = new Size(283, 53);
             Btn_Customer.TabIndex = 16;
             Btn_Customer.Tag = "panel_system|Customer.View";
             Btn_Customer.Text = "Khách hàng";
@@ -433,14 +452,14 @@
             Btn_Employee.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Employee.ImageAlign = HorizontalAlignment.Left;
             Btn_Employee.ImageSize = new Size(10, 10);
-            Btn_Employee.Location = new Point(0, 40);
+            Btn_Employee.Location = new Point(0, 53);
             Btn_Employee.Margin = new Padding(0);
             Btn_Employee.Name = "Btn_Employee";
-            Btn_Employee.Padding = new Padding(26, 0, 0, 0);
+            Btn_Employee.Padding = new Padding(30, 0, 0, 0);
             Btn_Employee.PressedColor = Color.RoyalBlue;
             Btn_Employee.PressedDepth = 100;
             Btn_Employee.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            Btn_Employee.Size = new Size(248, 40);
+            Btn_Employee.Size = new Size(283, 53);
             Btn_Employee.TabIndex = 15;
             Btn_Employee.Tag = "panel_system|Employee.View";
             Btn_Employee.Text = "Nhân viên";
@@ -475,7 +494,7 @@
             Btn_System.Name = "Btn_System";
             Btn_System.PressedColor = Color.Transparent;
             Btn_System.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            Btn_System.Size = new Size(248, 40);
+            Btn_System.Size = new Size(283, 53);
             Btn_System.TabIndex = 9;
             Btn_System.Tag = "parent|Employee.View,Customer.View,Role.View,Account.View";
             Btn_System.Text = "Hệ thống";
@@ -492,13 +511,13 @@
             Panel_Business.Controls.Add(Btn_Business);
             Panel_Business.CustomizableEdges = customizableEdges21;
             Panel_Business.Dock = DockStyle.Top;
-            Panel_Business.Location = new Point(8, 283);
-            Panel_Business.Margin = new Padding(2);
-            Panel_Business.MaximumSize = new Size(248, 160);
-            Panel_Business.MinimumSize = new Size(248, 40);
+            Panel_Business.Location = new Point(9, 377);
+            Panel_Business.Margin = new Padding(2, 3, 2, 3);
+            Panel_Business.MaximumSize = new Size(283, 213);
+            Panel_Business.MinimumSize = new Size(283, 53);
             Panel_Business.Name = "Panel_Business";
             Panel_Business.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            Panel_Business.Size = new Size(248, 160);
+            Panel_Business.Size = new Size(283, 213);
             Panel_Business.TabIndex = 21;
             // 
             // Btn_Order
@@ -522,14 +541,14 @@
             Btn_Order.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Order.ImageAlign = HorizontalAlignment.Left;
             Btn_Order.ImageSize = new Size(10, 10);
-            Btn_Order.Location = new Point(0, 120);
+            Btn_Order.Location = new Point(0, 159);
             Btn_Order.Margin = new Padding(0);
             Btn_Order.Name = "Btn_Order";
-            Btn_Order.Padding = new Padding(26, 0, 0, 0);
+            Btn_Order.Padding = new Padding(30, 0, 0, 0);
             Btn_Order.PressedColor = Color.RoyalBlue;
             Btn_Order.PressedDepth = 100;
             Btn_Order.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            Btn_Order.Size = new Size(248, 40);
+            Btn_Order.Size = new Size(283, 53);
             Btn_Order.TabIndex = 20;
             Btn_Order.Tag = "panel_business|Order.View";
             Btn_Order.Text = "Đơn hàng";
@@ -558,14 +577,14 @@
             Btn_Import.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Import.ImageAlign = HorizontalAlignment.Left;
             Btn_Import.ImageSize = new Size(10, 10);
-            Btn_Import.Location = new Point(0, 80);
+            Btn_Import.Location = new Point(0, 106);
             Btn_Import.Margin = new Padding(0);
             Btn_Import.Name = "Btn_Import";
-            Btn_Import.Padding = new Padding(26, 0, 0, 0);
+            Btn_Import.Padding = new Padding(30, 0, 0, 0);
             Btn_Import.PressedColor = Color.RoyalBlue;
             Btn_Import.PressedDepth = 100;
             Btn_Import.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            Btn_Import.Size = new Size(248, 40);
+            Btn_Import.Size = new Size(283, 53);
             Btn_Import.TabIndex = 19;
             Btn_Import.Tag = "panel_business|ImportBill.View";
             Btn_Import.Text = "Nhập hàng";
@@ -594,14 +613,14 @@
             Btn_Promotion.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Promotion.ImageAlign = HorizontalAlignment.Left;
             Btn_Promotion.ImageSize = new Size(10, 10);
-            Btn_Promotion.Location = new Point(0, 40);
+            Btn_Promotion.Location = new Point(0, 53);
             Btn_Promotion.Margin = new Padding(0);
             Btn_Promotion.Name = "Btn_Promotion";
-            Btn_Promotion.Padding = new Padding(26, 0, 0, 0);
+            Btn_Promotion.Padding = new Padding(30, 0, 0, 0);
             Btn_Promotion.PressedColor = Color.RoyalBlue;
             Btn_Promotion.PressedDepth = 100;
             Btn_Promotion.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            Btn_Promotion.Size = new Size(248, 40);
+            Btn_Promotion.Size = new Size(283, 53);
             Btn_Promotion.TabIndex = 17;
             Btn_Promotion.Tag = "panel_business|Promotion.View";
             Btn_Promotion.Text = "Chương trình khuyến mãi";
@@ -636,9 +655,9 @@
             Btn_Business.Name = "Btn_Business";
             Btn_Business.PressedColor = Color.Transparent;
             Btn_Business.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            Btn_Business.Size = new Size(248, 40);
+            Btn_Business.Size = new Size(283, 53);
             Btn_Business.TabIndex = 9;
-            Btn_Business.Tag = "parent|Promotions.View,ImportBill.View,Order.View";
+            Btn_Business.Tag = "parent|Promotion.View,ImportBill.View,Order.View";
             Btn_Business.Text = "Kinh doanh";
             Btn_Business.TextAlign = HorizontalAlignment.Left;
             Btn_Business.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -650,12 +669,12 @@
             Panel_Product.Controls.Add(Btn_Product);
             Panel_Product.CustomizableEdges = customizableEdges25;
             Panel_Product.Dock = DockStyle.Top;
-            Panel_Product.Location = new Point(8, 243);
-            Panel_Product.Margin = new Padding(2);
-            Panel_Product.MinimumSize = new Size(248, 40);
+            Panel_Product.Location = new Point(9, 324);
+            Panel_Product.Margin = new Padding(2, 3, 2, 3);
+            Panel_Product.MinimumSize = new Size(283, 53);
             Panel_Product.Name = "Panel_Product";
             Panel_Product.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            Panel_Product.Size = new Size(250, 40);
+            Panel_Product.Size = new Size(286, 53);
             Panel_Product.TabIndex = 19;
             // 
             // Btn_Product
@@ -686,7 +705,7 @@
             Btn_Product.Name = "Btn_Product";
             Btn_Product.PressedColor = Color.Transparent;
             Btn_Product.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            Btn_Product.Size = new Size(250, 40);
+            Btn_Product.Size = new Size(286, 53);
             Btn_Product.TabIndex = 999999;
             Btn_Product.Tag = "parent|Product.View";
             Btn_Product.Text = "Sản phẩm";
@@ -703,13 +722,13 @@
             Panel_MaterData.Controls.Add(Btn_MasterData);
             Panel_MaterData.CustomizableEdges = customizableEdges35;
             Panel_MaterData.Dock = DockStyle.Top;
-            Panel_MaterData.Location = new Point(8, 83);
-            Panel_MaterData.Margin = new Padding(2);
-            Panel_MaterData.MaximumSize = new Size(248, 160);
-            Panel_MaterData.MinimumSize = new Size(248, 40);
+            Panel_MaterData.Location = new Point(9, 111);
+            Panel_MaterData.Margin = new Padding(2, 3, 2, 3);
+            Panel_MaterData.MaximumSize = new Size(283, 213);
+            Panel_MaterData.MinimumSize = new Size(283, 53);
             Panel_MaterData.Name = "Panel_MaterData";
             Panel_MaterData.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            Panel_MaterData.Size = new Size(248, 160);
+            Panel_MaterData.Size = new Size(283, 213);
             Panel_MaterData.TabIndex = 18;
             // 
             // Btn_Parameter
@@ -733,14 +752,14 @@
             Btn_Parameter.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Parameter.ImageAlign = HorizontalAlignment.Left;
             Btn_Parameter.ImageSize = new Size(10, 10);
-            Btn_Parameter.Location = new Point(0, 120);
+            Btn_Parameter.Location = new Point(0, 159);
             Btn_Parameter.Margin = new Padding(0);
             Btn_Parameter.Name = "Btn_Parameter";
-            Btn_Parameter.Padding = new Padding(26, 0, 0, 0);
+            Btn_Parameter.Padding = new Padding(30, 0, 0, 0);
             Btn_Parameter.PressedColor = Color.RoyalBlue;
             Btn_Parameter.PressedDepth = 100;
             Btn_Parameter.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            Btn_Parameter.Size = new Size(248, 40);
+            Btn_Parameter.Size = new Size(283, 53);
             Btn_Parameter.TabIndex = 20;
             Btn_Parameter.Tag = "panel_masterData|Specifications.View";
             Btn_Parameter.Text = "Thông số kỹ thuật";
@@ -769,14 +788,14 @@
             Btn_Configuration.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Configuration.ImageAlign = HorizontalAlignment.Left;
             Btn_Configuration.ImageSize = new Size(10, 10);
-            Btn_Configuration.Location = new Point(0, 80);
+            Btn_Configuration.Location = new Point(0, 106);
             Btn_Configuration.Margin = new Padding(0);
             Btn_Configuration.Name = "Btn_Configuration";
-            Btn_Configuration.Padding = new Padding(26, 0, 0, 0);
+            Btn_Configuration.Padding = new Padding(30, 0, 0, 0);
             Btn_Configuration.PressedColor = Color.RoyalBlue;
             Btn_Configuration.PressedDepth = 100;
             Btn_Configuration.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            Btn_Configuration.Size = new Size(248, 40);
+            Btn_Configuration.Size = new Size(283, 53);
             Btn_Configuration.TabIndex = 19;
             Btn_Configuration.Tag = "panel_masterData|Configuration.View";
             Btn_Configuration.Text = "Cấu hình";
@@ -806,14 +825,14 @@
             Btn_Distributor.HoverState.FillColor = Color.WhiteSmoke;
             Btn_Distributor.ImageAlign = HorizontalAlignment.Left;
             Btn_Distributor.ImageSize = new Size(10, 10);
-            Btn_Distributor.Location = new Point(0, 40);
+            Btn_Distributor.Location = new Point(0, 53);
             Btn_Distributor.Margin = new Padding(0);
             Btn_Distributor.Name = "Btn_Distributor";
-            Btn_Distributor.Padding = new Padding(26, 0, 0, 0);
+            Btn_Distributor.Padding = new Padding(30, 0, 0, 0);
             Btn_Distributor.PressedColor = Color.RoyalBlue;
             Btn_Distributor.PressedDepth = 100;
             Btn_Distributor.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            Btn_Distributor.Size = new Size(248, 40);
+            Btn_Distributor.Size = new Size(283, 53);
             Btn_Distributor.TabIndex = 15;
             Btn_Distributor.Tag = "panel_masterData|Distributor.View";
             Btn_Distributor.Text = "Nhà cung cấp";
@@ -848,7 +867,7 @@
             Btn_MasterData.Name = "Btn_MasterData";
             Btn_MasterData.PressedColor = Color.Transparent;
             Btn_MasterData.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            Btn_MasterData.Size = new Size(248, 40);
+            Btn_MasterData.Size = new Size(283, 53);
             Btn_MasterData.TabIndex = 9;
             Btn_MasterData.Tag = "parent|Distributor.View,Specifications.View,Configuration.View";
             Btn_MasterData.Text = "Dữ liệu nguồn";
@@ -864,10 +883,11 @@
             Panel_Logo.CustomizableEdges = customizableEdges38;
             Panel_Logo.Dock = DockStyle.Top;
             Panel_Logo.FillColor = Color.Black;
-            Panel_Logo.Location = new Point(8, 8);
+            Panel_Logo.Location = new Point(9, 11);
+            Panel_Logo.Margin = new Padding(3, 4, 3, 4);
             Panel_Logo.Name = "Panel_Logo";
             Panel_Logo.ShadowDecoration.CustomizableEdges = customizableEdges39;
-            Panel_Logo.Size = new Size(250, 75);
+            Panel_Logo.Size = new Size(286, 100);
             Panel_Logo.TabIndex = 0;
             // 
             // Btn_Home
@@ -883,10 +903,11 @@
             Btn_Home.ImageRotate = 0F;
             Btn_Home.ImageSize = new Size(150, 50);
             Btn_Home.Location = new Point(0, 0);
+            Btn_Home.Margin = new Padding(3, 4, 3, 4);
             Btn_Home.Name = "Btn_Home";
             Btn_Home.PressedState.ImageSize = new Size(150, 50);
             Btn_Home.ShadowDecoration.CustomizableEdges = customizableEdges37;
-            Btn_Home.Size = new Size(250, 75);
+            Btn_Home.Size = new Size(286, 100);
             Btn_Home.TabIndex = 1;
             Btn_Home.Tag = "panel_home";
             Btn_Home.Click += Btn_Home_Click;
@@ -895,26 +916,26 @@
             // 
             Panel_Body.BackColor = Color.White;
             Panel_Body.Dock = DockStyle.Fill;
-            Panel_Body.Location = new Point(276, 2);
-            Panel_Body.Margin = new Padding(10, 2, 3, 2);
+            Panel_Body.Location = new Point(315, 3);
+            Panel_Body.Margin = new Padding(11, 3, 3, 3);
             Panel_Body.Name = "Panel_Body";
-            Panel_Body.Padding = new Padding(7, 6, 7, 6);
-            Panel_Body.Size = new Size(622, 724);
+            Panel_Body.Padding = new Padding(8);
+            Panel_Body.Size = new Size(712, 964);
             Panel_Body.TabIndex = 12;
             // 
             // Admin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.RoyalBlue;
-            ClientSize = new Size(917, 771);
+            ClientSize = new Size(1048, 1028);
             Controls.Add(TableLayoutPanel_Body);
             Controls.Add(TableLayoutPanel_Header);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
+            Margin = new Padding(5);
             Name = "Admin";
-            Padding = new Padding(8, 0, 8, 8);
+            Padding = new Padding(9, 0, 9, 11);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sản phẩm";
             WindowState = FormWindowState.Maximized;
@@ -964,5 +985,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_Role;
         private Guna.UI2.WinForms.Guna2Button Btn_User;
         private Guna.UI2.WinForms.Guna2ImageButton Btn_Home;
+        private Label Label_Logout;
     }
 }

@@ -78,11 +78,11 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(297, 5);
+            Button_Refresh.Location = new Point(340, 7);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Button_Refresh.Size = new Size(90, 40);
+            Button_Refresh.Size = new Size(103, 53);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
             Button_Refresh.Click += Button_Refresh_Click;
@@ -91,16 +91,16 @@
             // 
             TableLayoutPanel_Action.ColumnCount = 3;
             TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 114F));
+            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 114F));
             TableLayoutPanel_Action.Controls.Add(Button_Refresh, 2, 0);
             TableLayoutPanel_Action.Dock = DockStyle.Fill;
-            TableLayoutPanel_Action.Location = new Point(387, 0);
+            TableLayoutPanel_Action.Location = new Point(442, 0);
             TableLayoutPanel_Action.Margin = new Padding(0);
             TableLayoutPanel_Action.Name = "TableLayoutPanel_Action";
             TableLayoutPanel_Action.RowCount = 1;
             TableLayoutPanel_Action.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.Size = new Size(387, 50);
+            TableLayoutPanel_Action.Size = new Size(443, 67);
             TableLayoutPanel_Action.TabIndex = 1;
             // 
             // TableLayoutPanel_Header
@@ -115,7 +115,7 @@
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Header.Size = new Size(774, 50);
+            TableLayoutPanel_Header.Size = new Size(885, 67);
             TableLayoutPanel_Header.TabIndex = 3;
             // 
             // DataGridView_Listing
@@ -150,7 +150,7 @@
             DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle4;
             DataGridView_Listing.Dock = DockStyle.Fill;
             DataGridView_Listing.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Listing.Location = new Point(0, 50);
+            DataGridView_Listing.Location = new Point(0, 67);
             DataGridView_Listing.Margin = new Padding(0);
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
@@ -167,7 +167,7 @@
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
-            DataGridView_Listing.Size = new Size(774, 474);
+            DataGridView_Listing.Size = new Size(885, 632);
             DataGridView_Listing.TabIndex = 6;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -196,6 +196,7 @@
             // 
             Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Edit.HeaderText = "";
+            Edit.MinimumWidth = 6;
             Edit.Name = "Edit";
             Edit.ReadOnly = true;
             Edit.Resizable = DataGridViewTriState.True;
@@ -206,15 +207,16 @@
             // 
             // Id
             // 
-            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             Id.DataPropertyName = "Id";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Id.DefaultCellStyle = dataGridViewCellStyle3;
             Id.DividerWidth = 1;
             Id.HeaderText = "Mã người dùng";
+            Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.ReadOnly = true;
-            Id.Width = 130;
+            Id.Width = 158;
             // 
             // UserName
             // 
@@ -222,6 +224,7 @@
             UserName.DataPropertyName = "UserName";
             UserName.DividerWidth = 1;
             UserName.HeaderText = "Tên người dùng";
+            UserName.MinimumWidth = 6;
             UserName.Name = "UserName";
             UserName.ReadOnly = true;
             UserName.Width = 200;
@@ -232,17 +235,19 @@
             Password.DataPropertyName = "Password";
             Password.DividerWidth = 1;
             Password.HeaderText = "Mật khẩu";
+            Password.MinimumWidth = 6;
             Password.Name = "Password";
             Password.ReadOnly = true;
             // 
             // UserAssignRoleControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DataGridView_Listing);
             Controls.Add(TableLayoutPanel_Header);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "UserAssignRoleControl";
-            Size = new Size(774, 524);
+            Size = new Size(885, 699);
             TableLayoutPanel_Action.ResumeLayout(false);
             TableLayoutPanel_Header.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();

@@ -32,6 +32,8 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -50,6 +52,8 @@
             DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -61,13 +65,14 @@
             DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             TableLayoutPanel_Container = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             DataGridView_Category = new Guna.UI2.WinForms.Guna2DataGridView();
+            Button_CategoryEdit = new DataGridViewButtonColumn();
+            Button_CategoryRemove = new DataGridViewButtonColumn();
+            Category_InternalCode = new DataGridViewTextBoxColumn();
+            Category_Name = new DataGridViewTextBoxColumn();
+            Category_Id = new DataGridViewTextBoxColumn();
             Button_CategoryCreate = new Guna.UI2.WinForms.Guna2Button();
             Button_CategoryRefresh = new Guna.UI2.WinForms.Guna2Button();
             label2 = new Label();
@@ -82,6 +87,11 @@
             Label_Capacity = new Label();
             TableLayoutPanel_Color = new TableLayoutPanel();
             DataGridView_Color = new Guna.UI2.WinForms.Guna2DataGridView();
+            Button_ColorEdit = new DataGridViewButtonColumn();
+            Button_ColorRemove = new DataGridViewButtonColumn();
+            Color_InternalCode = new DataGridViewTextBoxColumn();
+            Color_Name = new DataGridViewTextBoxColumn();
+            Color_Id = new DataGridViewTextBoxColumn();
             Button_ColorCreate = new Guna.UI2.WinForms.Guna2Button();
             Button_ColorRefresh = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
@@ -92,16 +102,6 @@
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             Dialog_Confirm = new Guna.UI2.WinForms.Guna2MessageDialog();
-            Button_ColorEdit = new DataGridViewButtonColumn();
-            Button_ColorRemove = new DataGridViewButtonColumn();
-            Color_InternalCode = new DataGridViewTextBoxColumn();
-            Color_Name = new DataGridViewTextBoxColumn();
-            Color_Id = new DataGridViewTextBoxColumn();
-            Button_CategoryEdit = new DataGridViewButtonColumn();
-            Button_CategoryRemove = new DataGridViewButtonColumn();
-            Category_InternalCode = new DataGridViewTextBoxColumn();
-            Category_Name = new DataGridViewTextBoxColumn();
-            Category_Id = new DataGridViewTextBoxColumn();
             TableLayoutPanel_Container.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Category).BeginInit();
@@ -126,11 +126,11 @@
             TableLayoutPanel_Container.Name = "TableLayoutPanel_Container";
             TableLayoutPanel_Container.RowCount = 5;
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 12F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 16F));
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333359F));
-            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 12F));
+            TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Absolute, 16F));
             TableLayoutPanel_Container.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333359F));
-            TableLayoutPanel_Container.Size = new Size(1029, 791);
+            TableLayoutPanel_Container.Size = new Size(1176, 1055);
             TableLayoutPanel_Container.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -138,19 +138,20 @@
             tableLayoutPanel2.BackColor = Color.White;
             tableLayoutPanel2.ColumnCount = 3;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 106F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 107F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 121F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 122F));
             tableLayoutPanel2.Controls.Add(DataGridView_Category, 0, 1);
-            tableLayoutPanel2.Controls.Add(Button_CategoryCreate, 2, 0);
-            tableLayoutPanel2.Controls.Add(Button_CategoryRefresh, 1, 0);
             tableLayoutPanel2.Controls.Add(label2, 0, 0);
+            tableLayoutPanel2.Controls.Add(Button_CategoryCreate, 1, 0);
+            tableLayoutPanel2.Controls.Add(Button_CategoryRefresh, 2, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 537);
+            tableLayoutPanel2.Location = new Point(3, 717);
+            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 67F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1023, 251);
+            tableLayoutPanel2.Size = new Size(1170, 334);
             tableLayoutPanel2.TabIndex = 3;
             // 
             // DataGridView_Category
@@ -164,7 +165,6 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             DataGridView_Category.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            DataGridView_Category.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -187,7 +187,7 @@
             DataGridView_Category.DefaultCellStyle = dataGridViewCellStyle5;
             DataGridView_Category.Dock = DockStyle.Fill;
             DataGridView_Category.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Category.Location = new Point(0, 50);
+            DataGridView_Category.Location = new Point(0, 67);
             DataGridView_Category.Margin = new Padding(0);
             DataGridView_Category.Name = "DataGridView_Category";
             DataGridView_Category.ReadOnly = true;
@@ -204,7 +204,7 @@
             DataGridView_Category.RowHeadersWidth = 51;
             DataGridView_Category.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Category.RowTemplate.Height = 40;
-            DataGridView_Category.Size = new Size(1023, 201);
+            DataGridView_Category.Size = new Size(1170, 267);
             DataGridView_Category.TabIndex = 5;
             DataGridView_Category.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Category.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -229,6 +229,67 @@
             DataGridView_Category.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Category.CellClick += DataGridView_Category_CellClick;
             // 
+            // Button_CategoryEdit
+            // 
+            Button_CategoryEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            Button_CategoryEdit.DefaultCellStyle = dataGridViewCellStyle3;
+            Button_CategoryEdit.FillWeight = 20F;
+            Button_CategoryEdit.HeaderText = "";
+            Button_CategoryEdit.MinimumWidth = 6;
+            Button_CategoryEdit.Name = "Button_CategoryEdit";
+            Button_CategoryEdit.ReadOnly = true;
+            Button_CategoryEdit.Text = "Sửa";
+            Button_CategoryEdit.UseColumnTextForButtonValue = true;
+            Button_CategoryEdit.Width = 6;
+            // 
+            // Button_CategoryRemove
+            // 
+            Button_CategoryRemove.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_CategoryRemove.DefaultCellStyle = dataGridViewCellStyle4;
+            Button_CategoryRemove.FillWeight = 20F;
+            Button_CategoryRemove.HeaderText = "";
+            Button_CategoryRemove.MinimumWidth = 6;
+            Button_CategoryRemove.Name = "Button_CategoryRemove";
+            Button_CategoryRemove.ReadOnly = true;
+            Button_CategoryRemove.Text = "Xóa";
+            Button_CategoryRemove.UseColumnTextForButtonValue = true;
+            Button_CategoryRemove.Width = 6;
+            // 
+            // Category_InternalCode
+            // 
+            Category_InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Category_InternalCode.DataPropertyName = "InternalCode";
+            Category_InternalCode.DividerWidth = 1;
+            Category_InternalCode.FillWeight = 41.4820366F;
+            Category_InternalCode.HeaderText = "Mã danh mục";
+            Category_InternalCode.MinimumWidth = 6;
+            Category_InternalCode.Name = "Category_InternalCode";
+            Category_InternalCode.ReadOnly = true;
+            Category_InternalCode.Resizable = DataGridViewTriState.True;
+            Category_InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Category_Name
+            // 
+            Category_Name.DataPropertyName = "Name";
+            Category_Name.HeaderText = "Tên danh mục";
+            Category_Name.MinimumWidth = 6;
+            Category_Name.Name = "Category_Name";
+            Category_Name.ReadOnly = true;
+            // 
+            // Category_Id
+            // 
+            Category_Id.DataPropertyName = "Id";
+            Category_Id.HeaderText = "Category_Id";
+            Category_Id.MinimumWidth = 6;
+            Category_Id.Name = "Category_Id";
+            Category_Id.ReadOnly = true;
+            Category_Id.Visible = false;
+            // 
             // Button_CategoryCreate
             // 
             Button_CategoryCreate.Anchor = AnchorStyles.Right;
@@ -242,10 +303,11 @@
             Button_CategoryCreate.FillColor = Color.FromArgb(100, 88, 255);
             Button_CategoryCreate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_CategoryCreate.ForeColor = Color.White;
-            Button_CategoryCreate.Location = new Point(930, 5);
+            Button_CategoryCreate.Location = new Point(942, 7);
+            Button_CategoryCreate.Margin = new Padding(3, 4, 3, 4);
             Button_CategoryCreate.Name = "Button_CategoryCreate";
             Button_CategoryCreate.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Button_CategoryCreate.Size = new Size(90, 40);
+            Button_CategoryCreate.Size = new Size(103, 53);
             Button_CategoryCreate.TabIndex = 2;
             Button_CategoryCreate.Text = "Thêm mới";
             Button_CategoryCreate.Click += Button_CategoryCreate_Click;
@@ -263,10 +325,11 @@
             Button_CategoryRefresh.FillColor = Color.Green;
             Button_CategoryRefresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_CategoryRefresh.ForeColor = Color.White;
-            Button_CategoryRefresh.Location = new Point(823, 5);
+            Button_CategoryRefresh.Location = new Point(1064, 7);
+            Button_CategoryRefresh.Margin = new Padding(3, 4, 3, 4);
             Button_CategoryRefresh.Name = "Button_CategoryRefresh";
             Button_CategoryRefresh.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Button_CategoryRefresh.Size = new Size(90, 40);
+            Button_CategoryRefresh.Size = new Size(103, 53);
             Button_CategoryRefresh.TabIndex = 3;
             Button_CategoryRefresh.Text = "Làm mới";
             Button_CategoryRefresh.Click += Button_CategoryRefresh_Click;
@@ -276,9 +339,9 @@
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 15);
+            label2.Location = new Point(3, 21);
             label2.Name = "label2";
-            label2.Size = new Size(79, 20);
+            label2.Size = new Size(100, 25);
             label2.TabIndex = 4;
             label2.Text = "Danh mục";
             // 
@@ -287,19 +350,20 @@
             TableLayoutPanel_Capacity.BackColor = Color.White;
             TableLayoutPanel_Capacity.ColumnCount = 3;
             TableLayoutPanel_Capacity.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Capacity.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 106F));
-            TableLayoutPanel_Capacity.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 107F));
+            TableLayoutPanel_Capacity.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 121F));
+            TableLayoutPanel_Capacity.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 122F));
             TableLayoutPanel_Capacity.Controls.Add(DataGridView_Capacity, 0, 1);
-            TableLayoutPanel_Capacity.Controls.Add(Button_CapacityCreate, 2, 0);
-            TableLayoutPanel_Capacity.Controls.Add(Button_CapacityRefresh, 1, 0);
             TableLayoutPanel_Capacity.Controls.Add(Label_Capacity, 0, 0);
+            TableLayoutPanel_Capacity.Controls.Add(Button_CapacityCreate, 1, 0);
+            TableLayoutPanel_Capacity.Controls.Add(Button_CapacityRefresh, 2, 0);
             TableLayoutPanel_Capacity.Dock = DockStyle.Fill;
-            TableLayoutPanel_Capacity.Location = new Point(3, 3);
+            TableLayoutPanel_Capacity.Location = new Point(3, 4);
+            TableLayoutPanel_Capacity.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Capacity.Name = "TableLayoutPanel_Capacity";
             TableLayoutPanel_Capacity.RowCount = 2;
-            TableLayoutPanel_Capacity.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            TableLayoutPanel_Capacity.RowStyles.Add(new RowStyle(SizeType.Absolute, 67F));
             TableLayoutPanel_Capacity.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Capacity.Size = new Size(1023, 249);
+            TableLayoutPanel_Capacity.Size = new Size(1170, 332);
             TableLayoutPanel_Capacity.TabIndex = 0;
             // 
             // DataGridView_Capacity
@@ -313,7 +377,6 @@
             dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle7.SelectionForeColor = Color.Black;
             DataGridView_Capacity.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            DataGridView_Capacity.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -336,7 +399,7 @@
             DataGridView_Capacity.DefaultCellStyle = dataGridViewCellStyle11;
             DataGridView_Capacity.Dock = DockStyle.Fill;
             DataGridView_Capacity.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Capacity.Location = new Point(0, 50);
+            DataGridView_Capacity.Location = new Point(0, 67);
             DataGridView_Capacity.Margin = new Padding(0);
             DataGridView_Capacity.Name = "DataGridView_Capacity";
             DataGridView_Capacity.ReadOnly = true;
@@ -353,7 +416,7 @@
             DataGridView_Capacity.RowHeadersWidth = 51;
             DataGridView_Capacity.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Capacity.RowTemplate.Height = 40;
-            DataGridView_Capacity.Size = new Size(1023, 199);
+            DataGridView_Capacity.Size = new Size(1170, 265);
             DataGridView_Capacity.TabIndex = 5;
             DataGridView_Capacity.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Capacity.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -398,6 +461,7 @@
             // 
             Capacity_Id.DataPropertyName = "Id";
             Capacity_Id.HeaderText = "Id";
+            Capacity_Id.MinimumWidth = 6;
             Capacity_Id.Name = "Capacity_Id";
             Capacity_Id.ReadOnly = true;
             Capacity_Id.Visible = false;
@@ -442,10 +506,11 @@
             Button_CapacityCreate.FillColor = Color.FromArgb(100, 88, 255);
             Button_CapacityCreate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_CapacityCreate.ForeColor = Color.White;
-            Button_CapacityCreate.Location = new Point(930, 5);
+            Button_CapacityCreate.Location = new Point(942, 7);
+            Button_CapacityCreate.Margin = new Padding(3, 4, 3, 4);
             Button_CapacityCreate.Name = "Button_CapacityCreate";
             Button_CapacityCreate.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            Button_CapacityCreate.Size = new Size(90, 40);
+            Button_CapacityCreate.Size = new Size(103, 53);
             Button_CapacityCreate.TabIndex = 2;
             Button_CapacityCreate.Text = "Thêm mới";
             Button_CapacityCreate.Click += Button_CapacityCreate_Click;
@@ -463,10 +528,11 @@
             Button_CapacityRefresh.FillColor = Color.Green;
             Button_CapacityRefresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_CapacityRefresh.ForeColor = Color.White;
-            Button_CapacityRefresh.Location = new Point(823, 5);
+            Button_CapacityRefresh.Location = new Point(1064, 7);
+            Button_CapacityRefresh.Margin = new Padding(3, 4, 3, 4);
             Button_CapacityRefresh.Name = "Button_CapacityRefresh";
             Button_CapacityRefresh.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            Button_CapacityRefresh.Size = new Size(90, 40);
+            Button_CapacityRefresh.Size = new Size(103, 53);
             Button_CapacityRefresh.TabIndex = 3;
             Button_CapacityRefresh.Text = "Làm mới";
             Button_CapacityRefresh.Click += Button_CapacityRefresh_Click;
@@ -476,9 +542,9 @@
             Label_Capacity.Anchor = AnchorStyles.Left;
             Label_Capacity.AutoSize = true;
             Label_Capacity.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Label_Capacity.Location = new Point(3, 15);
+            Label_Capacity.Location = new Point(3, 21);
             Label_Capacity.Name = "Label_Capacity";
-            Label_Capacity.Size = new Size(91, 20);
+            Label_Capacity.Size = new Size(115, 25);
             Label_Capacity.TabIndex = 4;
             Label_Capacity.Text = "Dung lượng";
             // 
@@ -487,19 +553,20 @@
             TableLayoutPanel_Color.BackColor = Color.White;
             TableLayoutPanel_Color.ColumnCount = 3;
             TableLayoutPanel_Color.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Color.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 106F));
-            TableLayoutPanel_Color.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 107F));
+            TableLayoutPanel_Color.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 121F));
+            TableLayoutPanel_Color.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 122F));
             TableLayoutPanel_Color.Controls.Add(DataGridView_Color, 0, 1);
-            TableLayoutPanel_Color.Controls.Add(Button_ColorCreate, 2, 0);
-            TableLayoutPanel_Color.Controls.Add(Button_ColorRefresh, 1, 0);
             TableLayoutPanel_Color.Controls.Add(label1, 0, 0);
+            TableLayoutPanel_Color.Controls.Add(Button_ColorCreate, 1, 0);
+            TableLayoutPanel_Color.Controls.Add(Button_ColorRefresh, 2, 0);
             TableLayoutPanel_Color.Dock = DockStyle.Fill;
-            TableLayoutPanel_Color.Location = new Point(3, 270);
+            TableLayoutPanel_Color.Location = new Point(3, 360);
+            TableLayoutPanel_Color.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Color.Name = "TableLayoutPanel_Color";
             TableLayoutPanel_Color.RowCount = 2;
-            TableLayoutPanel_Color.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            TableLayoutPanel_Color.RowStyles.Add(new RowStyle(SizeType.Absolute, 67F));
             TableLayoutPanel_Color.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Color.Size = new Size(1023, 249);
+            TableLayoutPanel_Color.Size = new Size(1170, 333);
             TableLayoutPanel_Color.TabIndex = 2;
             // 
             // DataGridView_Color
@@ -513,7 +580,6 @@
             dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle13.SelectionForeColor = Color.Black;
             DataGridView_Color.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            DataGridView_Color.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle14.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle14.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -536,7 +602,7 @@
             DataGridView_Color.DefaultCellStyle = dataGridViewCellStyle17;
             DataGridView_Color.Dock = DockStyle.Fill;
             DataGridView_Color.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Color.Location = new Point(0, 50);
+            DataGridView_Color.Location = new Point(0, 67);
             DataGridView_Color.Margin = new Padding(0);
             DataGridView_Color.Name = "DataGridView_Color";
             DataGridView_Color.ReadOnly = true;
@@ -553,7 +619,7 @@
             DataGridView_Color.RowHeadersWidth = 51;
             DataGridView_Color.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Color.RowTemplate.Height = 40;
-            DataGridView_Color.Size = new Size(1023, 199);
+            DataGridView_Color.Size = new Size(1170, 266);
             DataGridView_Color.TabIndex = 5;
             DataGridView_Color.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Color.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -578,6 +644,67 @@
             DataGridView_Color.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Color.CellClick += DataGridView_Color_CellClick;
             // 
+            // Button_ColorEdit
+            // 
+            Button_ColorEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            Button_ColorEdit.DefaultCellStyle = dataGridViewCellStyle15;
+            Button_ColorEdit.FillWeight = 20F;
+            Button_ColorEdit.HeaderText = "";
+            Button_ColorEdit.MinimumWidth = 6;
+            Button_ColorEdit.Name = "Button_ColorEdit";
+            Button_ColorEdit.ReadOnly = true;
+            Button_ColorEdit.Text = "Sửa";
+            Button_ColorEdit.UseColumnTextForButtonValue = true;
+            Button_ColorEdit.Width = 6;
+            // 
+            // Button_ColorRemove
+            // 
+            Button_ColorRemove.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_ColorRemove.DefaultCellStyle = dataGridViewCellStyle16;
+            Button_ColorRemove.FillWeight = 20F;
+            Button_ColorRemove.HeaderText = "";
+            Button_ColorRemove.MinimumWidth = 6;
+            Button_ColorRemove.Name = "Button_ColorRemove";
+            Button_ColorRemove.ReadOnly = true;
+            Button_ColorRemove.Text = "Xóa";
+            Button_ColorRemove.UseColumnTextForButtonValue = true;
+            Button_ColorRemove.Width = 6;
+            // 
+            // Color_InternalCode
+            // 
+            Color_InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Color_InternalCode.DataPropertyName = "InternalCode";
+            Color_InternalCode.DividerWidth = 1;
+            Color_InternalCode.FillWeight = 41.4820366F;
+            Color_InternalCode.HeaderText = "Mã màu";
+            Color_InternalCode.MinimumWidth = 6;
+            Color_InternalCode.Name = "Color_InternalCode";
+            Color_InternalCode.ReadOnly = true;
+            Color_InternalCode.Resizable = DataGridViewTriState.True;
+            Color_InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Color_Name
+            // 
+            Color_Name.DataPropertyName = "Name";
+            Color_Name.HeaderText = "Tên màu";
+            Color_Name.MinimumWidth = 6;
+            Color_Name.Name = "Color_Name";
+            Color_Name.ReadOnly = true;
+            // 
+            // Color_Id
+            // 
+            Color_Id.DataPropertyName = "Id";
+            Color_Id.HeaderText = "Color_Id";
+            Color_Id.MinimumWidth = 6;
+            Color_Id.Name = "Color_Id";
+            Color_Id.ReadOnly = true;
+            Color_Id.Visible = false;
+            // 
             // Button_ColorCreate
             // 
             Button_ColorCreate.Anchor = AnchorStyles.Right;
@@ -591,10 +718,11 @@
             Button_ColorCreate.FillColor = Color.FromArgb(100, 88, 255);
             Button_ColorCreate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_ColorCreate.ForeColor = Color.White;
-            Button_ColorCreate.Location = new Point(930, 5);
+            Button_ColorCreate.Location = new Point(942, 7);
+            Button_ColorCreate.Margin = new Padding(3, 4, 3, 4);
             Button_ColorCreate.Name = "Button_ColorCreate";
             Button_ColorCreate.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            Button_ColorCreate.Size = new Size(90, 40);
+            Button_ColorCreate.Size = new Size(103, 53);
             Button_ColorCreate.TabIndex = 2;
             Button_ColorCreate.Text = "Thêm mới";
             Button_ColorCreate.Click += Button_ColorCreate_Click;
@@ -612,10 +740,11 @@
             Button_ColorRefresh.FillColor = Color.Green;
             Button_ColorRefresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_ColorRefresh.ForeColor = Color.White;
-            Button_ColorRefresh.Location = new Point(823, 5);
+            Button_ColorRefresh.Location = new Point(1064, 7);
+            Button_ColorRefresh.Margin = new Padding(3, 4, 3, 4);
             Button_ColorRefresh.Name = "Button_ColorRefresh";
             Button_ColorRefresh.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            Button_ColorRefresh.Size = new Size(90, 40);
+            Button_ColorRefresh.Size = new Size(103, 53);
             Button_ColorRefresh.TabIndex = 3;
             Button_ColorRefresh.Text = "Làm mới";
             Button_ColorRefresh.Click += Button_ColorRefresh_Click;
@@ -625,9 +754,9 @@
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 15);
+            label1.Location = new Point(3, 21);
             label1.Name = "label1";
-            label1.Size = new Size(65, 20);
+            label1.Size = new Size(83, 25);
             label1.TabIndex = 4;
             label1.Text = "Màu sắc";
             // 
@@ -721,6 +850,7 @@
             dataGridViewButtonColumn1.ReadOnly = true;
             dataGridViewButtonColumn1.Text = "Sửa";
             dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
+            dataGridViewButtonColumn1.Width = 6;
             // 
             // dataGridViewButtonColumn2
             // 
@@ -735,6 +865,7 @@
             dataGridViewButtonColumn2.ReadOnly = true;
             dataGridViewButtonColumn2.Text = "Xóa";
             dataGridViewButtonColumn2.UseColumnTextForButtonValue = true;
+            dataGridViewButtonColumn2.Width = 6;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -778,131 +909,14 @@
             Dialog_Confirm.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             Dialog_Confirm.Text = "Bạn có chắc chắn muốn xóa chứ ?";
             // 
-            // Button_ColorEdit
-            // 
-            Button_ColorEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(100, 88, 255);
-            Button_ColorEdit.DefaultCellStyle = dataGridViewCellStyle15;
-            Button_ColorEdit.FillWeight = 20F;
-            Button_ColorEdit.HeaderText = "";
-            Button_ColorEdit.MinimumWidth = 6;
-            Button_ColorEdit.Name = "Button_ColorEdit";
-            Button_ColorEdit.ReadOnly = true;
-            Button_ColorEdit.Text = "Sửa";
-            Button_ColorEdit.UseColumnTextForButtonValue = true;
-            Button_ColorEdit.Width = 6;
-            // 
-            // Button_ColorRemove
-            // 
-            Button_ColorRemove.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_ColorRemove.DefaultCellStyle = dataGridViewCellStyle16;
-            Button_ColorRemove.FillWeight = 20F;
-            Button_ColorRemove.HeaderText = "";
-            Button_ColorRemove.MinimumWidth = 6;
-            Button_ColorRemove.Name = "Button_ColorRemove";
-            Button_ColorRemove.ReadOnly = true;
-            Button_ColorRemove.Text = "Xóa";
-            Button_ColorRemove.UseColumnTextForButtonValue = true;
-            Button_ColorRemove.Width = 6;
-            // 
-            // Color_InternalCode
-            // 
-            Color_InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Color_InternalCode.DataPropertyName = "InternalCode";
-            Color_InternalCode.DividerWidth = 1;
-            Color_InternalCode.FillWeight = 41.4820366F;
-            Color_InternalCode.HeaderText = "Mã màu";
-            Color_InternalCode.MinimumWidth = 6;
-            Color_InternalCode.Name = "Color_InternalCode";
-            Color_InternalCode.ReadOnly = true;
-            Color_InternalCode.Resizable = DataGridViewTriState.True;
-            Color_InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Color_Name
-            // 
-            Color_Name.DataPropertyName = "Name";
-            Color_Name.HeaderText = "Tên màu";
-            Color_Name.Name = "Color_Name";
-            Color_Name.ReadOnly = true;
-            // 
-            // Color_Id
-            // 
-            Color_Id.DataPropertyName = "Id";
-            Color_Id.HeaderText = "Color_Id";
-            Color_Id.Name = "Color_Id";
-            Color_Id.ReadOnly = true;
-            Color_Id.Visible = false;
-            // 
-            // Button_CategoryEdit
-            // 
-            Button_CategoryEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(100, 88, 255);
-            Button_CategoryEdit.DefaultCellStyle = dataGridViewCellStyle3;
-            Button_CategoryEdit.FillWeight = 20F;
-            Button_CategoryEdit.HeaderText = "";
-            Button_CategoryEdit.MinimumWidth = 6;
-            Button_CategoryEdit.Name = "Button_CategoryEdit";
-            Button_CategoryEdit.ReadOnly = true;
-            Button_CategoryEdit.Text = "Sửa";
-            Button_CategoryEdit.UseColumnTextForButtonValue = true;
-            Button_CategoryEdit.Width = 6;
-            // 
-            // Button_CategoryRemove
-            // 
-            Button_CategoryRemove.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Button_CategoryRemove.DefaultCellStyle = dataGridViewCellStyle4;
-            Button_CategoryRemove.FillWeight = 20F;
-            Button_CategoryRemove.HeaderText = "";
-            Button_CategoryRemove.MinimumWidth = 6;
-            Button_CategoryRemove.Name = "Button_CategoryRemove";
-            Button_CategoryRemove.ReadOnly = true;
-            Button_CategoryRemove.Text = "Xóa";
-            Button_CategoryRemove.UseColumnTextForButtonValue = true;
-            Button_CategoryRemove.Width = 6;
-            // 
-            // Category_InternalCode
-            // 
-            Category_InternalCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Category_InternalCode.DataPropertyName = "InternalCode";
-            Category_InternalCode.DividerWidth = 1;
-            Category_InternalCode.FillWeight = 41.4820366F;
-            Category_InternalCode.HeaderText = "Mã danh mục";
-            Category_InternalCode.MinimumWidth = 6;
-            Category_InternalCode.Name = "Category_InternalCode";
-            Category_InternalCode.ReadOnly = true;
-            Category_InternalCode.Resizable = DataGridViewTriState.True;
-            Category_InternalCode.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Category_Name
-            // 
-            Category_Name.DataPropertyName = "Name";
-            Category_Name.HeaderText = "Tên danh mục";
-            Category_Name.Name = "Category_Name";
-            Category_Name.ReadOnly = true;
-            // 
-            // Category_Id
-            // 
-            Category_Id.DataPropertyName = "Id";
-            Category_Id.HeaderText = "Category_Id";
-            Category_Id.Name = "Category_Id";
-            Category_Id.ReadOnly = true;
-            Category_Id.Visible = false;
-            // 
             // ConfigurationControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TableLayoutPanel_Container);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ConfigurationControl";
-            Size = new Size(1029, 791);
+            Size = new Size(1176, 1055);
             TableLayoutPanel_Container.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();

@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
+using WinFormsApp.Services;
 using WinFormsApp.View.Screen;
 
 namespace WinFormsApp.Resources.Controls.Module.Configuration
@@ -15,6 +16,8 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             InitializeComponent();
 
             _categoryService = Program.container.GetInstance<ICategoryService>();
+
+            OnInit();
         }
 
         public CategoryForm(CategoryDto formData)
@@ -26,6 +29,16 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             _formData = formData;
 
             LoadData();
+
+            OnInit();
+        }
+
+        private void OnInit()
+        {
+            if (!Util.CheckPermission("Configuration.Update"))
+            {
+                Button_Save.Visible = false;
+            }
         }
 
         public void LoadData()

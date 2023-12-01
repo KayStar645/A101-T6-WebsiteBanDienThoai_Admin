@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
+using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Configuration
 {
@@ -14,6 +15,8 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             InitializeComponent();
 
             _colorService = Program.container.GetInstance<IColorService>();
+
+            OnInit();
         }
 
         public ColorForm(ColorDto formData)
@@ -25,6 +28,16 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             _formData = formData;
 
             LoadData();
+
+            OnInit();
+        }
+
+        private void OnInit()
+        {
+            if (!Util.CheckPermission("Configuration.Update"))
+            {
+                Button_Save.Visible = false;
+            }
         }
 
         public void LoadData()

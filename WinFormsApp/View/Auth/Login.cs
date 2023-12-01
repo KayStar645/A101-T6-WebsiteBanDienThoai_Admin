@@ -1,6 +1,7 @@
 ﻿using Domain.DTOs;
 using Services.Interfaces;
 using WinFormsApp.Services;
+using WinFormsApp.View.Screen;
 
 namespace WinFormsApp.View.Auth
 {
@@ -27,11 +28,11 @@ namespace WinFormsApp.View.Auth
             {
                 MyThread thread = new();
 
-                Program.admin = new Screen.Admin();
+                Admin admin = new();
 
-                await Program.admin.LoadCategory();
+                await admin.LoadCategory();
 
-                thread.CloseThisOpenThat(this, Program.admin);
+                thread.CloseThisOpenThat(this, admin);
             }
             else
             {

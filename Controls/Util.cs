@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using Services.Common;
 using System.Data;
 using System.Globalization;
 
@@ -138,12 +139,14 @@ namespace WinFormsApp.Services
             }
         }
 
-        public static bool CheckControlPermission(Control control, List<string> permissions)
+        public static bool CheckControlPermission(Control control)
         {
             if(control.Tag == null)
             {
                 return false;
             }
+
+            List<string> permissions = ServiceCommon.AuthRespone.Permission;
 
             string[] tags = control.Tag.ToString()!.Split("|");
 
@@ -182,8 +185,10 @@ namespace WinFormsApp.Services
             return true;
         }
 
-        public static bool CheckPermission(string perrmission, List<string> permissions)
+        public static bool CheckPermission(string perrmission)
         {
+            List<string> permissions = ServiceCommon.AuthRespone.Permission;
+
             return permissions.Contains(perrmission);
         }
     }

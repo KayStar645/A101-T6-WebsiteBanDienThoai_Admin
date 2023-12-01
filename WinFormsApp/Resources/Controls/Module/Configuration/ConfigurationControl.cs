@@ -1,9 +1,6 @@
 ﻿using Domain.DTOs;
 using Guna.UI2.WinForms;
 using Services.Interfaces;
-using Services.Services;
-using SimpleInjector;
-using WinFormsApp.Resources.Controls.Module.Distributor;
 using WinFormsApp.Services;
 
 namespace WinFormsApp.Resources.Controls.Module.Configuration
@@ -32,10 +29,26 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
             _capacityService = Program.container.GetInstance<ICapacityService>();
             _categoryService = Program.container.GetInstance<ICategoryService>();
 
-
             _refreahColorButton = Button_ColorRefresh;
             _refreahCapacityButton = Button_CapacityRefresh;
             _refreahCategoryButton = Button_CategoryRefresh;
+
+            if (!Util.CheckPermission("Configuration.Create"))
+            {
+                TableLayoutPanel_Capacity.Controls.Remove(Button_CapacityCreate);
+                TableLayoutPanel_Capacity.Controls.Remove(Button_ColorCreate);
+                TableLayoutPanel_Capacity.Controls.Remove(Button_CategoryCreate);
+            }
+
+            if (!Util.CheckPermission("Configuration.Update"))
+            {
+                Button_CapacityEdit.Text = "Xem";
+            }
+
+            if (!Util.CheckPermission("Configuration.Delete"))
+            {
+                DataGridView_Capacity.Columns.RemoveAt(1);
+            }
 
             LoadCapacity();
             LoadColor();
@@ -59,21 +72,23 @@ namespace WinFormsApp.Resources.Controls.Module.Configuration
 
         private async void LoadCapacity()
         {
-            _capacityResult = await _capacityService.GetList("Name", 1, 15, "");
+            _capacityResult = await _capacityService.GetList("Name", 1, 30, "");
 
             DataGridView_Capacity.DataSource = _capacityResult.list;
+
+
         }
 
         private async void LoadColor()
         {
-            _colorResult = await _colorService.GetList("Name", 1, 15, "");
+            _colorResult = await _colorService.GetList("Name", 1, 30, "");
 
             DataGridView_Color.DataSource = _colorResult.list;
         }
 
         private async void LoadCategory()
         {
-            _categoryResult = await _categoryService.GetList("Name", 1, 15, "");
+            _categoryResult = await _categoryService.GetList("Name", 1, 30, "");
 
             DataGridView_Category.DataSource = _categoryResult.list;
         }

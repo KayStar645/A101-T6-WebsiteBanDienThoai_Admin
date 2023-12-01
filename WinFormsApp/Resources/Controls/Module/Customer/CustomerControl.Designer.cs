@@ -46,7 +46,7 @@
             TableLayoutPanel_Header = new TableLayoutPanel();
             TableLayoutPanel_Paginator = new TableLayoutPanel();
             DataGridView_Listing = new Guna.UI2.WinForms.Guna2DataGridView();
-            edit = new DataGridViewButtonColumn();
+            Button_Edit = new DataGridViewButtonColumn();
             InternalCode = new DataGridViewTextBoxColumn();
             _Name = new DataGridViewTextBoxColumn();
             Phone = new DataGridViewTextBoxColumn();
@@ -84,11 +84,11 @@
             Button_Refresh.FillColor = Color.Green;
             Button_Refresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Refresh.ForeColor = Color.White;
-            Button_Refresh.Location = new Point(385, 5);
+            Button_Refresh.Location = new Point(440, 7);
             Button_Refresh.Margin = new Padding(0);
             Button_Refresh.Name = "Button_Refresh";
             Button_Refresh.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Button_Refresh.Size = new Size(90, 40);
+            Button_Refresh.Size = new Size(103, 53);
             Button_Refresh.TabIndex = 1;
             Button_Refresh.Text = "Làm mới";
             Button_Refresh.Click += Button_Refresh_Click;
@@ -108,14 +108,14 @@
             Text_Search.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Text_Search.ForeColor = Color.Black;
             Text_Search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Text_Search.Location = new Point(0, 5);
+            Text_Search.Location = new Point(0, 7);
             Text_Search.Margin = new Padding(0);
             Text_Search.Name = "Text_Search";
             Text_Search.PasswordChar = '\0';
             Text_Search.PlaceholderText = "Tìm kiếm...";
             Text_Search.SelectedText = "";
             Text_Search.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            Text_Search.Size = new Size(234, 40);
+            Text_Search.Size = new Size(267, 53);
             Text_Search.TabIndex = 2;
             Text_Search.TextChanged += Text_Search_TextChanged;
             // 
@@ -123,16 +123,16 @@
             // 
             TableLayoutPanel_Action.ColumnCount = 3;
             TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 116F));
-            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 133F));
+            TableLayoutPanel_Action.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 114F));
             TableLayoutPanel_Action.Controls.Add(Button_Refresh, 2, 0);
             TableLayoutPanel_Action.Dock = DockStyle.Fill;
-            TableLayoutPanel_Action.Location = new Point(474, 0);
+            TableLayoutPanel_Action.Location = new Point(542, 0);
             TableLayoutPanel_Action.Margin = new Padding(0);
             TableLayoutPanel_Action.Name = "TableLayoutPanel_Action";
             TableLayoutPanel_Action.RowCount = 1;
             TableLayoutPanel_Action.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanel_Action.Size = new Size(475, 50);
+            TableLayoutPanel_Action.Size = new Size(543, 67);
             TableLayoutPanel_Action.TabIndex = 1;
             // 
             // TableLayoutPanel_Header
@@ -148,7 +148,7 @@
             TableLayoutPanel_Header.Name = "TableLayoutPanel_Header";
             TableLayoutPanel_Header.RowCount = 1;
             TableLayoutPanel_Header.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Header.Size = new Size(949, 50);
+            TableLayoutPanel_Header.Size = new Size(1085, 67);
             TableLayoutPanel_Header.TabIndex = 0;
             // 
             // TableLayoutPanel_Paginator
@@ -156,11 +156,12 @@
             TableLayoutPanel_Paginator.ColumnCount = 1;
             TableLayoutPanel_Paginator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel_Paginator.Dock = DockStyle.Bottom;
-            TableLayoutPanel_Paginator.Location = new Point(0, 417);
+            TableLayoutPanel_Paginator.Location = new Point(0, 556);
+            TableLayoutPanel_Paginator.Margin = new Padding(3, 4, 3, 4);
             TableLayoutPanel_Paginator.Name = "TableLayoutPanel_Paginator";
             TableLayoutPanel_Paginator.RowCount = 1;
             TableLayoutPanel_Paginator.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel_Paginator.Size = new Size(949, 50);
+            TableLayoutPanel_Paginator.Size = new Size(1085, 67);
             TableLayoutPanel_Paginator.TabIndex = 2;
             // 
             // DataGridView_Listing
@@ -184,7 +185,7 @@
             DataGridView_Listing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridView_Listing.ColumnHeadersHeight = 40;
             DataGridView_Listing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { edit, InternalCode, _Name, Phone, Address, Id });
+            DataGridView_Listing.Columns.AddRange(new DataGridViewColumn[] { Button_Edit, InternalCode, _Name, Phone, Address, Id });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -195,7 +196,7 @@
             DataGridView_Listing.DefaultCellStyle = dataGridViewCellStyle4;
             DataGridView_Listing.Dock = DockStyle.Fill;
             DataGridView_Listing.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Listing.Location = new Point(0, 50);
+            DataGridView_Listing.Location = new Point(0, 67);
             DataGridView_Listing.Margin = new Padding(0);
             DataGridView_Listing.Name = "DataGridView_Listing";
             DataGridView_Listing.ReadOnly = true;
@@ -212,7 +213,7 @@
             DataGridView_Listing.RowHeadersWidth = 51;
             DataGridView_Listing.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DataGridView_Listing.RowTemplate.Height = 40;
-            DataGridView_Listing.Size = new Size(949, 367);
+            DataGridView_Listing.Size = new Size(1085, 489);
             DataGridView_Listing.TabIndex = 3;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             DataGridView_Listing.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -237,21 +238,21 @@
             DataGridView_Listing.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             DataGridView_Listing.CellClick += DataGridView_Listing_CellClick;
             // 
-            // edit
+            // Button_Edit
             // 
-            edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Button_Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(100, 88, 255);
-            edit.DefaultCellStyle = dataGridViewCellStyle3;
-            edit.FillWeight = 20F;
-            edit.HeaderText = "";
-            edit.MinimumWidth = 6;
-            edit.Name = "edit";
-            edit.ReadOnly = true;
-            edit.Text = "Sửa";
-            edit.UseColumnTextForButtonValue = true;
-            edit.Width = 6;
+            Button_Edit.DefaultCellStyle = dataGridViewCellStyle3;
+            Button_Edit.FillWeight = 20F;
+            Button_Edit.HeaderText = "";
+            Button_Edit.MinimumWidth = 6;
+            Button_Edit.Name = "Button_Edit";
+            Button_Edit.ReadOnly = true;
+            Button_Edit.Text = "Sửa";
+            Button_Edit.UseColumnTextForButtonValue = true;
+            Button_Edit.Width = 6;
             // 
             // InternalCode
             // 
@@ -309,13 +310,14 @@
             // 
             // CustomerControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DataGridView_Listing);
             Controls.Add(TableLayoutPanel_Paginator);
             Controls.Add(TableLayoutPanel_Header);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "CustomerControl";
-            Size = new Size(949, 467);
+            Size = new Size(1085, 623);
             TableLayoutPanel_Action.ResumeLayout(false);
             TableLayoutPanel_Header.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridView_Listing).EndInit();
@@ -332,7 +334,7 @@
         private TableLayoutPanel TableLayoutPanel_Header;
         private TableLayoutPanel TableLayoutPanel_Paginator;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView_Listing;
-        private DataGridViewButtonColumn edit;
+        private DataGridViewButtonColumn Button_Edit;
         private DataGridViewTextBoxColumn InternalCode;
         private DataGridViewTextBoxColumn _Name;
         private DataGridViewTextBoxColumn Phone;

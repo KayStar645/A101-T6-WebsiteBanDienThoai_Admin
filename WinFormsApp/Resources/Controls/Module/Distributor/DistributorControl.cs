@@ -30,6 +30,16 @@ namespace WinFormsApp.Resources.Controls.Module.Distributor
             _refreshButton = Button_Refresh;
 
             Paginator();
+
+            if (!Util.CheckPermission("Configuration.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+
+            if (!Util.CheckPermission("Configuration.Delete"))
+            {
+                DataGridView_Listing.Columns.RemoveAt(1);
+            }
         }
 
         private void Paginator()

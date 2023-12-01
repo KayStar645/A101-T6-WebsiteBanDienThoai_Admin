@@ -33,6 +33,12 @@ namespace Controls.Module
 
             _refreshButton = Button_Refresh;
 
+
+            if (!Util.CheckPermission("Customer.Update"))
+            {
+                Button_Edit.Text = "Xem";
+            }
+
             Paginator();
         }
 
