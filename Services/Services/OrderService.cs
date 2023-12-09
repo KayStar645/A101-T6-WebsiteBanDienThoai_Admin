@@ -299,7 +299,7 @@ namespace Services.Services
                     var order = _mapper.Map<Order>(oldOrder);
                     var update = await _orderRepo.UpdateAsync(order);
 
-                    if (pType == Order.TYPE_TRANSPORT)
+                    if (pType == Order.TYPE_APPROVE)
                     {
                         // Giảm số lượng của tất cả sản phẩm trong đơn hàng này
                         await _orderRepo.UpdateQuantityProductWhenTransportOrder(pOrderId, true);
@@ -307,7 +307,7 @@ namespace Services.Services
 
                     if (pType == Order.TYPE_CANNEL)
                     {
-                        // Nếu trạng thái trước đó của đơn hàng là T (Đang vận chuyển) - Đã kiểm tra trong Repo
+                        // Nếu trạng thái trước đó của đơn hàng là A (Đã duyệt) - Đã kiểm tra trong Repo
                         // Tăng số lượng của tất cả sản phẩm này lên lại
                         await _orderRepo.UpdateQuantityProductWhenTransportOrder(pOrderId, false);
                     }

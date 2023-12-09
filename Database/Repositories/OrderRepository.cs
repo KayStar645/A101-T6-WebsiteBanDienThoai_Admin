@@ -181,7 +181,7 @@ namespace Database.Repositories
             string where = "";
             if(isTransport == false)
             {
-                where = " and O.Type = N'T'";
+                where = $" and O.Type = N'{Order.TYPE_APPROVE}'";
             }    
 
             string query = $"UPDATE P SET P.Quantity = P.Quantity {oper} D.Quantity " +
