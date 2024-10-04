@@ -62,3 +62,6 @@
 3. Project Database: Tương tác với CSDL
 4. Project Services: Xử lý nghiệp vụ
 5. Project WinFormsApp: Giao diện
+
+### Hướng dẫn cấu hình
+https://drive.google.com/drive/folders/1zlOnv1RCJAHP_cDiub6By3KnAVYzF4iC
